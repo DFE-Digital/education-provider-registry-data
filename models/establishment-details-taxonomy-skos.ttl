@@ -20,11 +20,6 @@
 # fields outside the Establishment Details table.
 
 
-epr:status
-    a rdf:Property ;
-    rdfs:label "Vocabulary status"@en ;
-    rdfs:comment "The review status assigned to a concept in the working GIAS 2.0 vocabulary or taxonomy."@en .
-
 epr:establishmentDetailsTaxonomy
     a skos:ConceptScheme ;
     dcterms:title "GIAS 2.0 Establishment Details Taxonomy"@en ;
@@ -94,80 +89,70 @@ epr:EstablishmentType
     skos:topConceptOf epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Establishment type"@en ;
     skos:definition "The legal, operational or policy classification recorded as the establishment's type."@en ;
-    skos:scopeNote "This remains an overloaded legacy classification mixing legal form, sector and operational model. The intermediate type-group level is retained for traceability."@en ;
-    epr:status "Provisional"@en .
+    skos:scopeNote "This remains an overloaded legacy classification mixing legal form, sector and operational model. The intermediate type-group level is retained for traceability."@en .
 
 epr:EducationPhase
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:topConceptOf epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Education phase"@en ;
-    skos:definition "The broad stage of education provided by an establishment."@en ;
-    epr:status "Provisional"@en .
+    skos:definition "The broad stage of education provided by an establishment."@en .
 
 epr:EstablishmentStatus
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:topConceptOf epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Establishment status"@en ;
-    skos:definition "The current lifecycle or operating-state classification of an establishment."@en ;
-    epr:status "Provisional"@en .
+    skos:definition "The current lifecycle or operating-state classification of an establishment."@en .
 
 epr:AdmissionsPolicy
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:topConceptOf epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Admissions policy"@en ;
-    skos:definition "The classification describing how places are allocated."@en ;
-    epr:status "Provisional"@en .
+    skos:definition "The classification describing how places are allocated."@en .
 
 epr:GenderOfEntry
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:topConceptOf epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Gender of entry"@en ;
-    skos:definition "The classification describing the establishment's gender admission arrangement."@en ;
-    epr:status "Provisional"@en .
+    skos:definition "The classification describing the establishment's gender admission arrangement."@en .
 
 epr:BoardingProvision
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:topConceptOf epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Boarding provision"@en ;
-    skos:definition "The classification describing whether boarding places are offered."@en ;
-    epr:status "Provisional"@en .
+    skos:definition "The classification describing whether boarding places are offered."@en .
 
 epr:NurseryProvision
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:topConceptOf epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Nursery provision"@en ;
-    skos:definition "The classification describing whether the establishment offers nursery classes."@en ;
-    epr:status "Provisional"@en .
+    skos:definition "The classification describing whether the establishment offers nursery classes."@en .
 
 epr:SixthFormProvision
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:topConceptOf epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Sixth-form provision"@en ;
-    skos:definition "The classification describing whether the establishment has a sixth form."@en ;
-    epr:status "Provisional"@en .
+    skos:definition "The classification describing whether the establishment has a sixth form."@en .
 
 epr:SpecialClassProvision
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:topConceptOf epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Special-class provision"@en ;
-    skos:definition "The classification describing whether the establishment has special classes."@en ;
-    epr:status "Provisional"@en .
+    skos:definition "The classification describing whether the establishment has special classes."@en .
 
 epr:ReligiousCharacter
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:topConceptOf epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Religious character"@en ;
-    skos:definition "The formal religious-character classification designated for an establishment."@en ;
-    epr:status "Provisional"@en .
+    skos:definition "The formal religious-character classification designated for an establishment."@en .
 
 epr:ReligiousEthos
     a skos:Concept ;
@@ -175,8 +160,7 @@ epr:ReligiousEthos
     skos:topConceptOf epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Religious ethos"@en ;
     skos:definition "The recorded religious-ethos classification associated with an establishment."@en ;
-    skos:scopeNote "Its distinction from religious character requires business validation."@en ;
-    epr:status "Provisional"@en .
+    skos:scopeNote "Its distinction from religious character requires business validation."@en .
 
 #################################################################
 # Establishment type groups
@@ -340,8 +324,7 @@ epr:CommunitySchool
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Community school"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
-    dcterms:source "Type code 01"@en ;
-    epr:status "Provisional"@en .
+    dcterms:source "Type code 01"@en .
 
 epr:VoluntaryAidedSchool
     a skos:Concept ;
@@ -447,8 +430,7 @@ epr:OtherIndependentSchool
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Other independent school"@en ;
     skos:broader epr:EstablishmentTypeGroupIndependentSchools ;
-    dcterms:source "Type code 11"@en ;
-    epr:status "Provisional"@en .
+    dcterms:source "Type code 11"@en .
 
 #################################################################
 # Establishment-type taxons â€” group 1: colleges
@@ -618,8 +600,7 @@ epr:AcademyConverter
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Academy converter"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
-    dcterms:source "Type code 34"@en ;
-    epr:status "Provisional"@en .
+    dcterms:source "Type code 34"@en .
 
 epr:AcademyAlternativeProvisionConverter
     a skos:Concept ;

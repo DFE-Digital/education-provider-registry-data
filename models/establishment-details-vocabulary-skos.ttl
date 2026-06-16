@@ -361,8 +361,8 @@ epr:EstablishmentType
     skos:inScheme epr:establishmentDetailsVocabulary ;
     skos:prefLabel "Establishment type"@en ;
     skos:altLabel "School type"@en, "Type of Establishment"@en, "EstablishmentType"@en ;
-    skos:definition "The current GIAS classification describing the operational or legal type of an establishment."@en ;
-    skos:scopeNote "School type is too narrow for the wider registry. The current classification mixes several dimensions and requires further taxonomy analysis."@en ;
+    skos:definition "The legal, operational or policy classification recorded as the establishment's type."@en ;
+    skos:scopeNote "School type is too narrow for the wider registry. The classification mixes legal form, sector and operational model across a single dimension and requires further analysis."@en ;
     skos:broader epr:EstablishmentClassification ;
     skos:related epr:EstablishmentTypeGroup ;
     epr:status "Preferred"@en ;
@@ -384,7 +384,7 @@ epr:AcademyConverter
     skos:prefLabel "Academy converter"@en ;
     skos:definition "An establishment type for a former school that converted to academy status."@en ;
     skos:scopeNote "An establishment type, not a trust type."@en ;
-    skos:broader epr:EstablishmentType ;
+    skos:broader epr:EstablishmentTypeGroupAcademies ;
     skos:related epr:AcademyTrust ;
     epr:status "Preferred"@en .
 
@@ -393,7 +393,7 @@ epr:CommunitySchool
     skos:inScheme epr:establishmentDetailsVocabulary ;
     skos:prefLabel "Community school"@en ;
     skos:definition "A local-authority-maintained establishment type where the local authority employs staff, owns land and buildings, and is the admissions authority."@en ;
-    skos:broader epr:EstablishmentType ;
+    skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
     skos:related epr:LocalAuthority, epr:MaintainingAuthority ;
     epr:status "Preferred"@en .
 
@@ -402,7 +402,7 @@ epr:OtherIndependentSchool
     skos:inScheme epr:establishmentDetailsVocabulary ;
     skos:prefLabel "Other independent school"@en ;
     skos:definition "An independent-school establishment type that is not the separately classified independent school approved for SEN pupils."@en ;
-    skos:broader epr:EstablishmentType ;
+    skos:broader epr:EstablishmentTypeGroupIndependentSchools ;
     skos:related epr:Proprietor ;
     epr:status "Preferred"@en .
 
@@ -491,7 +491,7 @@ epr:EducationPhase
     skos:inScheme epr:establishmentDetailsVocabulary ;
     skos:prefLabel "Education phase"@en ;
     skos:altLabel "Phase of education"@en, "Phase of Education"@en ;
-    skos:definition "The broad stage of education provided by the establishment, such as primary or secondary."@en ;
+    skos:definition "The broad stage of education provided by an establishment, such as primary or secondary."@en ;
     skos:broader epr:EstablishmentClassification ;
     epr:status "Preferred"@en ;
     dcterms:source "C#: EducationPhaseId; Java: educationPhase; database: Establishment.phaseOfEducation_code"@en .
@@ -591,7 +591,7 @@ epr:EstablishmentStatus
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsVocabulary ;
     skos:prefLabel "Establishment status"@en ;
-    skos:definition "The current lifecycle or operating status of an establishment."@en ;
+    skos:definition "The current lifecycle or operating-state classification of an establishment."@en ;
     skos:broader epr:EstablishmentLifecycle ;
     epr:status "Preferred"@en ;
     dcterms:source "C#: StatusId; Java: status; database: Establishment.status_code"@en .
@@ -898,7 +898,7 @@ epr:ReligiousCharacter
     skos:inScheme epr:establishmentDetailsVocabulary ;
     skos:prefLabel "Religious character"@en ;
     skos:altLabel "Designated Religious Character"@en ;
-    skos:definition "A formal religious-character classification designated for the school."@en ;
+    skos:definition "The formal religious-character classification designated for an establishment."@en ;
     skos:broader epr:FaithContext ;
     skos:related epr:Diocese, epr:ReligiousEthos ;
     epr:status "Preferred"@en ;
@@ -908,7 +908,7 @@ epr:ReligiousEthos
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsVocabulary ;
     skos:prefLabel "Religious ethos"@en ;
-    skos:definition "The recorded religious ethos associated with the establishment."@en ;
+    skos:definition "The recorded religious-ethos classification associated with an establishment."@en ;
     skos:broader epr:FaithContext ;
     skos:related epr:ReligiousCharacter ;
     epr:status "Provisional"@en .
