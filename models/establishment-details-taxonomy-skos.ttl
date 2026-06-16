@@ -94,7 +94,7 @@ epr:EstablishmentType
     skos:topConceptOf epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Establishment type"@en ;
     skos:definition "The legal, operational or policy classification recorded as the establishment's type."@en ;
-    skos:scopeNote "This remains an overloaded legacy classification mixing legal form, sector and operational model. The intermediate type-group level follows ERD group codes."@en ;
+    skos:scopeNote "This remains an overloaded legacy classification mixing legal form, sector and operational model. The intermediate type-group level is retained for traceability."@en ;
     epr:status "Provisional"@en .
 
 epr:EducationPhase
@@ -179,7 +179,7 @@ epr:ReligiousEthos
     epr:status "Provisional"@en .
 
 #################################################################
-# Establishment type groups (ERD group codes)
+# Establishment type groups
 #################################################################
 
 epr:EstablishmentTypeGroupColleges
@@ -187,7 +187,7 @@ epr:EstablishmentTypeGroupColleges
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Colleges"@en ;
     skos:altLabel "Further education colleges"@en ;
-    skos:definition "The GIAS establishment type group covering further and sixth-form education colleges (ERD group code 1)."@en ;
+    skos:definition "The GIAS establishment type group covering further and sixth-form education colleges."@en ;
     skos:broader epr:EstablishmentType ;
     skos:narrower
         epr:FurtherEducation,
@@ -199,7 +199,7 @@ epr:EstablishmentTypeGroupUniversities
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Universities and higher education"@en ;
     skos:altLabel "HEI"@en ;
-    skos:definition "The GIAS establishment type group covering higher education institutions (ERD group code 2)."@en ;
+    skos:definition "The GIAS establishment type group covering higher education institutions."@en ;
     skos:broader epr:EstablishmentType ;
     skos:narrower
         epr:HigherEducationInstitution ;
@@ -209,7 +209,7 @@ epr:EstablishmentTypeGroupIndependentSchools
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Independent schools"@en ;
-    skos:definition "The GIAS establishment type group covering city technology colleges and other independent schools (ERD group code 3)."@en ;
+    skos:definition "The GIAS establishment type group covering city technology colleges and other independent schools."@en ;
     skos:broader epr:EstablishmentType ;
     skos:narrower
         epr:CityTechnologyCollege,
@@ -221,7 +221,7 @@ epr:EstablishmentTypeGroupLaMaintainedSchools
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Local authority maintained schools"@en ;
     skos:altLabel "LA maintained schools"@en ;
-    skos:definition "The GIAS establishment type group covering schools maintained by a local authority (ERD group code 4)."@en ;
+    skos:definition "The GIAS establishment type group covering schools maintained by a local authority."@en ;
     skos:broader epr:EstablishmentType ;
     skos:narrower
         epr:CommunitySchool,
@@ -238,7 +238,7 @@ epr:EstablishmentTypeGroupNonMaintainedSpecialSchools
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Non-maintained special schools"@en ;
-    skos:definition "The GIAS establishment type group covering non-maintained and independent special schools (ERD group code 5)."@en ;
+    skos:definition "The GIAS establishment type group covering non-maintained and independent special schools."@en ;
     skos:broader epr:EstablishmentType ;
     skos:narrower
         epr:NonMaintainedSpecialSchool,
@@ -250,7 +250,7 @@ epr:EstablishmentTypeGroupWelshEstablishments
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Welsh establishments"@en ;
-    skos:definition "The GIAS establishment type group covering establishments in Wales (ERD group code 6)."@en ;
+    skos:definition "The GIAS establishment type group covering establishments in Wales."@en ;
     skos:broader epr:EstablishmentType ;
     skos:narrower
         epr:WelshEstablishment ;
@@ -261,7 +261,7 @@ epr:EstablishmentTypeGroupOtherTypes
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Other types"@en ;
     skos:altLabel "Miscellaneous"@en ;
-    skos:definition "The GIAS establishment type group covering miscellaneous and other establishment types (ERD group code 9)."@en ;
+    skos:definition "The GIAS establishment type group covering miscellaneous and other establishment types."@en ;
     skos:broader epr:EstablishmentType ;
     skos:narrower
         epr:EuropeanSchools,
@@ -281,7 +281,7 @@ epr:EstablishmentTypeGroupAcademies
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Academies"@en ;
-    skos:definition "The GIAS establishment type group covering all academy types (ERD group code 10)."@en ;
+    skos:definition "The GIAS establishment type group covering all academy types."@en ;
     skos:broader epr:EstablishmentType ;
     skos:narrower
         epr:AcademySponsorLed,
@@ -299,7 +299,7 @@ epr:EstablishmentTypeGroupFreeSchools
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Free schools"@en ;
-    skos:definition "The GIAS establishment type group covering all free school types (ERD group code 11)."@en ;
+    skos:definition "The GIAS establishment type group covering all free school types."@en ;
     skos:broader epr:EstablishmentType ;
     skos:narrower
         epr:FreeSchool,
@@ -314,7 +314,7 @@ epr:EstablishmentTypeGroupChildrensCentres
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Children's centres"@en ;
-    skos:definition "The GIAS establishment type group covering children's centres and linked sites (ERD group code 12)."@en ;
+    skos:definition "The GIAS establishment type group covering children's centres and linked sites."@en ;
     skos:broader epr:EstablishmentType ;
     skos:narrower
         epr:ChildrensCentre,
@@ -325,7 +325,7 @@ epr:EstablishmentTypeGroupOnlineProviders
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Online providers"@en ;
-    skos:definition "The GIAS establishment type group covering online education providers (ERD group code 13)."@en ;
+    skos:definition "The GIAS establishment type group covering online education providers."@en ;
     skos:broader epr:EstablishmentType ;
     skos:narrower
         epr:OnlineProvider ;
@@ -340,7 +340,7 @@ epr:CommunitySchool
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Community school"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
-    dcterms:source "Type code 01; ERD group 4"@en ;
+    dcterms:source "Type code 01"@en ;
     epr:status "Provisional"@en .
 
 epr:VoluntaryAidedSchool
@@ -348,7 +348,7 @@ epr:VoluntaryAidedSchool
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Voluntary aided school"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
-    dcterms:source "Type code 02; ERD group 4"@en ;
+    dcterms:source "Type code 02"@en ;
     epr:status "Provisional"@en .
 
 epr:VoluntaryControlledSchool
@@ -356,7 +356,7 @@ epr:VoluntaryControlledSchool
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Voluntary controlled school"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
-    dcterms:source "Type code 03; ERD group 4"@en ;
+    dcterms:source "Type code 03"@en ;
     epr:status "Provisional"@en .
 
 epr:FoundationSchool
@@ -364,7 +364,7 @@ epr:FoundationSchool
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Foundation school"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
-    dcterms:source "Type code 05; ERD group 4"@en ;
+    dcterms:source "Type code 05"@en ;
     epr:status "Provisional"@en .
 
 epr:CommunitySpecialSchool
@@ -372,7 +372,7 @@ epr:CommunitySpecialSchool
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Community special school"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
-    dcterms:source "Type code 07; ERD group 4"@en ;
+    dcterms:source "Type code 07"@en ;
     epr:status "Provisional"@en .
 
 epr:FoundationSpecialSchool
@@ -380,7 +380,7 @@ epr:FoundationSpecialSchool
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Foundation special school"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
-    dcterms:source "Type code 12; ERD group 4"@en ;
+    dcterms:source "Type code 12"@en ;
     epr:status "Provisional"@en .
 
 epr:PupilReferralUnit
@@ -389,7 +389,7 @@ epr:PupilReferralUnit
     skos:prefLabel "Pupil referral unit"@en ;
     skos:altLabel "PRU"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
-    dcterms:source "Type code 14; ERD group 4"@en ;
+    dcterms:source "Type code 14"@en ;
     epr:status "Provisional"@en .
 
 epr:LocalAuthorityNurserySchool
@@ -397,7 +397,7 @@ epr:LocalAuthorityNurserySchool
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Local authority nursery school"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
-    dcterms:source "Type code 15; ERD group 4"@en ;
+    dcterms:source "Type code 15"@en ;
     epr:status "Provisional"@en .
 
 #################################################################
@@ -409,7 +409,7 @@ epr:NonMaintainedSpecialSchool
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Non-maintained special school"@en ;
     skos:broader epr:EstablishmentTypeGroupNonMaintainedSpecialSchools ;
-    dcterms:source "Type code 08; ERD group 5"@en ;
+    dcterms:source "Type code 08"@en ;
     epr:status "Provisional"@en .
 
 epr:IndependentSchoolApprovedForSenPupils
@@ -418,7 +418,7 @@ epr:IndependentSchoolApprovedForSenPupils
     skos:prefLabel "Independent school approved for SEN pupils"@en ;
     skos:scopeNote "Archived type. No rows in current extracts."@en ;
     skos:broader epr:EstablishmentTypeGroupNonMaintainedSpecialSchools ;
-    dcterms:source "Type code 09; ERD group 5; archived in ERD"@en ;
+    dcterms:source "Type code 09; archived"@en ;
     epr:status "Provisional"@en .
 
 epr:OtherIndependentSpecialSchool
@@ -426,7 +426,7 @@ epr:OtherIndependentSpecialSchool
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Other independent special school"@en ;
     skos:broader epr:EstablishmentTypeGroupNonMaintainedSpecialSchools ;
-    dcterms:source "Type code 10; ERD group 5"@en ;
+    dcterms:source "Type code 10"@en ;
     epr:status "Provisional"@en .
 
 #################################################################
@@ -439,7 +439,7 @@ epr:CityTechnologyCollege
     skos:prefLabel "City technology college"@en ;
     skos:altLabel "CTC"@en ;
     skos:broader epr:EstablishmentTypeGroupIndependentSchools ;
-    dcterms:source "Type code 06; ERD group 3"@en ;
+    dcterms:source "Type code 06"@en ;
     epr:status "Provisional"@en .
 
 epr:OtherIndependentSchool
@@ -447,7 +447,7 @@ epr:OtherIndependentSchool
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Other independent school"@en ;
     skos:broader epr:EstablishmentTypeGroupIndependentSchools ;
-    dcterms:source "Type code 11; ERD group 3"@en ;
+    dcterms:source "Type code 11"@en ;
     epr:status "Provisional"@en .
 
 #################################################################
@@ -460,7 +460,7 @@ epr:FurtherEducation
     skos:prefLabel "Further education"@en ;
     skos:altLabel "Further education college"@en ;
     skos:broader epr:EstablishmentTypeGroupColleges ;
-    dcterms:source "Type code 18; ERD group 1"@en ;
+    dcterms:source "Type code 18"@en ;
     epr:status "Provisional"@en .
 
 epr:SixthFormCentre
@@ -468,7 +468,7 @@ epr:SixthFormCentre
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Sixth form centre"@en ;
     skos:broader epr:EstablishmentTypeGroupColleges ;
-    dcterms:source "Type code 31; ERD group 1"@en ;
+    dcterms:source "Type code 31"@en ;
     epr:status "Provisional"@en .
 
 #################################################################
@@ -481,7 +481,7 @@ epr:HigherEducationInstitution
     skos:prefLabel "Higher education institution"@en ;
     skos:altLabel "HEI"@en ;
     skos:broader epr:EstablishmentTypeGroupUniversities ;
-    dcterms:source "Type code 29; ERD group 2"@en ;
+    dcterms:source "Type code 29"@en ;
     epr:status "Provisional"@en .
 
 #################################################################
@@ -493,7 +493,7 @@ epr:WelshEstablishment
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Welsh establishment"@en ;
     skos:broader epr:EstablishmentTypeGroupWelshEstablishments ;
-    dcterms:source "Type code 30; ERD group 6"@en ;
+    dcterms:source "Type code 30"@en ;
     epr:status "Provisional"@en .
 
 #################################################################
@@ -506,7 +506,7 @@ epr:EuropeanSchools
     skos:prefLabel "European schools"@en ;
     skos:scopeNote "Archived type. No rows in current extracts."@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
-    dcterms:source "Type code 17; ERD group 9; archived in ERD"@en ;
+    dcterms:source "Type code 17; archived"@en ;
     epr:status "Provisional"@en .
 
 epr:EarlyYearsSetting
@@ -515,7 +515,7 @@ epr:EarlyYearsSetting
     skos:prefLabel "Early years setting"@en ;
     skos:scopeNote "Archived type. No rows in current extracts."@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
-    dcterms:source "Type code 22; ERD group 9; archived in ERD"@en ;
+    dcterms:source "Type code 22; archived"@en ;
     epr:status "Provisional"@en .
 
 epr:PlayingForSuccessCentres
@@ -524,7 +524,7 @@ epr:PlayingForSuccessCentres
     skos:prefLabel "Playing for success centres"@en ;
     skos:scopeNote "Archived type. No rows in current extracts."@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
-    dcterms:source "Type code 23; ERD group 9; archived in ERD"@en ;
+    dcterms:source "Type code 23; archived"@en ;
     epr:status "Provisional"@en .
 
 epr:SecureUnits
@@ -532,7 +532,7 @@ epr:SecureUnits
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Secure units"@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
-    dcterms:source "Type code 24; ERD group 9"@en ;
+    dcterms:source "Type code 24"@en ;
     epr:status "Provisional"@en .
 
 epr:OffshoreSchools
@@ -540,7 +540,7 @@ epr:OffshoreSchools
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Offshore schools"@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
-    dcterms:source "Type code 25; ERD group 9"@en ;
+    dcterms:source "Type code 25"@en ;
     epr:status "Provisional"@en .
 
 epr:ServiceChildrensEducation
@@ -548,7 +548,7 @@ epr:ServiceChildrensEducation
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Service children's education"@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
-    dcterms:source "Type code 26; ERD group 9"@en ;
+    dcterms:source "Type code 26"@en ;
     epr:status "Provisional"@en .
 
 epr:MiscellaneousEstablishment
@@ -556,7 +556,7 @@ epr:MiscellaneousEstablishment
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Miscellaneous"@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
-    dcterms:source "Type code 27; ERD group 9"@en ;
+    dcterms:source "Type code 27"@en ;
     epr:status "Provisional"@en .
 
 epr:SpecialPost16Institution
@@ -564,7 +564,7 @@ epr:SpecialPost16Institution
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Special post 16 institution"@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
-    dcterms:source "Type code 32; ERD group 9"@en ;
+    dcterms:source "Type code 32"@en ;
     epr:status "Provisional"@en .
 
 epr:BritishSchoolsOverseas
@@ -573,7 +573,7 @@ epr:BritishSchoolsOverseas
     skos:prefLabel "British schools overseas"@en ;
     skos:altLabel "BSO"@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
-    dcterms:source "Type code 37; ERD group 9"@en ;
+    dcterms:source "Type code 37"@en ;
     epr:status "Provisional"@en .
 
 epr:InstitutionFundedByOtherGovernmentDepartment
@@ -581,7 +581,7 @@ epr:InstitutionFundedByOtherGovernmentDepartment
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Institution funded by other government department"@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
-    dcterms:source "Type code 56; ERD group 9"@en ;
+    dcterms:source "Type code 56"@en ;
     epr:status "Provisional"@en .
 
 epr:LegacyTypes
@@ -590,7 +590,7 @@ epr:LegacyTypes
     skos:prefLabel "Legacy types"@en ;
     skos:scopeNote "Archived type. No rows in current extracts."@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
-    dcterms:source "Type code 98; ERD group 9; archived in ERD"@en ;
+    dcterms:source "Type code 98; archived"@en ;
     epr:status "Provisional"@en .
 
 #################################################################
@@ -602,7 +602,7 @@ epr:AcademySponsorLed
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Academy sponsor led"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
-    dcterms:source "Type code 28; ERD group 10"@en ;
+    dcterms:source "Type code 28"@en ;
     epr:status "Provisional"@en .
 
 epr:AcademySpecialSponsorLed
@@ -610,7 +610,7 @@ epr:AcademySpecialSponsorLed
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Academy special sponsor led"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
-    dcterms:source "Type code 33; ERD group 10"@en ;
+    dcterms:source "Type code 33"@en ;
     epr:status "Provisional"@en .
 
 epr:AcademyConverter
@@ -618,7 +618,7 @@ epr:AcademyConverter
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Academy converter"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
-    dcterms:source "Type code 34; ERD group 10"@en ;
+    dcterms:source "Type code 34"@en ;
     epr:status "Provisional"@en .
 
 epr:AcademyAlternativeProvisionConverter
@@ -626,7 +626,7 @@ epr:AcademyAlternativeProvisionConverter
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Academy alternative provision converter"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
-    dcterms:source "Type code 42; ERD group 10"@en ;
+    dcterms:source "Type code 42"@en ;
     epr:status "Provisional"@en .
 
 epr:AcademyAlternativeProvisionSponsorLed
@@ -634,7 +634,7 @@ epr:AcademyAlternativeProvisionSponsorLed
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Academy alternative provision sponsor led"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
-    dcterms:source "Type code 43; ERD group 10"@en ;
+    dcterms:source "Type code 43"@en ;
     epr:status "Provisional"@en .
 
 epr:AcademySpecialConverter
@@ -642,7 +642,7 @@ epr:AcademySpecialConverter
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Academy special converter"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
-    dcterms:source "Type code 44; ERD group 10"@en ;
+    dcterms:source "Type code 44"@en ;
     epr:status "Provisional"@en .
 
 epr:Academy1619Converter
@@ -650,7 +650,7 @@ epr:Academy1619Converter
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Academy 16-19 converter"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
-    dcterms:source "Type code 45; ERD group 10"@en ;
+    dcterms:source "Type code 45"@en ;
     epr:status "Provisional"@en .
 
 epr:Academy16To19SponsorLed
@@ -658,7 +658,7 @@ epr:Academy16To19SponsorLed
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Academy 16 to 19 sponsor led"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
-    dcterms:source "Type code 46; ERD group 10"@en ;
+    dcterms:source "Type code 46"@en ;
     epr:status "Provisional"@en .
 
 epr:AcademySecure16To19
@@ -667,7 +667,7 @@ epr:AcademySecure16To19
     skos:prefLabel "Academy secure 16 to 19"@en ;
     skos:scopeNote "Secure establishment with a more restricted public Details view than the database field mapping implies. Only 17 fields are publicly visible compared to 30+ mapped in the database."@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
-    dcterms:source "Type code 57; ERD group 10"@en ;
+    dcterms:source "Type code 57"@en ;
     epr:status "Provisional"@en .
 
 #################################################################
@@ -679,7 +679,7 @@ epr:FreeSchool
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Free schools"@en ;
     skos:broader epr:EstablishmentTypeGroupFreeSchools ;
-    dcterms:source "Type code 35; ERD group 11"@en ;
+    dcterms:source "Type code 35"@en ;
     epr:status "Provisional"@en .
 
 epr:FreeSchoolSpecial
@@ -687,7 +687,7 @@ epr:FreeSchoolSpecial
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Free schools special"@en ;
     skos:broader epr:EstablishmentTypeGroupFreeSchools ;
-    dcterms:source "Type code 36; ERD group 11"@en ;
+    dcterms:source "Type code 36"@en ;
     epr:status "Provisional"@en .
 
 epr:FreeSchoolAlternativeProvision
@@ -695,7 +695,7 @@ epr:FreeSchoolAlternativeProvision
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Free schools alternative provision"@en ;
     skos:broader epr:EstablishmentTypeGroupFreeSchools ;
-    dcterms:source "Type code 38; ERD group 11"@en ;
+    dcterms:source "Type code 38"@en ;
     epr:status "Provisional"@en .
 
 epr:FreeSchool16To19
@@ -703,7 +703,7 @@ epr:FreeSchool16To19
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Free schools 16 to 19"@en ;
     skos:broader epr:EstablishmentTypeGroupFreeSchools ;
-    dcterms:source "Type code 39; ERD group 11"@en ;
+    dcterms:source "Type code 39"@en ;
     epr:status "Provisional"@en .
 
 epr:UniversityTechnicalCollege
@@ -712,7 +712,7 @@ epr:UniversityTechnicalCollege
     skos:prefLabel "University technical college"@en ;
     skos:altLabel "UTC"@en ;
     skos:broader epr:EstablishmentTypeGroupFreeSchools ;
-    dcterms:source "Type code 40; ERD group 11"@en ;
+    dcterms:source "Type code 40"@en ;
     epr:status "Provisional"@en .
 
 epr:StudioSchool
@@ -720,7 +720,7 @@ epr:StudioSchool
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Studio schools"@en ;
     skos:broader epr:EstablishmentTypeGroupFreeSchools ;
-    dcterms:source "Type code 41; ERD group 11"@en ;
+    dcterms:source "Type code 41"@en ;
     epr:status "Provisional"@en .
 
 #################################################################
@@ -732,7 +732,7 @@ epr:ChildrensCentre
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Children's centre"@en ;
     skos:broader epr:EstablishmentTypeGroupChildrensCentres ;
-    dcterms:source "Type code 47; ERD group 12"@en ;
+    dcterms:source "Type code 47"@en ;
     epr:status "Provisional"@en .
 
 epr:ChildrensCentreLinkedSite
@@ -740,7 +740,7 @@ epr:ChildrensCentreLinkedSite
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Children's centre linked site"@en ;
     skos:broader epr:EstablishmentTypeGroupChildrensCentres ;
-    dcterms:source "Type code 48; ERD group 12"@en ;
+    dcterms:source "Type code 48"@en ;
     epr:status "Provisional"@en .
 
 #################################################################
@@ -753,7 +753,7 @@ epr:OnlineProvider
     skos:prefLabel "Online provider"@en ;
     skos:scopeNote "Has a distinct Details tab presentation: open date becomes accreditation date, close date becomes accreditation date ended, and an accreditation and quality assurance section replaces several standard school fields."@en ;
     skos:broader epr:EstablishmentTypeGroupOnlineProviders ;
-    dcterms:source "Type code 49; ERD group 13"@en ;
+    dcterms:source "Type code 49"@en ;
     epr:status "Provisional"@en .
 
 #################################################################
@@ -1082,4 +1082,5 @@ epr:OtherReligiousEthos
     skos:scopeNote "Other religious-ethos values exist in the database; full enumeration requires further extraction."@en ;
     skos:broader epr:ReligiousEthos ;
     epr:status "Provisional"@en .
+
 
