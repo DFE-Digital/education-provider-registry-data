@@ -136,6 +136,7 @@ function Format-ConceptLinks {
 }
 
 foreach ($concept in $concepts | Sort-Object PreferredLabel, LocalName) {
+    $canonicalUri = "https://dfe-digital.github.io/education-provider-registry-data-prototype/vocabulary/$($concept.LocalName)/"
     $sourceTtl = "https://github.com/DFE-Digital/education-provider-registry-data-prototype/blob/main/models/establishment-details-vocabulary-skos.ttl"
 
     $lines = @(
@@ -145,6 +146,7 @@ foreach ($concept in $concepts | Sort-Object PreferredLabel, LocalName) {
         "",
         "| Property | Value |",
         "| --- | --- |",
+        "| Canonical URI | <$canonicalUri> |",
         "| Compact identifier | ``epr:$($concept.LocalName)`` |",
         "| Preferred label | $(Escape-MarkdownTableCell $concept.PreferredLabel) |",
         "| Alternative labels | $(Escape-MarkdownTableCell (Join-Values $concept.AlternativeLabels)) |",
