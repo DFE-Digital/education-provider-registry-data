@@ -178,14 +178,6 @@ foreach ($concept in $concepts | Sort-Object PreferredLabel, LocalName) {
         "Source TTL: <$sourceTtl>"
     )
 
-    if ($concept.Sources.Count -gt 0) {
-        $lines += ""
-        $lines += "Recorded source notes:"
-        foreach ($source in $concept.Sources) {
-            $lines += "- $source"
-        }
-    }
-
     Set-Content -LiteralPath (Join-Path $resolvedOutputRoot "$($concept.LocalName).md") -Value $lines -Encoding UTF8
 }
 
