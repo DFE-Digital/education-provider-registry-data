@@ -1,4 +1,4 @@
-﻿@prefix epr: <https://education.gov.uk/epr/vocabulary/> .
+@prefix epr: <https://education.gov.uk/epr/vocabulary/> .
 @prefix eprv: <https://dfe-digital.github.io/education-provider-registry-data/vocabulary/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -188,7 +188,8 @@ epr:EstablishmentTypeGroupColleges
     skos:narrower
         epr:FurtherEducation,
         epr:SixthFormCentre ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:EstablishmentTypeGroupColleges .
 
 epr:EstablishmentTypeGroupUniversities
     a skos:Concept ;
@@ -199,7 +200,8 @@ epr:EstablishmentTypeGroupUniversities
     skos:broader epr:EstablishmentType ;
     skos:narrower
         epr:HigherEducationInstitution ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:EstablishmentTypeGroupUniversities .
 
 epr:EstablishmentTypeGroupIndependentSchools
     a skos:Concept ;
@@ -210,7 +212,8 @@ epr:EstablishmentTypeGroupIndependentSchools
     skos:narrower
         epr:CityTechnologyCollege,
         epr:OtherIndependentSchool ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:EstablishmentTypeGroupIndependentSchools .
 
 epr:EstablishmentTypeGroupLaMaintainedSchools
     a skos:Concept ;
@@ -228,7 +231,8 @@ epr:EstablishmentTypeGroupLaMaintainedSchools
         epr:FoundationSpecialSchool,
         epr:PupilReferralUnit,
         epr:LocalAuthorityNurserySchool ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:EstablishmentTypeGroupLaMaintainedSchools .
 
 epr:EstablishmentTypeGroupNonMaintainedSpecialSchools
     a skos:Concept ;
@@ -239,7 +243,8 @@ epr:EstablishmentTypeGroupNonMaintainedSpecialSchools
     skos:narrower
         epr:NonMaintainedSpecialSchool,
         epr:OtherIndependentSpecialSchool ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:EstablishmentTypeGroupNonMaintainedSpecialSchools .
 
 epr:EstablishmentTypeGroupWelshEstablishments
     a skos:Concept ;
@@ -249,7 +254,8 @@ epr:EstablishmentTypeGroupWelshEstablishments
     skos:broader epr:EstablishmentType ;
     skos:narrower
         epr:WelshEstablishment ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:EstablishmentTypeGroupWelshEstablishments .
 
 epr:EstablishmentTypeGroupOtherTypes
     a skos:Concept ;
@@ -266,7 +272,8 @@ epr:EstablishmentTypeGroupOtherTypes
         epr:SpecialPost16Institution,
         epr:BritishSchoolsOverseas,
         epr:InstitutionFundedByOtherGovernmentDepartment ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:EstablishmentTypeGroupOtherTypes .
 
 epr:EstablishmentTypeGroupAcademies
     a skos:Concept ;
@@ -284,7 +291,8 @@ epr:EstablishmentTypeGroupAcademies
         epr:Academy1619Converter,
         epr:Academy16To19SponsorLed,
         epr:AcademySecure16To19 ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:EstablishmentTypeGroupAcademies .
 
 epr:EstablishmentTypeGroupFreeSchools
     a skos:Concept ;
@@ -299,7 +307,8 @@ epr:EstablishmentTypeGroupFreeSchools
         epr:FreeSchool16To19,
         epr:UniversityTechnicalCollege,
         epr:StudioSchool ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:EstablishmentTypeGroupFreeSchools .
 
 epr:EstablishmentTypeGroupChildrensCentres
     a skos:Concept ;
@@ -310,7 +319,8 @@ epr:EstablishmentTypeGroupChildrensCentres
     skos:narrower
         epr:ChildrensCentre,
         epr:ChildrensCentreLinkedSite ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:EstablishmentTypeGroupChildrensCentres .
 
 epr:EstablishmentTypeGroupOnlineProviders
     a skos:Concept ;
@@ -320,7 +330,8 @@ epr:EstablishmentTypeGroupOnlineProviders
     skos:broader epr:EstablishmentType ;
     skos:narrower
         epr:OnlineProvider ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:EstablishmentTypeGroupOnlineProviders .
 
 #################################################################
 # Establishment-type taxons â€” group 4: LA maintained schools
@@ -340,7 +351,8 @@ epr:VoluntaryAidedSchool
     skos:prefLabel "Voluntary aided school"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
     dcterms:source "Type code 02"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:VoluntaryAidedSchool .
 
 epr:VoluntaryControlledSchool
     a skos:Concept ;
@@ -348,7 +360,8 @@ epr:VoluntaryControlledSchool
     skos:prefLabel "Voluntary controlled school"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
     dcterms:source "Type code 03"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:VoluntaryControlledSchool .
 
 epr:FoundationSchool
     a skos:Concept ;
@@ -356,7 +369,8 @@ epr:FoundationSchool
     skos:prefLabel "Foundation school"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
     dcterms:source "Type code 05"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:FoundationSchool .
 
 epr:CommunitySpecialSchool
     a skos:Concept ;
@@ -364,7 +378,8 @@ epr:CommunitySpecialSchool
     skos:prefLabel "Community special school"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
     dcterms:source "Type code 07"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:CommunitySpecialSchool .
 
 epr:FoundationSpecialSchool
     a skos:Concept ;
@@ -372,7 +387,8 @@ epr:FoundationSpecialSchool
     skos:prefLabel "Foundation special school"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
     dcterms:source "Type code 12"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:FoundationSpecialSchool .
 
 epr:PupilReferralUnit
     a skos:Concept ;
@@ -381,7 +397,8 @@ epr:PupilReferralUnit
     skos:altLabel "PRU"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
     dcterms:source "Type code 14"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:PupilReferralUnit .
 
 epr:LocalAuthorityNurserySchool
     a skos:Concept ;
@@ -389,7 +406,8 @@ epr:LocalAuthorityNurserySchool
     skos:prefLabel "Local authority nursery school"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
     dcterms:source "Type code 15"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:LocalAuthorityNurserySchool .
 
 #################################################################
 # Establishment-type taxons â€” group 5: non-maintained special schools
@@ -401,7 +419,8 @@ epr:NonMaintainedSpecialSchool
     skos:prefLabel "Non-maintained special school"@en ;
     skos:broader epr:EstablishmentTypeGroupNonMaintainedSpecialSchools ;
     dcterms:source "Type code 08"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:NonMaintainedSpecialSchool .
 
 epr:OtherIndependentSpecialSchool
     a skos:Concept ;
@@ -409,7 +428,8 @@ epr:OtherIndependentSpecialSchool
     skos:prefLabel "Other independent special school"@en ;
     skos:broader epr:EstablishmentTypeGroupNonMaintainedSpecialSchools ;
     dcterms:source "Type code 10"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:OtherIndependentSpecialSchool .
 
 #################################################################
 # Establishment-type taxons â€” group 3: independent schools
@@ -422,7 +442,8 @@ epr:CityTechnologyCollege
     skos:altLabel "CTC"@en ;
     skos:broader epr:EstablishmentTypeGroupIndependentSchools ;
     dcterms:source "Type code 06"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:CityTechnologyCollege .
 
 epr:OtherIndependentSchool
     a skos:Concept ;
@@ -443,7 +464,8 @@ epr:FurtherEducation
     skos:altLabel "Further education college"@en ;
     skos:broader epr:EstablishmentTypeGroupColleges ;
     dcterms:source "Type code 18"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:FurtherEducation .
 
 epr:SixthFormCentre
     a skos:Concept ;
@@ -451,7 +473,8 @@ epr:SixthFormCentre
     skos:prefLabel "Sixth form centre"@en ;
     skos:broader epr:EstablishmentTypeGroupColleges ;
     dcterms:source "Type code 31"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:SixthFormCentre .
 
 #################################################################
 # Establishment-type taxons â€” group 2: universities
@@ -464,7 +487,8 @@ epr:HigherEducationInstitution
     skos:altLabel "HEI"@en ;
     skos:broader epr:EstablishmentTypeGroupUniversities ;
     dcterms:source "Type code 29"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:HigherEducationInstitution .
 
 #################################################################
 # Establishment-type taxons â€” group 6: Welsh establishments
@@ -476,7 +500,8 @@ epr:WelshEstablishment
     skos:prefLabel "Welsh establishment"@en ;
     skos:broader epr:EstablishmentTypeGroupWelshEstablishments ;
     dcterms:source "Type code 30"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:WelshEstablishment .
 
 #################################################################
 # Establishment-type taxons - other types
@@ -488,7 +513,8 @@ epr:SecureUnits
     skos:prefLabel "Secure units"@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
     dcterms:source "Type code 24"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:SecureUnits .
 
 epr:OffshoreSchools
     a skos:Concept ;
@@ -496,7 +522,8 @@ epr:OffshoreSchools
     skos:prefLabel "Offshore schools"@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
     dcterms:source "Type code 25"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:OffshoreSchools .
 
 epr:ServiceChildrensEducation
     a skos:Concept ;
@@ -504,7 +531,8 @@ epr:ServiceChildrensEducation
     skos:prefLabel "Service children's education"@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
     dcterms:source "Type code 26"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:ServiceChildrensEducation .
 
 epr:MiscellaneousEstablishment
     a skos:Concept ;
@@ -512,7 +540,8 @@ epr:MiscellaneousEstablishment
     skos:prefLabel "Miscellaneous"@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
     dcterms:source "Type code 27"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:MiscellaneousEstablishment .
 
 epr:SpecialPost16Institution
     a skos:Concept ;
@@ -520,7 +549,8 @@ epr:SpecialPost16Institution
     skos:prefLabel "Special post 16 institution"@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
     dcterms:source "Type code 32"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:SpecialPost16Institution .
 
 epr:BritishSchoolsOverseas
     a skos:Concept ;
@@ -529,7 +559,8 @@ epr:BritishSchoolsOverseas
     skos:altLabel "BSO"@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
     dcterms:source "Type code 37"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:BritishSchoolsOverseas .
 
 epr:InstitutionFundedByOtherGovernmentDepartment
     a skos:Concept ;
@@ -537,7 +568,8 @@ epr:InstitutionFundedByOtherGovernmentDepartment
     skos:prefLabel "Institution funded by other government department"@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
     dcterms:source "Type code 56"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:InstitutionFundedByOtherGovernmentDepartment .
 
 #################################################################
 # Establishment-type taxons â€” group 10: academies
@@ -549,7 +581,8 @@ epr:AcademySponsorLed
     skos:prefLabel "Academy sponsor led"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
     dcterms:source "Type code 28"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:AcademySponsorLed .
 
 epr:AcademySpecialSponsorLed
     a skos:Concept ;
@@ -557,7 +590,8 @@ epr:AcademySpecialSponsorLed
     skos:prefLabel "Academy special sponsor led"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
     dcterms:source "Type code 33"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:AcademySpecialSponsorLed .
 
 epr:AcademyConverter
     a skos:Concept ;
@@ -573,7 +607,8 @@ epr:AcademyAlternativeProvisionConverter
     skos:prefLabel "Academy alternative provision converter"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
     dcterms:source "Type code 42"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:AcademyAlternativeProvisionConverter .
 
 epr:AcademyAlternativeProvisionSponsorLed
     a skos:Concept ;
@@ -581,7 +616,8 @@ epr:AcademyAlternativeProvisionSponsorLed
     skos:prefLabel "Academy alternative provision sponsor led"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
     dcterms:source "Type code 43"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:AcademyAlternativeProvisionSponsorLed .
 
 epr:AcademySpecialConverter
     a skos:Concept ;
@@ -589,7 +625,8 @@ epr:AcademySpecialConverter
     skos:prefLabel "Academy special converter"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
     dcterms:source "Type code 44"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:AcademySpecialConverter .
 
 epr:Academy1619Converter
     a skos:Concept ;
@@ -597,7 +634,8 @@ epr:Academy1619Converter
     skos:prefLabel "Academy 16-19 converter"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
     dcterms:source "Type code 45"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:Academy1619Converter .
 
 epr:Academy16To19SponsorLed
     a skos:Concept ;
@@ -605,7 +643,8 @@ epr:Academy16To19SponsorLed
     skos:prefLabel "Academy 16 to 19 sponsor led"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
     dcterms:source "Type code 46"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:Academy16To19SponsorLed .
 
 epr:AcademySecure16To19
     a skos:Concept ;
@@ -614,7 +653,8 @@ epr:AcademySecure16To19
     skos:scopeNote "Secure establishment with a more restricted public Details view than the database field mapping implies. Only 17 fields are publicly visible compared to 30+ mapped in the database."@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
     dcterms:source "Type code 57"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:AcademySecure16To19 .
 
 #################################################################
 # Establishment-type taxons â€” group 11: free schools
@@ -626,7 +666,8 @@ epr:FreeSchool
     skos:prefLabel "Free schools"@en ;
     skos:broader epr:EstablishmentTypeGroupFreeSchools ;
     dcterms:source "Type code 35"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:FreeSchool .
 
 epr:FreeSchoolSpecial
     a skos:Concept ;
@@ -634,7 +675,8 @@ epr:FreeSchoolSpecial
     skos:prefLabel "Free schools special"@en ;
     skos:broader epr:EstablishmentTypeGroupFreeSchools ;
     dcterms:source "Type code 36"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:FreeSchoolSpecial .
 
 epr:FreeSchoolAlternativeProvision
     a skos:Concept ;
@@ -642,7 +684,8 @@ epr:FreeSchoolAlternativeProvision
     skos:prefLabel "Free schools alternative provision"@en ;
     skos:broader epr:EstablishmentTypeGroupFreeSchools ;
     dcterms:source "Type code 38"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:FreeSchoolAlternativeProvision .
 
 epr:FreeSchool16To19
     a skos:Concept ;
@@ -650,7 +693,8 @@ epr:FreeSchool16To19
     skos:prefLabel "Free schools 16 to 19"@en ;
     skos:broader epr:EstablishmentTypeGroupFreeSchools ;
     dcterms:source "Type code 39"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:FreeSchool16To19 .
 
 epr:UniversityTechnicalCollege
     a skos:Concept ;
@@ -659,7 +703,8 @@ epr:UniversityTechnicalCollege
     skos:altLabel "UTC"@en ;
     skos:broader epr:EstablishmentTypeGroupFreeSchools ;
     dcterms:source "Type code 40"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:UniversityTechnicalCollege .
 
 epr:StudioSchool
     a skos:Concept ;
@@ -667,7 +712,8 @@ epr:StudioSchool
     skos:prefLabel "Studio schools"@en ;
     skos:broader epr:EstablishmentTypeGroupFreeSchools ;
     dcterms:source "Type code 41"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:StudioSchool .
 
 #################################################################
 # Establishment-type taxons â€” group 12: children's centres
@@ -679,7 +725,8 @@ epr:ChildrensCentre
     skos:prefLabel "Children's centre"@en ;
     skos:broader epr:EstablishmentTypeGroupChildrensCentres ;
     dcterms:source "Type code 47"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:ChildrensCentre .
 
 epr:ChildrensCentreLinkedSite
     a skos:Concept ;
@@ -687,7 +734,8 @@ epr:ChildrensCentreLinkedSite
     skos:prefLabel "Children's centre linked site"@en ;
     skos:broader epr:EstablishmentTypeGroupChildrensCentres ;
     dcterms:source "Type code 48"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:ChildrensCentreLinkedSite .
 
 #################################################################
 # Establishment-type taxons â€” group 13: online providers
@@ -700,7 +748,8 @@ epr:OnlineProvider
     skos:scopeNote "Has a distinct Details tab presentation: open date becomes accreditation date, close date becomes accreditation date ended, and an accreditation and quality assurance section replaces several standard school fields."@en ;
     skos:broader epr:EstablishmentTypeGroupOnlineProviders ;
     dcterms:source "Type code 49"@en ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:OnlineProvider .
 
 #################################################################
 # Education-phase taxons
@@ -711,42 +760,48 @@ epr:NurseryPhase
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Nursery"@en ;
     skos:broader epr:EducationPhase ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:NurseryPhase .
 
 epr:PrimaryPhase
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Primary"@en ;
     skos:broader epr:EducationPhase ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:PrimaryPhase .
 
 epr:MiddlePhase
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Middle deemed primary"@en ;
     skos:broader epr:EducationPhase ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:MiddlePhase .
 
 epr:SecondaryPhase
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Secondary"@en ;
     skos:broader epr:EducationPhase ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:SecondaryPhase .
 
 epr:AllThroughPhase
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "All-through"@en ;
     skos:broader epr:EducationPhase ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:AllThroughPhase .
 
 epr:SixteenToNineteenPhase
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "16 to 19"@en ;
     skos:broader epr:EducationPhase ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:SixteenToNineteenPhase .
 
 epr:NotApplicableEducationPhase
     a skos:Concept ;
@@ -754,7 +809,8 @@ epr:NotApplicableEducationPhase
     skos:prefLabel "Not applicable"@en ;
     skos:scopeNote "Not applicable specifically within the education-phase facet."@en ;
     skos:broader epr:EducationPhase ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:NotApplicableEducationPhase .
 
 #################################################################
 # Establishment-status taxons
@@ -765,28 +821,32 @@ epr:OpenStatus
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Open"@en ;
     skos:broader epr:EstablishmentStatus ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:OpenStatus .
 
 epr:ClosedStatus
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Closed"@en ;
     skos:broader epr:EstablishmentStatus ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:ClosedStatus .
 
 epr:OpenProposedToCloseStatus
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Open, but proposed to close"@en ;
     skos:broader epr:EstablishmentStatus ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:OpenProposedToCloseStatus .
 
 epr:ProposedToOpenStatus
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Proposed to open"@en ;
     skos:broader epr:EstablishmentStatus ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:ProposedToOpenStatus .
 
 #################################################################
 # Admissions-policy taxons
@@ -797,14 +857,16 @@ epr:SelectiveAdmissions
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Selective"@en ;
     skos:broader epr:AdmissionsPolicy ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:SelectiveAdmissions .
 
 epr:NonSelectiveAdmissions
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Non-selective"@en ;
     skos:broader epr:AdmissionsPolicy ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:NonSelectiveAdmissions .
 
 epr:NotApplicableAdmissionsPolicy
     a skos:Concept ;
@@ -812,7 +874,8 @@ epr:NotApplicableAdmissionsPolicy
     skos:prefLabel "Not applicable"@en ;
     skos:scopeNote "Not applicable specifically within the admissions-policy facet."@en ;
     skos:broader epr:AdmissionsPolicy ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:NotApplicableAdmissionsPolicy .
 
 #################################################################
 # Gender-of-entry taxons
@@ -823,21 +886,24 @@ epr:MixedGenderEntry
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Mixed"@en ;
     skos:broader epr:GenderOfEntry ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:MixedGenderEntry .
 
 epr:BoysOnlyGenderEntry
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Boys"@en ;
     skos:broader epr:GenderOfEntry ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:BoysOnlyGenderEntry .
 
 epr:GirlsOnlyGenderEntry
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Girls"@en ;
     skos:broader epr:GenderOfEntry ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:GirlsOnlyGenderEntry .
 
 epr:NotApplicableGenderOfEntry
     a skos:Concept ;
@@ -845,7 +911,8 @@ epr:NotApplicableGenderOfEntry
     skos:prefLabel "Not applicable"@en ;
     skos:scopeNote "Not applicable specifically within the gender-of-entry facet."@en ;
     skos:broader epr:GenderOfEntry ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:NotApplicableGenderOfEntry .
 
 #################################################################
 # Boarding-provision taxons
@@ -856,21 +923,24 @@ epr:NoBoarders
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "No boarders"@en ;
     skos:broader epr:BoardingProvision ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:NoBoarders .
 
 epr:HasBoarders
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Has boarders"@en ;
     skos:broader epr:BoardingProvision ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:HasBoarders .
 
 epr:BoardingSchool
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Boarding school"@en ;
     skos:broader epr:BoardingProvision ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:BoardingSchool .
 
 #################################################################
 # Nursery-provision taxons
@@ -881,14 +951,16 @@ epr:HasNurseryClasses
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Has nursery classes"@en ;
     skos:broader epr:NurseryProvision ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:HasNurseryClasses .
 
 epr:NoNurseryClasses
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "No nursery classes"@en ;
     skos:broader epr:NurseryProvision ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:NoNurseryClasses .
 
 epr:NotApplicableNurseryProvision
     a skos:Concept ;
@@ -896,7 +968,8 @@ epr:NotApplicableNurseryProvision
     skos:prefLabel "Not applicable"@en ;
     skos:scopeNote "Not applicable specifically within the nursery-provision facet."@en ;
     skos:broader epr:NurseryProvision ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:NotApplicableNurseryProvision .
 
 #################################################################
 # Sixth-form-provision taxons
@@ -907,14 +980,16 @@ epr:HasSixthForm
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Has a sixth form"@en ;
     skos:broader epr:SixthFormProvision ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:HasSixthForm .
 
 epr:NoSixthForm
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Does not have a sixth form"@en ;
     skos:broader epr:SixthFormProvision ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:NoSixthForm .
 
 epr:NotApplicableSixthFormProvision
     a skos:Concept ;
@@ -922,7 +997,8 @@ epr:NotApplicableSixthFormProvision
     skos:prefLabel "Not applicable"@en ;
     skos:scopeNote "Not applicable specifically within the sixth-form-provision facet."@en ;
     skos:broader epr:SixthFormProvision ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:NotApplicableSixthFormProvision .
 
 #################################################################
 # Special-class-provision taxons
@@ -933,14 +1009,16 @@ epr:NoSpecialClasses
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "No special classes"@en ;
     skos:broader epr:SpecialClassProvision ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:NoSpecialClasses .
 
 epr:HasSpecialClasses
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Has special classes"@en ;
     skos:broader epr:SpecialClassProvision ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:HasSpecialClasses .
 
 #################################################################
 # Religious-character taxons
@@ -951,42 +1029,48 @@ epr:NotApplicableReligiousCharacter
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Does not apply"@en ;
     skos:broader epr:ReligiousCharacter ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:NotApplicableReligiousCharacter .
 
 epr:NoReligiousCharacter
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "None"@en ;
     skos:broader epr:ReligiousCharacter ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:NoReligiousCharacter .
 
 epr:ChurchOfEnglandCharacter
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Church of England"@en ;
     skos:broader epr:ReligiousCharacter ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:ChurchOfEnglandCharacter .
 
 epr:RomanCatholicCharacter
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Roman Catholic"@en ;
     skos:broader epr:ReligiousCharacter ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:RomanCatholicCharacter .
 
 epr:JewishCharacter
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Jewish"@en ;
     skos:broader epr:ReligiousCharacter ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:JewishCharacter .
 
 epr:MuslimCharacter
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Muslim"@en ;
     skos:broader epr:ReligiousCharacter ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:MuslimCharacter .
 
 epr:OtherReligiousCharacter
     a skos:Concept ;
@@ -994,7 +1078,8 @@ epr:OtherReligiousCharacter
     skos:prefLabel "Other"@en ;
     skos:scopeNote "Other religious character values exist in the database; full enumeration requires further extraction."@en ;
     skos:broader epr:ReligiousCharacter ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:OtherReligiousCharacter .
 
 #################################################################
 # Religious-ethos taxons
@@ -1005,21 +1090,24 @@ epr:NotApplicableReligiousEthos
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Does not apply"@en ;
     skos:broader epr:ReligiousEthos ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:NotApplicableReligiousEthos .
 
 epr:NoReligiousEthos
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "None"@en ;
     skos:broader epr:ReligiousEthos ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:NoReligiousEthos .
 
 epr:ChristianEthos
     a skos:Concept ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Christian"@en ;
     skos:broader epr:ReligiousEthos ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:ChristianEthos .
 
 epr:OtherReligiousEthos
     a skos:Concept ;
@@ -1027,7 +1115,9 @@ epr:OtherReligiousEthos
     skos:prefLabel "Other"@en ;
     skos:scopeNote "Other religious-ethos values exist in the database; full enumeration requires further extraction."@en ;
     skos:broader epr:ReligiousEthos ;
-    epr:status "Provisional"@en .
+    epr:status "Provisional"@en ;
+    skos:relatedMatch eprv:OtherReligiousEthos .
+
 
 
 

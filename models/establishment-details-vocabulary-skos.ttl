@@ -1,4 +1,4 @@
-﻿@prefix epr: <https://dfe-digital.github.io/education-provider-registry-data/vocabulary/> .
+@prefix epr: <https://dfe-digital.github.io/education-provider-registry-data/vocabulary/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -19,8 +19,6 @@
 # epr:EstablishmentLifecycle expands to:
 # https://dfe-digital.github.io/education-provider-registry-data/vocabulary/EstablishmentLifecycle/
 #
-# GitHub file and line links are useful human references, but they are not
-# canonical identifiers because line numbers can change.
 # The namespace is published through the GitHub Pages documentation site and provides persistent, resolvable concept URIs.
 
 epr:status
@@ -99,6 +97,10 @@ epr:lifecycle
     skos:prefLabel "Lifecycle"@en ;
     skos:member
         epr:EstablishmentStatus,
+        epr:OpenStatus,
+        epr:ClosedStatus,
+        epr:OpenProposedToCloseStatus,
+        epr:ProposedToOpenStatus,
         epr:OpenDate,
         epr:ReasonEstablishmentOpened,
         epr:ClosedDate,
@@ -413,6 +415,775 @@ epr:OtherIndependentSchool
     epr:status "Preferred"@en .
 
 #################################################################
+# Reviewed taxonomy value vocabulary concepts
+#################################################################
+
+epr:EstablishmentTypeGroupAcademies
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Academies"@en ;
+    skos:definition "The establishment type group for academy establishments."@en ;
+    skos:broader epr:EstablishmentType ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from `docs/data`"@en .
+
+epr:EstablishmentTypeGroupChildrensCentres
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Children's centres"@en ;
+    skos:definition "The establishment type group for children's centre establishments and linked sites."@en ;
+    skos:broader epr:EstablishmentType ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from `docs/data`"@en .
+
+epr:EstablishmentTypeGroupColleges
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Colleges"@en ;
+    skos:definition "The establishment type group for further education and sixth-form-centre providers."@en ;
+    skos:broader epr:EstablishmentType ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from `docs/data`"@en .
+
+epr:EstablishmentTypeGroupFreeSchools
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Free schools"@en ;
+    skos:definition "The establishment type group for free-school and related academy-programme establishments."@en ;
+    skos:broader epr:EstablishmentType ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from `docs/data`"@en .
+
+epr:EstablishmentTypeGroupIndependentSchools
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Independent schools"@en ;
+    skos:definition "The establishment type group for independent-school establishments."@en ;
+    skos:broader epr:EstablishmentType ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from `docs/data`"@en .
+
+epr:EstablishmentTypeGroupLaMaintainedSchools
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Local authority maintained schools"@en ;
+    skos:definition "The establishment type group for schools maintained by a local authority."@en ;
+    skos:broader epr:EstablishmentType ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from `docs/data`"@en .
+
+epr:EstablishmentTypeGroupNonMaintainedSpecialSchools
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Non-maintained special schools"@en ;
+    skos:definition "The establishment type group covering non-maintained and independent special schools."@en ;
+    skos:broader epr:EstablishmentType ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from `docs/data`"@en .
+
+epr:EstablishmentTypeGroupOnlineProviders
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Online providers"@en ;
+    skos:definition "The establishment type group for accredited online education providers."@en ;
+    skos:broader epr:EstablishmentType ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from `docs/data`"@en .
+
+epr:EstablishmentTypeGroupOtherTypes
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Other types"@en ;
+    skos:definition "The establishment type group for specialist, overseas, secure, service-children and other non-standard provider types."@en ;
+    skos:broader epr:EstablishmentType ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from `docs/data`"@en .
+
+epr:EstablishmentTypeGroupUniversities
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Universities and higher education"@en ;
+    skos:definition "The establishment type group for higher education institutions."@en ;
+    skos:broader epr:EstablishmentType ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from `docs/data`"@en .
+
+epr:EstablishmentTypeGroupWelshEstablishments
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Welsh establishments"@en ;
+    skos:definition "The establishment type group for Welsh establishment records."@en ;
+    skos:broader epr:EstablishmentType ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from `docs/data`"@en .
+
+epr:Academy1619Converter
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Academy 16-19 converter"@en ;
+    skos:definition "An establishment type for an existing 16 to 19 provider that converted to academy status."@en ;
+    skos:broader epr:EstablishmentTypeGroupAcademies ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from local domain notes"@en .
+
+epr:Academy16To19SponsorLed
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Academy 16 to 19 sponsor led"@en ;
+    skos:definition "An establishment type for a 16 to 19 academy created through a sponsor-led route."@en ;
+    skos:broader epr:EstablishmentTypeGroupAcademies ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from local domain notes"@en .
+
+epr:AcademyAlternativeProvisionConverter
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Academy alternative provision converter"@en ;
+    skos:definition "An establishment type for existing alternative provision that converted to academy status."@en ;
+    skos:broader epr:EstablishmentTypeGroupAcademies ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from local domain notes"@en .
+
+epr:AcademyAlternativeProvisionSponsorLed
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Academy alternative provision sponsor led"@en ;
+    skos:definition "An establishment type for alternative provision created through a sponsor-led academy route."@en ;
+    skos:broader epr:EstablishmentTypeGroupAcademies ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from local domain notes"@en .
+
+epr:AcademySecure16To19
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Academy secure 16 to 19"@en ;
+    skos:definition "An establishment type for secure 16 to 19 academy provision."@en ;
+    skos:broader epr:EstablishmentTypeGroupAcademies ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:AcademySpecialConverter
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Academy special converter"@en ;
+    skos:definition "An establishment type for an existing special school that converted to academy status."@en ;
+    skos:broader epr:EstablishmentTypeGroupAcademies ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:AcademySpecialSponsorLed
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Academy special sponsor led"@en ;
+    skos:definition "An establishment type for a special academy created through a sponsor-led route."@en ;
+    skos:broader epr:EstablishmentTypeGroupAcademies ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from local domain notes"@en .
+
+epr:AcademySponsorLed
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Academy sponsor led"@en ;
+    skos:definition "An establishment type for an academy established and managed through a sponsor-led route."@en ;
+    skos:broader epr:EstablishmentTypeGroupAcademies ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:BritishSchoolsOverseas
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "British schools overseas"@en ;
+    skos:definition "An establishment type for overseas schools that provide British-style education and are recognised or inspected through the British schools overseas framework."@en ;
+    skos:broader epr:EstablishmentTypeGroupOtherTypes ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:ChildrensCentre
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Children's centre"@en ;
+    skos:definition "An establishment type for a centre offering early childhood services, including education, childcare, social services and health services."@en ;
+    skos:broader epr:EstablishmentTypeGroupChildrensCentres ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:ChildrensCentreLinkedSite
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Children's centre linked site"@en ;
+    skos:definition "An establishment type for a site formerly treated as a children's centre in its own right that now offers some early childhood services on behalf of another children's centre."@en ;
+    skos:broader epr:EstablishmentTypeGroupChildrensCentres ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:CityTechnologyCollege
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "City technology college"@en ;
+    skos:definition "An establishment type for an independent, state-funded urban school with an emphasis on technological and practical skills."@en ;
+    skos:broader epr:EstablishmentTypeGroupIndependentSchools ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:CommunitySpecialSchool
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Community special school"@en ;
+    skos:definition "An establishment type for the special-school equivalent of a mainstream community school, catering wholly or mainly for children with special educational needs."@en ;
+    skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:FoundationSchool
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Foundation school"@en ;
+    skos:definition "An establishment type for a maintained school where the governing body is the employer and admissions authority, and land or buildings may be owned by the governing body or a charitable foundation."@en ;
+    skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:FoundationSpecialSchool
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Foundation special school"@en ;
+    skos:definition "An establishment type for a special school with foundation-school governance features, catering wholly or mainly for children with special educational needs."@en ;
+    skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:FreeSchool
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Free schools"@en ;
+    skos:definition "An establishment type for a new state-funded school created through the free-school route."@en ;
+    skos:broader epr:EstablishmentTypeGroupFreeSchools ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:FreeSchool16To19
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Free schools 16 to 19"@en ;
+    skos:definition "An establishment type for a free school focused on 16 to 19 provision."@en ;
+    skos:broader epr:EstablishmentTypeGroupFreeSchools ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from local domain notes"@en .
+
+epr:FreeSchoolAlternativeProvision
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Free schools alternative provision"@en ;
+    skos:definition "An establishment type for a free school providing alternative provision."@en ;
+    skos:broader epr:EstablishmentTypeGroupFreeSchools ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from local domain notes"@en .
+
+epr:FreeSchoolSpecial
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Free schools special"@en ;
+    skos:definition "An establishment type for a free school providing special educational provision."@en ;
+    skos:broader epr:EstablishmentTypeGroupFreeSchools ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from local domain notes"@en .
+
+epr:FurtherEducation
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Further education"@en ;
+    skos:definition "An establishment type for further education or college-style provision."@en ;
+    skos:broader epr:EstablishmentTypeGroupColleges ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from `docs/data`"@en .
+
+epr:HigherEducationInstitution
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Higher education institution"@en ;
+    skos:definition "An establishment type for a higher education institution."@en ;
+    skos:broader epr:EstablishmentTypeGroupUniversities ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from `docs/data`"@en .
+
+epr:InstitutionFundedByOtherGovernmentDepartment
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Institution funded by other government department"@en ;
+    skos:definition "An establishment type for a provider funded by another government department rather than the normal DfE school routes."@en ;
+    skos:broader epr:EstablishmentTypeGroupOtherTypes ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from local domain notes"@en .
+
+epr:LocalAuthorityNurserySchool
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Local authority nursery school"@en ;
+    skos:definition "An establishment type for a nursery school maintained by a local authority."@en ;
+    skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:MiscellaneousEstablishment
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Miscellaneous"@en ;
+    skos:definition "A catch-all establishment type for records that do not fit the more specific establishment-type categories."@en ;
+    skos:broader epr:EstablishmentTypeGroupOtherTypes ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from `docs/data`"@en .
+
+epr:NonMaintainedSpecialSchool
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Non-maintained special school"@en ;
+    skos:definition "An establishment type for a special school not maintained by a local authority, usually run on a not-for-profit basis and catering for children with special educational needs."@en ;
+    skos:broader epr:EstablishmentTypeGroupNonMaintainedSpecialSchools ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:OffshoreSchools
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Offshore schools"@en ;
+    skos:definition "An establishment type for providers outside the normal England and Wales local-authority geography."@en ;
+    skos:broader epr:EstablishmentTypeGroupOtherTypes ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from local domain notes"@en .
+
+epr:OnlineProvider
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Online provider"@en ;
+    skos:definition "An establishment type for an online-only provider of full-time education to pupils of compulsory school age."@en ;
+    skos:broader epr:EstablishmentTypeGroupOnlineProviders ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:OtherIndependentSpecialSchool
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Other independent special school"@en ;
+    skos:definition "An establishment type for an independent special school outside the maintained-school and academy models."@en ;
+    skos:broader epr:EstablishmentTypeGroupNonMaintainedSpecialSchools ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:PupilReferralUnit
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Pupil referral unit"@en ;
+    skos:definition "An establishment type for local-authority alternative provision for children who are excluded, sick or otherwise unable to attend mainstream school."@en ;
+    skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:SecureUnits
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Secure units"@en ;
+    skos:definition "An establishment type for a secure education or care setting."@en ;
+    skos:broader epr:EstablishmentTypeGroupOtherTypes ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from local domain notes"@en .
+
+epr:ServiceChildrensEducation
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Service children's education"@en ;
+    skos:definition "An establishment type for provision associated with service children, including overseas or defence contexts."@en ;
+    skos:broader epr:EstablishmentTypeGroupOtherTypes ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from local domain notes"@en .
+
+epr:SixthFormCentre
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Sixth form centre"@en ;
+    skos:definition "An establishment type for post-16 sixth-form centre provision."@en ;
+    skos:broader epr:EstablishmentTypeGroupColleges ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from local domain notes"@en .
+
+epr:SpecialPost16Institution
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Special post 16 institution"@en ;
+    skos:definition "An establishment type for a legally established specialist post-16 institution supporting young people with severe learning difficulties, disabilities or low-incidence needs."@en ;
+    skos:broader epr:EstablishmentTypeGroupOtherTypes ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:StudioSchool
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Studio schools"@en ;
+    skos:definition "An establishment type for small free schools that deliver mainstream qualifications through project-based learning."@en ;
+    skos:broader epr:EstablishmentTypeGroupFreeSchools ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:UniversityTechnicalCollege
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "University technical college"@en ;
+    skos:definition "An establishment type for a free-school-family provider specialising in technical and vocational subjects, usually with university and employer sponsorship."@en ;
+    skos:broader epr:EstablishmentTypeGroupFreeSchools ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:VoluntaryAidedSchool
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Voluntary aided school"@en ;
+    skos:definition "An establishment type for a maintained school where the governing body is the employer and admissions authority, often with land and buildings owned by a charitable foundation."@en ;
+    skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:VoluntaryControlledSchool
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Voluntary controlled school"@en ;
+    skos:definition "An establishment type for a maintained school with a voluntary or foundation context but stronger local-authority control than a voluntary aided school."@en ;
+    skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from local domain notes"@en .
+
+epr:WelshEstablishment
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Welsh establishment"@en ;
+    skos:definition "A broad establishment type for Welsh establishment records."@en ;
+    skos:broader epr:EstablishmentTypeGroupWelshEstablishments ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from `docs/data`"@en .
+
+epr:AllThroughPhase
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "All-through"@en ;
+    skos:definition "An education phase for an establishment covering both primary and secondary years."@en ;
+    skos:broader epr:EducationPhase ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:MiddlePhase
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Middle deemed primary"@en ;
+    skos:definition "An education phase for a former middle school deemed primary because most pupils are of primary age."@en ;
+    skos:broader epr:EducationPhase ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:NurseryPhase
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Nursery"@en ;
+    skos:definition "An education phase for nursery provision."@en ;
+    skos:broader epr:EducationPhase ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from `docs/data`"@en .
+
+epr:PrimaryPhase
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Primary"@en ;
+    skos:definition "An education phase for primary education."@en ;
+    skos:broader epr:EducationPhase ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:SecondaryPhase
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Secondary"@en ;
+    skos:definition "An education phase for secondary education."@en ;
+    skos:broader epr:EducationPhase ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Captured public glossary"@en .
+
+epr:SixteenToNineteenPhase
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "16 to 19"@en ;
+    skos:definition "An education phase for 16 to 19 provision."@en ;
+    skos:broader epr:EducationPhase ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from `docs/data`"@en .
+
+epr:NotApplicableEducationPhase
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Not applicable"@en ;
+    skos:definition "A classification value indicating that education phase is not applicable to the establishment record."@en ;
+    skos:broader epr:EducationPhase ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Invented review definition"@en .
+
+epr:NonSelectiveAdmissions
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Non-selective"@en ;
+    skos:definition "An admissions-policy value indicating that places are not allocated through academic selection."@en ;
+    skos:broader epr:AdmissionsPolicy ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from captured public glossary"@en .
+
+epr:SelectiveAdmissions
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Selective"@en ;
+    skos:definition "An admissions-policy value indicating that places may be allocated through academic selection."@en ;
+    skos:broader epr:AdmissionsPolicy ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from captured public glossary"@en .
+
+epr:NotApplicableAdmissionsPolicy
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Not applicable"@en ;
+    skos:definition "A classification value indicating that admissions policy is not applicable to the establishment record."@en ;
+    skos:broader epr:AdmissionsPolicy ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Invented review definition"@en .
+
+epr:BoardingSchool
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Boarding school"@en ;
+    skos:definition "A boarding-provision value indicating that the establishment is a boarding school."@en ;
+    skos:broader epr:BoardingProvision ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from captured public glossary"@en .
+
+epr:HasBoarders
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Has boarders"@en ;
+    skos:definition "A boarding-provision value indicating that the establishment has boarders."@en ;
+    skos:broader epr:BoardingProvision ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from captured public glossary"@en .
+
+epr:NoBoarders
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "No boarders"@en ;
+    skos:definition "A boarding-provision value indicating that the establishment does not have boarders."@en ;
+    skos:broader epr:BoardingProvision ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from captured public glossary"@en .
+
+epr:BoysOnlyGenderEntry
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Boys"@en ;
+    skos:definition "A gender-of-entry value indicating that the establishment admits boys."@en ;
+    skos:broader epr:GenderOfEntry ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Invented review definition"@en .
+
+epr:GirlsOnlyGenderEntry
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Girls"@en ;
+    skos:definition "A gender-of-entry value indicating that the establishment admits girls."@en ;
+    skos:broader epr:GenderOfEntry ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Invented review definition"@en .
+
+epr:MixedGenderEntry
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Mixed"@en ;
+    skos:definition "A gender-of-entry value indicating that the establishment admits both boys and girls."@en ;
+    skos:broader epr:GenderOfEntry ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Invented review definition"@en .
+
+epr:NotApplicableGenderOfEntry
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Not applicable"@en ;
+    skos:definition "A classification value indicating that gender of entry is not applicable to the establishment record."@en ;
+    skos:broader epr:GenderOfEntry ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Invented review definition"@en .
+
+epr:HasNurseryClasses
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Has nursery classes"@en ;
+    skos:definition "A nursery-provision value indicating that the establishment offers nursery classes."@en ;
+    skos:broader epr:NurseryProvision ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from captured public glossary"@en .
+
+epr:NoNurseryClasses
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "No nursery classes"@en ;
+    skos:definition "A nursery-provision value indicating that the establishment does not offer nursery classes."@en ;
+    skos:broader epr:NurseryProvision ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from captured public glossary"@en .
+
+epr:NotApplicableNurseryProvision
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Not applicable"@en ;
+    skos:definition "A classification value indicating that nursery provision is not applicable to the establishment record."@en ;
+    skos:broader epr:NurseryProvision ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Invented review definition"@en .
+
+epr:HasSixthForm
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Has a sixth form"@en ;
+    skos:definition "A sixth-form-provision value indicating that the establishment has a sixth form."@en ;
+    skos:broader epr:SixthFormProvision ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from captured public glossary"@en .
+
+epr:NoSixthForm
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Does not have a sixth form"@en ;
+    skos:definition "A sixth-form-provision value indicating that the establishment does not have a sixth form."@en ;
+    skos:broader epr:SixthFormProvision ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Inferred from captured public glossary"@en .
+
+epr:NotApplicableSixthFormProvision
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Not applicable"@en ;
+    skos:definition "A classification value indicating that sixth-form provision is not applicable to the establishment record."@en ;
+    skos:broader epr:SixthFormProvision ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Invented review definition"@en .
+
+epr:HasSpecialClasses
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Has special classes"@en ;
+    skos:definition "A special-class-provision value indicating that the establishment has special classes."@en ;
+    skos:broader epr:SpecialClassProvision ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Invented review definition"@en .
+
+epr:NoSpecialClasses
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "No special classes"@en ;
+    skos:definition "A special-class-provision value indicating that the establishment does not have special classes."@en ;
+    skos:broader epr:SpecialClassProvision ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Invented review definition"@en .
+
+epr:ChurchOfEnglandCharacter
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Church of England"@en ;
+    skos:definition "A religious-character value indicating Church of England designation."@en ;
+    skos:broader epr:ReligiousCharacter ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Invented review definition"@en .
+
+epr:JewishCharacter
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Jewish"@en ;
+    skos:definition "A religious-character value indicating Jewish designation."@en ;
+    skos:broader epr:ReligiousCharacter ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Invented review definition"@en .
+
+epr:MuslimCharacter
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Muslim"@en ;
+    skos:definition "A religious-character value indicating Muslim designation."@en ;
+    skos:broader epr:ReligiousCharacter ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Invented review definition"@en .
+
+epr:NoReligiousCharacter
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "None"@en ;
+    skos:definition "A religious-character value indicating no recorded religious character."@en ;
+    skos:broader epr:ReligiousCharacter ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Invented review definition"@en .
+
+epr:NotApplicableReligiousCharacter
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Does not apply"@en ;
+    skos:definition "A religious-character value indicating that religious character does not apply to the establishment record."@en ;
+    skos:broader epr:ReligiousCharacter ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Invented review definition"@en .
+
+epr:OtherReligiousCharacter
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Other"@en ;
+    skos:definition "A religious-character value indicating another religious character not represented by the named values."@en ;
+    skos:broader epr:ReligiousCharacter ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Invented review definition"@en .
+
+epr:RomanCatholicCharacter
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Roman Catholic"@en ;
+    skos:definition "A religious-character value indicating Roman Catholic designation."@en ;
+    skos:broader epr:ReligiousCharacter ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Invented review definition"@en .
+
+epr:ChristianEthos
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Christian"@en ;
+    skos:definition "A religious-ethos value indicating Christian ethos."@en ;
+    skos:broader epr:ReligiousEthos ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Invented review definition"@en .
+
+epr:NoReligiousEthos
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "None"@en ;
+    skos:definition "A religious-ethos value indicating no recorded religious ethos."@en ;
+    skos:broader epr:ReligiousEthos ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Invented review definition"@en .
+
+epr:NotApplicableReligiousEthos
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Does not apply"@en ;
+    skos:definition "A religious-ethos value indicating that religious ethos does not apply to the establishment record."@en ;
+    skos:broader epr:ReligiousEthos ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Invented review definition"@en .
+
+epr:OtherReligiousEthos
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Other"@en ;
+    skos:definition "A religious-ethos value indicating another ethos not represented by the named values."@en ;
+    skos:broader epr:ReligiousEthos ;
+    epr:status "Preferred"@en ;
+    dcterms:source "Definition provenance: Invented review definition"@en .
+
+#################################################################
 # Identity and identifiers
 #################################################################
 
@@ -601,6 +1372,38 @@ epr:EstablishmentStatus
     skos:broader epr:EstablishmentLifecycle ;
     epr:status "Preferred"@en ;
     dcterms:source "C#: StatusId; Java: status; database: Establishment.status_code"@en .
+
+epr:OpenStatus
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Open"@en ;
+    skos:definition "An establishment status indicating that the establishment is open."@en ;
+    skos:broader epr:EstablishmentStatus ;
+    epr:status "Provisional"@en .
+
+epr:ClosedStatus
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Closed"@en ;
+    skos:definition "An establishment status indicating that the establishment has closed."@en ;
+    skos:broader epr:EstablishmentStatus ;
+    epr:status "Provisional"@en .
+
+epr:OpenProposedToCloseStatus
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Open, but proposed to close"@en ;
+    skos:definition "An establishment status indicating that the establishment is open but has been proposed for closure."@en ;
+    skos:broader epr:EstablishmentStatus ;
+    epr:status "Provisional"@en .
+
+epr:ProposedToOpenStatus
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Proposed to open"@en ;
+    skos:definition "An establishment status indicating that the establishment is proposed to open."@en ;
+    skos:broader epr:EstablishmentStatus ;
+    epr:status "Provisional"@en .
 
 epr:OpenDate
     a skos:Concept ;
@@ -1227,6 +2030,7 @@ epr:ExternalServiceReference
     skos:definition "A link from GIAS to related information owned by another service."@en ;
     skos:broader epr:ExternalReference ;
     epr:status "Provisional"@en .
+
 
 
 
