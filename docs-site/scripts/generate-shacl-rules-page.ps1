@@ -8,6 +8,24 @@ $ErrorActionPreference = "Stop"
 $resolvedShaclPath = Resolve-Path -LiteralPath $ShaclPath
 $ttl = Get-Content -LiteralPath $resolvedShaclPath -Raw
 
+# Class-to-leaf-types map for sh:targetClass on intermediate OWL classes
+$classToTypes = @{
+    'LaMaintainedSchool'                       = @('CommunitySchool', 'VoluntaryAidedSchool', 'VoluntaryControlledSchool', 'FoundationSchool', 'CommunitySpecialSchool', 'FoundationSpecialSchool', 'PupilReferralUnit', 'LocalAuthorityNurserySchool')
+    'LaMainstreamSchool'                        = @('CommunitySchool', 'VoluntaryAidedSchool', 'VoluntaryControlledSchool', 'FoundationSchool')
+    'LaMaintainedSpecialSchool'                 = @('CommunitySpecialSchool', 'FoundationSpecialSchool')
+    'NonMaintainedAndIndependentSpecialSchool'  = @('NonMaintainedSpecialSchool', 'OtherIndependentSpecialSchool')
+    'IndependentSchool'                         = @('CityTechnologyCollege', 'OtherIndependentSchool')
+    'Academy'                                   = @('AcademySponsorLed', 'AcademyConverter', 'AcademySpecialSponsorLed', 'AcademySpecialConverter', 'AcademyAlternativeProvisionConverter', 'AcademyAlternativeProvisionSponsorLed', 'Academy1619Converter', 'Academy16To19SponsorLed', 'AcademySecure16To19')
+    'MainstreamAcademy'                         = @('AcademySponsorLed', 'AcademyConverter')
+    'AcademySpecial'                            = @('AcademySpecialSponsorLed', 'AcademySpecialConverter')
+    'AcademyAlternativeProvision'               = @('AcademyAlternativeProvisionConverter', 'AcademyAlternativeProvisionSponsorLed')
+    'Academy1619'                               = @('Academy1619Converter', 'Academy16To19SponsorLed')
+    'FreeSchoolEstablishment'                   = @('FreeSchool', 'FreeSchoolSpecial', 'FreeSchoolAlternativeProvision', 'FreeSchool16To19', 'UniversityTechnicalCollege', 'StudioSchool')
+    'MainstreamFreeSchool'                      = @('FreeSchool', 'UniversityTechnicalCollege', 'StudioSchool')
+    'College'                                   = @('FurtherEducation', 'SixthFormCentre')
+    'ChildrensCentreEstablishment'              = @('ChildrensCentre', 'ChildrensCentreLinkedSite')
+}
+
 # Preferred labels for establishment type local names
 $typeLabels = @{
     "CommunitySchool"                              = "Community school"
@@ -146,8 +164,16 @@ foreach ($shapeMatch in $shapeMatches) {
     }
     elseif ($targetClassMatch.Success) {
         $className = $targetClassMatch.Groups[1].Value -replace '^epr:', ''
-        $classLabel = if ($typeLabels.ContainsKey($className)) { $typeLabels[$className] } else { $className }
-        $lines += "**Covers:** $classLabel"
+        if ($classToTypes.ContainsKey($className)) {
+            $coveredLabels = $classToTypes[$className] | ForEach-Object {
+                if ($typeLabels.ContainsKey($_)) { $typeLabels[$_] } else { $_ }
+            }
+            $lines += "**Covers:** $($coveredLabels -join ', ')"
+        } elseif ($typeLabels.ContainsKey($className)) {
+            $lines += "**Covers:** $($typeLabels[$className])"
+        } else {
+            $lines += "**Covers:** $className"
+        }
         $lines += ''
     }
 

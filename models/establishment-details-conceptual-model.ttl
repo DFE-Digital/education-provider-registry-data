@@ -38,7 +38,7 @@ epro:establishmentDetailsConceptualModel
     dcterms:modified "2026-06-19"^^xsd:date ;
     dcterms:publisher "Department for Education"@en ;
     dcterms:license <https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/> ;
-    owl:versionInfo "0.4" ;
+    owl:versionInfo "0.5" ;
     vann:preferredNamespacePrefix "epro" ;
     vann:preferredNamespaceUri "https://dfe-digital.github.io/education-provider-registry-data/ontology/"^^xsd:anyURI ;
     rdfs:seeAlso <https://dfe-digital.github.io/education-provider-registry-data/vocabulary/> ;
@@ -47,6 +47,7 @@ epro:establishmentDetailsConceptualModel
     rdfs:seeAlso <https://dfe-digital.github.io/education-provider-registry-data/shapes/data-quality/> ;
     rdfs:comment "v0.2: per-type field-applicability rules added as SHACL shapes in establishment-details-shacl.ttl. Accountability relationship rules (which types require LA, academy trust or proprietor) are now expressed in those shapes rather than as open questions."@en ;
     rdfs:comment "v0.4: field-coverage additions — classes and properties for Ofsted inspection record, PRU operational record, accreditation record (online providers), provider type, manager, academy sponsor SHACL modelling. Ontology already had faith-context classes (ReligiousCharacter, ReligiousEthos, Diocese) and SpecialClassProvision. New additions: OfstedInspectionRecord, PupilReferralUnitOperationalRecord, AccreditationRecord, ProviderType, Manager."@en ;
+    rdfs:comment "v0.5: establishment type class hierarchy added. Each GIAS establishment type is now an OWL class subtype of epr:Establishment, via intermediate group classes (LaMaintainedSchool, Academy, FreeSchoolEstablishment etc.). Intermediate classes defined here; leaf type classes enriched with owl:Class and rdfs:subClassOf in the taxonomy TTL using OWL 2 punning."@en ;
     epr:status "Provisional"@en .
 
 
@@ -1114,3 +1115,97 @@ epro:hasManager
     rdfs:domain epr:ContactAndLocation ;
     rdfs:range epr:Manager ;
     rdfs:comment "Cardinality: 0..1. Present for children's centres (types 47 and 48). Distinct from hasHeadteacherOrPrincipal — children's centres show a manager role."@en .
+
+
+#################################################################
+# Classes — establishment type hierarchy
+#
+# Intermediate OWL classes grouping establishment types by their
+# SHACL shape family. Leaf type classes (CommunitySchool etc.)
+# are defined in establishment-details-taxonomy-skos.ttl and
+# enriched there with a owl:Class and rdfs:subClassOf assertions.
+#################################################################
+
+epr:LaMaintainedSchool
+    a owl:Class ;
+    rdfs:subClassOf epr:Establishment ;
+    rdfs:label "LA maintained school"@en ;
+    rdfs:comment "Any school maintained by a local authority: community schools, voluntary schools, foundation schools, community and foundation special schools, pupil referral units, and local authority nursery schools."@en .
+
+epr:LaMainstreamSchool
+    a owl:Class ;
+    rdfs:subClassOf epr:LaMaintainedSchool ;
+    rdfs:label "LA mainstream school"@en ;
+    rdfs:comment "LA maintained mainstream schools: community school, voluntary aided school, voluntary controlled school, foundation school."@en .
+
+epr:LaMaintainedSpecialSchool
+    a owl:Class ;
+    rdfs:subClassOf epr:LaMaintainedSchool ;
+    rdfs:label "LA maintained special school"@en ;
+    rdfs:comment "LA maintained special schools: community special school, foundation special school."@en .
+
+epr:NonMaintainedAndIndependentSpecialSchool
+    a owl:Class ;
+    rdfs:subClassOf epr:Establishment ;
+    rdfs:label "Non-maintained and independent special school"@en ;
+    rdfs:comment "Non-maintained special schools and other independent special schools approved under section 342 of the Education Act 1996."@en .
+
+epr:IndependentSchool
+    a owl:Class ;
+    rdfs:subClassOf epr:Establishment ;
+    rdfs:label "Independent school"@en ;
+    rdfs:comment "Independent schools: city technology colleges and other independent schools."@en .
+
+epr:College
+    a owl:Class ;
+    rdfs:subClassOf epr:Establishment ;
+    rdfs:label "College"@en ;
+    rdfs:comment "Further education establishments: further education colleges and sixth form centres."@en .
+
+epr:Academy
+    a owl:Class ;
+    rdfs:subClassOf epr:Establishment ;
+    rdfs:label "Academy"@en ;
+    rdfs:comment "All academy types: mainstream, special, alternative provision, 16-19, and secure 16-19."@en .
+
+epr:MainstreamAcademy
+    a owl:Class ;
+    rdfs:subClassOf epr:Academy ;
+    rdfs:label "Mainstream academy"@en ;
+    rdfs:comment "Mainstream academies: academy sponsor led and academy converter."@en .
+
+epr:AcademySpecial
+    a owl:Class ;
+    rdfs:subClassOf epr:Academy ;
+    rdfs:label "Academy special school"@en ;
+    rdfs:comment "Academy special schools: academy special sponsor led and academy special converter."@en .
+
+epr:AcademyAlternativeProvision
+    a owl:Class ;
+    rdfs:subClassOf epr:Academy ;
+    rdfs:label "Academy alternative provision"@en ;
+    rdfs:comment "Academy alternative provision establishments: academy alternative provision converter and academy alternative provision sponsor led."@en .
+
+epr:Academy1619
+    a owl:Class ;
+    rdfs:subClassOf epr:Academy ;
+    rdfs:label "Academy 16 to 19"@en ;
+    rdfs:comment "Academy 16-19 establishments: academy 16-19 converter and academy 16 to 19 sponsor led."@en .
+
+epr:FreeSchoolEstablishment
+    a owl:Class ;
+    rdfs:subClassOf epr:Establishment ;
+    rdfs:label "Free school establishment"@en ;
+    rdfs:comment "All free school types: mainstream free schools, free school special, free school alternative provision, and free school 16 to 19."@en .
+
+epr:MainstreamFreeSchool
+    a owl:Class ;
+    rdfs:subClassOf epr:FreeSchoolEstablishment ;
+    rdfs:label "Mainstream free school"@en ;
+    rdfs:comment "Mainstream free schools: free school, university technical college, studio school."@en .
+
+epr:ChildrensCentreEstablishment
+    a owl:Class ;
+    rdfs:subClassOf epr:Establishment ;
+    rdfs:label "Children's centre establishment"@en ;
+    rdfs:comment "Children's centres and children's centre linked sites."@en .

@@ -41,6 +41,25 @@ function Get-EffectiveConstraintLabel {
     return 'Optional'
 }
 
+# ── class-to-leaf-types map (for sh:targetClass on intermediate OWL classes) ──
+
+$classToTypes = @{
+    'LaMaintainedSchool'                       = @('CommunitySchool', 'VoluntaryAidedSchool', 'VoluntaryControlledSchool', 'FoundationSchool', 'CommunitySpecialSchool', 'FoundationSpecialSchool', 'PupilReferralUnit', 'LocalAuthorityNurserySchool')
+    'LaMainstreamSchool'                        = @('CommunitySchool', 'VoluntaryAidedSchool', 'VoluntaryControlledSchool', 'FoundationSchool')
+    'LaMaintainedSpecialSchool'                 = @('CommunitySpecialSchool', 'FoundationSpecialSchool')
+    'NonMaintainedAndIndependentSpecialSchool'  = @('NonMaintainedSpecialSchool', 'OtherIndependentSpecialSchool')
+    'IndependentSchool'                         = @('CityTechnologyCollege', 'OtherIndependentSchool')
+    'Academy'                                   = @('AcademySponsorLed', 'AcademyConverter', 'AcademySpecialSponsorLed', 'AcademySpecialConverter', 'AcademyAlternativeProvisionConverter', 'AcademyAlternativeProvisionSponsorLed', 'Academy1619Converter', 'Academy16To19SponsorLed', 'AcademySecure16To19')
+    'MainstreamAcademy'                         = @('AcademySponsorLed', 'AcademyConverter')
+    'AcademySpecial'                            = @('AcademySpecialSponsorLed', 'AcademySpecialConverter')
+    'AcademyAlternativeProvision'               = @('AcademyAlternativeProvisionConverter', 'AcademyAlternativeProvisionSponsorLed')
+    'Academy1619'                               = @('Academy1619Converter', 'Academy16To19SponsorLed')
+    'FreeSchoolEstablishment'                   = @('FreeSchool', 'FreeSchoolSpecial', 'FreeSchoolAlternativeProvision', 'FreeSchool16To19', 'UniversityTechnicalCollege', 'StudioSchool')
+    'MainstreamFreeSchool'                      = @('FreeSchool', 'UniversityTechnicalCollege', 'StudioSchool')
+    'College'                                   = @('FurtherEducation', 'SixthFormCentre')
+    'ChildrensCentreEstablishment'              = @('ChildrensCentre', 'ChildrensCentreLinkedSite')
+}
+
 # ── canonical type list (ordered by type code) ────────────────────────────────
 
 $typeMeta = [ordered]@{
@@ -98,10 +117,19 @@ foreach ($sm in $shapeBlocks) {
     $isUniversal = $block -match 'sh:targetClass\s+epr:Establishment'
 
     $targetTypes = @()
-    $vm = [regex]::Match($block, '(?s)VALUES \?type \{([^}]+)\}')
+    $vm  = [regex]::Match($block, '(?s)VALUES \?type \{([^}]+)\}')
+    $tcm = [regex]::Match($block, 'sh:targetClass\s+epr:(\w+)')
+
     if ($vm.Success) {
         $targetTypes = @([regex]::Matches($vm.Groups[1].Value, 'epr:(\w+)') |
                          ForEach-Object { $_.Groups[1].Value })
+    } elseif ($tcm.Success) {
+        $className = $tcm.Groups[1].Value
+        if ($classToTypes.ContainsKey($className)) {
+            $targetTypes = $classToTypes[$className]
+        } elseif ($typeMeta.ContainsKey($className)) {
+            $targetTypes = @($className)
+        }
     }
 
     $propList = [System.Collections.Generic.List[PSCustomObject]]::new()

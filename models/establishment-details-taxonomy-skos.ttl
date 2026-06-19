@@ -1,5 +1,6 @@
 @prefix epr: <https://dfe-digital.github.io/education-provider-registry-data/vocabulary/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -327,7 +328,8 @@ epr:EstablishmentTypeGroupOnlineProviders
 #################################################################
 
 epr:CommunitySchool
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:LaMainstreamSchool ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Community school"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
@@ -335,7 +337,8 @@ epr:CommunitySchool
     epr:status "Provisional"@en .
 
 epr:VoluntaryAidedSchool
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:LaMainstreamSchool ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Voluntary aided school"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
@@ -343,7 +346,8 @@ epr:VoluntaryAidedSchool
     epr:status "Provisional"@en .
 
 epr:VoluntaryControlledSchool
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:LaMainstreamSchool ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Voluntary controlled school"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
@@ -351,7 +355,8 @@ epr:VoluntaryControlledSchool
     epr:status "Provisional"@en .
 
 epr:FoundationSchool
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:LaMainstreamSchool ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Foundation school"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
@@ -359,7 +364,8 @@ epr:FoundationSchool
     epr:status "Provisional"@en .
 
 epr:CommunitySpecialSchool
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:LaMaintainedSpecialSchool ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Community special school"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
@@ -367,7 +373,8 @@ epr:CommunitySpecialSchool
     epr:status "Provisional"@en .
 
 epr:FoundationSpecialSchool
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:LaMaintainedSpecialSchool ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Foundation special school"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
@@ -375,7 +382,8 @@ epr:FoundationSpecialSchool
     epr:status "Provisional"@en .
 
 epr:PupilReferralUnit
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:LaMaintainedSchool ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Pupil referral unit"@en ;
     skos:altLabel "PRU"@en ;
@@ -384,7 +392,8 @@ epr:PupilReferralUnit
     epr:status "Provisional"@en .
 
 epr:LocalAuthorityNurserySchool
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:LaMaintainedSchool ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Local authority nursery school"@en ;
     skos:broader epr:EstablishmentTypeGroupLaMaintainedSchools ;
@@ -396,7 +405,8 @@ epr:LocalAuthorityNurserySchool
 #################################################################
 
 epr:NonMaintainedSpecialSchool
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:NonMaintainedAndIndependentSpecialSchool ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Non-maintained special school"@en ;
     skos:broader epr:EstablishmentTypeGroupNonMaintainedSpecialSchools ;
@@ -404,7 +414,8 @@ epr:NonMaintainedSpecialSchool
     epr:status "Provisional"@en .
 
 epr:OtherIndependentSpecialSchool
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:NonMaintainedAndIndependentSpecialSchool ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Other independent special school"@en ;
     skos:broader epr:EstablishmentTypeGroupNonMaintainedSpecialSchools ;
@@ -416,7 +427,8 @@ epr:OtherIndependentSpecialSchool
 #################################################################
 
 epr:CityTechnologyCollege
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:IndependentSchool ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "City technology college"@en ;
     skos:altLabel "CTC"@en ;
@@ -425,7 +437,8 @@ epr:CityTechnologyCollege
     epr:status "Provisional"@en .
 
 epr:OtherIndependentSchool
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:IndependentSchool ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Other independent school"@en ;
     skos:broader epr:EstablishmentTypeGroupIndependentSchools ;
@@ -437,7 +450,8 @@ epr:OtherIndependentSchool
 #################################################################
 
 epr:FurtherEducation
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:College ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Further education"@en ;
     skos:altLabel "Further education college"@en ;
@@ -446,7 +460,8 @@ epr:FurtherEducation
     epr:status "Provisional"@en .
 
 epr:SixthFormCentre
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:College ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Sixth form centre"@en ;
     skos:broader epr:EstablishmentTypeGroupColleges ;
@@ -458,7 +473,8 @@ epr:SixthFormCentre
 #################################################################
 
 epr:HigherEducationInstitution
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:Establishment ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Higher education institution"@en ;
     skos:altLabel "HEI"@en ;
@@ -471,7 +487,8 @@ epr:HigherEducationInstitution
 #################################################################
 
 epr:WelshEstablishment
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:Establishment ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Welsh establishment"@en ;
     skos:broader epr:EstablishmentTypeGroupWelshEstablishments ;
@@ -483,7 +500,8 @@ epr:WelshEstablishment
 #################################################################
 
 epr:SecureUnits
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:Establishment ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Secure units"@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
@@ -491,7 +509,8 @@ epr:SecureUnits
     epr:status "Provisional"@en .
 
 epr:OffshoreSchools
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:Establishment ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Offshore schools"@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
@@ -499,7 +518,8 @@ epr:OffshoreSchools
     epr:status "Provisional"@en .
 
 epr:ServiceChildrensEducation
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:Establishment ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Service children's education"@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
@@ -507,7 +527,8 @@ epr:ServiceChildrensEducation
     epr:status "Provisional"@en .
 
 epr:MiscellaneousEstablishment
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:Establishment ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Miscellaneous"@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
@@ -515,7 +536,8 @@ epr:MiscellaneousEstablishment
     epr:status "Provisional"@en .
 
 epr:SpecialPost16Institution
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:Establishment ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Special post 16 institution"@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
@@ -523,7 +545,8 @@ epr:SpecialPost16Institution
     epr:status "Provisional"@en .
 
 epr:BritishSchoolsOverseas
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:Establishment ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "British schools overseas"@en ;
     skos:altLabel "BSO"@en ;
@@ -532,7 +555,8 @@ epr:BritishSchoolsOverseas
     epr:status "Provisional"@en .
 
 epr:InstitutionFundedByOtherGovernmentDepartment
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:Establishment ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Institution funded by other government department"@en ;
     skos:broader epr:EstablishmentTypeGroupOtherTypes ;
@@ -544,7 +568,8 @@ epr:InstitutionFundedByOtherGovernmentDepartment
 #################################################################
 
 epr:AcademySponsorLed
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:MainstreamAcademy ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Academy sponsor led"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
@@ -552,7 +577,8 @@ epr:AcademySponsorLed
     epr:status "Provisional"@en .
 
 epr:AcademySpecialSponsorLed
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:AcademySpecial ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Academy special sponsor led"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
@@ -560,7 +586,8 @@ epr:AcademySpecialSponsorLed
     epr:status "Provisional"@en .
 
 epr:AcademyConverter
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:MainstreamAcademy ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Academy converter"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
@@ -568,7 +595,8 @@ epr:AcademyConverter
     epr:status "Provisional"@en .
 
 epr:AcademyAlternativeProvisionConverter
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:AcademyAlternativeProvision ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Academy alternative provision converter"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
@@ -576,7 +604,8 @@ epr:AcademyAlternativeProvisionConverter
     epr:status "Provisional"@en .
 
 epr:AcademyAlternativeProvisionSponsorLed
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:AcademyAlternativeProvision ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Academy alternative provision sponsor led"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
@@ -584,7 +613,8 @@ epr:AcademyAlternativeProvisionSponsorLed
     epr:status "Provisional"@en .
 
 epr:AcademySpecialConverter
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:AcademySpecial ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Academy special converter"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
@@ -592,7 +622,8 @@ epr:AcademySpecialConverter
     epr:status "Provisional"@en .
 
 epr:Academy1619Converter
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:Academy1619 ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Academy 16-19 converter"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
@@ -600,7 +631,8 @@ epr:Academy1619Converter
     epr:status "Provisional"@en .
 
 epr:Academy16To19SponsorLed
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:Academy1619 ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Academy 16 to 19 sponsor led"@en ;
     skos:broader epr:EstablishmentTypeGroupAcademies ;
@@ -608,7 +640,8 @@ epr:Academy16To19SponsorLed
     epr:status "Provisional"@en .
 
 epr:AcademySecure16To19
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:Academy ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Academy secure 16 to 19"@en ;
     skos:scopeNote "Secure establishment with a more restricted public Details view than the database field mapping implies. Only 17 fields are publicly visible compared to 30+ mapped in the database."@en ;
@@ -621,7 +654,8 @@ epr:AcademySecure16To19
 #################################################################
 
 epr:FreeSchool
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:MainstreamFreeSchool ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Free schools"@en ;
     skos:broader epr:EstablishmentTypeGroupFreeSchools ;
@@ -629,7 +663,8 @@ epr:FreeSchool
     epr:status "Provisional"@en .
 
 epr:FreeSchoolSpecial
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:FreeSchoolEstablishment ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Free schools special"@en ;
     skos:broader epr:EstablishmentTypeGroupFreeSchools ;
@@ -637,7 +672,8 @@ epr:FreeSchoolSpecial
     epr:status "Provisional"@en .
 
 epr:FreeSchoolAlternativeProvision
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:FreeSchoolEstablishment ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Free schools alternative provision"@en ;
     skos:broader epr:EstablishmentTypeGroupFreeSchools ;
@@ -645,7 +681,8 @@ epr:FreeSchoolAlternativeProvision
     epr:status "Provisional"@en .
 
 epr:FreeSchool16To19
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:FreeSchoolEstablishment ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Free schools 16 to 19"@en ;
     skos:broader epr:EstablishmentTypeGroupFreeSchools ;
@@ -653,7 +690,8 @@ epr:FreeSchool16To19
     epr:status "Provisional"@en .
 
 epr:UniversityTechnicalCollege
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:MainstreamFreeSchool ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "University technical college"@en ;
     skos:altLabel "UTC"@en ;
@@ -662,7 +700,8 @@ epr:UniversityTechnicalCollege
     epr:status "Provisional"@en .
 
 epr:StudioSchool
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:MainstreamFreeSchool ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Studio schools"@en ;
     skos:broader epr:EstablishmentTypeGroupFreeSchools ;
@@ -674,7 +713,8 @@ epr:StudioSchool
 #################################################################
 
 epr:ChildrensCentre
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:ChildrensCentreEstablishment ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Children's centre"@en ;
     skos:broader epr:EstablishmentTypeGroupChildrensCentres ;
@@ -682,7 +722,8 @@ epr:ChildrensCentre
     epr:status "Provisional"@en .
 
 epr:ChildrensCentreLinkedSite
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:ChildrensCentreEstablishment ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Children's centre linked site"@en ;
     skos:broader epr:EstablishmentTypeGroupChildrensCentres ;
@@ -694,7 +735,8 @@ epr:ChildrensCentreLinkedSite
 #################################################################
 
 epr:OnlineProvider
-    a skos:Concept ;
+    a skos:Concept, owl:Class ;
+    rdfs:subClassOf epr:Establishment ;
     skos:inScheme epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Online provider"@en ;
     skos:scopeNote "Has a distinct Details tab presentation: open date becomes accreditation date, close date becomes accreditation date ended, and an accreditation and quality assurance section replaces several standard school fields."@en ;

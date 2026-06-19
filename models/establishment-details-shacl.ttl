@@ -36,21 +36,10 @@
     dcterms:modified "2026-06-19"^^xsd:date ;
     dcterms:publisher "Department for Education"@en ;
     dcterms:license <https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/> ;
-    owl:versionInfo "0.4" ;
+    owl:versionInfo "0.5" ;
     rdfs:seeAlso <https://dfe-digital.github.io/education-provider-registry-data/ontology/> ;
     rdfs:seeAlso <https://dfe-digital.github.io/education-provider-registry-data/taxonomy/> ;
     epr:status "Provisional"@en .
-
-
-#################################################################
-# SPARQL prefix declarations (used by SPARQLTarget blocks)
-#################################################################
-
-epr:sparqlPrefixes
-    a owl:Ontology ;
-    sh:declare
-        [ sh:prefix "epr"  ; sh:namespace "https://dfe-digital.github.io/education-provider-registry-data/vocabulary/"^^xsd:anyURI ] ,
-        [ sh:prefix "epro" ; sh:namespace "https://dfe-digital.github.io/education-provider-registry-data/ontology/"^^xsd:anyURI ] .
 
 
 #################################################################
@@ -210,26 +199,7 @@ epr:LaMaintainedSchoolGroupShape
     a sh:NodeShape ;
     rdfs:label "LA maintained school group shape"@en ;
     rdfs:comment "Rules shared by all LA maintained school types. More specific shapes override individual fields for special schools, PRUs and nursery schools."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType ?type .
-                VALUES ?type {
-                    epr:CommunitySchool
-                    epr:VoluntaryAidedSchool
-                    epr:VoluntaryControlledSchool
-                    epr:FoundationSchool
-                    epr:CommunitySpecialSchool
-                    epr:FoundationSpecialSchool
-                    epr:PupilReferralUnit
-                    epr:LocalAuthorityNurserySchool
-                }
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:LaMaintainedSchool ;
 
     sh:property [
         sh:path ( epro:hasAccountabilityRelationship epro:accountableToLocalAuthority ) ;
@@ -327,22 +297,7 @@ epr:LaMainstreamSchoolShape
     a sh:NodeShape ;
     rdfs:label "LA mainstream school shape"@en ;
     rdfs:comment "Rules for mainstream LA maintained school types. Admissions policy, nursery, sixth form and education phase are all required."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType ?type .
-                VALUES ?type {
-                    epr:CommunitySchool
-                    epr:VoluntaryAidedSchool
-                    epr:VoluntaryControlledSchool
-                    epr:FoundationSchool
-                }
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:LaMainstreamSchool ;
 
     sh:property [
         sh:path ( epro:hasEstablishmentClassification epro:hasEducationPhase ) ;
@@ -446,20 +401,7 @@ epr:LaSpecialSchoolShape
     a sh:NodeShape ;
     rdfs:label "LA special school shape"@en ;
     rdfs:comment "Rules for LA maintained special schools. SEN provision is required. Sixth-form provision is not applicable."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType ?type .
-                VALUES ?type {
-                    epr:CommunitySpecialSchool
-                    epr:FoundationSpecialSchool
-                }
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:LaMaintainedSpecialSchool ;
 
     sh:property [
         sh:path epro:hasSenAndResourcedProvision ;
@@ -540,16 +482,7 @@ epr:PupilReferralUnitShape
     a sh:NodeShape ;
     rdfs:label "Pupil referral unit shape"@en ;
     rdfs:comment "Rules for PRUs. Nursery provision, sixth-form provision and boarding provision are not applicable."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType epr:PupilReferralUnit .
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:PupilReferralUnit ;
 
     sh:property [
         sh:path ( epro:hasEducationAdmissionsAndProvision epro:classifiedByNurseryProvision ) ;
@@ -637,16 +570,7 @@ epr:LocalAuthorityNurserySchoolShape
     a sh:NodeShape ;
     rdfs:label "Local authority nursery school shape"@en ;
     rdfs:comment "Rules for LA nursery schools. Sixth-form provision is not applicable."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType epr:LocalAuthorityNurserySchool .
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:LocalAuthorityNurserySchool ;
 
     sh:property [
         sh:path ( epro:hasEstablishmentClassification epro:hasEducationPhase ) ;
@@ -758,20 +682,7 @@ epr:NonMaintainedSpecialSchoolGroupShape
     a sh:NodeShape ;
     rdfs:label "Non-maintained special school group shape"@en ;
     rdfs:comment "Rules for non-maintained and independent special schools. Proprietor is required; SEN provision is required; sixth-form provision is not applicable."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType ?type .
-                VALUES ?type {
-                    epr:NonMaintainedSpecialSchool
-                    epr:OtherIndependentSpecialSchool
-                }
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:NonMaintainedAndIndependentSpecialSchool ;
 
     sh:property [
         sh:path ( epro:hasAccountabilityRelationship epro:accountableToProprietor ) ;
@@ -931,20 +842,7 @@ epr:IndependentSchoolGroupShape
     a sh:NodeShape ;
     rdfs:label "Independent school group shape"@en ;
     rdfs:comment "Rules for independent schools (city technology colleges and other independent schools). Proprietor is required; education phase, gender of entry, admissions policy and boarding provision are required."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType ?type .
-                VALUES ?type {
-                    epr:CityTechnologyCollege
-                    epr:OtherIndependentSchool
-                }
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:IndependentSchool ;
 
     sh:property [
         sh:path ( epro:hasAccountabilityRelationship epro:accountableToProprietor ) ;
@@ -1111,20 +1009,7 @@ epr:MainstreamAcademyGroupShape
     a sh:NodeShape ;
     rdfs:label "Mainstream academy group shape"@en ;
     rdfs:comment "Rules for mainstream academy types. Academy trust is required; education phase, gender of entry, admissions policy, boarding, nursery and sixth-form provision are all required."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType ?type .
-                VALUES ?type {
-                    epr:AcademySponsorLed
-                    epr:AcademyConverter
-                }
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:MainstreamAcademy ;
 
     sh:property [
         sh:path ( epro:hasAccountabilityRelationship epro:accountableToAcademyTrust ) ;
@@ -1319,20 +1204,7 @@ epr:AcademySpecialShape
     a sh:NodeShape ;
     rdfs:label "Academy special school shape"@en ;
     rdfs:comment "Rules for academy special schools. Academy trust is required; SEN provision is required; sixth-form provision is not applicable."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType ?type .
-                VALUES ?type {
-                    epr:AcademySpecialSponsorLed
-                    epr:AcademySpecialConverter
-                }
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:AcademySpecial ;
 
     sh:property [
         sh:path ( epro:hasAccountabilityRelationship epro:accountableToAcademyTrust ) ;
@@ -1458,20 +1330,7 @@ epr:AcademyAlternativeProvisionShape
     a sh:NodeShape ;
     rdfs:label "Academy alternative provision shape"@en ;
     rdfs:comment "Rules for academy alternative provision types. Academy trust is required; sixth-form provision is not applicable."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType ?type .
-                VALUES ?type {
-                    epr:AcademyAlternativeProvisionConverter
-                    epr:AcademyAlternativeProvisionSponsorLed
-                }
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:AcademyAlternativeProvision ;
 
     sh:property [
         sh:path ( epro:hasAccountabilityRelationship epro:accountableToAcademyTrust ) ;
@@ -1589,20 +1448,7 @@ epr:Academy1619Shape
     a sh:NodeShape ;
     rdfs:label "Academy 16-19 shape"@en ;
     rdfs:comment "Rules for academy 16-19 types. Academy trust is required; sixth-form provision is not applicable (these establishments ARE 16-19 provision)."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType ?type .
-                VALUES ?type {
-                    epr:Academy1619Converter
-                    epr:Academy16To19SponsorLed
-                }
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:Academy1619 ;
 
     sh:property [
         sh:path ( epro:hasAccountabilityRelationship epro:accountableToAcademyTrust ) ;
@@ -1725,16 +1571,7 @@ epr:AcademySecure16To19Shape
     a sh:NodeShape ;
     rdfs:label "Academy secure 16 to 19 shape"@en ;
     rdfs:comment "Rules for academy secure 16 to 19. Has a significantly restricted public Details view — only 17 fields are publicly visible. Most provision and faith fields are not applicable in the public record."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType epr:AcademySecure16To19 .
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:AcademySecure16To19 ;
 
     sh:property [
         sh:path ( epro:hasAccountabilityRelationship epro:accountableToAcademyTrust ) ;
@@ -1824,21 +1661,7 @@ epr:MainstreamFreeSchoolGroupShape
     a sh:NodeShape ;
     rdfs:label "Mainstream free school group shape"@en ;
     rdfs:comment "Rules for mainstream free school types. Academy trust is required; education phase, gender of entry, admissions policy, boarding, nursery and sixth-form provision are all required."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType ?type .
-                VALUES ?type {
-                    epr:FreeSchool
-                    epr:UniversityTechnicalCollege
-                    epr:StudioSchool
-                }
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:MainstreamFreeSchool ;
 
     sh:property [
         sh:path ( epro:hasAccountabilityRelationship epro:accountableToAcademyTrust ) ;
@@ -2028,16 +1851,7 @@ epr:FreeSchoolSpecialShape
     a sh:NodeShape ;
     rdfs:label "Free school special shape"@en ;
     rdfs:comment "Rules for free school special. Academy trust is required; SEN provision is required; sixth-form provision is not applicable."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType epr:FreeSchoolSpecial .
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:FreeSchoolSpecial ;
 
     sh:property [
         sh:path ( epro:hasAccountabilityRelationship epro:accountableToAcademyTrust ) ;
@@ -2160,16 +1974,7 @@ epr:FreeSchoolAlternativeProvisionShape
     a sh:NodeShape ;
     rdfs:label "Free school alternative provision shape"@en ;
     rdfs:comment "Rules for free school alternative provision. Academy trust is required; sixth-form provision is not applicable."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType epr:FreeSchoolAlternativeProvision .
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:FreeSchoolAlternativeProvision ;
 
     sh:property [
         sh:path ( epro:hasAccountabilityRelationship epro:accountableToAcademyTrust ) ;
@@ -2285,16 +2090,7 @@ epr:FreeSchool16To19Shape
     a sh:NodeShape ;
     rdfs:label "Free school 16 to 19 shape"@en ;
     rdfs:comment "Rules for free school 16 to 19. Academy trust is required; sixth-form provision is not applicable."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType epr:FreeSchool16To19 .
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:FreeSchool16To19 ;
 
     sh:property [
         sh:path ( epro:hasAccountabilityRelationship epro:accountableToAcademyTrust ) ;
@@ -2415,20 +2211,7 @@ epr:CollegeGroupShape
     a sh:NodeShape ;
     rdfs:label "College group shape"@en ;
     rdfs:comment "Rules for FE colleges and sixth form centres. No accountability relationships, no provision classifications and no faith context apply. Education phase and gender of entry are present in the GIAS record and are retained."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType ?type .
-                VALUES ?type {
-                    epr:FurtherEducation
-                    epr:SixthFormCentre
-                }
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:College ;
 
     sh:property [
         sh:path ( epro:hasAccountabilityRelationship epro:accountableToLocalAuthority ) ;
@@ -2536,16 +2319,7 @@ epr:HigherEducationInstitutionShape
     a sh:NodeShape ;
     rdfs:label "Higher education institution shape"@en ;
     rdfs:comment "Rules for HEIs. No accountability relationships, no provision classifications, no faith context and no SEN apply. Education phase and gender of entry are present in the GIAS record and are retained."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType epr:HigherEducationInstitution .
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:HigherEducationInstitution ;
 
     sh:property [
         sh:path ( epro:hasAccountabilityRelationship epro:accountableToLocalAuthority ) ;
@@ -2670,20 +2444,7 @@ epr:ChildrensCentreGroupShape
     a sh:NodeShape ;
     rdfs:label "Children's centre group shape"@en ;
     rdfs:comment "Rules for children's centres and linked sites. LA accountability is required; most school provision fields are not applicable. Education phase is present in the GIAS record and is retained."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType ?type .
-                VALUES ?type {
-                    epr:ChildrensCentre
-                    epr:ChildrensCentreLinkedSite
-                }
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:ChildrensCentreEstablishment ;
 
     sh:property [
         sh:path ( epro:hasAccountabilityRelationship epro:accountableToLocalAuthority ) ;
@@ -2820,16 +2581,7 @@ epr:OnlineProviderShape
     a sh:NodeShape ;
     rdfs:label "Online provider shape"@en ;
     rdfs:comment "Rules for online providers. LA and academy trust accountability relationships are not applicable. Boarding and nursery provision are not applicable. Education phase, gender of entry, admissions policy, official sixth form, faith context and proprietor's name are all present in the GIAS record. Note: open date represents accreditation date and closed date represents accreditation date ended in the public Details view."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType epr:OnlineProvider .
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:OnlineProvider ;
 
     sh:property [
         sh:path ( epro:hasAccountabilityRelationship epro:accountableToLocalAuthority ) ;
@@ -2980,16 +2732,7 @@ epr:WelshEstablishmentShape
     a sh:NodeShape ;
     rdfs:label "Welsh establishment shape"@en ;
     rdfs:comment "Rules for Welsh establishments. LA accountability and education phase are required. Gender of entry, admissions policy and boarding provision are not present in the GIAS record for Welsh establishments and are not modelled as required here."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType epr:WelshEstablishment .
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:WelshEstablishment ;
 
     sh:property [
         sh:path ( epro:hasAccountabilityRelationship epro:accountableToLocalAuthority ) ;
@@ -3105,16 +2848,7 @@ epr:SpecialPost16Shape
     a sh:NodeShape ;
     rdfs:label "Special post-16 institution shape"@en ;
     rdfs:comment "Rules for special post-16 institutions. SEN provision is required; admissions policy, nursery and sixth-form provision are not applicable."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType epr:SpecialPost16Institution .
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:SpecialPost16Institution ;
 
     sh:property [
         sh:path epro:hasSenAndResourcedProvision ;
@@ -3223,16 +2957,7 @@ epr:BritishSchoolsOverseasShape
     a sh:NodeShape ;
     rdfs:label "British schools overseas shape"@en ;
     rdfs:comment "Rules for British schools overseas. Proprietor is required; no LA or academy trust applies; education phase and gender of entry are required."@en ;
-    sh:target [
-        a sh:SPARQLTarget ;
-        sh:prefixes epr:sparqlPrefixes ;
-        sh:select """
-            SELECT ?this WHERE {
-                ?this a epr:Establishment ;
-                    epro:hasEstablishmentClassification/epro:hasEstablishmentType epr:BritishSchoolsOverseas .
-            }
-        """ ;
-    ] ;
+    sh:targetClass epr:BritishSchoolsOverseas ;
 
     sh:property [
         sh:path ( epro:hasAccountabilityRelationship epro:accountableToProprietor ) ;
