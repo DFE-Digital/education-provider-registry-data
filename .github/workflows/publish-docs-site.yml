@@ -107,6 +107,11 @@ jobs:
           find docs-site/output/ontology/webvowl/js -name "*.js" \
             -exec sed -i 's/var maxLabelWidth = [0-9]\+/var maxLabelWidth = 270/g' {} \;
 
+      - name: Patch WebVOWL degree of collapsing default
+        run: |
+          find docs-site/output/ontology/webvowl/js -name "*.js" \
+            -exec sed -i 's/global_dof = -1,/global_dof = 0,/g' {} \;
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
