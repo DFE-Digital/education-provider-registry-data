@@ -36,7 +36,7 @@
     dcterms:modified "2026-06-19"^^xsd:date ;
     dcterms:publisher "Department for Education"@en ;
     dcterms:license <https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/> ;
-    owl:versionInfo "0.1" ;
+    owl:versionInfo "0.2" ;
     rdfs:seeAlso <https://dfe-digital.github.io/education-provider-registry-data/ontology/> ;
     rdfs:seeAlso <https://dfe-digital.github.io/education-provider-registry-data/taxonomy/> ;
     epr:status "Provisional"@en .
@@ -301,7 +301,7 @@ epr:LaSpecialSchoolShape
 epr:PupilReferralUnitShape
     a sh:NodeShape ;
     rdfs:label "Pupil referral unit shape"@en ;
-    rdfs:comment "Rules for PRUs. Admissions policy, nursery provision and sixth-form provision are not applicable."@en ;
+    rdfs:comment "Rules for PRUs. Admissions policy, nursery provision, sixth-form provision and boarding provision are not applicable."@en ;
     sh:target [
         a sh:SPARQLTarget ;
         sh:prefixes epr:sparqlPrefixes ;
@@ -332,6 +332,13 @@ epr:PupilReferralUnitShape
         sh:maxCount 0 ;
         sh:name "Sixth-form provision (not applicable)"@en ;
         sh:message "Sixth-form provision is not applicable for pupil referral units."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasEducationAdmissionsAndProvision epro:classifiedByBoardingProvision ) ;
+        sh:maxCount 0 ;
+        sh:name "Boarding provision (not applicable)"@en ;
+        sh:message "Boarding provision is not applicable for pupil referral units."@en ;
     ] .
 
 
@@ -1112,7 +1119,7 @@ epr:FreeSchool16To19Shape
 epr:CollegeGroupShape
     a sh:NodeShape ;
     rdfs:label "College group shape"@en ;
-    rdfs:comment "Rules for FE colleges and sixth form centres. No accountability relationships, no education phase, no provision classifications and no faith context apply."@en ;
+    rdfs:comment "Rules for FE colleges and sixth form centres. No accountability relationships, no provision classifications and no faith context apply. Education phase and gender of entry are present in the GIAS record and are retained."@en ;
     sh:target [
         a sh:SPARQLTarget ;
         sh:prefixes epr:sparqlPrefixes ;
@@ -1150,24 +1157,10 @@ epr:CollegeGroupShape
     ] ;
 
     sh:property [
-        sh:path ( epro:hasEstablishmentClassification epro:hasEducationPhase ) ;
-        sh:maxCount 0 ;
-        sh:name "Education phase (not applicable)"@en ;
-        sh:message "Education phase is not applicable for colleges."@en ;
-    ] ;
-
-    sh:property [
         sh:path ( epro:hasEducationAdmissionsAndProvision epro:classifiedByAdmissionsPolicy ) ;
         sh:maxCount 0 ;
         sh:name "Admissions policy (not applicable)"@en ;
         sh:message "Admissions policy is not applicable for colleges."@en ;
-    ] ;
-
-    sh:property [
-        sh:path ( epro:hasEducationAdmissionsAndProvision epro:classifiedByGenderOfEntry ) ;
-        sh:maxCount 0 ;
-        sh:name "Gender of entry (not applicable)"@en ;
-        sh:message "Gender of entry is not applicable for colleges."@en ;
     ] ;
 
     sh:property [
@@ -1206,7 +1199,7 @@ epr:CollegeGroupShape
 epr:HigherEducationInstitutionShape
     a sh:NodeShape ;
     rdfs:label "Higher education institution shape"@en ;
-    rdfs:comment "Rules for HEIs. No accountability relationships, no provision classifications, no faith context and no SEN apply."@en ;
+    rdfs:comment "Rules for HEIs. No accountability relationships, no provision classifications, no faith context and no SEN apply. Education phase and gender of entry are present in the GIAS record and are retained."@en ;
     sh:target [
         a sh:SPARQLTarget ;
         sh:prefixes epr:sparqlPrefixes ;
@@ -1240,24 +1233,10 @@ epr:HigherEducationInstitutionShape
     ] ;
 
     sh:property [
-        sh:path ( epro:hasEstablishmentClassification epro:hasEducationPhase ) ;
-        sh:maxCount 0 ;
-        sh:name "Education phase (not applicable)"@en ;
-        sh:message "Education phase is not applicable for HEIs."@en ;
-    ] ;
-
-    sh:property [
         sh:path ( epro:hasEducationAdmissionsAndProvision epro:classifiedByAdmissionsPolicy ) ;
         sh:maxCount 0 ;
         sh:name "Admissions policy (not applicable)"@en ;
         sh:message "Admissions policy is not applicable for HEIs."@en ;
-    ] ;
-
-    sh:property [
-        sh:path ( epro:hasEducationAdmissionsAndProvision epro:classifiedByGenderOfEntry ) ;
-        sh:maxCount 0 ;
-        sh:name "Gender of entry (not applicable)"@en ;
-        sh:message "Gender of entry is not applicable for HEIs."@en ;
     ] ;
 
     sh:property [
@@ -1305,7 +1284,7 @@ epr:HigherEducationInstitutionShape
 epr:ChildrensCentreGroupShape
     a sh:NodeShape ;
     rdfs:label "Children's centre group shape"@en ;
-    rdfs:comment "Rules for children's centres and linked sites. LA accountability is required; most school provision fields are not applicable."@en ;
+    rdfs:comment "Rules for children's centres and linked sites. LA accountability is required; most school provision fields are not applicable. Education phase is present in the GIAS record and is retained."@en ;
     sh:target [
         a sh:SPARQLTarget ;
         sh:prefixes epr:sparqlPrefixes ;
@@ -1340,13 +1319,6 @@ epr:ChildrensCentreGroupShape
         sh:maxCount 0 ;
         sh:name "Proprietor (not applicable)"@en ;
         sh:message "Children's centres must not have a proprietor accountability relationship."@en ;
-    ] ;
-
-    sh:property [
-        sh:path ( epro:hasEstablishmentClassification epro:hasEducationPhase ) ;
-        sh:maxCount 0 ;
-        sh:name "Education phase (not applicable)"@en ;
-        sh:message "Education phase is not applicable for children's centres."@en ;
     ] ;
 
     sh:property [
@@ -1399,7 +1371,7 @@ epr:ChildrensCentreGroupShape
 epr:OnlineProviderShape
     a sh:NodeShape ;
     rdfs:label "Online provider shape"@en ;
-    rdfs:comment "Rules for online providers. No accountability relationships apply. Most provision and faith fields are not applicable. Note: open date represents accreditation date and closed date represents accreditation date ended in the public Details view."@en ;
+    rdfs:comment "Rules for online providers. LA and academy trust accountability relationships are not applicable. Boarding and nursery provision are not applicable. Education phase, gender of entry, admissions policy, official sixth form, faith context and proprietor's name are all present in the GIAS record. Note: open date represents accreditation date and closed date represents accreditation date ended in the public Details view."@en ;
     sh:target [
         a sh:SPARQLTarget ;
         sh:prefixes epr:sparqlPrefixes ;
@@ -1426,34 +1398,6 @@ epr:OnlineProviderShape
     ] ;
 
     sh:property [
-        sh:path ( epro:hasAccountabilityRelationship epro:accountableToProprietor ) ;
-        sh:maxCount 0 ;
-        sh:name "Proprietor (not applicable)"@en ;
-        sh:message "Online providers do not have proprietor accountability relationships."@en ;
-    ] ;
-
-    sh:property [
-        sh:path ( epro:hasEstablishmentClassification epro:hasEducationPhase ) ;
-        sh:maxCount 0 ;
-        sh:name "Education phase (not applicable)"@en ;
-        sh:message "Education phase is not applicable for online providers."@en ;
-    ] ;
-
-    sh:property [
-        sh:path ( epro:hasEducationAdmissionsAndProvision epro:classifiedByAdmissionsPolicy ) ;
-        sh:maxCount 0 ;
-        sh:name "Admissions policy (not applicable)"@en ;
-        sh:message "Admissions policy is not applicable for online providers."@en ;
-    ] ;
-
-    sh:property [
-        sh:path ( epro:hasEducationAdmissionsAndProvision epro:classifiedByGenderOfEntry ) ;
-        sh:maxCount 0 ;
-        sh:name "Gender of entry (not applicable)"@en ;
-        sh:message "Gender of entry is not applicable for online providers."@en ;
-    ] ;
-
-    sh:property [
         sh:path ( epro:hasEducationAdmissionsAndProvision epro:classifiedByBoardingProvision ) ;
         sh:maxCount 0 ;
         sh:name "Boarding provision (not applicable)"@en ;
@@ -1465,20 +1409,6 @@ epr:OnlineProviderShape
         sh:maxCount 0 ;
         sh:name "Nursery provision (not applicable)"@en ;
         sh:message "Nursery provision is not applicable for online providers."@en ;
-    ] ;
-
-    sh:property [
-        sh:path ( epro:hasEducationAdmissionsAndProvision epro:classifiedBySixthFormProvision ) ;
-        sh:maxCount 0 ;
-        sh:name "Sixth-form provision (not applicable)"@en ;
-        sh:message "Sixth-form provision is not applicable for online providers."@en ;
-    ] ;
-
-    sh:property [
-        sh:path epro:hasFaithContext ;
-        sh:maxCount 0 ;
-        sh:name "Faith context (not applicable)"@en ;
-        sh:message "Faith context is not applicable for online providers."@en ;
     ] ;
 
     sh:property [
@@ -1496,7 +1426,7 @@ epr:OnlineProviderShape
 epr:WelshEstablishmentShape
     a sh:NodeShape ;
     rdfs:label "Welsh establishment shape"@en ;
-    rdfs:comment "Rules for Welsh establishments. LA accountability is required; education phase, gender of entry, boarding and admissions policy are required. Rules mirror mainstream LA maintained schools."@en ;
+    rdfs:comment "Rules for Welsh establishments. LA accountability and education phase are required. Gender of entry, admissions policy and boarding provision are not present in the GIAS record for Welsh establishments and are not modelled as required here."@en ;
     sh:target [
         a sh:SPARQLTarget ;
         sh:prefixes epr:sparqlPrefixes ;
@@ -1534,27 +1464,6 @@ epr:WelshEstablishmentShape
         sh:minCount 1 ;
         sh:name "Education phase"@en ;
         sh:message "Welsh establishments must have an education phase."@en ;
-    ] ;
-
-    sh:property [
-        sh:path ( epro:hasEducationAdmissionsAndProvision epro:classifiedByGenderOfEntry ) ;
-        sh:minCount 1 ;
-        sh:name "Gender of entry"@en ;
-        sh:message "Welsh establishments must have a gender-of-entry classification."@en ;
-    ] ;
-
-    sh:property [
-        sh:path ( epro:hasEducationAdmissionsAndProvision epro:classifiedByAdmissionsPolicy ) ;
-        sh:minCount 1 ;
-        sh:name "Admissions policy"@en ;
-        sh:message "Welsh establishments must have an admissions policy."@en ;
-    ] ;
-
-    sh:property [
-        sh:path ( epro:hasEducationAdmissionsAndProvision epro:classifiedByBoardingProvision ) ;
-        sh:minCount 1 ;
-        sh:name "Boarding provision"@en ;
-        sh:message "Welsh establishments must have a boarding-provision classification."@en ;
     ] .
 
 
