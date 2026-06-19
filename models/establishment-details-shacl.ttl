@@ -138,6 +138,55 @@ epr:EstablishmentUniversalShape
         sh:maxCount 1 ;
         sh:name "Telephone number"@en ;
         sh:message "An establishment may have at most one telephone number."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasEstablishmentLifecycle epro:hasOpenDate ) ;
+        sh:maxCount 1 ;
+        sh:name "Open date"@en ;
+        sh:message "An establishment may have at most one open date."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasEstablishmentLifecycle epro:hasReasonEstablishmentOpened ) ;
+        sh:maxCount 1 ;
+        sh:name "Reason establishment opened"@en ;
+        sh:message "An establishment may have at most one reason for opening."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasEstablishmentLifecycle epro:hasClosedDate ) ;
+        sh:maxCount 1 ;
+        sh:name "Closed date"@en ;
+        sh:message "An establishment may have at most one closed date."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasEstablishmentLifecycle epro:hasReasonEstablishmentClosed ) ;
+        sh:maxCount 1 ;
+        sh:name "Reason establishment closed"@en ;
+        sh:message "An establishment may have at most one reason for closing."@en ;
+    ] ;
+
+    sh:property [
+        sh:path epro:hasCapacityAndPupilMeasures ;
+        sh:maxCount 1 ;
+        sh:name "Capacity and pupil measures"@en ;
+        sh:message "An establishment may have at most one capacity and pupil measures record."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasCapacityAndPupilMeasures epro:hasPupilCount ) ;
+        sh:maxCount 1 ;
+        sh:name "Number of pupils"@en ;
+        sh:message "An establishment may have at most one pupil count."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasCapacityAndPupilMeasures epro:hasFreeSchoolMealMeasure ) ;
+        sh:maxCount 1 ;
+        sh:name "Free school meal measure"@en ;
+        sh:message "An establishment may have at most one free school meal measure record."@en ;
     ] .
 
 
@@ -215,6 +264,20 @@ epr:LaMaintainedSchoolGroupShape
         sh:minCount 1 ;
         sh:name "Boarding provision"@en ;
         sh:message "LA maintained schools must have a boarding-provision classification."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasEducationAdmissionsAndProvision epro:hasStatutoryAgeRange ) ;
+        sh:minCount 1 ;
+        sh:name "Age range"@en ;
+        sh:message "LA maintained schools must have a statutory age range."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasCapacityAndPupilMeasures epro:hasSchoolCapacity ) ;
+        sh:maxCount 1 ;
+        sh:name "School capacity"@en ;
+        sh:message "An LA maintained school may have at most one school capacity."@en ;
     ] .
 
 
@@ -374,6 +437,13 @@ epr:PupilReferralUnitShape
         sh:maxCount 0 ;
         sh:name "Boarding provision (not applicable)"@en ;
         sh:message "Boarding provision is not applicable for pupil referral units."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasCapacityAndPupilMeasures epro:hasSchoolCapacity ) ;
+        sh:maxCount 0 ;
+        sh:name "School capacity (not applicable)"@en ;
+        sh:message "School capacity is not applicable for pupil referral units."@en ;
     ] .
 
 
@@ -484,6 +554,20 @@ epr:NonMaintainedSpecialSchoolGroupShape
         sh:maxCount 0 ;
         sh:name "Sixth-form provision (not applicable)"@en ;
         sh:message "Sixth-form provision is not applicable for non-maintained special schools."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasEducationAdmissionsAndProvision epro:hasStatutoryAgeRange ) ;
+        sh:minCount 1 ;
+        sh:name "Age range"@en ;
+        sh:message "Non-maintained special schools must have a statutory age range."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasCapacityAndPupilMeasures epro:hasSchoolCapacity ) ;
+        sh:maxCount 1 ;
+        sh:name "School capacity"@en ;
+        sh:message "A non-maintained special school may have at most one school capacity."@en ;
     ] .
 
 
@@ -566,6 +650,20 @@ epr:IndependentSchoolGroupShape
         sh:minCount 1 ;
         sh:name "Boarding provision"@en ;
         sh:message "Independent schools must have a boarding-provision classification."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasEducationAdmissionsAndProvision epro:hasStatutoryAgeRange ) ;
+        sh:minCount 1 ;
+        sh:name "Age range"@en ;
+        sh:message "Independent schools must have a statutory age range."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasCapacityAndPupilMeasures epro:hasSchoolCapacity ) ;
+        sh:maxCount 1 ;
+        sh:name "School capacity"@en ;
+        sh:message "An independent school may have at most one school capacity."@en ;
     ] .
 
 
@@ -662,6 +760,20 @@ epr:MainstreamAcademyGroupShape
         sh:minCount 1 ;
         sh:name "Sixth-form provision"@en ;
         sh:message "Mainstream academies must have a sixth-form-provision classification."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasEducationAdmissionsAndProvision epro:hasStatutoryAgeRange ) ;
+        sh:minCount 1 ;
+        sh:name "Age range"@en ;
+        sh:message "Mainstream academies must have a statutory age range."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasCapacityAndPupilMeasures epro:hasSchoolCapacity ) ;
+        sh:maxCount 1 ;
+        sh:name "School capacity"@en ;
+        sh:message "A mainstream academy may have at most one school capacity."@en ;
     ] .
 
 
@@ -991,6 +1103,20 @@ epr:MainstreamFreeSchoolGroupShape
         sh:minCount 1 ;
         sh:name "Sixth-form provision"@en ;
         sh:message "Mainstream free schools must have a sixth-form-provision classification."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasEducationAdmissionsAndProvision epro:hasStatutoryAgeRange ) ;
+        sh:minCount 1 ;
+        sh:name "Age range"@en ;
+        sh:message "Mainstream free schools must have a statutory age range."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasCapacityAndPupilMeasures epro:hasSchoolCapacity ) ;
+        sh:maxCount 1 ;
+        sh:name "School capacity"@en ;
+        sh:message "A mainstream free school may have at most one school capacity."@en ;
     ] .
 
 
@@ -1224,6 +1350,20 @@ epr:CollegeGroupShape
         sh:maxCount 0 ;
         sh:name "SEN and resourced provision (not applicable)"@en ;
         sh:message "SEN and resourced provision is not applicable for colleges."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasEducationAdmissionsAndProvision epro:hasStatutoryAgeRange ) ;
+        sh:minCount 1 ;
+        sh:name "Age range"@en ;
+        sh:message "Colleges must have a statutory age range."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasCapacityAndPupilMeasures epro:hasSchoolCapacity ) ;
+        sh:maxCount 0 ;
+        sh:name "School capacity (not applicable)"@en ;
+        sh:message "School capacity is not applicable for colleges."@en ;
     ] .
 
 
@@ -1307,6 +1447,20 @@ epr:HigherEducationInstitutionShape
         sh:maxCount 0 ;
         sh:name "SEN and resourced provision (not applicable)"@en ;
         sh:message "SEN and resourced provision is not applicable for HEIs."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasEducationAdmissionsAndProvision epro:hasStatutoryAgeRange ) ;
+        sh:minCount 1 ;
+        sh:name "Age range"@en ;
+        sh:message "Higher education institutions must have a statutory age range."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasCapacityAndPupilMeasures epro:hasSchoolCapacity ) ;
+        sh:maxCount 0 ;
+        sh:name "School capacity (not applicable)"@en ;
+        sh:message "School capacity is not applicable for higher education institutions."@en ;
     ] .
 
 
@@ -1396,6 +1550,27 @@ epr:ChildrensCentreGroupShape
         sh:maxCount 0 ;
         sh:name "SEN and resourced provision (not applicable)"@en ;
         sh:message "SEN and resourced provision is not applicable for children's centres."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasEducationAdmissionsAndProvision epro:hasStatutoryAgeRange ) ;
+        sh:maxCount 0 ;
+        sh:name "Age range (not applicable)"@en ;
+        sh:message "Statutory age range is not applicable for children's centres."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasCapacityAndPupilMeasures epro:hasSchoolCapacity ) ;
+        sh:maxCount 0 ;
+        sh:name "School capacity (not applicable)"@en ;
+        sh:message "School capacity is not applicable for children's centres."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasCapacityAndPupilMeasures epro:hasPupilCount ) ;
+        sh:maxCount 0 ;
+        sh:name "Number of pupils (not applicable)"@en ;
+        sh:message "Number of pupils is not applicable for children's centres."@en ;
     ] .
 
 
@@ -1451,6 +1626,20 @@ epr:OnlineProviderShape
         sh:maxCount 0 ;
         sh:name "SEN and resourced provision (not applicable)"@en ;
         sh:message "SEN and resourced provision is not applicable for online providers."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasEducationAdmissionsAndProvision epro:hasStatutoryAgeRange ) ;
+        sh:minCount 1 ;
+        sh:name "Age range"@en ;
+        sh:message "Online providers must have a statutory age range."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasCapacityAndPupilMeasures epro:hasSchoolCapacity ) ;
+        sh:maxCount 0 ;
+        sh:name "School capacity (not applicable)"@en ;
+        sh:message "School capacity is not applicable for online providers."@en ;
     ] .
 
 
@@ -1499,6 +1688,20 @@ epr:WelshEstablishmentShape
         sh:minCount 1 ;
         sh:name "Education phase"@en ;
         sh:message "Welsh establishments must have an education phase."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasEducationAdmissionsAndProvision epro:hasStatutoryAgeRange ) ;
+        sh:maxCount 0 ;
+        sh:name "Age range (not applicable)"@en ;
+        sh:message "Statutory age range is not applicable for Welsh establishments."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasCapacityAndPupilMeasures epro:hasSchoolCapacity ) ;
+        sh:maxCount 0 ;
+        sh:name "School capacity (not applicable)"@en ;
+        sh:message "School capacity is not applicable for Welsh establishments."@en ;
     ] .
 
 
@@ -1547,6 +1750,20 @@ epr:SpecialPost16Shape
         sh:maxCount 0 ;
         sh:name "Sixth-form provision (not applicable)"@en ;
         sh:message "Sixth-form provision is not applicable for special post-16 institutions."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasEducationAdmissionsAndProvision epro:hasStatutoryAgeRange ) ;
+        sh:minCount 1 ;
+        sh:name "Age range"@en ;
+        sh:message "Special post-16 institutions must have a statutory age range."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasCapacityAndPupilMeasures epro:hasSchoolCapacity ) ;
+        sh:maxCount 1 ;
+        sh:name "School capacity"@en ;
+        sh:message "A special post-16 institution may have at most one school capacity."@en ;
     ] .
 
 
@@ -1602,6 +1819,20 @@ epr:BritishSchoolsOverseasShape
         sh:minCount 1 ;
         sh:name "Gender of entry"@en ;
         sh:message "British schools overseas must have a gender-of-entry classification."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasEducationAdmissionsAndProvision epro:hasStatutoryAgeRange ) ;
+        sh:minCount 1 ;
+        sh:name "Age range"@en ;
+        sh:message "British schools overseas must have a statutory age range."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ( epro:hasCapacityAndPupilMeasures epro:hasSchoolCapacity ) ;
+        sh:maxCount 0 ;
+        sh:name "School capacity (not applicable)"@en ;
+        sh:message "School capacity is not applicable for British schools overseas."@en ;
     ] .
 
 
