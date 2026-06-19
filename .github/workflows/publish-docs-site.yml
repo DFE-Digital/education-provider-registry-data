@@ -88,8 +88,11 @@ jobs:
 
       - name: Generate ontology documentation
         run: |
+          cat models/establishment-details-conceptual-model.ttl \
+              models/establishment-details-taxonomy-skos.ttl \
+              > /tmp/merged-ontology.ttl
           java -jar widoco.jar \
-            -ontFile models/establishment-details-conceptual-model.ttl \
+            -ontFile /tmp/merged-ontology.ttl \
             -outFolder docs-site/output/ontology \
             -lang en \
             -includeAnnotationProperties \
