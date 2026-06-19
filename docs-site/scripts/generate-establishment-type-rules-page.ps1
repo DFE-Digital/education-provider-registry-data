@@ -192,6 +192,7 @@ foreach ($typeLocalName in $typeMeta.Keys) {
 
     foreach ($key in $fieldOrder) {
         $constraint = Get-EffectiveConstraintLabel -Rules $fieldGroups[$key].ToArray()
+        if ($constraint -eq 'Not applicable') { continue }
         $lines.Add("| $(Escape-Md $key) | $constraint |")
     }
 
