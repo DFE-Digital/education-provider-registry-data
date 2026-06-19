@@ -92,6 +92,11 @@ jobs:
             cp docs-site/output/ontology/index-en.html docs-site/output/ontology/index.html
           fi
 
+      - name: Patch WebVOWL max label width default
+        run: |
+          find docs-site/output/ontology/webvowl/js -name "*.js" \
+            -exec sed -i 's/var maxLabelWidth = [0-9]\+/var maxLabelWidth = 270/g' {} \;
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
