@@ -35,10 +35,10 @@ epro:establishmentDetailsConceptualModel
     dcterms:description "OWL 2 conceptual model for the Establishment Details slice of the Education Provider Registry. Declares classes and object properties for the entities and relationships in the Establishment Details ER diagrams."@en ;
     rdfs:comment "This ontology defines the classes and object properties for the Establishment Details slice of the Education Provider Registry (EPR) data model. It covers establishment identity and identifiers, lifecycle, classification, accountability, education provision, capacity measures, faith context, SEN and resourced provision, and external references. Class IRIs are shared with the SKOS vocabulary so that vocabulary concepts and ontology classes resolve to the same URI. Object properties are defined in the /ontology/ namespace."@en ;
     dcterms:created "2026-06-18"^^xsd:date ;
-    dcterms:modified "2026-06-19"^^xsd:date ;
+    dcterms:modified "2026-06-21"^^xsd:date ;
     dcterms:publisher "Department for Education"@en ;
     dcterms:license <https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/> ;
-    owl:versionInfo "0.5" ;
+    owl:versionInfo "0.6" ;
     vann:preferredNamespacePrefix "epro" ;
     vann:preferredNamespaceUri "https://dfe-digital.github.io/education-provider-registry-data/ontology/"^^xsd:anyURI ;
     rdfs:seeAlso <https://dfe-digital.github.io/education-provider-registry-data/vocabulary/> ;
@@ -48,6 +48,7 @@ epro:establishmentDetailsConceptualModel
     rdfs:comment "v0.2: per-type field-applicability rules added as SHACL shapes in establishment-details-shacl.ttl. Accountability relationship rules (which types require LA, academy trust or proprietor) are now expressed in those shapes rather than as open questions."@en ;
     rdfs:comment "v0.4: field-coverage additions — classes and properties for Ofsted inspection record, PRU operational record, accreditation record (online providers), provider type, manager, academy sponsor SHACL modelling. Ontology already had faith-context classes (ReligiousCharacter, ReligiousEthos, Diocese) and SpecialClassProvision. New additions: OfstedInspectionRecord, PupilReferralUnitOperationalRecord, AccreditationRecord, ProviderType, Manager."@en ;
     rdfs:comment "v0.5: establishment type class hierarchy added. Each GIAS establishment type is now an OWL class subtype of epr:Establishment, via intermediate group classes (LaMaintainedSchool, Academy, FreeSchoolEstablishment etc.). Intermediate classes defined here; leaf type classes enriched with owl:Class and rdfs:subClassOf in the taxonomy TTL using OWL 2 punning."@en ;
+    rdfs:comment "v0.6: ontology class local names aligned with vocabulary source of truth. Renames: ContactAndLocation→EstablishmentLocationAndContact, PostalAddress→MainAddress, WebsiteUrl→Website, Manager→CentreManager, Section41ApprovalStatus→Section41Approval. Vocabulary entries added for all 14 intermediate OWL classes and for grouping container classes (ResourcedProvisionMeasure, SenUnitMeasure, SpecialPupilMeasure, OfstedInspectionRecord, AccreditationRecord, PupilReferralUnitOperationalRecord)."@en ;
     epr:status "Provisional"@en .
 
 
@@ -744,17 +745,17 @@ epro:referencesExternalService
 # Classes — contact and location
 #################################################################
 
-epr:ContactAndLocation
+epr:EstablishmentLocationAndContact
     a owl:Class ;
     rdfs:label "Contact and location"@en ;
     rdfs:comment "The group of fields describing how to contact and locate the establishment physically."@en .
 
-epr:PostalAddress
+epr:MainAddress
     a owl:Class ;
     rdfs:label "Postal address"@en ;
     rdfs:comment "The physical or postal address at which the establishment is located."@en .
 
-epr:WebsiteUrl
+epr:Website
     a owl:Class ;
     rdfs:label "Website"@en ;
     rdfs:comment "The establishment's public website URL."@en .
@@ -779,7 +780,7 @@ epr:FurtherEducationType
     rdfs:label "Further education type"@en ;
     rdfs:comment "A sub-classification of further education and pupil referral unit establishments. Observed for FE colleges (type 18), higher education institutions (type 29) and pupil referral units (type 14)."@en .
 
-epr:Section41ApprovalStatus
+epr:Section41Approval
     a owl:Class ;
     rdfs:label "Section 41 approval status"@en ;
     rdfs:comment "Whether the establishment is approved under Section 41 of the Children and Families Act 2014 to accept placements of pupils with education, health and care plans."@en .
@@ -819,38 +820,38 @@ epr:SpecialPupilMeasure
 # Object properties — contact and location
 #################################################################
 
-epro:hasContactAndLocation
+epro:hasEstablishmentLocationAndContact
     a owl:ObjectProperty ;
     rdfs:label "has contact and location"@en ;
     rdfs:domain epr:Establishment ;
-    rdfs:range epr:ContactAndLocation ;
+    rdfs:range epr:EstablishmentLocationAndContact ;
     rdfs:comment "Cardinality: 0..1."@en .
 
-epro:hasPostalAddress
+epro:hasMainAddress
     a owl:ObjectProperty ;
     rdfs:label "has postal address"@en ;
-    rdfs:domain epr:ContactAndLocation ;
-    rdfs:range epr:PostalAddress ;
+    rdfs:domain epr:EstablishmentLocationAndContact ;
+    rdfs:range epr:MainAddress ;
     rdfs:comment "Cardinality: 0..1."@en .
 
-epro:hasWebsiteUrl
+epro:hasWebsite
     a owl:ObjectProperty ;
     rdfs:label "has website URL"@en ;
-    rdfs:domain epr:ContactAndLocation ;
-    rdfs:range epr:WebsiteUrl ;
+    rdfs:domain epr:EstablishmentLocationAndContact ;
+    rdfs:range epr:Website ;
     rdfs:comment "Cardinality: 0..1."@en .
 
 epro:hasTelephoneNumber
     a owl:ObjectProperty ;
     rdfs:label "has telephone number"@en ;
-    rdfs:domain epr:ContactAndLocation ;
+    rdfs:domain epr:EstablishmentLocationAndContact ;
     rdfs:range epr:TelephoneNumber ;
     rdfs:comment "Cardinality: 0..1."@en .
 
 epro:hasHeadteacherOrPrincipal
     a owl:ObjectProperty ;
     rdfs:label "has headteacher or principal"@en ;
-    rdfs:domain epr:ContactAndLocation ;
+    rdfs:domain epr:EstablishmentLocationAndContact ;
     rdfs:range epr:HeadteacherOrPrincipal ;
     rdfs:comment "Cardinality: 0..1."@en .
 
@@ -866,11 +867,11 @@ epro:classifiedByFurtherEducationType
     rdfs:range epr:FurtherEducationType ;
     rdfs:comment "Cardinality: 0..1. Present for further education (type 18), higher education institutions (type 29) and pupil referral units (type 14)."@en .
 
-epro:classifiedBySection41ApprovalStatus
+epro:classifiedBySection41Approval
     a owl:ObjectProperty ;
     rdfs:label "classified by Section 41 approval status"@en ;
     rdfs:domain epr:EstablishmentClassification ;
-    rdfs:range epr:Section41ApprovalStatus ;
+    rdfs:range epr:Section41Approval ;
     rdfs:comment "Cardinality: 0..1. Present for non-maintained special schools, independent special schools, and many academy and free school types."@en .
 
 
@@ -951,10 +952,10 @@ epr:ProviderType
     rdfs:label "Provider type"@en ;
     rdfs:comment "The classification of provider type for a children's centre establishment."@en .
 
-epr:Manager
+epr:CentreManager
     a owl:Class ;
-    rdfs:label "Manager"@en ;
-    rdfs:comment "The named manager of a children's centre. Distinct from HeadteacherOrPrincipal — children's centres show the Manager role rather than Headteacher/Principal in the GIAS Details view."@en .
+    rdfs:label "Centre manager"@en ;
+    rdfs:comment "The named manager of a children's centre. Distinct from HeadteacherOrPrincipal — children's centres show the Centre manager role rather than Headteacher/Principal in the GIAS Details view."@en .
 
 
 #################################################################
@@ -1109,12 +1110,12 @@ epro:classifiedByProviderType
     rdfs:range epr:ProviderType ;
     rdfs:comment "Cardinality: 0..1. Present for children's centres (types 47 and 48)."@en .
 
-epro:hasManager
+epro:hasCentreManager
     a owl:ObjectProperty ;
-    rdfs:label "has manager"@en ;
-    rdfs:domain epr:ContactAndLocation ;
-    rdfs:range epr:Manager ;
-    rdfs:comment "Cardinality: 0..1. Present for children's centres (types 47 and 48). Distinct from hasHeadteacherOrPrincipal — children's centres show a manager role."@en .
+    rdfs:label "has centre manager"@en ;
+    rdfs:domain epr:EstablishmentLocationAndContact ;
+    rdfs:range epr:CentreManager ;
+    rdfs:comment "Cardinality: 0..1. Present for children's centres (types 47 and 48). Distinct from hasHeadteacherOrPrincipal — children's centres show a centre manager role."@en .
 
 
 #################################################################

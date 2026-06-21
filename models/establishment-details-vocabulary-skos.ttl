@@ -2273,6 +2273,186 @@ epr:ExternalServiceReference
     skos:broader epr:ExternalReference ;
     epr:status "Provisional"@en .
 
+#################################################################
+# Establishment type hierarchy — intermediate grouping classes
+#################################################################
+
+epr:LaMaintainedSchool
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "LA maintained school"@en ;
+    skos:definition "Any school maintained by a local authority: community schools, voluntary schools, foundation schools, community and foundation special schools, pupil referral units, and local authority nursery schools."@en ;
+    skos:broader epr:EstablishmentType ;
+    skos:related epr:EstablishmentTypeGroupLaMaintainedSchools ;
+    epr:status "Provisional"@en .
+
+epr:LaMainstreamSchool
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "LA mainstream school"@en ;
+    skos:definition "A local-authority-maintained mainstream school: community school, voluntary aided school, voluntary controlled school, or foundation school."@en ;
+    skos:broader epr:LaMaintainedSchool ;
+    epr:status "Provisional"@en .
+
+epr:LaMaintainedSpecialSchool
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "LA maintained special school"@en ;
+    skos:definition "A local-authority-maintained special school: community special school or foundation special school."@en ;
+    skos:broader epr:LaMaintainedSchool ;
+    epr:status "Provisional"@en .
+
+epr:NonMaintainedAndIndependentSpecialSchool
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Non-maintained and independent special school"@en ;
+    skos:definition "Non-maintained special schools and other independent special schools approved under section 342 of the Education Act 1996."@en ;
+    skos:broader epr:EstablishmentType ;
+    skos:related epr:EstablishmentTypeGroupNonMaintainedSpecialSchools ;
+    epr:status "Provisional"@en .
+
+epr:IndependentSchool
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Independent school"@en ;
+    skos:definition "Independent schools registered with GIAS: city technology colleges and other independent schools."@en ;
+    skos:broader epr:EstablishmentType ;
+    skos:related epr:EstablishmentTypeGroupIndependentSchools ;
+    epr:status "Provisional"@en .
+
+epr:College
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "College"@en ;
+    skos:definition "Further education establishments registered with GIAS: further education colleges and sixth form centres."@en ;
+    skos:broader epr:EstablishmentType ;
+    skos:related epr:EstablishmentTypeGroupColleges ;
+    epr:status "Provisional"@en .
+
+epr:Academy
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Academy"@en ;
+    skos:definition "All academy types: mainstream, special, alternative provision, 16-19, and secure 16-19."@en ;
+    skos:broader epr:EstablishmentType ;
+    skos:related epr:EstablishmentTypeGroupAcademies ;
+    epr:status "Provisional"@en .
+
+epr:MainstreamAcademy
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Mainstream academy"@en ;
+    skos:definition "Mainstream academies: academy sponsor led and academy converter."@en ;
+    skos:broader epr:Academy ;
+    epr:status "Provisional"@en .
+
+epr:AcademySpecial
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Academy special school"@en ;
+    skos:definition "Academy special schools: academy special sponsor led and academy special converter."@en ;
+    skos:broader epr:Academy ;
+    epr:status "Provisional"@en .
+
+epr:AcademyAlternativeProvision
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Academy alternative provision"@en ;
+    skos:definition "Academy alternative provision establishments: academy alternative provision converter and academy alternative provision sponsor led."@en ;
+    skos:broader epr:Academy ;
+    epr:status "Provisional"@en .
+
+epr:Academy1619
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Academy 16 to 19"@en ;
+    skos:definition "Academy 16 to 19 establishments: academy 16-19 converter and academy 16 to 19 sponsor led."@en ;
+    skos:broader epr:Academy ;
+    epr:status "Provisional"@en .
+
+epr:FreeSchoolEstablishment
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Free school establishment"@en ;
+    skos:definition "All free school types: free school, free school special, free school alternative provision, free school 16 to 19, university technical college, and studio school."@en ;
+    skos:broader epr:EstablishmentType ;
+    skos:related epr:EstablishmentTypeGroupFreeSchools ;
+    epr:status "Provisional"@en .
+
+epr:MainstreamFreeSchool
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Mainstream free school"@en ;
+    skos:definition "Mainstream free schools: free school, university technical college, and studio school."@en ;
+    skos:broader epr:FreeSchoolEstablishment ;
+    epr:status "Provisional"@en .
+
+epr:ChildrensCentreEstablishment
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Children's centre establishment"@en ;
+    skos:definition "Children's centres and children's centre linked sites."@en ;
+    skos:broader epr:EstablishmentType ;
+    skos:related epr:EstablishmentTypeGroupChildrensCentres ;
+    epr:status "Provisional"@en .
+
+#################################################################
+# Ontology record grouping classes
+#################################################################
+
+epr:ResourcedProvisionMeasure
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Resourced provision measure"@en ;
+    skos:definition "The numeric measures associated with resourced provision: capacity and pupil count on roll."@en ;
+    skos:broader epr:SenAndResourcedProvision ;
+    skos:narrower epr:ResourcedProvisionCapacity, epr:ResourcedProvisionPupilCount ;
+    epr:status "Provisional"@en .
+
+epr:SenUnitMeasure
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "SEN unit measure"@en ;
+    skos:definition "The numeric measures associated with the SEN unit: capacity and pupil count on roll."@en ;
+    skos:broader epr:SenAndResourcedProvision ;
+    skos:narrower epr:SenUnitCapacity, epr:SenUnitPupilCount ;
+    epr:status "Provisional"@en .
+
+epr:SpecialPupilMeasure
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Special pupil measure"@en ;
+    skos:definition "Numeric measures for pupils with special educational needs: the count on a SEN statement or EHC plan, and the count without."@en ;
+    skos:broader epr:CapacityAndPupilMeasures ;
+    skos:narrower epr:SpecialPupilsOnStatementOrEhcPlan, epr:SpecialPupilsNotOnStatementOrEhcPlan ;
+    epr:status "Provisional"@en .
+
+epr:OfstedInspectionRecord
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Ofsted inspection record"@en ;
+    skos:definition "The Ofsted inspection rating and associated report link for an establishment."@en ;
+    skos:scopeNote "Distinct from InspectionRecord, which covers inspectorates other than Ofsted, such as ISI and those inspecting British schools overseas."@en ;
+    skos:broader epr:ExternalReference ;
+    skos:related epr:InspectionReportReference ;
+    epr:status "Provisional"@en .
+
+epr:AccreditationRecord
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Accreditation record"@en ;
+    skos:definition "The group of accreditation fields for online providers, including accreditation dates, quality assurance body, companies house number and accreditation status."@en ;
+    skos:broader epr:AccreditationAndQualityAssurance ;
+    epr:status "Provisional"@en .
+
+epr:PupilReferralUnitOperationalRecord
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Pupil referral unit operational record"@en ;
+    skos:definition "The group of operational fields specific to pupil referral units, covering teenage mothers provision, childcare, SEN facilities, EBD pupils and number of places."@en ;
+    skos:broader epr:AlternativeProvisionCharacteristics ;
+    epr:status "Provisional"@en .
+
 
 
 
