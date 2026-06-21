@@ -38,7 +38,7 @@ epro:establishmentDetailsConceptualModel
     dcterms:modified "2026-06-21"^^xsd:date ;
     dcterms:publisher "Department for Education"@en ;
     dcterms:license <https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/> ;
-    owl:versionInfo "0.7" ;
+    owl:versionInfo "0.8" ;
     vann:preferredNamespacePrefix "epro" ;
     vann:preferredNamespaceUri "https://dfe-digital.github.io/education-provider-registry-data/ontology/"^^xsd:anyURI ;
     rdfs:seeAlso <https://dfe-digital.github.io/education-provider-registry-data/vocabulary/> ;
@@ -49,6 +49,7 @@ epro:establishmentDetailsConceptualModel
     rdfs:comment "v0.4: field-coverage additions — classes and properties for Ofsted inspection record, PRU operational record, accreditation record (online providers), provider type, manager, academy sponsor SHACL modelling. Ontology already had faith-context classes (ReligiousCharacter, ReligiousEthos, Diocese) and SpecialClassProvision. New additions: OfstedInspectionRecord, PupilReferralUnitOperationalRecord, AccreditationRecord, ProviderType, Manager."@en ;
     rdfs:comment "v0.5: establishment type class hierarchy added. Each GIAS establishment type is now an OWL class subtype of epr:Establishment, via intermediate group classes (LaMaintainedSchool, Academy, FreeSchoolEstablishment etc.). Intermediate classes defined here; leaf type classes enriched with owl:Class and rdfs:subClassOf in the taxonomy TTL using OWL 2 punning."@en ;
     rdfs:comment "v0.7: leaf type OWL class declarations moved from the taxonomy TTL into this ontology TTL. The taxonomy TTL is now pure SKOS (skos:Concept, skos:broader etc.). OWL punning is preserved — the same epr: URIs remain valid SKOS concepts in the taxonomy. WIDOCO now receives only this ontology TTL, eliminating the skos:Concept hub node from the WebVOWL graph."@en ;
+    rdfs:comment "v0.8: owl:NamedIndividual declarations added for 8 closed enumerations (31 individuals total): EstablishmentStatus, EducationPhase, AdmissionsPolicy, GenderOfEntry, BoardingProvision, NurseryProvision, SixthFormProvision, SpecialClassProvision. Open-ended value sets (ReligiousCharacter, ReligiousEthos, TypeOfSenProvision) remain as skos:Concept in the vocabulary TTL only."@en ;
     rdfs:comment "v0.6: ontology class local names aligned with vocabulary source of truth. Renames: ContactAndLocation→EstablishmentLocationAndContact, PostalAddress→MainAddress, WebsiteUrl→Website, Manager→CentreManager, Section41ApprovalStatus→Section41Approval. Vocabulary entries added for all 14 intermediate OWL classes and for grouping container classes (ResourcedProvisionMeasure, SenUnitMeasure, SpecialPupilMeasure, OfstedInspectionRecord, AccreditationRecord, PupilReferralUnitOperationalRecord)."@en ;
     epr:status "Provisional"@en .
 
@@ -1397,3 +1398,151 @@ epr:ChildrensCentreLinkedSite
 epr:OnlineProvider
     a owl:Class ;
     rdfs:subClassOf epr:Establishment .
+
+
+#################################################################
+# Named individuals — closed enumeration values (v0.8)
+#
+# Classification values for closed, stable enumerations that
+# carry semantic weight. Declared as owl:NamedIndividual so they
+# appear in WebVOWL and support OWL reasoning.
+#
+# Open-ended value sets (ReligiousCharacter, ReligiousEthos,
+# TypeOfSenProvision, establishment type codes) remain as
+# skos:Concept in the vocabulary TTL only.
+#
+# The same epr: URIs also carry skos:Concept in the vocabulary
+# TTL — valid OWL 2 punning.
+#################################################################
+
+# Establishment status (4 values)
+epr:OpenStatus
+    a owl:NamedIndividual, epr:EstablishmentStatus ;
+    rdfs:label "Open"@en .
+
+epr:ClosedStatus
+    a owl:NamedIndividual, epr:EstablishmentStatus ;
+    rdfs:label "Closed"@en .
+
+epr:OpenProposedToCloseStatus
+    a owl:NamedIndividual, epr:EstablishmentStatus ;
+    rdfs:label "Open, but proposed to close"@en .
+
+epr:ProposedToOpenStatus
+    a owl:NamedIndividual, epr:EstablishmentStatus ;
+    rdfs:label "Proposed to open"@en .
+
+# Education phase (8 values)
+epr:NurseryPhase
+    a owl:NamedIndividual, epr:EducationPhase ;
+    rdfs:label "Nursery"@en .
+
+epr:PrimaryPhase
+    a owl:NamedIndividual, epr:EducationPhase ;
+    rdfs:label "Primary"@en .
+
+epr:MiddlePhase
+    a owl:NamedIndividual, epr:EducationPhase ;
+    rdfs:label "Middle deemed primary"@en .
+
+epr:MiddleDeemedSecondaryPhase
+    a owl:NamedIndividual, epr:EducationPhase ;
+    rdfs:label "Middle deemed secondary"@en .
+
+epr:SecondaryPhase
+    a owl:NamedIndividual, epr:EducationPhase ;
+    rdfs:label "Secondary"@en .
+
+epr:AllThroughPhase
+    a owl:NamedIndividual, epr:EducationPhase ;
+    rdfs:label "All-through"@en .
+
+epr:SixteenToNineteenPhase
+    a owl:NamedIndividual, epr:EducationPhase ;
+    rdfs:label "16 to 19"@en .
+
+epr:NotApplicableEducationPhase
+    a owl:NamedIndividual, epr:EducationPhase ;
+    rdfs:label "Not applicable (education phase)"@en .
+
+# Admissions policy (3 values)
+epr:SelectiveAdmissions
+    a owl:NamedIndividual, epr:AdmissionsPolicy ;
+    rdfs:label "Selective"@en .
+
+epr:NonSelectiveAdmissions
+    a owl:NamedIndividual, epr:AdmissionsPolicy ;
+    rdfs:label "Non-selective"@en .
+
+epr:NotApplicableAdmissionsPolicy
+    a owl:NamedIndividual, epr:AdmissionsPolicy ;
+    rdfs:label "Not applicable (admissions policy)"@en .
+
+# Gender of entry (4 values)
+epr:BoysOnlyGenderEntry
+    a owl:NamedIndividual, epr:GenderOfEntry ;
+    rdfs:label "Boys"@en .
+
+epr:GirlsOnlyGenderEntry
+    a owl:NamedIndividual, epr:GenderOfEntry ;
+    rdfs:label "Girls"@en .
+
+epr:MixedGenderEntry
+    a owl:NamedIndividual, epr:GenderOfEntry ;
+    rdfs:label "Mixed"@en .
+
+epr:NotApplicableGenderOfEntry
+    a owl:NamedIndividual, epr:GenderOfEntry ;
+    rdfs:label "Not applicable (gender of entry)"@en .
+
+# Boarding provision (3 values)
+epr:BoardingSchool
+    a owl:NamedIndividual, epr:BoardingProvision ;
+    rdfs:label "Boarding school"@en .
+
+epr:HasBoarders
+    a owl:NamedIndividual, epr:BoardingProvision ;
+    rdfs:label "Has boarders"@en .
+
+epr:NoBoarders
+    a owl:NamedIndividual, epr:BoardingProvision ;
+    rdfs:label "No boarders"@en .
+
+# Nursery provision (3 values)
+epr:HasNurseryClasses
+    a owl:NamedIndividual, epr:NurseryProvision ;
+    rdfs:label "Has nursery classes"@en .
+
+epr:NoNurseryClasses
+    a owl:NamedIndividual, epr:NurseryProvision ;
+    rdfs:label "No nursery classes"@en .
+
+epr:NotApplicableNurseryProvision
+    a owl:NamedIndividual, epr:NurseryProvision ;
+    rdfs:label "Not applicable (nursery provision)"@en .
+
+# Sixth-form provision (3 values)
+epr:HasSixthForm
+    a owl:NamedIndividual, epr:SixthFormProvision ;
+    rdfs:label "Has a sixth form"@en .
+
+epr:NoSixthForm
+    a owl:NamedIndividual, epr:SixthFormProvision ;
+    rdfs:label "Does not have a sixth form"@en .
+
+epr:NotApplicableSixthFormProvision
+    a owl:NamedIndividual, epr:SixthFormProvision ;
+    rdfs:label "Not applicable (sixth-form provision)"@en .
+
+# Special-class provision (3 values)
+epr:HasSpecialClasses
+    a owl:NamedIndividual, epr:SpecialClassProvision ;
+    rdfs:label "Has special classes"@en .
+
+epr:NoSpecialClasses
+    a owl:NamedIndividual, epr:SpecialClassProvision ;
+    rdfs:label "No special classes"@en .
+
+epr:NotApplicableSpecialClassProvision
+    a owl:NamedIndividual, epr:SpecialClassProvision ;
+    rdfs:label "Not applicable (special-class provision)"@en .
