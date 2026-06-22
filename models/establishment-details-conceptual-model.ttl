@@ -1408,179 +1408,261 @@ epr:ChildrensCentreEstablishment
 # LA maintained mainstream schools
 epr:CommunitySchool
     a owl:Class ;
-    rdfs:subClassOf epr:LaMainstreamSchool .
+    rdfs:subClassOf epr:LaMainstreamSchool ;
+    rdfs:label "Community school"@en ;
+    rdfs:comment "A maintained school established under Part II of the School Standards and Framework Act 1998 in which the local authority employs all staff, owns the land and buildings, and acts as the admissions authority."@en .
 
 epr:VoluntaryAidedSchool
     a owl:Class ;
-    rdfs:subClassOf epr:LaMainstreamSchool .
+    rdfs:subClassOf epr:LaMainstreamSchool ;
+    rdfs:label "Voluntary aided school"@en ;
+    rdfs:comment "A maintained school established under Part II of the School Standards and Framework Act 1998 in which the governing body is the employer and admissions authority, with land and buildings typically owned by a charitable foundation such as a diocese or religious body, which contributes towards capital costs."@en .
 
 epr:VoluntaryControlledSchool
     a owl:Class ;
-    rdfs:subClassOf epr:LaMainstreamSchool .
+    rdfs:subClassOf epr:LaMainstreamSchool ;
+    rdfs:label "Voluntary controlled school"@en ;
+    rdfs:comment "A maintained school established under Part II of the School Standards and Framework Act 1998 in which the local authority is the employer and admissions authority; land and buildings are often owned by a voluntary or foundation body, but the school receives full local-authority funding without a capital contribution from the foundation."@en .
 
 epr:FoundationSchool
     a owl:Class ;
-    rdfs:subClassOf epr:LaMainstreamSchool .
+    rdfs:subClassOf epr:LaMainstreamSchool ;
+    rdfs:label "Foundation school"@en ;
+    rdfs:comment "A maintained school established under Part II of the School Standards and Framework Act 1998 in which the governing body is the employer and admissions authority, with land and buildings that may be owned by the governing body or a charitable foundation rather than the local authority."@en .
 
 # LA maintained special schools
 epr:CommunitySpecialSchool
     a owl:Class ;
-    rdfs:subClassOf epr:LaMaintainedSpecialSchool .
+    rdfs:subClassOf epr:LaMaintainedSpecialSchool ;
+    rdfs:label "Community special school"@en ;
+    rdfs:comment "A local-authority-maintained special school established under Schedule 27 of the School Standards and Framework Act 1998 and the Education Act 1996, in which the local authority employs staff and is the admissions authority, catering wholly or mainly for children with special educational needs."@en .
 
 epr:FoundationSpecialSchool
     a owl:Class ;
-    rdfs:subClassOf epr:LaMaintainedSpecialSchool .
+    rdfs:subClassOf epr:LaMaintainedSpecialSchool ;
+    rdfs:label "Foundation special school"@en ;
+    rdfs:comment "A maintained special school established under Schedule 27 of the School Standards and Framework Act 1998 and the Education Act 1996, sharing the governance characteristics of a foundation school — including governing body as employer and admissions authority — while catering wholly or mainly for children with special educational needs."@en .
 
 # LA maintained — other
 epr:PupilReferralUnit
     a owl:Class ;
-    rdfs:subClassOf epr:LaMaintainedSchool .
+    rdfs:subClassOf epr:LaMaintainedSchool ;
+    rdfs:label "Pupil referral unit"@en ;
+    rdfs:comment "A local-authority establishment maintained under s.19 of the Education Act 1996 to provide education for children of compulsory school age who are excluded, persistently absent, ill or otherwise unable to attend a mainstream school."@en .
 
 epr:LocalAuthorityNurserySchool
     a owl:Class ;
-    rdfs:subClassOf epr:LaMaintainedSchool .
+    rdfs:subClassOf epr:LaMaintainedSchool ;
+    rdfs:label "Local authority nursery school"@en ;
+    rdfs:comment "A nursery school maintained and funded by a local authority under the School Standards and Framework Act 1998, providing early years education for children below compulsory school age."@en .
 
 # Non-maintained and independent special schools
 epr:NonMaintainedSpecialSchool
     a owl:Class ;
-    rdfs:subClassOf epr:NonMaintainedAndIndependentSpecialSchool .
+    rdfs:subClassOf epr:NonMaintainedAndIndependentSpecialSchool ;
+    rdfs:label "Non-maintained special school"@en ;
+    rdfs:comment "A special school approved by the Secretary of State under s.342 of the Education Act 1996 that is not maintained by a local authority, operates on a not-for-profit basis, and caters wholly or mainly for children with special educational needs."@en .
 
 epr:OtherIndependentSpecialSchool
     a owl:Class ;
-    rdfs:subClassOf epr:NonMaintainedAndIndependentSpecialSchool .
+    rdfs:subClassOf epr:NonMaintainedAndIndependentSpecialSchool ;
+    rdfs:label "Other independent special school"@en ;
+    rdfs:comment "An independent school that specialises in provision for pupils with special educational needs but is not approved by the Secretary of State under s.342 of the Education Act 1996 as a non-maintained special school."@en .
 
 # Independent schools
 epr:CityTechnologyCollege
     a owl:Class ;
-    rdfs:subClassOf epr:IndependentSchool .
+    rdfs:subClassOf epr:IndependentSchool ;
+    rdfs:label "City technology college"@en ;
+    rdfs:comment "A state-funded independent school in an urban area, established under s.105 of the Education Reform Act 1988 with a curriculum emphasis on technology, science and practical skills, jointly funded by central government and private sponsors."@en .
 
 epr:OtherIndependentSchool
     a owl:Class ;
-    rdfs:subClassOf epr:IndependentSchool .
+    rdfs:subClassOf epr:IndependentSchool ;
+    rdfs:label "Other independent school"@en ;
+    rdfs:comment "An independent school registered with the Secretary of State that does not fall into a more specific independent-school category; it charges fees and is not maintained or funded by a local authority or the academy programme."@en .
 
 # Colleges
 epr:FurtherEducation
     a owl:Class ;
-    rdfs:subClassOf epr:College .
+    rdfs:subClassOf epr:College ;
+    rdfs:label "Further education"@en ;
+    rdfs:comment "A general further education college or sixth-form college providing post-16 education and training, operating as an incorporated body under the Further and Higher Education Act 1992."@en .
 
 epr:SixthFormCentre
     a owl:Class ;
-    rdfs:subClassOf epr:College .
+    rdfs:subClassOf epr:College ;
+    rdfs:label "Sixth form centre"@en ;
+    rdfs:comment "A centre providing sixth-form education for students aged 16 to 18, operating under the Further and Higher Education Act 1992 and typically sharing facilities with or attached to a maintained school."@en .
 
 # Universities and higher education
 epr:HigherEducationInstitution
     a owl:Class ;
-    rdfs:subClassOf epr:Establishment .
+    rdfs:subClassOf epr:Establishment ;
+    rdfs:label "Higher education institution"@en ;
+    rdfs:comment "A university or other higher education provider recognised under the Further and Higher Education Act 1992 and the Higher Education Act 2004, offering degree-level and postgraduate qualifications."@en .
 
 # Welsh establishments
 epr:WelshEstablishment
     a owl:Class ;
-    rdfs:subClassOf epr:Establishment .
+    rdfs:subClassOf epr:Establishment ;
+    rdfs:label "Welsh establishment"@en ;
+    rdfs:comment "A school or other education provider in Wales that is registered with the Department for Education in GIAS but is governed by Welsh legislation enacted by Senedd Cymru, including the School Standards and Organisation (Wales) Act 2013."@en .
 
 # Other types
 epr:SecureUnits
     a owl:Class ;
-    rdfs:subClassOf epr:Establishment .
+    rdfs:subClassOf epr:Establishment ;
+    rdfs:label "Secure units"@en ;
+    rdfs:comment "Secure residential accommodation for children and young people that includes an educational function, recorded in GIAS for cross-departmental data purposes."@en .
 
 epr:OffshoreSchools
     a owl:Class ;
-    rdfs:subClassOf epr:Establishment .
+    rdfs:subClassOf epr:Establishment ;
+    rdfs:label "Offshore schools"@en ;
+    rdfs:comment "A school operating in a Crown Dependency, British Overseas Territory or other non-mainland-UK geography that is registered with GIAS under Ministry of Defence or DfE arrangements."@en .
 
 epr:ServiceChildrensEducation
     a owl:Class ;
-    rdfs:subClassOf epr:Establishment .
+    rdfs:subClassOf epr:Establishment ;
+    rdfs:label "Service children's education"@en ;
+    rdfs:comment "A school operated by the Service Children's Education (SCE) agency on behalf of the Ministry of Defence, providing education for the children of UK armed-forces personnel at bases in the United Kingdom and overseas."@en .
 
 epr:MiscellaneousEstablishment
     a owl:Class ;
-    rdfs:subClassOf epr:Establishment .
+    rdfs:subClassOf epr:Establishment ;
+    rdfs:label "Miscellaneous"@en ;
+    rdfs:comment "A residual establishment type used in GIAS for records that cannot be classified under any more specific establishment-type category."@en .
 
 epr:SpecialPost16Institution
     a owl:Class ;
-    rdfs:subClassOf epr:Establishment .
+    rdfs:subClassOf epr:Establishment ;
+    rdfs:label "Special post 16 institution"@en ;
+    rdfs:comment "A specialist institution approved under s.41 of the Children and Families Act 2014 to provide education or training for young people over 16 with special educational needs or disabilities, enabling placement via an education, health and care plan."@en .
 
 epr:BritishSchoolsOverseas
     a owl:Class ;
-    rdfs:subClassOf epr:Establishment .
+    rdfs:subClassOf epr:Establishment ;
+    rdfs:label "British schools overseas"@en ;
+    rdfs:comment "A school outside the United Kingdom that provides a British-style curriculum and was subject to voluntary inspection by Ofsted or an approved inspectorate under the Education (British Schools Abroad) Order 1999."@en .
 
 epr:InstitutionFundedByOtherGovernmentDepartment
     a owl:Class ;
-    rdfs:subClassOf epr:Establishment .
+    rdfs:subClassOf epr:Establishment ;
+    rdfs:label "Institution funded by other government department"@en ;
+    rdfs:comment "An educational institution whose principal funding comes from a government department other than the Department for Education, and which is recorded in GIAS for cross-government data purposes."@en .
 
 # Academies
 epr:AcademySponsorLed
     a owl:Class ;
-    rdfs:subClassOf epr:MainstreamAcademy .
+    rdfs:subClassOf epr:MainstreamAcademy ;
+    rdfs:label "Academy sponsor led"@en ;
+    rdfs:comment "An academy established through the sponsor-led route under the Academies Act 2010, typically replacing an underperforming school, with an approved sponsor providing governance and strategic leadership."@en .
 
 epr:AcademySpecialSponsorLed
     a owl:Class ;
-    rdfs:subClassOf epr:AcademySpecial .
+    rdfs:subClassOf epr:AcademySpecial ;
+    rdfs:label "Academy special sponsor led"@en ;
+    rdfs:comment "A new special academy established through the sponsor-led route under the Academies Act 2010, set up to cater for pupils with special educational needs where an approved sponsor provides strategic oversight."@en .
 
 epr:AcademyConverter
     a owl:Class ;
-    rdfs:subClassOf epr:MainstreamAcademy .
+    rdfs:subClassOf epr:MainstreamAcademy ;
+    rdfs:label "Academy converter"@en ;
+    rdfs:comment "A maintained school or other eligible institution that converted to academy status under the Academies Act 2010, entering into a funding agreement with the Secretary of State."@en .
 
 epr:AcademyAlternativeProvisionConverter
     a owl:Class ;
-    rdfs:subClassOf epr:AcademyAlternativeProvision .
+    rdfs:subClassOf epr:AcademyAlternativeProvision ;
+    rdfs:label "Academy alternative provision converter"@en ;
+    rdfs:comment "An existing alternative provision establishment — such as a pupil referral unit — that converted to academy status under the Academies Act 2010 while continuing to provide education for pupils unable to attend mainstream school."@en .
 
 epr:AcademyAlternativeProvisionSponsorLed
     a owl:Class ;
-    rdfs:subClassOf epr:AcademyAlternativeProvision .
+    rdfs:subClassOf epr:AcademyAlternativeProvision ;
+    rdfs:label "Academy alternative provision sponsor led"@en ;
+    rdfs:comment "A new alternative provision academy created through a sponsor-led route under the Academies Act 2010, established to provide education for pupils who cannot attend mainstream school."@en .
 
 epr:AcademySpecialConverter
     a owl:Class ;
-    rdfs:subClassOf epr:AcademySpecial .
+    rdfs:subClassOf epr:AcademySpecial ;
+    rdfs:label "Academy special converter"@en ;
+    rdfs:comment "A maintained special school that converted to academy status under the Academies Act 2010, continuing to cater wholly or mainly for pupils with special educational needs under a funding agreement with the Secretary of State."@en .
 
 epr:Academy1619Converter
     a owl:Class ;
-    rdfs:subClassOf epr:Academy1619 .
+    rdfs:subClassOf epr:Academy1619 ;
+    rdfs:label "Academy 16-19 converter"@en ;
+    rdfs:comment "A 16-to-19 education provider — such as a sixth form college or school sixth form — that converted to academy status under the Academies Act 2010, entering into a funding agreement with the Secretary of State."@en .
 
 epr:Academy16To19SponsorLed
     a owl:Class ;
-    rdfs:subClassOf epr:Academy1619 .
+    rdfs:subClassOf epr:Academy1619 ;
+    rdfs:label "Academy 16 to 19 sponsor led"@en ;
+    rdfs:comment "A new 16-to-19 academy established through the sponsor-led route under the Academies Act 2010, where an approved sponsor takes responsibility for the provision from the outset."@en .
 
 epr:AcademySecure16To19
     a owl:Class ;
-    rdfs:subClassOf epr:Academy .
+    rdfs:subClassOf epr:Academy ;
+    rdfs:label "Academy secure 16 to 19"@en ;
+    rdfs:comment "An academy providing education within secure residential accommodation for young people aged 16 to 19 who are subject to a custodial sentence or secure order."@en .
 
 # Free schools
 epr:FreeSchool
     a owl:Class ;
-    rdfs:subClassOf epr:MainstreamFreeSchool .
+    rdfs:subClassOf epr:MainstreamFreeSchool ;
+    rdfs:label "Free schools"@en ;
+    rdfs:comment "A new state-funded school established as an academy under the Academies Act 2010 and Education Act 2011 through the free-school programme, allowing parents, teachers, charities or other groups to set up a school outside local-authority control."@en .
 
 epr:FreeSchoolSpecial
     a owl:Class ;
-    rdfs:subClassOf epr:FreeSchoolEstablishment .
+    rdfs:subClassOf epr:FreeSchoolEstablishment ;
+    rdfs:label "Free schools special"@en ;
+    rdfs:comment "A free school established under the Academies Act 2010 to provide specialist education for pupils with special educational needs and disabilities."@en .
 
 epr:FreeSchoolAlternativeProvision
     a owl:Class ;
-    rdfs:subClassOf epr:FreeSchoolEstablishment .
+    rdfs:subClassOf epr:FreeSchoolEstablishment ;
+    rdfs:label "Free schools alternative provision"@en ;
+    rdfs:comment "A free school established under the Academies Act 2010 to provide alternative provision for pupils who are unable to attend mainstream school due to exclusion, illness or other circumstances."@en .
 
 epr:FreeSchool16To19
     a owl:Class ;
-    rdfs:subClassOf epr:FreeSchoolEstablishment .
+    rdfs:subClassOf epr:FreeSchoolEstablishment ;
+    rdfs:label "Free schools 16 to 19"@en ;
+    rdfs:comment "A free school established under the Academies Act 2010 that focuses exclusively on providing education and training to students aged 16 to 19."@en .
 
 epr:UniversityTechnicalCollege
     a owl:Class ;
-    rdfs:subClassOf epr:MainstreamFreeSchool .
+    rdfs:subClassOf epr:MainstreamFreeSchool ;
+    rdfs:label "University technical college"@en ;
+    rdfs:comment "An academy established under the Academies Act 2010 and Education Act 2011 through the free-school programme, for students aged 14 to 19, specialising in technical and vocational subjects with the active involvement of a university and employer sponsors."@en .
 
 epr:StudioSchool
     a owl:Class ;
-    rdfs:subClassOf epr:MainstreamFreeSchool .
+    rdfs:subClassOf epr:MainstreamFreeSchool ;
+    rdfs:label "Studio schools"@en ;
+    rdfs:comment "A small academy established under the Academies Act 2010 and Education Act 2011 through the free-school programme, typically for students aged 14 to 19, delivering mainstream qualifications through project-based and work-related learning with employer involvement."@en .
 
 # Children's centres
 epr:ChildrensCentre
     a owl:Class ;
-    rdfs:subClassOf epr:ChildrensCentreEstablishment .
+    rdfs:subClassOf epr:ChildrensCentreEstablishment ;
+    rdfs:label "Children's centre"@en ;
+    rdfs:comment "A facility providing integrated early-childhood services — including early education, childcare, family support, health services and employment advice — established under the statutory framework of the Childcare Act 2006 and Children Act 2004."@en .
 
 epr:ChildrensCentreLinkedSite
     a owl:Class ;
-    rdfs:subClassOf epr:ChildrensCentreEstablishment .
+    rdfs:subClassOf epr:ChildrensCentreEstablishment ;
+    rdfs:label "Children's centre linked site"@en ;
+    rdfs:comment "A site that delivers some early childhood services on behalf of a named children's centre, having previously been registered as a standalone children's centre under the Childcare Act 2006 framework."@en .
 
 # Online providers
 epr:OnlineProvider
     a owl:Class ;
-    rdfs:subClassOf epr:Establishment .
+    rdfs:subClassOf epr:Establishment ;
+    rdfs:label "Online provider"@en ;
+    rdfs:comment "A provider that delivers full-time education entirely online to pupils of compulsory school age, recognised under the DfE online education accreditation scheme."@en .
 
 
 #################################################################
@@ -1674,20 +1756,24 @@ epr:GroupUkprn
 # Identifier role (2 values, v1.0)
 epr:CurrentIdentifierRole
     a owl:NamedIndividual, epr:IdentifierRole ;
-    rdfs:label "Current"@en .
+    rdfs:label "Current"@en ;
+    rdfs:comment "The scoped establishment number is the establishment's active current identity."@en .
 
 epr:PreviousIdentifierRole
     a owl:NamedIndividual, epr:IdentifierRole ;
-    rdfs:label "Previous"@en .
+    rdfs:label "Previous"@en ;
+    rdfs:comment "The scoped establishment number is a previous identity, retained for search continuity and lifecycle traceability."@en .
 
 # Group relationship type (2 values, v1.1)
 epr:SuccessorMultiAcademyTrust
     a owl:NamedIndividual, epr:GroupRelationshipType ;
-    rdfs:label "Successor MAT"@en .
+    rdfs:label "Successor MAT"@en ;
+    rdfs:comment "A group relationship type value indicating that the group is the multi-academy trust formed when a single-academy trust expanded or merged."@en .
 
 epr:PredecessorSingleAcademyTrust
     a owl:NamedIndividual, epr:GroupRelationshipType ;
-    rdfs:label "Predecessor SAT"@en .
+    rdfs:label "Predecessor SAT"@en ;
+    rdfs:comment "A group relationship type value indicating that the group is the single-academy trust that preceded the formation of a multi-academy trust."@en .
 # The same epr: URIs also carry skos:Concept in the vocabulary
 # TTL — valid OWL 2 punning.
 #################################################################
@@ -1695,131 +1781,162 @@ epr:PredecessorSingleAcademyTrust
 # Establishment status (4 values)
 epr:OpenStatus
     a owl:NamedIndividual, epr:EstablishmentStatus ;
-    rdfs:label "Open"@en .
+    rdfs:label "Open"@en ;
+    rdfs:comment "The establishment is currently open and operating. This is the normal status for an active registered establishment."@en .
 
 epr:ClosedStatus
     a owl:NamedIndividual, epr:EstablishmentStatus ;
-    rdfs:label "Closed"@en .
+    rdfs:label "Closed"@en ;
+    rdfs:comment "The establishment has closed and is no longer operating. The record is retained in GIAS for historical reference, along with the closed date and reason for closure."@en .
 
 epr:OpenProposedToCloseStatus
     a owl:NamedIndividual, epr:EstablishmentStatus ;
-    rdfs:label "Open, but proposed to close"@en .
+    rdfs:label "Open, but proposed to close"@en ;
+    rdfs:comment "The establishment is currently open but has been formally proposed for closure through statutory proposals under the School Standards and Framework Act 1998 (schedule 6) or the Education and Inspections Act 2006. The closure has not yet taken effect."@en .
 
 epr:ProposedToOpenStatus
     a owl:NamedIndividual, epr:EstablishmentStatus ;
-    rdfs:label "Proposed to open"@en .
+    rdfs:label "Proposed to open"@en ;
+    rdfs:comment "The establishment has been approved but has not yet opened. Academy and free school proposals use this status between the signing of the funding agreement and the establishment's first day of operation."@en .
 
 # Education phase (8 values)
 epr:NurseryPhase
     a owl:NamedIndividual, epr:EducationPhase ;
-    rdfs:label "Nursery"@en .
+    rdfs:label "Nursery"@en ;
+    rdfs:comment "An education phase for establishments providing early years education to children below compulsory school age, typically ages 3 to 4."@en .
 
 epr:PrimaryPhase
     a owl:NamedIndividual, epr:EducationPhase ;
-    rdfs:label "Primary"@en .
+    rdfs:label "Primary"@en ;
+    rdfs:comment "An education phase for establishments providing primary education, broadly covering ages 4 or 5 to 11, within the compulsory school age range defined by the Education Act 1996 s.8."@en .
 
 epr:MiddlePhase
     a owl:NamedIndividual, epr:EducationPhase ;
-    rdfs:label "Middle deemed primary"@en .
+    rdfs:label "Middle deemed primary"@en ;
+    rdfs:comment "An education phase assigned to a middle school where the Secretary of State has determined it should be treated as a primary school, typically because the majority of its age range falls within primary years."@en .
 
 epr:MiddleDeemedSecondaryPhase
     a owl:NamedIndividual, epr:EducationPhase ;
-    rdfs:label "Middle deemed secondary"@en .
+    rdfs:label "Middle deemed secondary"@en ;
+    rdfs:comment "An education phase assigned to a middle school where the Secretary of State has determined it should be treated as a secondary school, typically because the majority of its age range falls within secondary years."@en .
 
 epr:SecondaryPhase
     a owl:NamedIndividual, epr:EducationPhase ;
-    rdfs:label "Secondary"@en .
+    rdfs:label "Secondary"@en ;
+    rdfs:comment "An education phase for establishments providing secondary education, broadly covering ages 11 to 16, and up to 18 where sixth-form provision is included, within the compulsory school age range defined by the Education Act 1996 s.8."@en .
 
 epr:AllThroughPhase
     a owl:NamedIndividual, epr:EducationPhase ;
-    rdfs:label "All-through"@en .
+    rdfs:label "All-through"@en ;
+    rdfs:comment "An education phase covering the full compulsory school age range within a single establishment, spanning both primary and secondary years (typically ages 4 or 5 to 16 or 18)."@en .
 
 epr:SixteenToNineteenPhase
     a owl:NamedIndividual, epr:EducationPhase ;
-    rdfs:label "16 to 19"@en .
+    rdfs:label "16 to 19"@en ;
+    rdfs:comment "An education phase for establishments providing post-16 education and training to young people aged 16 to 19, including sixth-form colleges and studio schools."@en .
 
 epr:NotApplicableEducationPhase
     a owl:NamedIndividual, epr:EducationPhase ;
-    rdfs:label "Not applicable (education phase)"@en .
+    rdfs:label "Not applicable (education phase)"@en ;
+    rdfs:comment "A classification value indicating that the education phase field is not applicable to this type of establishment."@en .
 
 # Admissions policy (3 values)
 epr:SelectiveAdmissions
     a owl:NamedIndividual, epr:AdmissionsPolicy ;
-    rdfs:label "Selective"@en .
+    rdfs:label "Selective"@en ;
+    rdfs:comment "An admissions-policy value indicating that the school selects all or some pupils by reference to academic ability or aptitude."@en .
 
 epr:NonSelectiveAdmissions
     a owl:NamedIndividual, epr:AdmissionsPolicy ;
-    rdfs:label "Non-selective"@en .
+    rdfs:label "Non-selective"@en ;
+    rdfs:comment "An admissions-policy value indicating that the school does not allocate places through academic selection tests or criteria."@en .
 
 epr:NotApplicableAdmissionsPolicy
     a owl:NamedIndividual, epr:AdmissionsPolicy ;
-    rdfs:label "Not applicable (admissions policy)"@en .
+    rdfs:label "Not applicable (admissions policy)"@en ;
+    rdfs:comment "A classification value indicating that an admissions policy classification does not apply to this type of establishment."@en .
 
 # Gender of entry (4 values)
 epr:BoysOnlyGenderEntry
     a owl:NamedIndividual, epr:GenderOfEntry ;
-    rdfs:label "Boys"@en .
+    rdfs:label "Boys"@en ;
+    rdfs:comment "A gender-of-entry value indicating that the establishment admits boys only."@en .
 
 epr:GirlsOnlyGenderEntry
     a owl:NamedIndividual, epr:GenderOfEntry ;
-    rdfs:label "Girls"@en .
+    rdfs:label "Girls"@en ;
+    rdfs:comment "A gender-of-entry value indicating that the establishment admits girls only."@en .
 
 epr:MixedGenderEntry
     a owl:NamedIndividual, epr:GenderOfEntry ;
-    rdfs:label "Mixed"@en .
+    rdfs:label "Mixed"@en ;
+    rdfs:comment "A gender-of-entry value indicating that the establishment admits both boys and girls without restriction on grounds of sex."@en .
 
 epr:NotApplicableGenderOfEntry
     a owl:NamedIndividual, epr:GenderOfEntry ;
-    rdfs:label "Not applicable (gender of entry)"@en .
+    rdfs:label "Not applicable (gender of entry)"@en ;
+    rdfs:comment "A classification value indicating that a gender-of-entry classification does not apply to this type of establishment."@en .
 
 # Boarding provision (3 values)
 epr:BoardingSchool
     a owl:NamedIndividual, epr:BoardingProvision ;
-    rdfs:label "Boarding school"@en .
+    rdfs:label "Boarding school"@en ;
+    rdfs:comment "A boarding-provision value indicating that the establishment is registered and operates principally as a boarding school, where pupils reside during term time."@en .
 
 epr:HasBoarders
     a owl:NamedIndividual, epr:BoardingProvision ;
-    rdfs:label "Has boarders"@en .
+    rdfs:label "Has boarders"@en ;
+    rdfs:comment "A boarding-provision value indicating that the establishment accommodates some pupils as boarders, but is not primarily classified as a boarding school."@en .
 
 epr:NoBoarders
     a owl:NamedIndividual, epr:BoardingProvision ;
-    rdfs:label "No boarders"@en .
+    rdfs:label "No boarders"@en ;
+    rdfs:comment "A boarding-provision value indicating that the establishment does not accommodate any pupils as boarders."@en .
 
 # Nursery provision (3 values)
 epr:HasNurseryClasses
     a owl:NamedIndividual, epr:NurseryProvision ;
-    rdfs:label "Has nursery classes"@en .
+    rdfs:label "Has nursery classes"@en ;
+    rdfs:comment "A nursery-provision value indicating that the establishment operates one or more nursery classes for children below compulsory school age."@en .
 
 epr:NoNurseryClasses
     a owl:NamedIndividual, epr:NurseryProvision ;
-    rdfs:label "No nursery classes"@en .
+    rdfs:label "No nursery classes"@en ;
+    rdfs:comment "A nursery-provision value indicating that the establishment does not operate any nursery classes."@en .
 
 epr:NotApplicableNurseryProvision
     a owl:NamedIndividual, epr:NurseryProvision ;
-    rdfs:label "Not applicable (nursery provision)"@en .
+    rdfs:label "Not applicable (nursery provision)"@en ;
+    rdfs:comment "A classification value indicating that a nursery provision classification does not apply to this type of establishment."@en .
 
 # Sixth-form provision (3 values)
 epr:HasSixthForm
     a owl:NamedIndividual, epr:SixthFormProvision ;
-    rdfs:label "Has a sixth form"@en .
+    rdfs:label "Has a sixth form"@en ;
+    rdfs:comment "A sixth-form-provision value indicating that the establishment provides post-16 education as a sixth form, catering to pupils typically in Years 12 and 13."@en .
 
 epr:NoSixthForm
     a owl:NamedIndividual, epr:SixthFormProvision ;
-    rdfs:label "Does not have a sixth form"@en .
+    rdfs:label "Does not have a sixth form"@en ;
+    rdfs:comment "A sixth-form-provision value indicating that the establishment does not provide a sixth form."@en .
 
 epr:NotApplicableSixthFormProvision
     a owl:NamedIndividual, epr:SixthFormProvision ;
-    rdfs:label "Not applicable (sixth-form provision)"@en .
+    rdfs:label "Not applicable (sixth-form provision)"@en ;
+    rdfs:comment "A classification value indicating that a sixth-form provision classification does not apply to this type of establishment."@en .
 
 # Special-class provision (3 values)
 epr:HasSpecialClasses
     a owl:NamedIndividual, epr:SpecialClassProvision ;
-    rdfs:label "Has special classes"@en .
+    rdfs:label "Has special classes"@en ;
+    rdfs:comment "A special-class-provision value indicating that the establishment provides one or more specially resourced classes or units for pupils with special educational needs."@en .
 
 epr:NoSpecialClasses
     a owl:NamedIndividual, epr:SpecialClassProvision ;
-    rdfs:label "No special classes"@en .
+    rdfs:label "No special classes"@en ;
+    rdfs:comment "A special-class-provision value indicating that the establishment does not provide any specially resourced classes or units for pupils with special educational needs."@en .
 
 epr:NotApplicableSpecialClassProvision
     a owl:NamedIndividual, epr:SpecialClassProvision ;
-    rdfs:label "Not applicable (special-class provision)"@en .
+    rdfs:label "Not applicable (special-class provision)"@en ;
+    rdfs:comment "A classification value indicating that a special-class provision classification does not apply to this type of establishment."@en .
