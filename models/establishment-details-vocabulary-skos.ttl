@@ -48,7 +48,8 @@ epr:establishmentDetailsVocabulary
         epr:AlternativeProvisionCharacteristics,
         epr:InspectionRecord,
         epr:AccreditationAndQualityAssurance,
-        epr:ExternalReference .
+        epr:ExternalReference,
+        epr:EstablishmentGroupMembership .
 
 #################################################################
 # Thematic collections
@@ -213,6 +214,26 @@ epr:externalReferences
     skos:member
         epr:InspectionReportReference,
         epr:ExternalServiceReference .
+
+epr:groupMembershipConcepts
+    a skos:Collection ;
+    skos:prefLabel "Establishment groups and membership"@en ;
+    skos:member
+        epr:EstablishmentGroup,
+        epr:MultiAcademyTrust,
+        epr:SecureSingleAcademyTrust,
+        epr:Federation,
+        epr:SchoolSponsor,
+        epr:ChildrensCentreGroup,
+        epr:ChildrensCentreCollaboration,
+        epr:GenericTrust,
+        epr:GroupMembership,
+        epr:GroupRelationship,
+        epr:GroupRelationshipType,
+        epr:GroupId,
+        epr:GroupUkprn,
+        epr:SuccessorMultiAcademyTrust,
+        epr:PredecessorSingleAcademyTrust .
 
 #################################################################
 # Top concepts
@@ -441,6 +462,162 @@ epr:ExternalReference
     skos:narrower
         epr:ExternalServiceReference,
         epr:InspectionReportReference ;
+    epr:status "Provisional"@en .
+
+epr:EstablishmentGroupMembership
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:topConceptOf epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Establishment group membership"@en ;
+    skos:definition "The organisations and governance structures that group establishments together, and the membership relationships between establishments and those groups. Covers academy trusts, federations, school sponsors and children's centre groups. Distinct from the accountability relationship, which records legal/governance responsibility."@en ;
+    skos:narrower
+        epr:EstablishmentGroup,
+        epr:GroupMembership,
+        epr:GroupRelationship,
+        epr:GroupRelationshipType,
+        epr:GroupId,
+        epr:GroupUkprn ;
+    epr:status "Provisional"@en .
+
+epr:EstablishmentGroup
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Establishment group"@en ;
+    skos:definition "An organisation or governance structure to which one or more establishments belong. Includes academy trusts, federations, school sponsors and children's centre groups."@en ;
+    skos:scopeNote "Distinct from the accountability relationship, which records which body is legally responsible for the establishment. Academy trusts are both establishment groups and accountability bodies simultaneously."@en ;
+    skos:narrower
+        epr:MultiAcademyTrust,
+        epr:SecureSingleAcademyTrust,
+        epr:Federation,
+        epr:SchoolSponsor,
+        epr:ChildrensCentreGroup,
+        epr:ChildrensCentreCollaboration,
+        epr:GenericTrust ;
+    skos:related epr:EstablishmentAccountability ;
+    skos:broader epr:EstablishmentGroupMembership ;
+    epr:status "Provisional"@en .
+
+epr:MultiAcademyTrust
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Multi-academy trust"@en ;
+    skos:altLabel "MAT"@en ;
+    skos:definition "A charitable company incorporated under the Companies Act 2006 that enters a single funding agreement with the Secretary of State to operate two or more academies or free schools. Governed by a board of trustees. Source: Academies Act 2010."@en ;
+    skos:scopeNote "An academy trust operating two or more academies. Distinct from a single-academy trust, which operates exactly one academy. A SAT can convert to a MAT by adding an academy."@en ;
+    skos:broader epr:AcademyTrust ;
+    skos:related epr:SingleAcademyTrust ;
+    epr:status "Provisional"@en .
+
+epr:SecureSingleAcademyTrust
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Secure single-academy trust"@en ;
+    skos:definition "A single-academy trust operating a secure 16-to-19 academy providing education within secure residential accommodation for young people aged 16 to 19 subject to a custodial sentence or secure order."@en ;
+    skos:broader epr:SingleAcademyTrust ;
+    epr:status "Provisional"@en .
+
+epr:Federation
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Federation"@en ;
+    skos:definition "A formal statutory arrangement in which two or more maintained schools are governed by a single federated governing body. Each member school retains its own URN, establishment number, budget, admissions arrangements and Ofsted inspection identity. Applicable only to maintained schools; academy grouping uses the trust model. Source: School Governance (Federations) Regulations 2012."@en ;
+    skos:scopeNote "Federations apply only to maintained schools. An academy cannot join a federation — academies are grouped through the trust model instead. This distinction is confirmed as a business rule."@en ;
+    skos:broader epr:EstablishmentGroup ;
+    epr:status "Provisional"@en .
+
+epr:SchoolSponsor
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "School sponsor"@en ;
+    skos:definition "A body approved by the Secretary of State to sponsor one or more sponsor-led academies or free schools. The sponsor supports governance, leadership and educational improvement of the sponsored academies. Source: Academies Act 2010."@en ;
+    skos:scopeNote "School sponsors are distinct from AcademySponsor in the accountability layer, which records which sponsor is accountable for a specific academy. SchoolSponsor here is the group organisation itself."@en ;
+    skos:broader epr:EstablishmentGroup ;
+    skos:related epr:AcademySponsor ;
+    epr:status "Provisional"@en .
+
+epr:ChildrensCentreGroup
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Children's centres group"@en ;
+    skos:definition "An operational cluster of children's centres with a lead-centre arrangement, registered as a group in GIAS."@en ;
+    skos:broader epr:EstablishmentGroup ;
+    epr:status "Provisional"@en .
+
+epr:ChildrensCentreCollaboration
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Children's centres collaboration"@en ;
+    skos:definition "A cross-group collaboration arrangement between children's centres, registered as a group in GIAS."@en ;
+    skos:broader epr:EstablishmentGroup ;
+    epr:status "Provisional"@en .
+
+epr:GenericTrust
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Trust"@en ;
+    skos:definition "A generic trust group type (EstablishmentGroupType code 02), distinct from an academy trust. Rarely used in current GIAS data; retained for completeness."@en ;
+    skos:broader epr:EstablishmentGroup ;
+    epr:status "Provisional"@en .
+
+epr:GroupMembership
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Group membership"@en ;
+    skos:definition "A dated record of an establishment's membership of an establishment group, trust, federation, sponsor arrangement or children's centre collaboration. An establishment may have membership in more than one group simultaneously."@en ;
+    skos:scopeNote "Maps to GroupLink in the current GIAS schema. Contains the establishment (via URN), the group (via group ID), and an effective date."@en ;
+    skos:broader epr:EstablishmentGroupMembership ;
+    epr:status "Provisional"@en .
+
+epr:GroupRelationship
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Group relationship"@en ;
+    skos:definition "A recorded relationship between two establishment groups, for example where a single-academy trust is the predecessor to a newly formed multi-academy trust. Used to preserve conversion history."@en ;
+    skos:scopeNote "Maps to GroupRelationsLink in the current GIAS schema. Currently used primarily to record SAT-to-MAT conversion history."@en ;
+    skos:broader epr:EstablishmentGroupMembership ;
+    epr:status "Provisional"@en .
+
+epr:GroupRelationshipType
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Group relationship type"@en ;
+    skos:definition "The classification of a group-to-group relationship, distinguishing the role of each group in the relationship."@en ;
+    skos:narrower
+        epr:SuccessorMultiAcademyTrust,
+        epr:PredecessorSingleAcademyTrust ;
+    skos:broader epr:EstablishmentGroupMembership ;
+    epr:status "Provisional"@en .
+
+epr:SuccessorMultiAcademyTrust
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Successor MAT"@en ;
+    skos:definition "A group relationship type value indicating that the group is the multi-academy trust formed when a single-academy trust expanded or merged."@en ;
+    skos:broader epr:GroupRelationshipType ;
+    epr:status "Provisional"@en .
+
+epr:PredecessorSingleAcademyTrust
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Predecessor SAT"@en ;
+    skos:definition "A group relationship type value indicating that the group is the single-academy trust that preceded the formation of a multi-academy trust."@en ;
+    skos:broader epr:GroupRelationshipType ;
+    epr:status "Provisional"@en .
+
+epr:GroupId
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Group identifier"@en ;
+    skos:definition "The business-facing GIAS group identifier assigned to an establishment group. Distinct from the internal surrogate key used in the GIAS database."@en ;
+    skos:broader epr:EstablishmentGroupMembership ;
+    epr:status "Provisional"@en .
+
+epr:GroupUkprn
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsVocabulary ;
+    skos:prefLabel "Group UKPRN"@en ;
+    skos:definition "A UK Provider Reference Number assigned to the group organisation by the UKRLP register. Sourced from UKRLP by matching on Companies House number."@en ;
+    skos:broader epr:EstablishmentGroupMembership ;
     epr:status "Provisional"@en .
 
 #################################################################
@@ -1629,9 +1806,11 @@ epr:AcademyTrust
     skos:definition "A charitable company limited by guarantee that enters into a funding agreement with the Secretary of State under the Academies Act 2010 to operate one or more academies or free schools. The trust is accountable for educational standards, financial management and employment of staff at its academies."@en ;
     skos:scopeNote "Trust flag is an extract or implementation term, not the business concept."@en ;
     skos:broader epr:EstablishmentAccountability ;
-    skos:related epr:AcademyConverter ;
+    skos:related epr:AcademyConverter, epr:EstablishmentGroup ;
     skos:narrower
-        epr:SingleAcademyTrust ;
+        epr:SingleAcademyTrust,
+        epr:MultiAcademyTrust,
+        epr:SecureSingleAcademyTrust ;
     epr:status "Preferred"@en ;
     dcterms:source "Java/database: EstablishmentGroup and GroupLink"@en .
 
@@ -2342,6 +2521,7 @@ epr:CompaniesHouseNumber
     skos:prefLabel "Companies House number"@en ;
     skos:altLabel "CHNumber"@en ;
     skos:definition "The registration number assigned by Companies House, the UK registrar of companies under the Companies Act 2006, for the legal entity operating the online provider."@en ;
+    skos:scopeNote "Currently recorded in GIAS for online providers (via AccreditationRecord) and for academy trusts and other group organisations (via group identity). The same concept applies in both contexts."@en ;
     skos:broader epr:AccreditationAndQualityAssurance ;
     epr:status "Provisional"@en ;
     dcterms:source "Database field: CHNumber"@en .

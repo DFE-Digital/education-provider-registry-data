@@ -23,7 +23,7 @@ epr:establishmentDetailsTaxonomy
     dcterms:title "GIAS 2.0 Establishment Details Taxonomy"@en ;
     dcterms:description "Faceted taxonomy containing classifications used by the fields shown in the Establishment Details table in the public establishment record view."@en ;
     dcterms:created "2026-06-16"^^xsd:date ;
-    dcterms:modified "2026-06-21"^^xsd:date ;
+    dcterms:modified "2026-06-22"^^xsd:date ;
     epr:status "Provisional"@en ;
     skos:hasTopConcept
         epr:EstablishmentType,
@@ -36,7 +36,9 @@ epr:establishmentDetailsTaxonomy
         epr:SixthFormProvision,
         epr:SpecialClassProvision,
         epr:ReligiousCharacter,
-        epr:ReligiousEthos .
+        epr:ReligiousEthos,
+        epr:EstablishmentGroupType,
+        epr:GroupRelationshipType .
 
 #################################################################
 # Facet collection
@@ -56,7 +58,9 @@ epr:establishmentDetailsTaxonomyFacets
         epr:SixthFormProvision,
         epr:SpecialClassProvision,
         epr:ReligiousCharacter,
-        epr:ReligiousEthos .
+        epr:ReligiousEthos,
+        epr:EstablishmentGroupType,
+        epr:GroupRelationshipType .
 
 #################################################################
 # Type-group collection
@@ -1117,5 +1121,121 @@ epr:OtherReligiousEthos
     skos:altLabel "Other"@en ;
     skos:scopeNote "Other religious-ethos values exist in the database; full enumeration requires further extraction."@en ;
     skos:broader epr:ReligiousEthos ;
+    epr:status "Provisional"@en .
+
+#################################################################
+# Establishment-group-type facet (v1.1)
+#################################################################
+
+epr:EstablishmentGroupType
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsTaxonomy ;
+    skos:topConceptOf epr:establishmentDetailsTaxonomy ;
+    skos:prefLabel "Establishment group type"@en ;
+    skos:definition "The classification of an establishment group by its type, corresponding to EstablishmentGroupType codes in GIAS."@en ;
+    skos:narrower
+        epr:Federation,
+        epr:GenericTrust,
+        epr:SchoolSponsor,
+        epr:MultiAcademyTrust,
+        epr:ChildrensCentreGroup,
+        epr:ChildrensCentreCollaboration,
+        epr:SingleAcademyTrust,
+        epr:SecureSingleAcademyTrust ;
+    epr:status "Provisional"@en .
+
+epr:Federation
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsTaxonomy ;
+    skos:prefLabel "Federation"@en ;
+    skos:broader epr:EstablishmentGroupType ;
+    dcterms:source "Group type code 01"@en ;
+    epr:status "Provisional"@en .
+
+epr:GenericTrust
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsTaxonomy ;
+    skos:prefLabel "Trust"@en ;
+    skos:broader epr:EstablishmentGroupType ;
+    dcterms:source "Group type code 02"@en ;
+    epr:status "Provisional"@en .
+
+epr:SchoolSponsor
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsTaxonomy ;
+    skos:prefLabel "School sponsor"@en ;
+    skos:broader epr:EstablishmentGroupType ;
+    dcterms:source "Group type code 05"@en ;
+    epr:status "Provisional"@en .
+
+epr:MultiAcademyTrust
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsTaxonomy ;
+    skos:prefLabel "Multi-academy trust"@en ;
+    skos:altLabel "MAT"@en ;
+    skos:broader epr:EstablishmentGroupType ;
+    dcterms:source "Group type code 06"@en ;
+    epr:status "Provisional"@en .
+
+epr:ChildrensCentreGroup
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsTaxonomy ;
+    skos:prefLabel "Children's centres group"@en ;
+    skos:broader epr:EstablishmentGroupType ;
+    dcterms:source "Group type code 08"@en ;
+    epr:status "Provisional"@en .
+
+epr:ChildrensCentreCollaboration
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsTaxonomy ;
+    skos:prefLabel "Children's centres collaboration"@en ;
+    skos:broader epr:EstablishmentGroupType ;
+    dcterms:source "Group type code 09"@en ;
+    epr:status "Provisional"@en .
+
+epr:SingleAcademyTrust
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsTaxonomy ;
+    skos:prefLabel "Single-academy trust"@en ;
+    skos:altLabel "SAT"@en ;
+    skos:broader epr:EstablishmentGroupType ;
+    dcterms:source "Group type code 10"@en ;
+    epr:status "Provisional"@en .
+
+epr:SecureSingleAcademyTrust
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsTaxonomy ;
+    skos:prefLabel "Secure single-academy trust"@en ;
+    skos:broader epr:EstablishmentGroupType ;
+    dcterms:source "Group type code 11"@en ;
+    epr:status "Provisional"@en .
+
+#################################################################
+# Group-relationship-type facet (v1.1)
+#################################################################
+
+epr:GroupRelationshipType
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsTaxonomy ;
+    skos:topConceptOf epr:establishmentDetailsTaxonomy ;
+    skos:prefLabel "Group relationship type"@en ;
+    skos:definition "The classification of a group-to-group relationship, distinguishing the role of each group in the relationship."@en ;
+    skos:narrower
+        epr:SuccessorMultiAcademyTrust,
+        epr:PredecessorSingleAcademyTrust ;
+    epr:status "Provisional"@en .
+
+epr:SuccessorMultiAcademyTrust
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsTaxonomy ;
+    skos:prefLabel "Successor MAT"@en ;
+    skos:broader epr:GroupRelationshipType ;
+    epr:status "Provisional"@en .
+
+epr:PredecessorSingleAcademyTrust
+    a skos:Concept ;
+    skos:inScheme epr:establishmentDetailsTaxonomy ;
+    skos:prefLabel "Predecessor SAT"@en ;
+    skos:broader epr:GroupRelationshipType ;
     epr:status "Provisional"@en .
 

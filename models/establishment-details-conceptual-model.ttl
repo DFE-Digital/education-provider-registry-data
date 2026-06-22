@@ -35,10 +35,10 @@ epro:establishmentDetailsConceptualModel
     dcterms:description "OWL 2 conceptual model for the Establishment Details slice of the Education Provider Registry. Declares classes and object properties for the entities and relationships in the Establishment Details ER diagrams."@en ;
     rdfs:comment "This ontology defines the classes and object properties for the Establishment Details slice of the Education Provider Registry (EPR) data model. It covers establishment identity and identifiers, lifecycle, classification, accountability, education provision, capacity measures, faith context, SEN and resourced provision, and external references. Class IRIs are shared with the SKOS vocabulary so that vocabulary concepts and ontology classes resolve to the same URI. Object properties are defined in the /ontology/ namespace."@en ;
     dcterms:created "2026-06-18"^^xsd:date ;
-    dcterms:modified "2026-06-21"^^xsd:date ;
+    dcterms:modified "2026-06-22"^^xsd:date ;
     dcterms:publisher "Department for Education"@en ;
     dcterms:license <https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/> ;
-    owl:versionInfo "1.0" ;
+    owl:versionInfo "1.1" ;
     vann:preferredNamespacePrefix "epro" ;
     vann:preferredNamespaceUri "https://dfe-digital.github.io/education-provider-registry-data/ontology/"^^xsd:anyURI ;
     rdfs:seeAlso <https://dfe-digital.github.io/education-provider-registry-data/vocabulary/> ;
@@ -52,6 +52,7 @@ epro:establishmentDetailsConceptualModel
     rdfs:comment "v0.8: owl:NamedIndividual declarations added for 8 closed enumerations (31 individuals total): EstablishmentStatus, EducationPhase, AdmissionsPolicy, GenderOfEntry, BoardingProvision, NurseryProvision, SixthFormProvision, SpecialClassProvision. Open-ended value sets (ReligiousCharacter, ReligiousEthos, TypeOfSenProvision) remain as skos:Concept in the vocabulary TTL only."@en ;
     rdfs:comment "v0.9: PupilReferralUnitOperationalRecord and AccreditationRecord property declarations converted from owl:DatatypeProperty (xsd:boolean/integer/date/string/anyURI ranges) to owl:ObjectProperty with named epr: range classes (15 new classes). Ontology is now entirely ObjectProperty — no DatatypeProperty declarations remain."@en ;
     rdfs:comment "v1.0: Identifier modelling tightened. (1) hasUprn domain moved from EstablishmentIdentity to MainAddress. (2) FeHeIdentifier added as OWL class with hasFeHeIdentifier property. (3) hasEstablishmentNumber replaced by LocalAuthorityScopedEstablishmentNumber with hasLocalAuthorityContext, hasEstablishmentNumberValue and hasIdentifierRole components. (4) IdentifierRole added with CurrentIdentifierRole and PreviousIdentifierRole named individuals. (5) EstablishmentNumber value SHACL (1–9999) and UKPRN structural max-1 added."@en ;
+    rdfs:comment "v1.1: Establishment group model added. New abstract group superclass EstablishmentGroup; MultiAcademyTrust (subClassOf AcademyTrust), SecureSingleAcademyTrust (subClassOf SingleAcademyTrust), Federation, SchoolSponsor, ChildrensCentreGroup, ChildrensCentreCollaboration, GenericTrust (group org classes); GroupMembership, GroupRelationship, GroupRelationshipType, GroupId, GroupUkprn. AcademyTrust gains dual inheritance: rdfs:subClassOf EstablishmentGroup in addition to existing accountability hierarchy. Named individuals SuccessorMultiAcademyTrust and PredecessorSingleAcademyTrust added for GroupRelationshipType."@en ;
     rdfs:comment "v0.6: ontology class local names aligned with vocabulary source of truth. Renames: ContactAndLocation→EstablishmentLocationAndContact, PostalAddress→MainAddress, WebsiteUrl→Website, Manager→CentreManager, Section41ApprovalStatus→Section41Approval. Vocabulary entries added for all 14 intermediate OWL classes and for grouping container classes (ResourcedProvisionMeasure, SenUnitMeasure, SpecialPupilMeasure, OfstedInspectionRecord, AccreditationRecord, PupilReferralUnitOperationalRecord)."@en ;
     epr:status "Provisional"@en .
 
@@ -212,8 +213,9 @@ epr:LocalAuthority
 
 epr:AcademyTrust
     a owl:Class ;
+    rdfs:subClassOf epr:EstablishmentGroup ;
     rdfs:label "Academy trust"@en ;
-    rdfs:comment "A charitable trust that sponsors or converts one or more academies."@en .
+    rdfs:comment "A charitable trust that sponsors or converts one or more academies. An academy trust is both an accountability body (it holds the funding agreement with the Secretary of State) and an establishment group (the organisational structure containing its academies). Dual rdfs:subClassOf: EstablishmentGroup (v1.1)."@en .
 
 epr:SingleAcademyTrust
     a owl:Class ;
@@ -1057,7 +1059,7 @@ epr:QualityAssuranceBodyReport
 epr:CompaniesHouseNumber
     a owl:Class ;
     rdfs:label "Companies House number"@en ;
-    rdfs:comment "The Companies House registration number for the online provider."@en .
+    rdfs:comment "A Companies House registration number. Currently scoped to online providers via AccreditationRecord (epro:hasCompaniesHouseNumber) and to establishment groups (epro:hasGroupCompaniesHouseNumber). The same class is reused across both contexts."@en .
 
 epr:AccreditationStatus
     a owl:Class ;
@@ -1238,6 +1240,67 @@ epro:hasCentreManager
     rdfs:domain epr:EstablishmentLocationAndContact ;
     rdfs:range epr:CentreManager ;
     rdfs:comment "Cardinality: 0..1. Present for children's centres (types 47 and 48). Distinct from hasHeadteacherOrPrincipal — children's centres show a centre manager role."@en .
+
+
+#################################################################
+# Object properties — establishment groups (v1.1)
+#################################################################
+
+epro:hasMembership
+    a owl:ObjectProperty ;
+    rdfs:label "has membership"@en ;
+    rdfs:domain epr:Establishment ;
+    rdfs:range epr:GroupMembership ;
+    rdfs:comment "Cardinality: 0..*. An establishment may belong to one or more groups. Each membership is recorded as a GroupMembership instance."@en .
+
+epro:memberOf
+    a owl:ObjectProperty ;
+    rdfs:label "member of"@en ;
+    rdfs:domain epr:GroupMembership ;
+    rdfs:range epr:EstablishmentGroup ;
+    rdfs:comment "Cardinality: exactly 1. Each membership record links to one establishment group."@en .
+
+epro:identifiedByGroupId
+    a owl:ObjectProperty ;
+    rdfs:label "identified by group identifier"@en ;
+    rdfs:domain epr:EstablishmentGroup ;
+    rdfs:range epr:GroupId ;
+    rdfs:comment "Cardinality: 0..1. The business-facing GIAS group identifier for the group."@en .
+
+epro:hasGroupUkprn
+    a owl:ObjectProperty ;
+    rdfs:label "has group UKPRN"@en ;
+    rdfs:domain epr:EstablishmentGroup ;
+    rdfs:range epr:GroupUkprn ;
+    rdfs:comment "Cardinality: 0..1. UKPRN assigned to the group organisation by UKRLP."@en .
+
+epro:hasGroupCompaniesHouseNumber
+    a owl:ObjectProperty ;
+    rdfs:label "has group Companies House number"@en ;
+    rdfs:domain epr:EstablishmentGroup ;
+    rdfs:range epr:CompaniesHouseNumber ;
+    rdfs:comment "Cardinality: 0..1. Companies House registration for the group legal entity."@en .
+
+epro:hasGroupRelationship
+    a owl:ObjectProperty ;
+    rdfs:label "has group relationship"@en ;
+    rdfs:domain epr:EstablishmentGroup ;
+    rdfs:range epr:GroupRelationship ;
+    rdfs:comment "Cardinality: 0..*. A group may have one or more recorded relationships to other groups."@en .
+
+epro:relatesTo
+    a owl:ObjectProperty ;
+    rdfs:label "relates to"@en ;
+    rdfs:domain epr:GroupRelationship ;
+    rdfs:range epr:EstablishmentGroup ;
+    rdfs:comment "Cardinality: exactly 1. The other group in this group relationship."@en .
+
+epro:classifiedByGroupRelationshipType
+    a owl:ObjectProperty ;
+    rdfs:label "classified by group relationship type"@en ;
+    rdfs:domain epr:GroupRelationship ;
+    rdfs:range epr:GroupRelationshipType ;
+    rdfs:comment "Cardinality: exactly 1."@en .
 
 
 #################################################################
@@ -1521,6 +1584,82 @@ epr:OnlineProvider
 
 
 #################################################################
+# Classes — establishment groups (v1.1)
+#################################################################
+
+epr:EstablishmentGroup
+    a owl:Class ;
+    rdfs:label "Establishment group"@en ;
+    rdfs:comment "An organisation or governance structure to which one or more establishments belong. Covers academy trusts, federations, school sponsors and children's centre groups. Distinct from the accountability relationship, which records legal/governance responsibility. Academy trusts are both establishment groups and accountability bodies — see epr:AcademyTrust."@en .
+
+epr:MultiAcademyTrust
+    a owl:Class ;
+    rdfs:subClassOf epr:AcademyTrust ;
+    rdfs:label "Multi-academy trust"@en ;
+    rdfs:comment "An academy trust operating two or more academies under a single funding agreement with the Secretary of State. Incorporated under the Companies Act 2006. Governed by a board of trustees. Source: Academies Act 2010."@en .
+
+epr:SecureSingleAcademyTrust
+    a owl:Class ;
+    rdfs:subClassOf epr:SingleAcademyTrust ;
+    rdfs:label "Secure single-academy trust"@en ;
+    rdfs:comment "A single-academy trust operating a secure 16-to-19 academy providing education within secure residential accommodation."@en .
+
+epr:Federation
+    a owl:Class ;
+    rdfs:subClassOf epr:EstablishmentGroup ;
+    rdfs:label "Federation"@en ;
+    rdfs:comment "A statutory arrangement in which two or more maintained schools share a single federated governing body. Each member school retains its own URN, establishment number, budget, admissions arrangements and Ofsted inspection identity. Applicable only to maintained schools. Source: School Governance (Federations) Regulations 2012."@en .
+
+epr:SchoolSponsor
+    a owl:Class ;
+    rdfs:subClassOf epr:EstablishmentGroup ;
+    rdfs:label "School sponsor"@en ;
+    rdfs:comment "A body approved by the Secretary of State to sponsor one or more sponsor-led academies or free schools. Supports governance, leadership and educational improvement. Source: Academies Act 2010."@en .
+
+epr:ChildrensCentreGroup
+    a owl:Class ;
+    rdfs:subClassOf epr:EstablishmentGroup ;
+    rdfs:label "Children's centres group"@en ;
+    rdfs:comment "An operational cluster of children's centres with a lead-centre arrangement."@en .
+
+epr:ChildrensCentreCollaboration
+    a owl:Class ;
+    rdfs:subClassOf epr:EstablishmentGroup ;
+    rdfs:label "Children's centres collaboration"@en ;
+    rdfs:comment "A cross-group collaboration arrangement between children's centres."@en .
+
+epr:GenericTrust
+    a owl:Class ;
+    rdfs:subClassOf epr:EstablishmentGroup ;
+    rdfs:label "Trust"@en ;
+    rdfs:comment "A generic trust group type (EstablishmentGroupType code 02). Distinct from AcademyTrust. Rarely used in current data; retained for completeness."@en .
+
+epr:GroupMembership
+    a owl:Class ;
+    rdfs:label "Group membership"@en ;
+    rdfs:comment "A dated record of an establishment's membership of an establishment group, trust, federation, sponsor arrangement or children's centre collaboration. Maps to GroupLink in the current GIAS schema. An establishment may have membership in more than one group simultaneously."@en .
+
+epr:GroupRelationship
+    a owl:Class ;
+    rdfs:label "Group relationship"@en ;
+    rdfs:comment "A recorded relationship between two establishment groups, for example where a single-academy trust is the predecessor to a newly formed multi-academy trust. Maps to GroupRelationsLink."@en .
+
+epr:GroupRelationshipType
+    a owl:Class ;
+    rdfs:label "Group relationship type"@en ;
+    rdfs:comment "The classification of a group-to-group relationship, for example predecessor SAT or successor MAT."@en .
+
+epr:GroupId
+    a owl:Class ;
+    rdfs:label "Group identifier"@en ;
+    rdfs:comment "The business-facing GIAS group identifier, distinct from the internal surrogate key."@en .
+
+epr:GroupUkprn
+    a owl:Class ;
+    rdfs:label "Group UKPRN"@en ;
+    rdfs:comment "A UKRLP provider reference number assigned to the group organisation. Sourced from UKRLP by matching on Companies House number."@en .
+
+#################################################################
 # Named individuals — closed enumeration values (v0.8, v1.0)
 #
 # Classification values for closed, stable enumerations that
@@ -1540,6 +1679,15 @@ epr:CurrentIdentifierRole
 epr:PreviousIdentifierRole
     a owl:NamedIndividual, epr:IdentifierRole ;
     rdfs:label "Previous"@en .
+
+# Group relationship type (2 values, v1.1)
+epr:SuccessorMultiAcademyTrust
+    a owl:NamedIndividual, epr:GroupRelationshipType ;
+    rdfs:label "Successor MAT"@en .
+
+epr:PredecessorSingleAcademyTrust
+    a owl:NamedIndividual, epr:GroupRelationshipType ;
+    rdfs:label "Predecessor SAT"@en .
 # The same epr: URIs also carry skos:Concept in the vocabulary
 # TTL — valid OWL 2 punning.
 #################################################################
