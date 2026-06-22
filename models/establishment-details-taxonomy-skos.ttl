@@ -1133,6 +1133,7 @@ epr:EstablishmentGroupType
     skos:topConceptOf epr:establishmentDetailsTaxonomy ;
     skos:prefLabel "Establishment group type"@en ;
     skos:definition "The classification of an establishment group by its type, corresponding to EstablishmentGroupType codes in GIAS."@en ;
+    skos:scopeNote "Active group types only (codes 01, 02, 05, 06, 08, 09, 10, 11). Three archived group types are intentionally excluded: code 03 (Collegiate), code 04 (Partnership), code 07 (Umbrella trust). These types are no longer assigned to new groups in GIAS."@en ;
     skos:narrower
         epr:Federation,
         epr:GenericTrust,

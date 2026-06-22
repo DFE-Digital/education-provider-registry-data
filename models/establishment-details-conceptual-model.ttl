@@ -1596,7 +1596,7 @@ epr:MultiAcademyTrust
     a owl:Class ;
     rdfs:subClassOf epr:AcademyTrust ;
     rdfs:label "Multi-academy trust"@en ;
-    rdfs:comment "An academy trust operating two or more academies under a single funding agreement with the Secretary of State. Incorporated under the Companies Act 2006. Governed by a board of trustees. Source: Academies Act 2010."@en .
+    rdfs:comment "A single legal academy-trust entity operating two or more academies, free schools, UTCs or studio schools. It has a master funding agreement with the Secretary of State and a supplemental funding agreement for each individual academy. Incorporated under the Companies Act 2006. Governed by a board of trustees. Source: GOV.UK academy trust governance guide."@en .
 
 epr:SecureSingleAcademyTrust
     a owl:Class ;
