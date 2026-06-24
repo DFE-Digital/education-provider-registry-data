@@ -56,7 +56,7 @@ jobs:
 
           echo "Applying SQL scripts from db/init..."
           
-          FILES=$(find db/init -name "*.sql" | sort -V)
+          FILES=$(find ../db/init -name "*.sql" | sort -V)
 
           for file in $FILES; do
             echo "Running $file"
