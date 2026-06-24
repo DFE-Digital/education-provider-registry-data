@@ -117,7 +117,7 @@ jobs:
         
         if: env.changed == 'true'
         run: |
-          dotnet nuget push "./nupkg/DfE.EducationProviderRegistry.Data.DatabaseModels.nupkg" \
+          dotnet nuget push "./nupkg/*.nupkg" \
             --api-key ${{ secrets.GITHUB_TOKEN }} \
             --source "https://nuget.pkg.github.com/Dfe-digital/index.json" \
             --skip-duplicate
