@@ -26,8 +26,7 @@ jobs:
           --health-retries=5
 
     env:
-      CONNECTION_STRING: "host=localhost user=postgres password=postgres dbname=mydb"
-
+      CONNECTION_STRING: Host=localhost;Database=mydb;Username=postgres;Password=postgres
 
     defaults:
       run:
