@@ -32,11 +32,6 @@ jobs:
       DB_USER: postgres
       DB_PASSWORD: postgres
 
-
-    defaults:
-      run:
-        working-directory: generator
-
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -45,12 +40,15 @@ jobs:
         uses: actions/setup-dotnet@v5
 
       - name: Restore tools
+        working-directory: generator
         run: dotnet tool restore
 
       - name: Restore project dependencies
+        working-directory: generator
         run: dotnet restore
   
       - name: Build
+        working-directory: generator
         run: dotnet build --configuration Release --no-restore
 
       - name: Install psql
@@ -62,7 +60,7 @@ jobs:
 
           echo "Applying SQL scripts from db/init..."
           
-          FILES=$(find ../db/init -name "*.sql" | sort -V)
+          FILES=$(find db/init -name "*.sql" | sort -V)
 
           for file in $FILES; do
             echo "Running $file"
@@ -76,7 +74,6 @@ jobs:
 
           done
 
-
       - name: Verify tables
         run: |
           PGPASSWORD=$DB_PASSWORD psql \
@@ -86,6 +83,7 @@ jobs:
             -c "\dt"
 
       - name: Scaffold EF Core models
+        working-directory: generator
         run: |
           dotnet ef dbcontext scaffold \
             "$CONNECTION_STRING" \
@@ -110,12 +108,13 @@ jobs:
 
       - name: NuGet Package Database Models
         run: |
-          dotnet pack src/DfE.EducationProviderRegistry.Data.DatabaseModels \
+          dotnet pack generator/src/DfE.EducationProviderRegistry.Data.DatabaseModels \
             -c Release \
             -o ./nupkg \
             /p:PackageVersion=${{ env.VERSION }}
         
       - name: Publish package
+        
         if: env.changed == 'true'
         run: |
           dotnet nuget push "./nupkg/DfE.EducationProviderRegistry.Data.DatabaseModels.nupkg" \
