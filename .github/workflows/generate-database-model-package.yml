@@ -106,7 +106,6 @@ jobs:
 
       - name: Check generated models are up to date
         run: |
-          git diff
           git add generator/src
 
           if ! git diff --cached --ignore-all-space --ignore-blank-lines --quiet; then
