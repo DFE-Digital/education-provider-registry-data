@@ -2,9 +2,9 @@ name: Build and Publish DB Models
 
 on:
   push:
-    #branches: [ main ]
-    #paths:
-    #  - 'db/init/**'
+    branches: [ main ]
+    paths:
+      - 'db/init/**'
 
 jobs:
   build:
