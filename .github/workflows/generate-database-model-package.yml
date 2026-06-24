@@ -1,4 +1,4 @@
-name: Build and Publish DB Models
+name: Publish Database models NuGet package
 
 on:
   push:
