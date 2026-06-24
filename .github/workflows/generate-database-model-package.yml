@@ -1,10 +1,18 @@
 name: Publish Database models NuGet package
 
+
 on:
-  push:
-    branches: [ main ]
+  pull_request:
     paths:
       - 'db/init/**'
+      - 'generator/**'
+
+  push:
+    branches:
+      - main
+    paths:
+      - 'db/init/**'
+      - 'generator/**'
 
 jobs:
   build:
@@ -96,10 +104,16 @@ jobs:
             --no-onconfiguring \
             --force
 
-      - name: Detect changes
-        id: diff
+      - name: Check generated models are up to date
         run: |
-          git diff --exit-code || echo "changed=true" >> $GITHUB_ENV
+          git add generator/src
+
+          if ! git diff --cached --quiet; then
+            echo "Generated EFCore models are out of date"
+            echo "Run 'dotnet ef dbcontext scaffold' locally and commit changes"
+            git diff
+            exit 1
+          fi
 
       - name: Set package version
         run: |
@@ -114,8 +128,7 @@ jobs:
             /p:PackageVersion=${{ env.VERSION }}
         
       - name: Publish package
-        
-        if: env.changed == 'true'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           dotnet nuget push "./nupkg/*.nupkg" \
             --api-key ${{ secrets.GITHUB_TOKEN }} \
