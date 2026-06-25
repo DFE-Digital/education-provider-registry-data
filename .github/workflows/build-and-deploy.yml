@@ -50,16 +50,37 @@ jobs:
 
     - name: Check changed paths
       id: filter
-      uses: dorny/paths-filter@v3
-      with:
-        filters: |
-          docs:
-            - 'docs-site/**'
-            - 'documentation/**'
-          app:
-            - '**'
-            - '!docs-site/**'
-            - '!documentation/**'
+      shell: bash
+      run: |
+        set -euo pipefail
+
+        if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+          base="${{ github.event.pull_request.base.sha }}"
+        else
+          base="${{ github.event.before }}"
+        fi
+
+        if [[ -z "$base" || "$base" == "0000000000000000000000000000000000000000" ]]; then
+          base="$(git rev-parse HEAD^)"
+        fi
+
+        docs_changed=false
+        app_changed=false
+
+        while IFS= read -r path; do
+          [[ -z "$path" ]] && continue
+          if [[ "$path" == docs-site/* || "$path" == documentation/* ]]; then
+            docs_changed=true
+          else
+            app_changed=true
+          fi
+        done < <(git diff --name-only "$base" "${{ github.sha }}")
+
+        echo "docs=$docs_changed" >> "$GITHUB_OUTPUT"
+        echo "app=$app_changed" >> "$GITHUB_OUTPUT"
+
+        echo "docs changed: $docs_changed"
+        echo "app changed: $app_changed"
 
   build:
     name: Build
@@ -185,7 +206,7 @@ jobs:
 
   deploy:
     name: Deploy environments
-    if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' && needs.changes.outputs.app == 'true' }}
+    if: ${{ always() && github.ref == 'refs/heads/main' && github.event_name == 'push' && needs.changes.outputs.app == 'true' && needs.build.result == 'success' && needs.test.result == 'success' }}
     environment:
       name: ${{ matrix.environment }}
       url: ${{ steps.deploy_app.outputs.environment_url }}

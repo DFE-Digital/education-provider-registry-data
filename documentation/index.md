@@ -2,5 +2,4 @@
 
 This site publishes documentation for the Education Provider Registry data repository.
 
-13:20
 
