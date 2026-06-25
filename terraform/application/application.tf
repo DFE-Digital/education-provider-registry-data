@@ -21,7 +21,12 @@ module "application_configuration" {
   }
 }
 
-module "worker_application" {
+moved {
+  from = module.worker_application
+  to = module.web_application
+}
+
+module "web_application" {
   source = "./vendor/modules/aks//aks/application"
 
   is_web = false
