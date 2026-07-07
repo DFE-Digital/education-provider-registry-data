@@ -78,6 +78,8 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.HasPostgresExtension("pg_trgm");
+
         modelBuilder.Entity<Contact>(entity =>
         {
             entity.HasKey(e => e.ContactId).HasName("contact_pkey");
@@ -147,6 +149,10 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
             entity.HasIndex(e => e.Urn, "establishment_urn_key").IsUnique();
 
+            entity.HasIndex(e => e.Name, "idx_establishment_name_trgm")
+                .HasMethod("gin")
+                .HasOperators(new[] { "gin_trgm_ops" });
+
             entity.HasIndex(e => e.EstablishmentStatusId, "idx_establishment_status_id");
 
             entity.HasIndex(e => e.EstablishmentTypeId, "idx_establishment_type_id");
@@ -154,6 +160,10 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.HasIndex(e => e.Uid, "idx_establishment_uid");
 
             entity.HasIndex(e => e.Urn, "idx_establishment_urn");
+
+            entity.HasIndex(e => e.Urn, "idx_establishment_urn_trgm")
+                .HasMethod("gin")
+                .HasOperators(new[] { "gin_trgm_ops" });
 
             entity.Property(e => e.EstablishmentId).HasColumnName("establishment_id");
             entity.Property(e => e.EstablishmentNumber).HasColumnName("establishment_number");
