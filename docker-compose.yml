@@ -1,18 +1,7 @@
 ﻿services:
-  seedgen:
-    image: mcr.microsoft.com/powershell
-    container_name: education-provider-registr-data-seed-generator
-    volumes:
-      - ./db/init:/seed
-      - ./generate-data-seed.ps1:/generate-data-seed.ps1:ro
-    entrypoint: ["pwsh", "/generate-data-seed.ps1"]
-
   db:
     image: postgres:16
     container_name: education-provider-registr-data-prototype
-    depends_on:
-      seedgen:
-        condition: service_completed_successfully
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -20,17 +9,8 @@
     ports:
       - "5440:5432"
     volumes:
-      - db_data:/var/lib/postgresql/data
-      - ./db/init:/docker-entrypoint-initdb.d
-    command: >
-      bash -c "
-      echo 'Waiting for seed file...';
-      while [ ! -f /docker-entrypoint-initdb.d/002-seed.sql ]; do
-        sleep 1;
-      done;
-      echo 'Seed file found. Starting Postgres...';
-      exec su postgres -c '/usr/local/bin/docker-entrypoint.sh postgres'
-      "
+      # - db_data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d/
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
