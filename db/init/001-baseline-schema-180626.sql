@@ -451,6 +451,10 @@ REFERENCES core.role_assignment (role_assignment_id);
 -- ------------------------------------------------------------
 -- Indexes
 -- ------------------------------------------------------------
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
+CREATE INDEX idx_establishment_urn_trgm ON core.establishment USING gin (urn gin_trgm_ops);
+CREATE INDEX idx_establishment_name_trgm ON core.establishment USING gin (name gin_trgm_ops);
+
 CREATE INDEX idx_establishment_type_id ON core.establishment (establishment_type_id);
 CREATE INDEX idx_establishment_status_id ON core.establishment (establishment_status_id);
 CREATE INDEX idx_establishment_urn ON core.establishment (urn);
