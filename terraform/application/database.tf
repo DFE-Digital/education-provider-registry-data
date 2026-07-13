@@ -12,12 +12,13 @@ module "postgres" {
   azure_enable_monitoring     = var.enable_monitoring
   azure_enable_backup_storage = var.enable_postgres_backup_storage
   server_version              = var.postgres_server_version
+  azure_extensions            = ["pg_trgm"]
 }
 
 
 # module "redis-cache" {
 #   source = "./vendor/modules/aks//aks/redis"
-# 
+#
 #   namespace                 = var.namespace
 #   environment               = var.environment
 #   azure_resource_prefix     = var.azure_resource_prefix
