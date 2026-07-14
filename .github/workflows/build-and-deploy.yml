@@ -110,6 +110,18 @@ jobs:
         reuse-cache: true
         snyk-token: ${{ secrets.SNYK_TOKEN }}
 
+    - name: Build and push DB docker image
+      id: build-db-image
+      uses: DFE-Digital/github-actions/build-docker-image@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        context: .
+        dockerfile-path: Dockerfile.postgres
+        docker-repository: ghcr.io/dfe-digital/education-provider-registry-data-postgres
+        max-cache: true
+        reuse-cache: true
+        snyk-token: ${{ secrets.SNYK_TOKEN }}
+
   test:
     name: Run tests
     if: ${{ github.event_name != 'workflow_dispatch' && needs.changes.outputs.app == 'true' }}

@@ -30,6 +30,18 @@ jobs:
         reuse-cache: false
         snyk-token: ${{ secrets.SNYK_TOKEN }}
 
+    - name: Build without cache and push DB docker image
+      id: build-db-image
+      uses: DFE-Digital/github-actions/build-docker-image@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        context: .
+        dockerfile-path: Dockerfile.postgres
+        docker-repository: ghcr.io/dfe-digital/education-provider-registry-data-postgres
+        max-cache: true
+        reuse-cache: false
+        snyk-token: ${{ secrets.SNYK_TOKEN }}
+
     - name: Notify teams channel on job failure
       if: ${{ failure() }}
       uses: DFE-Digital/github-actions/send-to-teams-channel@master
