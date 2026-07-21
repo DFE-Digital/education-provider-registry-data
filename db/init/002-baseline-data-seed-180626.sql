@@ -90,7 +90,7 @@ INSERT INTO core.establishment (
 )
 SELECT
     -- Generate a 5–7 digit numeric URN
-    (FLOOR(RANDOM() * 9000000) + 10000)::text,
+    (100000 + g - 1)::text,
     'UID' || g,
     'School ' || g,
     LPAD(g::text, 3, '0'),
