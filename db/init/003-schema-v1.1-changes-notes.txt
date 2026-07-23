@@ -1,0 +1,31 @@
+
+
+
+
+/*
+Establishment name
+URN
+UKPRN
+Establishment status
+Local authority
+Open date
+Closed date
+Reason establishment closed
+Reason establishment opened
+Establishment type
+Education phase
+Gender of entry
+Diocese
+Religious character
+Religious ethos
+Number of pupils
+Number of pupils eligible for free school meals
+Nursery provision
+School capacity
+Headteacher or principal
+Boarding provision
+Section 41 approved
+Special classes
+Type of resourced provision
+Telephone number
+*/
