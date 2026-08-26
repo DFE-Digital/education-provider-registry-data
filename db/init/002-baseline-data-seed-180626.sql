@@ -176,6 +176,29 @@ SELECT group_id,
 FROM core.group_record;
 
 -- ------------------------------------------------------------
+-- Local Authorities
+-- ------------------------------------------------------------
+INSERT INTO core.establishment_authority
+(
+    establishment_id,
+    authority_code,
+    authority_name
+)
+SELECT
+    e.establishment_id,
+    CASE e.establishment_id % 3
+        WHEN 0 THEN '891'
+        WHEN 1 THEN '892'
+        ELSE '893'
+    END,
+    CASE e.establishment_id % 3
+        WHEN 0 THEN 'Nottinghamshire'
+        WHEN 1 THEN 'Lincolnshire'
+        ELSE 'Leicestershire'
+    END
+FROM core.establishment e;
+
+-- ------------------------------------------------------------
 -- Provision
 -- ------------------------------------------------------------
 INSERT INTO core.establishment_provision (establishment_id, education_phase_id, fsm, percentage_fsm)
