@@ -98,6 +98,8 @@ CREATE TABLE core.establishment (
     uid TEXT UNIQUE,
     name TEXT NOT NULL,
     establishment_number TEXT,
+    laestab TEXT,
+    dfe_number TEXT,
     establishment_type_id BIGINT NOT NULL,
     establishment_status_id BIGINT NOT NULL,
     headteacher_role_assignment_id BIGINT,
@@ -458,6 +460,7 @@ CREATE INDEX idx_establishment_name_trgm ON core.establishment USING gin (name g
 CREATE INDEX idx_establishment_type_id ON core.establishment (establishment_type_id);
 CREATE INDEX idx_establishment_status_id ON core.establishment (establishment_status_id);
 CREATE INDEX idx_establishment_urn ON core.establishment (urn);
+CREATE INDEX idx_establishment_laestab ON core.establishment (laestab);
 CREATE INDEX idx_establishment_uid ON core.establishment (uid);
 CREATE INDEX idx_group_record_group_type_id ON core.group_record (group_type_id);
 CREATE INDEX idx_role_person_id ON core.role (person_id);
