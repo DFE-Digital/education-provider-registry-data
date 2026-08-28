@@ -15,6 +15,10 @@ public partial class Establishment
 
     public string? EstablishmentNumber { get; set; }
 
+    public string? Laestab { get; set; }
+
+    public string? DfeNumber { get; set; }
+
     public long EstablishmentTypeId { get; set; }
 
     public long EstablishmentStatusId { get; set; }

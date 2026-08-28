@@ -149,6 +149,8 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
             entity.HasIndex(e => e.Urn, "establishment_urn_key").IsUnique();
 
+            entity.HasIndex(e => e.Laestab, "idx_establishment_laestab");
+
             entity.HasIndex(e => e.Name, "idx_establishment_name_trgm")
                 .HasMethod("gin")
                 .HasOperators(new[] { "gin_trgm_ops" });
@@ -166,10 +168,12 @@ public partial class EducationProviderRegistryDbContext : DbContext
                 .HasOperators(new[] { "gin_trgm_ops" });
 
             entity.Property(e => e.EstablishmentId).HasColumnName("establishment_id");
+            entity.Property(e => e.DfeNumber).HasColumnName("dfe_number");
             entity.Property(e => e.EstablishmentNumber).HasColumnName("establishment_number");
             entity.Property(e => e.EstablishmentStatusId).HasColumnName("establishment_status_id");
             entity.Property(e => e.EstablishmentTypeId).HasColumnName("establishment_type_id");
             entity.Property(e => e.HeadteacherRoleAssignmentId).HasColumnName("headteacher_role_assignment_id");
+            entity.Property(e => e.Laestab).HasColumnName("laestab");
             entity.Property(e => e.Name).HasColumnName("name");
             entity.Property(e => e.Uid).HasColumnName("uid");
             entity.Property(e => e.Urn).HasColumnName("urn");
