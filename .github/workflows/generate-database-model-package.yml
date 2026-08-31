@@ -14,8 +14,12 @@ on:
       - 'db/init/**'
       - 'generator/**'
 
+# TODO separate generating model from publishing package
 jobs:
   build:
+    permissions:
+      contents: read
+      packages: write
     runs-on: ubuntu-latest
 
     services:
