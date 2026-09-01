@@ -85,17 +85,32 @@ FROM generate_series(1, 5) g;
 -- Schools
 -- ------------------------------------------------------------
 INSERT INTO core.establishment (
-    urn, uid, name, establishment_number,
-    establishment_type_id, establishment_status_id
+    urn,
+    uid,
+    name,
+    establishment_number,
+    establishment_type_id,
+    establishment_status_id
 )
 SELECT
-    -- Generate a 5–7 digit numeric URN
     (100000 + g - 1)::text,
     'UID' || g,
     'School ' || g,
     LPAD(g::text, 3, '0'),
-    (SELECT establishment_type_id FROM ref.establishment_type WHERE code IN ('PRI','SEC') ORDER BY RANDOM() LIMIT 1),
-    (SELECT establishment_status_id FROM ref.establishment_status WHERE code = 'OPEN')
+    (
+        SELECT establishment_type_id
+        FROM ref.establishment_type
+        WHERE code =
+            CASE
+                WHEN g % 2 = 0 THEN 'PRI'
+                ELSE 'SEC'
+            END
+    ),
+    (
+        SELECT establishment_status_id
+        FROM ref.establishment_status
+        WHERE code = 'OPEN'
+    )
 FROM generate_series(1, 25) g;
 
 
