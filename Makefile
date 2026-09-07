@@ -4,6 +4,7 @@ REGION=UK South
 SERVICE_NAME=education-provider-registry-data
 SERVICE_SHORT=eprdat
 DOCKER_REPOSITORY=ghcr.io/dfe-digital/education-provider-registry-data
+NAMESPACE = $(shell jq -r '.namespace' terraform/application/config/$(CONFIG).tfvars.json)
 
 help:
 	@grep -E '^[a-zA-Z\._\-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
@@ -232,3 +233,99 @@ test: test-cluster
 .PHONY: preproduction
 preproduction: production-cluster
 	$(eval include global_config/preproduction.sh)
+
+
+##############################################################################
+# DB pod related tasks for backup and restore
+##############################################################################
+
+DB_TOOLS_POD_NAME=$(SERVICE_SHORT)-$(CONFIG)-postgres-db-tools-pod
+RESTORE_SAS_PERMISSIONS=r
+INTERACTIVE_SAS_PERMISSIONS=r
+BACKUP_SAS_PERMISSIONS=cw
+
+.PHONY: \
+	aks_db_job_backup \
+	aks_db_job_restore \
+	aks_db_job_interactive_new \
+	aks_db_job_interactive_join \
+	aks_db_job_cleanup
+
+aks_db_job_interactive_new: \
+	aks_db_job_check_single_pod \
+	aks_db_job_prepare_interactive \
+	aks_db_job_create_pod \
+	aks_db_job_interactive_join
+
+aks_db_job_interactive_join:
+	kubectl exec -it \
+		-n $(NAMESPACE) \
+		$(DB_TOOLS_POD_NAME) \
+		-- /bin/bash
+
+aks_db_job_cleanup:
+	@NAMESPACE="$(NAMESPACE)" \
+	DB_TOOLS_POD_NAME="$(DB_TOOLS_POD_NAME)" \
+	./scripts/cleanup-db-tools-pod.sh
+
+##############################################################################
+# Common configuration
+# Notes
+# date function differs mac to linux, so using python3 to get UTC time in ISO format
+##############################################################################
+
+aks_db_job_set_common_vars: get-cluster-credentials
+	$(eval DSUFFIX=$(if $(PR_NUMBER),-pr-$(PR_NUMBER),-$(CONFIG)))
+	$(eval DEPLOYMENT_NAME=${SERVICE_NAME}${DSUFFIX})
+	$(eval STORAGE_ACCOUNT_NAME=${RESOURCE_NAME_PREFIX}${SERVICE_SHORT}dbbkp${CONFIG_SHORT}sa)
+	$(eval CONTAINER_NAME=database-backup)
+	$(eval SAS_VALID_HOURS=2)
+	$(eval TODAY=$(shell date +"%F_%H%M%S"))	
+	$(eval EXPIRY=$(shell python3 -c 'from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=$(SAS_VALID_HOURS))).strftime("%Y-%m-%dT%H:%MZ"))'))
+	
+
+	$(eval SECRET_REF_NAME=$(shell \
+		kubectl get deployment $(DEPLOYMENT_NAME) \
+		-n $(NAMESPACE) \
+		-o json | \
+		jq -r '.spec.template.spec.containers[].envFrom[]?.secretRef?.name // empty'))
+
+	$(call debug,Namespace: $(NAMESPACE))
+	$(call debug,Deployment: $(DEPLOYMENT_NAME))
+	$(call debug,Storage Account: $(STORAGE_ACCOUNT_NAME))
+	$(call debug,Container: $(CONTAINER_NAME))
+
+
+##############################################################################
+# Interactive
+##############################################################################
+
+aks_db_job_prepare_interactive: aks_db_job_set_common_vars
+
+##############################################################################
+# Pod creation
+##############################################################################
+
+aks_db_job_create_pod:
+
+	$(if $(SECRET_REF_NAME),,$(error Missing SECRET_REF_NAME))
+	$(if $(DB_TOOLS_POD_NAME),,$(error Missing DB_TOOLS_POD_NAME))
+
+	@SECRET_REF_NAME="$(SECRET_REF_NAME)" \
+	NAMESPACE="$(NAMESPACE)" \
+	DB_TOOLS_POD_NAME="$(DB_TOOLS_POD_NAME)" \
+	./scripts/create-db-tools-pod.sh
+
+##############################################################################
+# Safety checks
+##############################################################################
+
+aks_db_job_check_single_pod:
+	@if kubectl get pod $(DB_TOOLS_POD_NAME) -n $(NAMESPACE) >/dev/null 2>&1; then \
+		echo "DB tools pod already exists."; \
+		echo "Either:"; \
+		echo "  make aks_db_job_interactive_join"; \
+		echo "or"; \
+		echo "  make aks_db_job_cleanup"; \
+		exit 1; \
+	fi
