@@ -18,6 +18,9 @@ module "application_configuration" {
   }
   secret_variables = {
     DATABASE_URL = module.postgres.url
+    REPLICA_URL = module.postgres.read_replica_urls["reporting"]
+    DATABASE_DOTNET_CONSTR = module.postgres.dotnet_connection_string
+    REPLICA_DOTNET_CONSTR = module.postgres.read_replica_extra_dotnet_connection_strings["reporting"]    
   }
 }
 
