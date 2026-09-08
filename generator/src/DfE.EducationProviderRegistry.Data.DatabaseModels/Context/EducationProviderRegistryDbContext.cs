@@ -75,6 +75,8 @@ public partial class EducationProviderRegistryDbContext : DbContext
     public virtual DbSet<Site> Site { get; set; }
 
     public virtual DbSet<Title> Title { get; set; }
+    
+    public virtual DbSet<SearchProvider> SearchProvider { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -765,6 +767,28 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
             entity.Property(e => e.TitleId).HasColumnName("title_id");
             entity.Property(e => e.Name).HasColumnName("name");
+        });
+
+        modelBuilder.Entity<SearchProvider>(entity =>
+        {
+            entity.ToTable("search_provider", "core");
+
+            entity.HasKey(e => e.ProviderId).HasName("search_provider_pkey");
+
+            entity.Property(e => e.ProviderId).HasColumnName("provider_id");
+            entity.Property(e => e.ProviderName).HasColumnName("provider_name");
+            entity.Property(e => e.LaEstab).HasColumnName("la_estab");
+            entity.Property(e => e.ProviderType).HasColumnName("provider_type");
+            entity.Property(e => e.ProviderAddress).HasColumnName("provider_address");
+            entity.Property(e => e.CompaniesHouseNumber).HasColumnName("companies_house_number");
+            entity.Property(e => e.UkProviderReferenceNumber).HasColumnName("uk_provider_reference_number");
+            entity.Property(e => e.Postcode).HasColumnName("postcode");
+            entity.Property(e => e.County).HasColumnName("county");
+            entity.Property(e => e.Town).HasColumnName("town");
+            entity.Property(e => e.LocalAuthorityName).HasColumnName("local_authority_name");
+            entity.Property(e => e.GroupUid).HasColumnName("group_uid");
+            entity.Property(e => e.AcademyCounts).HasColumnName("academy_counts");
+            entity.Property(e => e.ProviderCategory).HasColumnName("provider_category");
         });
 
         OnModelCreatingPartial(modelBuilder);

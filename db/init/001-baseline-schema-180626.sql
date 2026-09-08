@@ -436,6 +436,26 @@ CREATE TABLE core.establishment_proprietor (
 );
 
 -- ------------------------------------------------------------
+-- Search Providers
+-- ------------------------------------------------------------
+CREATE TABLE core.search_provider (
+    provider_id TEXT,
+    provider_name TEXT,
+    la_estab TEXT,
+    provider_type TEXT,
+    provider_address TEXT,
+    companies_house_number TEXT,
+    uk_provider_reference_number TEXT,
+    postcode TEXT,
+    county TEXT,
+    town TEXT,
+    local_authority_name TEXT,
+    group_uid TEXT,
+    academy_counts INTEGER,
+    provider_category TEXT
+);
+
+-- ------------------------------------------------------------
 -- Deffered Foreign Keys (MUST RUN AFTER ALL TABLES EXIST)
 -- ------------------------------------------------------------
 ALTER TABLE core.establishment
