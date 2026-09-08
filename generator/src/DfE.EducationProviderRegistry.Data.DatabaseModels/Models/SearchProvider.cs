@@ -16,6 +16,7 @@ public class SearchProvider
     public string County { get; set; } = string.Empty;
     public string Town { get; set; } = string.Empty;
     public string LocalAuthorityName { get; set; } = string.Empty;
+    public string GroupId { get; set; } = string.Empty;
     public string GroupUid { get; set; } = string.Empty;
     public int? AcademyCounts { get; set; }
     public string ProviderCategory { get; set; } = string.Empty;
