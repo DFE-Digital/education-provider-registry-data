@@ -786,7 +786,7 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.County).HasColumnName("county");
             entity.Property(e => e.Town).HasColumnName("town");
             entity.Property(e => e.LocalAuthorityName).HasColumnName("local_authority_name");
-            entity.Property(e => e.GroupUid).HasColumnName("group_id");
+            entity.Property(e => e.GroupId).HasColumnName("group_id");
             entity.Property(e => e.GroupUid).HasColumnName("group_uid");
             entity.Property(e => e.AcademyCounts).HasColumnName("academy_counts");
             entity.Property(e => e.ProviderCategory).HasColumnName("provider_category");
