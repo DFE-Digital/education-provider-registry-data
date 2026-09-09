@@ -214,6 +214,23 @@ SELECT
 FROM core.establishment e;
 
 -- ------------------------------------------------------------
+-- Postcode
+-- ------------------------------------------------------------
+INSERT INTO core.establishment_address
+(
+    establishment_id,
+    postcode
+)
+SELECT
+    e.establishment_id,
+    CASE e.establishment_id % 3
+        WHEN 0 THEN 'NG1 ' || LPAD(e.establishment_id::text, 2, '0')
+        WHEN 1 THEN 'LN1 ' || LPAD(e.establishment_id::text, 2, '0')
+        ELSE 'LE1 ' || LPAD(e.establishment_id::text, 2, '0')
+    END
+FROM core.establishment e;
+
+-- ------------------------------------------------------------
 -- Provision
 -- ------------------------------------------------------------
 INSERT INTO core.establishment_provision (establishment_id, education_phase_id, fsm, percentage_fsm)
