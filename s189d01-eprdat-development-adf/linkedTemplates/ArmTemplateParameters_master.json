@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "s189d01-eprdat-development-adf"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://s189d01eprdatdevelopment.dfs.core.windows.net/"
+		},
+		"s189d01-eprdat-development-adf-standard-storage-pe_properties_privateLinkResourceId": {
+			"value": "/subscriptions/5c83eb53-a94f-4778-b258-1f33efe49655/resourceGroups/s189d01-eprdat-ts-rg/providers/Microsoft.Storage/storageAccounts/s189d01eprdatdevelopment"
+		},
+		"s189d01-eprdat-development-adf-standard-storage-pe_properties_groupId": {
+			"value": "blob"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
