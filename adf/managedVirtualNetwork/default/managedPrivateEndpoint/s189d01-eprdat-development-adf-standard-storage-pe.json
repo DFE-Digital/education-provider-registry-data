@@ -1,7 +1,0 @@
-{
-	"name": "s189d01-eprdat-development-adf-standard-storage-pe",
-	"properties": {
-		"privateLinkResourceId": "/subscriptions/5c83eb53-a94f-4778-b258-1f33efe49655/resourceGroups/s189d01-eprdat-ts-rg/providers/Microsoft.Storage/storageAccounts/s189d01eprdatdevelopment",
-		"groupId": "blob"
-	}
-}
