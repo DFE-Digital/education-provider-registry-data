@@ -1,0 +1,15 @@
+{
+	"name": "s189d01-eprdat-development-adf",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "17d80d6c-0d7d-4609-a249-6a3502c4304a",
+		"tenantId": "9c7d9dd3-840c-4b3f-818e-552865082e16"
+	}
+}
