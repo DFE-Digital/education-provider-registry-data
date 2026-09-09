@@ -214,15 +214,33 @@ SELECT
 FROM core.establishment e;
 
 -- ------------------------------------------------------------
--- Postcode
+-- Sites
 -- ------------------------------------------------------------
-INSERT INTO core.establishment_address
+INSERT INTO core.site
 (
     establishment_id,
+    name,
+    address_line_1,
+    address_line_2,
+    town,
+    county,
     postcode
 )
 SELECT
     e.establishment_id,
+    e.name || ' Site',
+    'Address Line 1',
+    'Address Line 2',
+    CASE e.establishment_id % 3
+        WHEN 0 THEN 'Nottingham'
+        WHEN 1 THEN 'Lincoln'
+        ELSE 'Leicester'
+    END,
+    CASE e.establishment_id % 3
+        WHEN 0 THEN 'Nottinghamshire'
+        WHEN 1 THEN 'Lincolnshire'
+        ELSE 'Leicestershire'
+    END,
     CASE e.establishment_id % 3
         WHEN 0 THEN 'NG1 ' || LPAD(e.establishment_id::text, 2, '0')
         WHEN 1 THEN 'LN1 ' || LPAD(e.establishment_id::text, 2, '0')
