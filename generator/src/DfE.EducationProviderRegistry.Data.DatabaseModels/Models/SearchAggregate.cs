@@ -1,6 +1,6 @@
 ﻿namespace DfE.EducationProviderRegistry.Data.DatabaseModels.Models;
 
-public class SearchProvider
+public class SearchAggregate
 {
     public string ProviderId { get; set; } = string.Empty;
     public string ProviderName { get; set; } = string.Empty;

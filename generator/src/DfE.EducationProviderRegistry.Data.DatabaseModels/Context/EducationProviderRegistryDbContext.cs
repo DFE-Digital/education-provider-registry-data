@@ -76,7 +76,7 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
     public virtual DbSet<Title> Title { get; set; }
     
-    public virtual DbSet<SearchProvider> SearchProvider { get; set; }
+    public virtual DbSet<SearchAggregate> SearchAggregate { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -769,11 +769,11 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.Name).HasColumnName("name");
         });
 
-        modelBuilder.Entity<SearchProvider>(entity =>
+        modelBuilder.Entity<SearchAggregate>(entity =>
         {
-            entity.ToTable("search_provider", "core");
+            entity.ToTable("search_aggregate", "core");
 
-            entity.HasKey(e => e.ProviderId).HasName("search_provider_pkey");
+            entity.HasKey(e => e.ProviderId).HasName("search_aggregate_pkey");
 
             entity.Property(e => e.ProviderId).HasColumnName("provider_id");
             entity.Property(e => e.ProviderName).HasColumnName("provider_name");
