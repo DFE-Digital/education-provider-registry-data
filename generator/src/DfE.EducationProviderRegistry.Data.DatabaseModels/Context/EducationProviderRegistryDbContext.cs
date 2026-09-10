@@ -72,6 +72,8 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
     public virtual DbSet<RoleType> RoleType { get; set; }
 
+    public virtual DbSet<SearchAggregate> SearchAggregate { get; set; }
+
     public virtual DbSet<Site> Site { get; set; }
 
     public virtual DbSet<Title> Title { get; set; }
@@ -85,10 +87,6 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.HasKey(e => e.ContactId).HasName("contact_pkey");
 
             entity.ToTable("contact", "core");
-
-            entity.HasIndex(e => e.EstablishmentId, "idx_contact_establishment_id");
-
-            entity.HasIndex(e => e.GroupId, "idx_contact_group_id");
 
             entity.Property(e => e.ContactId).HasColumnName("contact_id");
             entity.Property(e => e.EstablishmentId).HasColumnName("establishment_id");
@@ -149,23 +147,7 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
             entity.HasIndex(e => e.Urn, "establishment_urn_key").IsUnique();
 
-            entity.HasIndex(e => e.Laestab, "idx_establishment_laestab");
-
-            entity.HasIndex(e => e.Name, "idx_establishment_name_trgm")
-                .HasMethod("gin")
-                .HasOperators(new[] { "gin_trgm_ops" });
-
-            entity.HasIndex(e => e.EstablishmentStatusId, "idx_establishment_status_id");
-
-            entity.HasIndex(e => e.EstablishmentTypeId, "idx_establishment_type_id");
-
-            entity.HasIndex(e => e.Uid, "idx_establishment_uid");
-
             entity.HasIndex(e => e.Urn, "idx_establishment_urn");
-
-            entity.HasIndex(e => e.Urn, "idx_establishment_urn_trgm")
-                .HasMethod("gin")
-                .HasOperators(new[] { "gin_trgm_ops" });
 
             entity.Property(e => e.EstablishmentId).HasColumnName("establishment_id");
             entity.Property(e => e.DfeNumber).HasColumnName("dfe_number");
@@ -285,10 +267,6 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
             entity.ToTable("establishment_group_membership", "core");
 
-            entity.HasIndex(e => e.EstablishmentId, "idx_establishment_group_membership_establishment_id");
-
-            entity.HasIndex(e => e.GroupId, "idx_establishment_group_membership_group_id");
-
             entity.Property(e => e.EstablishmentGroupMembershipId).HasColumnName("establishment_group_membership_id");
             entity.Property(e => e.EndDate).HasColumnName("end_date");
             entity.Property(e => e.EstablishmentId).HasColumnName("establishment_id");
@@ -311,8 +289,6 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.HasKey(e => e.EstablishmentIdentifierId).HasName("establishment_identifier_pkey");
 
             entity.ToTable("establishment_identifier", "core");
-
-            entity.HasIndex(e => e.EstablishmentId, "idx_establishment_identifier_establishment_id");
 
             entity.HasIndex(e => new { e.EstablishmentId, e.IdentifierType, e.IdentifierValue }, "uq_establishment_identifier").IsUnique();
 
@@ -348,8 +324,6 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.HasKey(e => e.EstablishmentLifecycleEventId).HasName("establishment_lifecycle_event_pkey");
 
             entity.ToTable("establishment_lifecycle_event", "core");
-
-            entity.HasIndex(e => e.EstablishmentId, "idx_establishment_lifecycle_event_establishment_id");
 
             entity.Property(e => e.EstablishmentLifecycleEventId).HasColumnName("establishment_lifecycle_event_id");
             entity.Property(e => e.ClosedReasonId).HasColumnName("closed_reason_id");
@@ -494,8 +468,6 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
             entity.ToTable("establishment_status_history", "core");
 
-            entity.HasIndex(e => e.EstablishmentId, "idx_establishment_status_history_establishment_id");
-
             entity.Property(e => e.EstablishmentStatusHistoryId).HasColumnName("establishment_status_history_id");
             entity.Property(e => e.ChangedAt)
                 .HasDefaultValueSql("now()")
@@ -547,8 +519,6 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
             entity.ToTable("group_identifier", "core");
 
-            entity.HasIndex(e => e.GroupId, "idx_group_identifier_group_id");
-
             entity.HasIndex(e => new { e.GroupId, e.IdentifierType, e.IdentifierValue }, "uq_group_identifier").IsUnique();
 
             entity.Property(e => e.GroupIdentifierId).HasColumnName("group_identifier_id");
@@ -568,8 +538,6 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.ToTable("group_record", "core");
 
             entity.HasIndex(e => e.Code, "group_record_code_key").IsUnique();
-
-            entity.HasIndex(e => e.GroupTypeId, "idx_group_record_group_type_id");
 
             entity.Property(e => e.GroupId).HasColumnName("group_id");
             entity.Property(e => e.Code).HasColumnName("code");
@@ -599,7 +567,6 @@ public partial class EducationProviderRegistryDbContext : DbContext
                     {
                         j.HasKey("ParentGroupId", "ChildGroupId").HasName("group_group_membership_pkey");
                         j.ToTable("group_group_membership", "core");
-                        j.HasIndex(new[] { "ChildGroupId" }, "idx_group_group_membership_child_group_id");
                         j.IndexerProperty<long>("ParentGroupId").HasColumnName("parent_group_id");
                         j.IndexerProperty<long>("ChildGroupId").HasColumnName("child_group_id");
                     });
@@ -617,7 +584,6 @@ public partial class EducationProviderRegistryDbContext : DbContext
                     {
                         j.HasKey("ParentGroupId", "ChildGroupId").HasName("group_group_membership_pkey");
                         j.ToTable("group_group_membership", "core");
-                        j.HasIndex(new[] { "ChildGroupId" }, "idx_group_group_membership_child_group_id");
                         j.IndexerProperty<long>("ParentGroupId").HasColumnName("parent_group_id");
                         j.IndexerProperty<long>("ChildGroupId").HasColumnName("child_group_id");
                     });
@@ -685,10 +651,6 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
             entity.ToTable("role", "core");
 
-            entity.HasIndex(e => e.PersonId, "idx_role_person_id");
-
-            entity.HasIndex(e => e.RoleTypeId, "idx_role_role_type_id");
-
             entity.Property(e => e.RoleId).HasColumnName("role_id");
             entity.Property(e => e.PersonId).HasColumnName("person_id");
             entity.Property(e => e.RoleTypeId).HasColumnName("role_type_id");
@@ -708,12 +670,6 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.HasKey(e => e.RoleAssignmentId).HasName("role_assignment_pkey");
 
             entity.ToTable("role_assignment", "core");
-
-            entity.HasIndex(e => e.EstablishmentId, "idx_role_assignment_establishment_id");
-
-            entity.HasIndex(e => e.GroupId, "idx_role_assignment_group_id");
-
-            entity.HasIndex(e => e.RoleId, "idx_role_assignment_role_id");
 
             entity.Property(e => e.RoleAssignmentId).HasColumnName("role_assignment_id");
             entity.Property(e => e.EstablishmentId).HasColumnName("establishment_id");
@@ -747,6 +703,54 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.RoleTypeId).HasColumnName("role_type_id");
             entity.Property(e => e.Code).HasColumnName("code");
             entity.Property(e => e.Name).HasColumnName("name");
+        });
+
+        modelBuilder.Entity<SearchAggregate>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("search_aggregate", "core");
+
+            entity.HasIndex(e => e.CompaniesHouseNumber, "idx_search_provider_companies_house_number");
+
+            entity.HasIndex(e => e.County, "idx_search_provider_county");
+
+            entity.HasIndex(e => e.GroupUid, "idx_search_provider_group_uid");
+
+            entity.HasIndex(e => e.ProviderId, "idx_search_provider_id");
+
+            entity.HasIndex(e => e.LaEstab, "idx_search_provider_laestab");
+
+            entity.HasIndex(e => e.LocalAuthorityName, "idx_search_provider_local_authority_name");
+
+            entity.HasIndex(e => e.ProviderName, "idx_search_provider_name");
+
+            entity.HasIndex(e => e.ProviderName, "idx_search_provider_name_trgm")
+                .HasMethod("gin")
+                .HasOperators(new[] { "gin_trgm_ops" });
+
+            entity.HasIndex(e => e.Postcode, "idx_search_provider_postcode");
+
+            entity.HasIndex(e => e.Town, "idx_search_provider_town");
+
+            entity.HasIndex(e => e.UkProviderReferenceNumber, "idx_search_provider_ukprn");
+
+            entity.Property(e => e.AcademyCounts).HasColumnName("academy_counts");
+            entity.Property(e => e.CompaniesHouseNumber).HasColumnName("companies_house_number");
+            entity.Property(e => e.County).HasColumnName("county");
+            entity.Property(e => e.GroupId).HasColumnName("group_id");
+            entity.Property(e => e.GroupUid).HasColumnName("group_uid");
+            entity.Property(e => e.LaEstab).HasColumnName("la_estab");
+            entity.Property(e => e.LocalAuthorityName).HasColumnName("local_authority_name");
+            entity.Property(e => e.Postcode).HasColumnName("postcode");
+            entity.Property(e => e.ProviderAddress).HasColumnName("provider_address");
+            entity.Property(e => e.ProviderCategory).HasColumnName("provider_category");
+            entity.Property(e => e.ProviderId).HasColumnName("provider_id");
+            entity.Property(e => e.ProviderName).HasColumnName("provider_name");
+            entity.Property(e => e.ProviderTypeId).HasColumnName("provider_type_id");
+            entity.Property(e => e.ProviderTypeName).HasColumnName("provider_type_name");
+            entity.Property(e => e.Town).HasColumnName("town");
+            entity.Property(e => e.UkProviderReferenceNumber).HasColumnName("uk_provider_reference_number");
         });
 
         modelBuilder.Entity<Site>(entity =>
