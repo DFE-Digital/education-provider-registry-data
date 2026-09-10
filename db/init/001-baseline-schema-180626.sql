@@ -147,6 +147,33 @@ CREATE TABLE core.role (
 );
 
 -- ------------------------------------------------------------
+-- Search Aggergate Table
+-- ------------------------------------------------------------
+CREATE TABLE core.search_aggregate (
+    provider_id TEXT,
+    provider_name TEXT,
+    la_estab TEXT,
+    provider_type_name TEXT,
+    provider_type_id BIGINT,
+    provider_address TEXT,
+    companies_house_number TEXT,
+    uk_provider_reference_number TEXT,
+    postcode TEXT,
+    county TEXT,
+    town TEXT,
+    local_authority_name TEXT,
+    group_id TEXT,
+    group_uid TEXT,
+    academy_counts INTEGER,
+    provider_category TEXT
+);
+
+-- ------------------------------------------------------------
+-- Indexes
+-- ------------------------------------------------------------
+
+
+-- ------------------------------------------------------------
 -- Relationship tables
 -- ------------------------------------------------------------
 CREATE TABLE core.role_assignment (
@@ -454,26 +481,17 @@ REFERENCES core.role_assignment (role_assignment_id);
 -- Indexes
 -- ------------------------------------------------------------
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
-CREATE INDEX idx_establishment_urn_trgm ON core.establishment USING gin (urn gin_trgm_ops);
-CREATE INDEX idx_establishment_name_trgm ON core.establishment USING gin (name gin_trgm_ops);
-
-CREATE INDEX idx_establishment_type_id ON core.establishment (establishment_type_id);
-CREATE INDEX idx_establishment_status_id ON core.establishment (establishment_status_id);
+--
 CREATE INDEX idx_establishment_urn ON core.establishment (urn);
-CREATE INDEX idx_establishment_laestab ON core.establishment (laestab);
-CREATE INDEX idx_establishment_uid ON core.establishment (uid);
-CREATE INDEX idx_group_record_group_type_id ON core.group_record (group_type_id);
-CREATE INDEX idx_role_person_id ON core.role (person_id);
-CREATE INDEX idx_role_role_type_id ON core.role (role_type_id);
-CREATE INDEX idx_role_assignment_role_id ON core.role_assignment (role_id);
-CREATE INDEX idx_role_assignment_establishment_id ON core.role_assignment (establishment_id);
-CREATE INDEX idx_role_assignment_group_id ON core.role_assignment (group_id);
-CREATE INDEX idx_establishment_identifier_establishment_id ON core.establishment_identifier (establishment_id);
-CREATE INDEX idx_group_identifier_group_id ON core.group_identifier (group_id);
-CREATE INDEX idx_contact_establishment_id ON core.contact (establishment_id);
-CREATE INDEX idx_contact_group_id ON core.contact (group_id);
-CREATE INDEX idx_establishment_group_membership_establishment_id ON core.establishment_group_membership (establishment_id);
-CREATE INDEX idx_establishment_group_membership_group_id ON core.establishment_group_membership (group_id);
-CREATE INDEX idx_group_group_membership_child_group_id ON core.group_group_membership (child_group_id);
-CREATE INDEX idx_establishment_status_history_establishment_id ON core.establishment_status_history (establishment_id);
-CREATE INDEX idx_establishment_lifecycle_event_establishment_id ON core.establishment_lifecycle_event (establishment_id);
+--
+CREATE INDEX idx_search_provider_id ON core.search_aggregate (provider_id);
+CREATE INDEX idx_search_provider_name ON core.search_aggregate (provider_name);
+CREATE INDEX idx_search_provider_laestab ON core.search_aggregate (la_estab);
+CREATE INDEX idx_search_provider_companies_house_number ON core.search_aggregate (companies_house_number);
+CREATE INDEX idx_search_provider_ukprn ON core.search_aggregate (uk_provider_reference_number);
+CREATE INDEX idx_search_provider_postcode ON core.search_aggregate (postcode);
+CREATE INDEX idx_search_provider_county ON core.search_aggregate (county);
+CREATE INDEX idx_search_provider_town ON core.search_aggregate (town);
+CREATE INDEX idx_search_provider_local_authority_name ON core.search_aggregate (local_authority_name);
+CREATE INDEX idx_search_provider_group_uid ON core.search_aggregate (group_uid);
+CREATE INDEX idx_search_provider_name_trgm ON core.search_aggregate USING gin (provider_name gin_trgm_ops);
