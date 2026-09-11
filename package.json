@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@microsoft/azure-data-factory-utilities": "^1.0.3",
+    "commander": "^15.0.0"
+  }
+}
