@@ -5,6 +5,8 @@ namespace DfE.EducationProviderRegistry.Data.DatabaseModels.Models;
 
 public partial class SearchAggregate
 {
+    public long SearchAggregateId { get; set; }
+
     public string? ProviderId { get; set; }
 
     public string? ProviderName { get; set; }

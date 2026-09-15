@@ -707,7 +707,9 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
         modelBuilder.Entity<SearchAggregate>(entity =>
         {
-            entity.HasKey(e => e.ProviderId).HasName("search_aggregate_pkey");
+            entity.HasKey(e => e.SearchAggregateId).HasName("search_aggregate_pkey");
+
+            entity.ToTable("search_aggregate", "core");
 
             entity.HasIndex(e => e.CompaniesHouseNumber, "idx_search_provider_companies_house_number");
 
@@ -733,6 +735,9 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
             entity.HasIndex(e => e.UkProviderReferenceNumber, "idx_search_provider_ukprn");
 
+            entity.HasIndex(e => e.ProviderId, "search_aggregate_provider_id_key").IsUnique();
+
+            entity.Property(e => e.SearchAggregateId).HasColumnName("search_aggregate_id");
             entity.Property(e => e.AcademyCounts).HasColumnName("academy_counts");
             entity.Property(e => e.CompaniesHouseNumber).HasColumnName("companies_house_number");
             entity.Property(e => e.County).HasColumnName("county");
