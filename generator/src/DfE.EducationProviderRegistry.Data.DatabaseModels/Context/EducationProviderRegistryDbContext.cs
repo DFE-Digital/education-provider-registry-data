@@ -707,9 +707,7 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
         modelBuilder.Entity<SearchAggregate>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("search_aggregate", "core");
+            entity.HasKey(e => e.ProviderId).HasName("search_aggregate_pkey");
 
             entity.HasIndex(e => e.CompaniesHouseNumber, "idx_search_provider_companies_house_number");
 
