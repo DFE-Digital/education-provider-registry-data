@@ -23,7 +23,7 @@ module "application_configuration" {
 
 moved {
   from = module.worker_application
-  to = module.web_application
+  to   = module.web_application
 }
 
 module "web_application" {
