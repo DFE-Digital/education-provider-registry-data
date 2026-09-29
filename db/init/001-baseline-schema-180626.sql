@@ -154,6 +154,7 @@ CREATE TABLE core.search_aggregate (
     provider_id TEXT UNIQUE,    
     provider_name TEXT,
     la_estab TEXT,
+    dfe_number TEXT,
     provider_type_name TEXT,
     provider_type_id BIGINT,
     provider_address TEXT,
@@ -488,6 +489,7 @@ CREATE INDEX idx_establishment_urn ON core.establishment (urn);
 CREATE INDEX idx_search_provider_id ON core.search_aggregate (provider_id);
 CREATE INDEX idx_search_provider_name ON core.search_aggregate (provider_name);
 CREATE INDEX idx_search_provider_laestab ON core.search_aggregate (la_estab);
+CREATE INDEX idx_search_provider_dfe_number ON core.search_aggregate (dfe_number);
 CREATE INDEX idx_search_provider_companies_house_number ON core.search_aggregate (companies_house_number);
 CREATE INDEX idx_search_provider_ukprn ON core.search_aggregate (uk_provider_reference_number);
 CREATE INDEX idx_search_provider_postcode ON core.search_aggregate (postcode);

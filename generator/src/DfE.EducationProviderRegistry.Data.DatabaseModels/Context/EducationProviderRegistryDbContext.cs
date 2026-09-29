@@ -715,6 +715,8 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
             entity.HasIndex(e => e.County, "idx_search_provider_county");
 
+            entity.HasIndex(e => e.DfeNumber, "idx_search_provider_dfe_number");
+
             entity.HasIndex(e => e.GroupUid, "idx_search_provider_group_uid");
 
             entity.HasIndex(e => e.ProviderId, "idx_search_provider_id");
@@ -741,6 +743,7 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.AcademyCounts).HasColumnName("academy_counts");
             entity.Property(e => e.CompaniesHouseNumber).HasColumnName("companies_house_number");
             entity.Property(e => e.County).HasColumnName("county");
+            entity.Property(e => e.DfeNumber).HasColumnName("dfe_number");
             entity.Property(e => e.GroupId).HasColumnName("group_id");
             entity.Property(e => e.GroupUid).HasColumnName("group_uid");
             entity.Property(e => e.LaEstab).HasColumnName("la_estab");

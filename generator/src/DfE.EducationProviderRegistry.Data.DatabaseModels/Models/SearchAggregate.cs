@@ -13,6 +13,8 @@ public partial class SearchAggregate
 
     public string? LaEstab { get; set; }
 
+    public string? DfeNumber { get; set; }
+
     public string? ProviderTypeName { get; set; }
 
     public long? ProviderTypeId { get; set; }
