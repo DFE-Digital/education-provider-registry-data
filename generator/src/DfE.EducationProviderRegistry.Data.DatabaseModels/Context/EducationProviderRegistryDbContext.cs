@@ -36,8 +36,6 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
             entity.HasIndex(e => e.GroupUid, "idx_establishment_aggregate_group_uid");
 
-            entity.HasIndex(e => e.Uid, "idx_establishment_aggregate_uid");
-
             entity.HasIndex(e => e.Urn, "idx_establishment_aggregate_urn");
 
             entity.Property(e => e.EstablishmentAggregateId).HasColumnName("establishment_aggregate_id");
@@ -73,7 +71,6 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.StatutoryLowAge).HasColumnName("statutory_low_age");
             entity.Property(e => e.TelephoneNumber).HasColumnName("telephone_number");
             entity.Property(e => e.Town).HasColumnName("town");
-            entity.Property(e => e.Uid).HasColumnName("uid");
             entity.Property(e => e.Urn).HasColumnName("urn");
             entity.Property(e => e.Website).HasColumnName("website");
         });

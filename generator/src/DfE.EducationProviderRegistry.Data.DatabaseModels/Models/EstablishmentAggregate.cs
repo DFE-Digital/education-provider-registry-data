@@ -9,8 +9,6 @@ public partial class EstablishmentAggregate
 
     public string Urn { get; set; } = null!;
 
-    public string? Uid { get; set; }
-
     public string Name { get; set; } = null!;
 
     public string? EstablishmentNumber { get; set; }
@@ -29,7 +27,7 @@ public partial class EstablishmentAggregate
 
     public string? ClosedReason { get; set; }
 
-    public string? GroupUid { get; set; }
+    public long? GroupUid { get; set; }
 
     public string? GroupCode { get; set; }
 

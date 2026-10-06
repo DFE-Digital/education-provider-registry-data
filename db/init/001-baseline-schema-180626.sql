@@ -41,7 +41,6 @@ CREATE TABLE core.establishment_aggregate
 
     -- identifiers
     urn TEXT NOT NULL UNIQUE,
-    uid TEXT,
 
     -- basic details
     name TEXT NOT NULL,
@@ -62,7 +61,7 @@ CREATE TABLE core.establishment_aggregate
     closed_reason TEXT,
 
     -- group membership
-    group_uid TEXT,
+    group_uid BIGINT,
     group_code TEXT,
     group_name TEXT,
     group_type_name TEXT,
@@ -128,7 +127,7 @@ CREATE TABLE core.group_aggregate
 
     -- business identifiers
     group_id TEXT NOT NULL UNIQUE,
-    group_uid TEXT,
+    group_uid BIGINT NOT NULL,
 
     -- details
     name TEXT NOT NULL,
@@ -169,9 +168,6 @@ CREATE TABLE core.group_member_aggregate
 
 CREATE INDEX idx_establishment_aggregate_urn
     ON core.establishment_aggregate (urn);
-
-CREATE INDEX idx_establishment_aggregate_uid
-    ON core.establishment_aggregate (uid);
 
 CREATE INDEX idx_establishment_aggregate_group_uid
     ON core.establishment_aggregate (group_uid);
