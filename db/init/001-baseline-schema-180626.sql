@@ -144,7 +144,7 @@ CREATE TABLE core.group_aggregate
 
     -- contact
     website TEXT,
-    telephone_number TEXT
+    telephone_number TEXT,
 
     -- address
     site_name TEXT,
