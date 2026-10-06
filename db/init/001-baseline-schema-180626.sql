@@ -156,7 +156,7 @@ CREATE TABLE core.group_aggregate
 
     -- status
     group_status_label TEXT,
-    group_status_effective_date DATE,
+    group_status_effective_date DATE
 );
 
 -- ------------------------------------------------------------
