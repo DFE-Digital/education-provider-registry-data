@@ -103,14 +103,24 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.HasIndex(e => e.GroupUid, "idx_group_aggregate_group_uid");
 
             entity.Property(e => e.GroupAggregateId).HasColumnName("group_aggregate_id");
+            entity.Property(e => e.AddressLine1).HasColumnName("address_line_1");
+            entity.Property(e => e.AddressLine2).HasColumnName("address_line_2");
+            entity.Property(e => e.CompaniesHouseNumber).HasColumnName("companies_house_number");
+            entity.Property(e => e.County).HasColumnName("county");
             entity.Property(e => e.GroupId).HasColumnName("group_id");
+            entity.Property(e => e.GroupStatusEffectiveDate).HasColumnName("group_status_effective_date");
+            entity.Property(e => e.GroupStatusLabel).HasColumnName("group_status_label");
             entity.Property(e => e.GroupTypeName).HasColumnName("group_type_name");
             entity.Property(e => e.GroupUid).HasColumnName("group_uid");
             entity.Property(e => e.HeadteacherIdentifier).HasColumnName("headteacher_identifier");
             entity.Property(e => e.HeadteacherName).HasColumnName("headteacher_name");
             entity.Property(e => e.Name).HasColumnName("name");
+            entity.Property(e => e.Postcode).HasColumnName("postcode");
             entity.Property(e => e.ReligiousCharacter).HasColumnName("religious_character");
+            entity.Property(e => e.SiteName).HasColumnName("site_name");
             entity.Property(e => e.TelephoneNumber).HasColumnName("telephone_number");
+            entity.Property(e => e.Town).HasColumnName("town");
+            entity.Property(e => e.Ukprn).HasColumnName("ukprn");
             entity.Property(e => e.Website).HasColumnName("website");
         });
 
