@@ -128,10 +128,11 @@ CREATE TABLE core.group_aggregate
     -- business identifiers
     group_id TEXT NOT NULL UNIQUE,
     group_uid BIGINT NOT NULL,
+    ukprn TEXT,
+    companies_house_number TEXT,
 
     -- details
     name TEXT NOT NULL,
-
     group_type_name TEXT,
 
     -- leadership
@@ -144,6 +145,18 @@ CREATE TABLE core.group_aggregate
     -- contact
     website TEXT,
     telephone_number TEXT
+
+    -- address
+    site_name TEXT,
+    address_line_1 TEXT,
+    address_line_2 TEXT,
+    town TEXT,
+    county TEXT,
+    postcode TEXT,
+
+    -- status
+    group_status_label TEXT,
+    group_status_effective_date DATE,
 );
 
 -- ------------------------------------------------------------
