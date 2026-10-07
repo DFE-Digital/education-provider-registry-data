@@ -11,6 +11,8 @@ jobs:
     name: Export and Validate ADF    
     permissions:
       id-token: write
+    environment:
+      name: development
     outputs:  
       adf-export-uri: ${{ steps.export-adf.outputs.adf-export-url }}      
     runs-on: ubuntu-latest
@@ -41,6 +43,8 @@ jobs:
     permissions:
       id-token: write    
     needs: build
+    environment:
+      name: development    
     runs-on: ubuntu-latest    
 
     steps:
