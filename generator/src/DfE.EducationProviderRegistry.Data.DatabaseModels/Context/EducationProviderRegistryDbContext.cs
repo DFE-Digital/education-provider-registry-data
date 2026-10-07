@@ -42,7 +42,6 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.AddressLine1).HasColumnName("address_line_1");
             entity.Property(e => e.AddressLine2).HasColumnName("address_line_2");
             entity.Property(e => e.ClosedDate).HasColumnName("closed_date");
-            entity.Property(e => e.ClosedReason).HasColumnName("closed_reason");
             entity.Property(e => e.County).HasColumnName("county");
             entity.Property(e => e.EducationPhaseName).HasColumnName("education_phase_name");
             entity.Property(e => e.EstablishmentNumber).HasColumnName("establishment_number");
@@ -61,12 +60,12 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.OfstedInspectionDate).HasColumnName("ofsted_inspection_date");
             entity.Property(e => e.OfstedReportUrl).HasColumnName("ofsted_report_url");
             entity.Property(e => e.OpenedDate).HasColumnName("opened_date");
-            entity.Property(e => e.OpenedReason).HasColumnName("opened_reason");
             entity.Property(e => e.Postcode).HasColumnName("postcode");
             entity.Property(e => e.ReligiousCharacter).HasColumnName("religious_character");
             entity.Property(e => e.SenProvision).HasColumnName("sen_provision");
             entity.Property(e => e.SiteName).HasColumnName("site_name");
-            entity.Property(e => e.StatusName).HasColumnName("status_name");
+            entity.Property(e => e.StatusCode).HasColumnName("status_code");
+            entity.Property(e => e.StatusDate).HasColumnName("status_date");
             entity.Property(e => e.StatutoryHighAge).HasColumnName("statutory_high_age");
             entity.Property(e => e.StatutoryLowAge).HasColumnName("statutory_low_age");
             entity.Property(e => e.TelephoneNumber).HasColumnName("telephone_number");
@@ -192,6 +191,7 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.ProviderName).HasColumnName("provider_name");
             entity.Property(e => e.ProviderTypeId).HasColumnName("provider_type_id");
             entity.Property(e => e.ProviderTypeName).HasColumnName("provider_type_name");
+            entity.Property(e => e.StatusCode).HasColumnName("status_code");
             entity.Property(e => e.Town).HasColumnName("town");
             entity.Property(e => e.UkProviderReferenceNumber).HasColumnName("uk_provider_reference_number");
         });

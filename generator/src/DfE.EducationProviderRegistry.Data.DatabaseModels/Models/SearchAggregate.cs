@@ -37,6 +37,8 @@ public partial class SearchAggregate
 
     public string? GroupUid { get; set; }
 
+    public int? StatusCode { get; set; }
+
     public int? AcademyCounts { get; set; }
 
     public string? ProviderCategory { get; set; }
