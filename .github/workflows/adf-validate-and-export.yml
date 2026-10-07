@@ -1,0 +1,31 @@
+name: ADF Validate and Export
+concurrency: adf_validate_and_export_${{ github.ref_name }}
+
+on:
+  push:
+   branches:
+    - 2841-adf-test-collab # This is our fake main branch for testing
+  pull_request:
+    branches:
+    - main
+    types: [opened, reopened, synchronize, labeled]
+
+jobs:
+  build:
+    name: Validate ADF    
+    permissions:
+      id-token: write
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v7
+      name: Checkout
+
+    - name: Validate ADF
+      id: validate-adf
+      uses: DFE-Digital/github-actions/adf-validate@2841-adf-actions
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        adf-path: ./adf
+        adf-resource-id: /subscriptions/20da9d12-7ee1-42bb-b969-3fe9112964a7/resourceGroups/s189t01-eprdat-dv-rg/providers/Microsoft.DataFactory/factories/s189t01-eprdat-development-rdg-adf
+        
