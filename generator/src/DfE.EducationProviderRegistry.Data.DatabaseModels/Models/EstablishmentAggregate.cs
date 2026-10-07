@@ -47,7 +47,7 @@ public partial class EstablishmentAggregate
 
     public string? Postcode { get; set; }
 
-    public string? LocalAuthorityCode { get; set; }
+    public int? LocalAuthorityCode { get; set; }
 
     public string? LocalAuthorityName { get; set; }
 

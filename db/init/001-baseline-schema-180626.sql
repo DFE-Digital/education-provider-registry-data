@@ -75,7 +75,7 @@ CREATE TABLE core.establishment_aggregate
     postcode TEXT,
 
     -- local authority
-    local_authority_code TEXT,
+    local_authority_code INTEGER,
     local_authority_name TEXT,
 
     -- admissions
