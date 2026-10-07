@@ -70,6 +70,7 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.StatutoryLowAge).HasColumnName("statutory_low_age");
             entity.Property(e => e.TelephoneNumber).HasColumnName("telephone_number");
             entity.Property(e => e.Town).HasColumnName("town");
+            entity.Property(e => e.Ukprn).HasColumnName("ukprn");
             entity.Property(e => e.Urn).HasColumnName("urn");
             entity.Property(e => e.Website).HasColumnName("website");
         });

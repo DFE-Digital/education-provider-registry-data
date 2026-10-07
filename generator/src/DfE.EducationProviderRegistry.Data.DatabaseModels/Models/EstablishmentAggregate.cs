@@ -9,6 +9,8 @@ public partial class EstablishmentAggregate
 
     public string Urn { get; set; } = null!;
 
+    public string? Ukprn { get; set; }
+
     public string Name { get; set; } = null!;
 
     public string? EstablishmentNumber { get; set; }
