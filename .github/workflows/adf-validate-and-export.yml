@@ -10,11 +10,14 @@ on:
     - main
     types: [opened, reopened, synchronize, labeled]
 
+
 jobs:
   build:
     name: Validate ADF    
     permissions:
       id-token: write
+    outputs:  
+      adf-export-uri: ${{ steps.export-adf.outputs.adf-export-url }}      
     runs-on: ubuntu-latest
 
     steps:
@@ -29,3 +32,11 @@ jobs:
         adf-path: ./adf
         adf-resource-id: /subscriptions/20da9d12-7ee1-42bb-b969-3fe9112964a7/resourceGroups/s189t01-eprdat-dv-rg/providers/Microsoft.DataFactory/factories/s189t01-eprdat-development-rdg-adf
         
+    - name: Export ADF
+      id: export-adf
+      uses: DFE-Digital/github-actions/adf-validate-and-export@2841-adf-actions
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        adf-path: ./adf
+        adf-resource-id: /subscriptions/20da9d12-7ee1-42bb-b969-3fe9112964a7/resourceGroups/s189t01-eprdat-dv-rg/providers/Microsoft.DataFactory/factories/s189t01-eprdat-development-rdg-adf        
+        adf-export-path: ./adf-export
