@@ -28,6 +28,7 @@ CREATE TABLE core.search_aggregate (
     local_authority_name TEXT,
     group_id TEXT,
     group_uid TEXT,
+    status_code INTEGER,
     academy_counts INTEGER,
     provider_category TEXT
 );
@@ -46,8 +47,9 @@ CREATE TABLE core.establishment_aggregate
     name TEXT NOT NULL,
     establishment_number TEXT,
 
-    -- status
-    status_name TEXT,
+    -- active status
+    status_code INTEGER,
+    status_date DATE,    
 
     -- classification
     establishment_type_name TEXT,
@@ -55,10 +57,7 @@ CREATE TABLE core.establishment_aggregate
 
     -- lifecycle
     opened_date DATE,
-    opened_reason TEXT,
-
     closed_date DATE,
-    closed_reason TEXT,
 
     -- group membership
     group_uid BIGINT,

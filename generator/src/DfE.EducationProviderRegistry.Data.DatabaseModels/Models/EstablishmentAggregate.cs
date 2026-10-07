@@ -13,7 +13,9 @@ public partial class EstablishmentAggregate
 
     public string? EstablishmentNumber { get; set; }
 
-    public string? StatusName { get; set; }
+    public int? StatusCode { get; set; }
+
+    public DateOnly? StatusDate { get; set; }
 
     public string? EstablishmentTypeName { get; set; }
 
@@ -21,11 +23,7 @@ public partial class EstablishmentAggregate
 
     public DateOnly? OpenedDate { get; set; }
 
-    public string? OpenedReason { get; set; }
-
     public DateOnly? ClosedDate { get; set; }
-
-    public string? ClosedReason { get; set; }
 
     public long? GroupUid { get; set; }
 
