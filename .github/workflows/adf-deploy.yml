@@ -57,6 +57,6 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         resourceGroupName: s189t01-eprdat-dv-rg
         dataFactoryName: s189t01-eprdat-development-rdg-import-adf
-        armTemplateFile: ./adf-export/ARMTemplateForFactory.json
-        armTemplateParametersFile: ./adf-export/ARMTemplateParametersForFactory.json
+        armTemplateFile: ${{ github.workspace }}/adf-export/ARMTemplateForFactory.json
+        armTemplateParametersFile: ${{ github.workspace }}/adf-export/ARMTemplateParametersForFactory.json
         skipAzModuleInstallation: false
