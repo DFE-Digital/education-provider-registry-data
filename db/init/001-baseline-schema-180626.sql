@@ -42,6 +42,7 @@ CREATE TABLE core.establishment_aggregate
 
     -- identifiers
     urn TEXT NOT NULL UNIQUE,
+    ukprn TEXT,
 
     -- basic details
     name TEXT NOT NULL,
