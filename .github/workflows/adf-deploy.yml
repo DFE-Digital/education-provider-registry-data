@@ -55,7 +55,14 @@ jobs:
       uses: actions/download-artifact@v8
       with:
         name: adf-export
-        path: ./adf-export
+        path: ./adf-export-archive
+
+    - name: Extract ADF Export
+      run: |
+        mkdir -p ./adf-export
+        archive=$(find ./adf-export-archive -maxdepth 1 -type f -name '*.zip' -print -quit)
+        test -n "$archive"
+        unzip -o "$archive" -d ./adf-export
         
     - name: Deploy ADF
       id: export-adf
