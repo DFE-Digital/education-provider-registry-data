@@ -377,3 +377,4 @@ MigrationBackup/
 # Environment variables
 .env
 adf_publish
+adf-export
