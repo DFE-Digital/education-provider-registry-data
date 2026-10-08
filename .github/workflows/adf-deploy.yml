@@ -53,7 +53,7 @@ jobs:
     steps:
     - uses: actions/checkout@v7
       name: Checkout
-            
+
     - name: Download ADF Export
       uses: actions/download-artifact@v8
       with:
@@ -88,8 +88,8 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         resourceGroupName: s189t01-eprdat-dv-rg
         dataFactoryName: s189t01-eprdat-development-rdg-import-adf
-        armTemplateFile: ${{ github.workspace }}/adf-export/ARMTemplateForFactory.json
-        armTemplateParametersFile: ${{ github.workspace }}/adf-export/ARMTemplateParametersForFactory.json
+        armTemplateFile: ${{ github.workspace }}/ARMTemplateForFactory.json
+        armTemplateParametersFile: ${{ github.workspace }}/ARMTemplateParametersForFactory.json
         skipAzModuleInstallation: false
         azure-client-id: ${{ secrets.AZURE_CLIENT_ID }}
         azure-subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
