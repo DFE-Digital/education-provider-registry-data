@@ -51,21 +51,24 @@ jobs:
     runs-on: ubuntu-latest    
 
     steps:
+    - uses: actions/checkout@v7
+      name: Checkout
+            
     - name: Download ADF Export
       uses: actions/download-artifact@v8
       with:
         name: adf-export
-        path: ./adf-export-archive
+        path: ./
 
-    - name: Extract ADF Export
-      run: |        
-        mkdir -p ./adf-export
-        archive=$(find ./adf-export-archive -type f -name '*.zip' -print -quit)
-        if [[ -n "$archive" ]]; then
-          unzip -o "$archive" -d ./adf-export
-        else
-          cp -a ./adf-export-archive/. ./adf-export/
-        fi
+    # - name: Extract ADF Export
+    #   run: |        
+    #     mkdir -p ./adf-export
+    #     archive=$(find ./adf-export-archive -type f -name '*.zip' -print -quit)
+    #     if [[ -n "$archive" ]]; then
+    #       unzip -o "$archive" -d ./adf-export
+    #     else
+    #       cp -a ./adf-export-archive/. ./adf-export/
+    #     fi
         
     # - name: Debug
     #   run: |       
@@ -85,23 +88,9 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         resourceGroupName: s189t01-eprdat-dv-rg
         dataFactoryName: s189t01-eprdat-development-rdg-import-adf
-        armTemplateFile: ARMTemplateForFactory.json
-        armTemplateParametersFile: ARMTemplateParametersForFactory.json
+        armTemplateFile: ${{ github.workspace }}/adf-export/ARMTemplateForFactory.json
+        armTemplateParametersFile: ${{ github.workspace }}/adf-export/ARMTemplateParametersForFactory.json
         skipAzModuleInstallation: false
         azure-client-id: ${{ secrets.AZURE_CLIENT_ID }}
         azure-subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-
-    # - name: Deploy ADF
-    #   id: export-adf
-    #   uses: DFE-Digital/github-actions/adf-deploy@2841-adf-actions
-    #   with:
-    #     github-token: ${{ secrets.GITHUB_TOKEN }}
-    #     resourceGroupName: s189t01-eprdat-dv-rg
-    #     dataFactoryName: s189t01-eprdat-development-rdg-import-adf
-    #     armTemplateFile: ${{ github.workspace }}/adf-export/ARMTemplateForFactory.json
-    #     armTemplateParametersFile: ${{ github.workspace }}/adf-export/ARMTemplateParametersForFactory.json
-    #     skipAzModuleInstallation: false
-    #     azure-client-id: ${{ secrets.AZURE_CLIENT_ID }}
-    #     azure-subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-    #     azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
