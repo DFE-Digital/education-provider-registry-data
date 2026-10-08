@@ -59,10 +59,14 @@ jobs:
 
     - name: Extract ADF Export
       run: |
+        echo ls -l
         mkdir -p ./adf-export
-        archive=$(find ./adf-export-archive -maxdepth 1 -type f -name '*.zip' -print -quit)
-        test -n "$archive"
-        unzip -o "$archive" -d ./adf-export
+        archive=$(find ./adf-export-archive -type f -name '*.zip' -print -quit)
+        if [[ -n "$archive" ]]; then
+          unzip -o "$archive" -d ./adf-export
+        else
+          cp -a ./adf-export-archive/. ./adf-export/
+        fi
         
     - name: Deploy ADF
       id: export-adf
