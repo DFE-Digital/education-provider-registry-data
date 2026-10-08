@@ -67,15 +67,15 @@ jobs:
           cp -a ./adf-export-archive/. ./adf-export/
         fi
         
-    - name: Debug
-      run: |       
-        echo archive
-        echo $(ls -la ./adf-export-archive)
-        echo export
-        echo $(ls -la ./adf-export)
-        echo root
-        echo $(ls -la ./)
-        echo $(pwd)
+    # - name: Debug
+    #   run: |       
+    #     echo archive
+    #     echo $(ls -la ./adf-export-archive)
+    #     echo export
+    #     echo $(ls -la ./adf-export)
+    #     echo root
+    #     echo $(ls -la ./)
+    #     echo $(pwd)
 
 
     - name: Deploy ADF
