@@ -58,8 +58,7 @@ jobs:
         path: ./adf-export-archive
 
     - name: Extract ADF Export
-      run: |
-        echo ls -l
+      run: |        
         mkdir -p ./adf-export
         archive=$(find ./adf-export-archive -type f -name '*.zip' -print -quit)
         if [[ -n "$archive" ]]; then
@@ -68,16 +67,25 @@ jobs:
           cp -a ./adf-export-archive/. ./adf-export/
         fi
         
-    - name: Deploy ADF
-      id: export-adf
-      uses: DFE-Digital/github-actions/adf-deploy@2841-adf-actions
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        resourceGroupName: s189t01-eprdat-dv-rg
-        dataFactoryName: s189t01-eprdat-development-rdg-import-adf
-        armTemplateFile: ${{ github.workspace }}/adf-export/ARMTemplateForFactory.json
-        armTemplateParametersFile: ${{ github.workspace }}/adf-export/ARMTemplateParametersForFactory.json
-        skipAzModuleInstallation: false
-        azure-client-id: ${{ secrets.AZURE_CLIENT_ID }}
-        azure-subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+    - name: Debug
+      run: |       
+        echo archive
+        echo $(ls -la ./adf-export-archive)
+        echo export
+        echo $(ls -la ./adf-export)
+        echo root
+        echo $(ls -la ./)
+
+    # - name: Deploy ADF
+    #   id: export-adf
+    #   uses: DFE-Digital/github-actions/adf-deploy@2841-adf-actions
+    #   with:
+    #     github-token: ${{ secrets.GITHUB_TOKEN }}
+    #     resourceGroupName: s189t01-eprdat-dv-rg
+    #     dataFactoryName: s189t01-eprdat-development-rdg-import-adf
+    #     armTemplateFile: ${{ github.workspace }}/adf-export/ARMTemplateForFactory.json
+    #     armTemplateParametersFile: ${{ github.workspace }}/adf-export/ARMTemplateParametersForFactory.json
+    #     skipAzModuleInstallation: false
+    #     azure-client-id: ${{ secrets.AZURE_CLIENT_ID }}
+    #     azure-subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    #     azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
