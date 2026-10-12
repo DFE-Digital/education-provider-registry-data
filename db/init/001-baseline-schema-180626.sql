@@ -26,6 +26,7 @@ CREATE TABLE core.search_aggregate (
     county TEXT,
     town TEXT,
     local_authority_name TEXT,
+    group_name TEXT,
     group_id TEXT,
     group_uid TEXT,
     status_code INTEGER,
@@ -43,10 +44,10 @@ CREATE TABLE core.establishment_aggregate
     -- identifiers
     urn TEXT NOT NULL UNIQUE,
     ukprn TEXT,
+    establishment_number TEXT,
 
     -- basic details
     name TEXT NOT NULL,
-    establishment_number TEXT,
 
     -- active status
     status_code INTEGER,
