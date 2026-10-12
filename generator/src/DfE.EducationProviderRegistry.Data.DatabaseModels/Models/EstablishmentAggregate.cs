@@ -11,9 +11,9 @@ public partial class EstablishmentAggregate
 
     public string? Ukprn { get; set; }
 
-    public string Name { get; set; } = null!;
-
     public string? EstablishmentNumber { get; set; }
+
+    public string Name { get; set; } = null!;
 
     public int? StatusCode { get; set; }
 

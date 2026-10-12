@@ -33,6 +33,8 @@ public partial class SearchAggregate
 
     public string? LocalAuthorityName { get; set; }
 
+    public string? GroupName { get; set; }
+
     public string? GroupId { get; set; }
 
     public string? GroupUid { get; set; }

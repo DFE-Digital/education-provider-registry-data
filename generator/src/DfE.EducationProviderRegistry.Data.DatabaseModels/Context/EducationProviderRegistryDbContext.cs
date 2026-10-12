@@ -182,6 +182,7 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.County).HasColumnName("county");
             entity.Property(e => e.DfeNumber).HasColumnName("dfe_number");
             entity.Property(e => e.GroupId).HasColumnName("group_id");
+            entity.Property(e => e.GroupName).HasColumnName("group_name");
             entity.Property(e => e.GroupUid).HasColumnName("group_uid");
             entity.Property(e => e.LaEstab).HasColumnName("la_estab");
             entity.Property(e => e.LocalAuthorityName).HasColumnName("local_authority_name");
