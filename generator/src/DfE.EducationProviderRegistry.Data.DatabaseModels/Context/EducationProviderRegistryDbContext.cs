@@ -181,8 +181,10 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.CompaniesHouseNumber).HasColumnName("companies_house_number");
             entity.Property(e => e.County).HasColumnName("county");
             entity.Property(e => e.DfeNumber).HasColumnName("dfe_number");
+            entity.Property(e => e.EstablishmentStatus).HasColumnName("establishment_status");
             entity.Property(e => e.GroupId).HasColumnName("group_id");
             entity.Property(e => e.GroupName).HasColumnName("group_name");
+            entity.Property(e => e.GroupStatus).HasColumnName("group_status");
             entity.Property(e => e.GroupUid).HasColumnName("group_uid");
             entity.Property(e => e.LaEstab).HasColumnName("la_estab");
             entity.Property(e => e.LocalAuthorityName).HasColumnName("local_authority_name");
@@ -193,7 +195,6 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.ProviderName).HasColumnName("provider_name");
             entity.Property(e => e.ProviderTypeId).HasColumnName("provider_type_id");
             entity.Property(e => e.ProviderTypeName).HasColumnName("provider_type_name");
-            entity.Property(e => e.StatusCode).HasColumnName("status_code");
             entity.Property(e => e.Town).HasColumnName("town");
             entity.Property(e => e.UkProviderReferenceNumber).HasColumnName("uk_provider_reference_number");
         });
