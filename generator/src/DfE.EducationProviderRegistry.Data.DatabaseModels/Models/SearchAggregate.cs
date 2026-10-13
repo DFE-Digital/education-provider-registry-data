@@ -33,13 +33,15 @@ public partial class SearchAggregate
 
     public string? LocalAuthorityName { get; set; }
 
+    public int? EstablishmentStatus { get; set; }
+
     public string? GroupName { get; set; }
 
     public string? GroupId { get; set; }
 
     public string? GroupUid { get; set; }
 
-    public int? StatusCode { get; set; }
+    public int? GroupStatus { get; set; }
 
     public int? AcademyCounts { get; set; }
 

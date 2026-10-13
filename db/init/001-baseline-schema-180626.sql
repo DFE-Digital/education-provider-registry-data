@@ -26,10 +26,11 @@ CREATE TABLE core.search_aggregate (
     county TEXT,
     town TEXT,
     local_authority_name TEXT,
+    establishment_status INTEGER,
     group_name TEXT,
     group_id TEXT,
     group_uid TEXT,
-    status_code INTEGER,
+    group_status INTEGER,
     academy_counts INTEGER,
     provider_category TEXT
 );
