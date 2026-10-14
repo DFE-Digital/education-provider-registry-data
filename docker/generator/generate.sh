@@ -12,6 +12,10 @@ echo "Restoring packages..."
 dotnet restore \
     /repo/generator/src/DfE.EducationProviderRegistry.Data.DatabaseModels
 
+# Remove files and regenerate
+rm -f /repo/generator/src/DfE.EducationProviderRegistry.Data.DatabaseModels/Models/*.cs
+rm -f /repo/generator/src/DfE.EducationProviderRegistry.Data.DatabaseModels/Context/*.cs
+
 echo "Scaffolding models..."
 
 cd /repo/generator
@@ -26,6 +30,7 @@ dotnet ef dbcontext scaffold \
     --context EducationProviderRegistryDbContext \
     --no-pluralize \
     --no-onconfiguring \
-    --force
+    --force \
+    --verbose
 
 echo "Done"
