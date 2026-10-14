@@ -45,6 +45,14 @@ dotnet ef dbcontext scaffold \
     --no-onconfiguring \
     --force
 
+echo "Building..."
+
+dotnet build \
+    /repo/generator/src/DfE.EducationProviderRegistry.Data.DatabaseModels \
+    -c Release
+
+echo "Packing..."
+
 dotnet pack \
     /repo/generator/src/DfE.EducationProviderRegistry.Data.DatabaseModels \
     -c Release \
