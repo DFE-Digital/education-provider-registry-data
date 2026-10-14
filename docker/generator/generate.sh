@@ -28,6 +28,12 @@ echo "Scaffolding models..."
 
 cd /repo/generator
 
+ls -la \
+  /repo/generator/src/DfE.EducationProviderRegistry.Data.DatabaseModels/Models
+
+ls -la \
+  /repo/generator/src/DfE.EducationProviderRegistry.Data.DatabaseModels/Context
+
 dotnet ef dbcontext scaffold \
     "$CONNECTION_STRING" \
     Npgsql.EntityFrameworkCore.PostgreSQL \
@@ -38,3 +44,4 @@ dotnet ef dbcontext scaffold \
     --no-pluralize \
     --no-onconfiguring \
     --force
+
