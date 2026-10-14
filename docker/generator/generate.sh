@@ -3,58 +3,28 @@
 set -e
 
 echo "Restoring tools..."
-dotnet tool restore --tool-manifest /repo/generator/dotnet-tools.json
+
+dotnet tool restore \
+    --tool-manifest /repo/generator/.config/dotnet-tools.json
 
 echo "Restoring packages..."
-dotnet restore /repo/generator
 
-# echo "Applying SQL scripts..."
-
-# FILES=$(find /repo/db/init -name "*.sql" | sort -V)
-
-# for file in $FILES
-# do
-#    echo "Running $file"
-
-#    PGPASSWORD=$DB_PASSWORD psql \
-#        -h $DB_HOST \
-#        -U $DB_USER \
-#        -d $DB_NAME \
-#        -v ON_ERROR_STOP=1 \
-#        -f "$file"
-# done
+dotnet restore \
+    /repo/generator/src/DfE.EducationProviderRegistry.Data.DatabaseModels
 
 echo "Scaffolding models..."
 
 cd /repo/generator
 
-ls -la \
-  /repo/generator/src/DfE.EducationProviderRegistry.Data.DatabaseModels/Models
-
-ls -la \
-  /repo/generator/src/DfE.EducationProviderRegistry.Data.DatabaseModels/Context
-
 dotnet ef dbcontext scaffold \
     "$CONNECTION_STRING" \
     Npgsql.EntityFrameworkCore.PostgreSQL \
     --project src/DfE.EducationProviderRegistry.Data.DatabaseModels \
-    --output-dir src/DfE.EducationProviderRegistry.Data.DatabaseModels/Models \
-    --context-dir src/DfE.EducationProviderRegistry.Data.DatabaseModels/Context \
+    --output-dir Models \
+    --context-dir Context \
     --context EducationProviderRegistryDbContext \
     --no-pluralize \
     --no-onconfiguring \
     --force
 
-echo "Building..."
-
-dotnet build \
-    /repo/generator/src/DfE.EducationProviderRegistry.Data.DatabaseModels \
-    -c Release
-
-echo "Packing..."
-
-dotnet pack \
-    /repo/generator/src/DfE.EducationProviderRegistry.Data.DatabaseModels \
-    -c Release \
-    -o /repo/nupkg \
-    /p:PackageVersion=$VERSION
+echo "Done"
