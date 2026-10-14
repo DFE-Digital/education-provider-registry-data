@@ -1,5 +1,4 @@
 services:
-
   db:
     image: postgres:16
     environment:
@@ -18,24 +17,18 @@ services:
     build:
       context: ../..
       dockerfile: docker/generator/Dockerfile
-    # user: $"{UID}:${GID}"
 
     depends_on:
       db:
         condition: service_healthy
-
-    working_dir: /repo/generator
 
     volumes:
       - ../..:/repo
 
     environment:
       CONNECTION_STRING: Host=db;Database=efcore;Username=postgres;Password=postgres
-      DB_HOST: db
-      DB_NAME: efcore
-      DB_USER: postgres
-      DB_PASSWORD: postgres
+      VERSION: ${VERSION:?VERSION env must be supplied}
 
-    command: 
-    - sh
-    - /repo/docker/generator/generate.sh
+    command:
+      - sh
+      - /repo/docker/generator/generate.sh

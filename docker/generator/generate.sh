@@ -45,3 +45,8 @@ dotnet ef dbcontext scaffold \
     --no-onconfiguring \
     --force
 
+dotnet pack \
+    /repo/generator/src/DfE.EducationProviderRegistry.Data.DatabaseModels \
+    -c Release \
+    -o /repo/nupkg \
+    /p:PackageVersion=$VERSION
