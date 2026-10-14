@@ -35,4 +35,6 @@ services:
       DB_USER: postgres
       DB_PASSWORD: postgres
 
-    command: /repo/docker/generator/generate.sh
+    command: 
+    - sh
+    - /repo/docker/generator/generate.sh
