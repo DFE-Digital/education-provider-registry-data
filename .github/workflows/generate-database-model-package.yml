@@ -1,6 +1,5 @@
 name: Publish Database models NuGet package
 
-
 on:
   pull_request:
     paths:
@@ -14,35 +13,13 @@ on:
       - 'db/init/**'
       - 'generator/**'
 
-# TODO separate generating model from publishing package
 jobs:
   build:
     permissions:
       contents: read
       packages: write
+
     runs-on: ubuntu-latest
-
-    services:
-      postgres:
-        image: postgres:16
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: efcore
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd="pg_isready -U postgres"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=5
-
-    env:
-      CONNECTION_STRING: Host=localhost;Database=efcore;Username=postgres;Password=postgres
-      DB_HOST: localhost
-      DB_NAME: efcore
-      DB_USER: postgres
-      DB_PASSWORD: postgres
 
     steps:
       - name: Checkout
@@ -51,71 +28,28 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v5
 
-      - name: Restore tools
-        working-directory: generator
-        run: dotnet tool restore
-
-      - name: Restore project dependencies
-        working-directory: generator
-        run: dotnet restore
-  
-      - name: Build
-        working-directory: generator
-        run: dotnet build --configuration Release --no-restore
-
-      - name: Install psql
-        run: sudo apt-get update && sudo apt-get install -y postgresql-client
-
-      - name: Apply SQL scripts
+      - name: Generate EF Models
         run: |
-          set -e
+          docker compose \
+            -f docker/generator/compose.yml \
+            up \
+            --abort-on-container-exit \
+            --exit-code-from generator
 
-          echo "Applying SQL scripts from db/init..."
-          
-          FILES=$(find db/init -name "*.sql" | sort -V)
-
-          for file in $FILES; do
-            echo "Running $file"
-
-          PGPASSWORD=$DB_PASSWORD psql \
-            -h $DB_HOST \
-            -U $DB_USER \
-            -d $DB_NAME \
-            -v ON_ERROR_STOP=1 \
-            -f "$file"
-
-          done
-
-      - name: Verify tables
-        run: |
-          PGPASSWORD=$DB_PASSWORD psql \
-            -h $DB_HOST \
-            -U $DB_USER \
-            -d $DB_NAME \
-            -c "\dt *.*"
-
-      - name: Scaffold EF Core models
-        working-directory: generator
-        run: |
-          dotnet ef dbcontext scaffold \
-            "$CONNECTION_STRING" \
-            Npgsql.EntityFrameworkCore.PostgreSQL \
-            --project src/DfE.EducationProviderRegistry.Data.DatabaseModels \
-            --output-dir Models \
-            --context-dir Context \
-            --context EducationProviderRegistryDbContext \
-            --no-pluralize \
-            --no-onconfiguring \
-            --force
-
-      - name: Check generated models are up to date
+      - name: Verify generated models are up to date
         run: |
           git add generator/src
 
-          if ! git diff --cached --ignore-all-space --ignore-blank-lines --quiet; then
-            echo "Generated EFCore models are out of date"
-            echo "Run 'dotnet ef dbcontext scaffold' locally and commit changes"
-            git diff
+          if ! git diff --cached \
+              --ignore-all-space \
+              --ignore-blank-lines \
+              --quiet; then
+
+            echo "Generated EF Core models are out of date"
+            echo "Run the generator locally and commit the generated files"
+
+            git diff --cached
+
             exit 1
           fi
 
@@ -124,13 +58,14 @@ jobs:
           VERSION=1.0.${{ github.run_number }}
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
-      - name: NuGet Package Database Models
+      - name: Pack Database Models
         run: |
-          dotnet pack generator/src/DfE.EducationProviderRegistry.Data.DatabaseModels \
+          dotnet pack \
+            generator/src/DfE.EducationProviderRegistry.Data.DatabaseModels \
             -c Release \
             -o ./nupkg \
             /p:PackageVersion=${{ env.VERSION }}
-        
+
       - name: Publish package
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
