@@ -38,8 +38,8 @@ dotnet ef dbcontext scaffold \
     "$CONNECTION_STRING" \
     Npgsql.EntityFrameworkCore.PostgreSQL \
     --project src/DfE.EducationProviderRegistry.Data.DatabaseModels \
-    --output-dir Models \
-    --context-dir Context \
+    --output-dir src/DfE.EducationProviderRegistry.Data.DatabaseModels/Models \
+    --context-dir src/DfE.EducationProviderRegistry.Data.DatabaseModels/Context \
     --context EducationProviderRegistryDbContext \
     --no-pluralize \
     --no-onconfiguring \
