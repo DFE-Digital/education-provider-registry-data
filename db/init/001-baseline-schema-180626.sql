@@ -157,6 +157,7 @@ CREATE TABLE core.group_aggregate
     postcode TEXT,
 
     -- status
+    test TEXT,
     group_status_label TEXT,
     group_status_effective_date DATE
 );
