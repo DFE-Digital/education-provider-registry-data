@@ -20,6 +20,7 @@ dotnet ef dbcontext scaffold \
     "$CONNECTION_STRING" \
     Npgsql.EntityFrameworkCore.PostgreSQL \
     --project src/DfE.EducationProviderRegistry.Data.DatabaseModels \
+    --startup-project src/DfE.EducationProviderRegistry.Data.DatabaseModels \
     --output-dir Models \
     --context-dir Context \
     --context EducationProviderRegistryDbContext \
