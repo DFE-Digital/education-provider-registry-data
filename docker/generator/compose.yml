@@ -1,0 +1,38 @@
+services:
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: efcore
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - ../../db/init:/docker-entrypoint-initdb.d
+
+  generator:
+    build:
+      context: ../..
+      dockerfile: docker/generator/Dockerfile
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+    working_dir: /repo/generator
+
+    volumes:
+      - ../..:/repo
+
+    environment:
+      CONNECTION_STRING: Host=db;Database=efcore;Username=postgres;Password=postgres
+      DB_HOST: db
+      DB_NAME: efcore
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+
+    command: /repo/docker/generator/generate.sh

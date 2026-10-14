@@ -50,74 +50,12 @@ jobs:
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v5
-
-      - name: Restore tools
-        working-directory: generator
-        run: dotnet tool restore
-
-      - name: Restore project dependencies
-        working-directory: generator
-        run: dotnet restore
-  
-      - name: Build
-        working-directory: generator
-        run: dotnet build --configuration Release --no-restore
-
-      - name: Install psql
-        run: sudo apt-get update && sudo apt-get install -y postgresql-client
-
-      - name: Apply SQL scripts
+ 
+      - name: Generate EF Models
         run: |
-          set -e
-
-          echo "Applying SQL scripts from db/init..."
-          
-          FILES=$(find db/init -name "*.sql" | sort -V)
-
-          for file in $FILES; do
-            echo "Running $file"
-
-          PGPASSWORD=$DB_PASSWORD psql \
-            -h $DB_HOST \
-            -U $DB_USER \
-            -d $DB_NAME \
-            -v ON_ERROR_STOP=1 \
-            -f "$file"
-
-          done
-
-      - name: Verify tables
-        run: |
-          PGPASSWORD=$DB_PASSWORD psql \
-            -h $DB_HOST \
-            -U $DB_USER \
-            -d $DB_NAME \
-            -c "\dt *.*"
-
-      - name: Scaffold EF Core models
-        working-directory: generator
-        run: |
-          dotnet ef dbcontext scaffold \
-            "$CONNECTION_STRING" \
-            Npgsql.EntityFrameworkCore.PostgreSQL \
-            --project src/DfE.EducationProviderRegistry.Data.DatabaseModels \
-            --output-dir Models \
-            --context-dir Context \
-            --context EducationProviderRegistryDbContext \
-            --no-pluralize \
-            --no-onconfiguring \
-            --force
-
-      - name: Check generated models are up to date
-        run: |
-          git add generator/src
-
-          if ! git diff --cached --ignore-all-space --ignore-blank-lines --quiet; then
-            echo "Generated EFCore models are out of date"
-            echo "Run 'dotnet ef dbcontext scaffold' locally and commit changes"
-            git diff
-            exit 1
-          fi
+          docker compose \
+            -f docker/generator/compose.yml \
+            run --rm generator
 
       - name: Set package version
         run: |
