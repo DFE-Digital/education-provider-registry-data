@@ -5,7 +5,7 @@ set -e
 echo "Restoring tools..."
 
 dotnet tool restore \
-    --tool-manifest /repo/generator/.config/dotnet-tools.json
+    --tool-manifest /repo/generator/dotnet-tools.json
 
 echo "Restoring packages..."
 
