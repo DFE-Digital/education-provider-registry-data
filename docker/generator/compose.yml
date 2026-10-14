@@ -18,7 +18,7 @@ services:
     build:
       context: ../..
       dockerfile: docker/generator/Dockerfile
-    user: $"{UID}:${GID}"
+    # user: $"{UID}:${GID}"
 
     depends_on:
       db:
