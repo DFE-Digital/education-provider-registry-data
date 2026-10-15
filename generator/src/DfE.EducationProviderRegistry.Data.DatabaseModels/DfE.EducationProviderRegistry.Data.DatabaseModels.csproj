@@ -5,12 +5,11 @@
 	<LangVersion>Latest</LangVersion>
 	<Nullable>enable</Nullable>
 	<ImplicitUsings>enable</ImplicitUsings>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>DfE.EducationProviderRegistry.Data.DatabaseModels</PackageId>
 	<Description>EF Core models generated from Education Provider Registry schema</Description>
 	<RepositoryUrl>https://github.com/Dfe-digital/your-repo</RepositoryUrl>
 	<PackageTags>efcore;postgres;database;models;educationproviderregistry</PackageTags>
-	  <Authors>DfE</Authors>
+	<Authors>DfE</Authors>
 
     <!-- Version overridden in pipeline -->
     <Version>1.0.0</Version>

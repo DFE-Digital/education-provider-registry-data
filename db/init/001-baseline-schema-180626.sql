@@ -94,7 +94,6 @@ CREATE TABLE core.establishment_aggregate
     ofsted_report_url TEXT,
 
     -- leadership
-    headteacher_identifier TEXT,
     headteacher_name TEXT,
 
     -- SEND
@@ -137,17 +136,6 @@ CREATE TABLE core.group_aggregate
     name TEXT NOT NULL,
     group_type_name TEXT,
 
-    -- leadership
-    headteacher_identifier TEXT,
-    headteacher_name TEXT,
-
-    -- characteristics
-    religious_character TEXT,
-
-    -- contact
-    website TEXT,
-    telephone_number TEXT,
-
     -- address
     site_name TEXT,
     address_line_1 TEXT,
@@ -178,7 +166,49 @@ CREATE TABLE core.group_member_aggregate
 );
 
 -- ------------------------------------------------------------
--- Indexes
+-- Search Indexes
+-- ------------------------------------------------------------
+
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
+
+CREATE INDEX idx_search_provider_id 
+    ON core.search_aggregate (provider_id);
+    
+CREATE INDEX idx_search_provider_name 
+    ON core.search_aggregate (provider_name);
+
+CREATE INDEX idx_search_provider_laestab 
+    ON core.search_aggregate (la_estab);
+
+CREATE INDEX idx_search_provider_dfe_number 
+    ON core.search_aggregate (dfe_number);
+
+CREATE INDEX idx_search_provider_companies_house_number 
+    ON core.search_aggregate (companies_house_number);
+
+CREATE INDEX idx_search_provider_ukprn 
+    ON core.search_aggregate (uk_provider_reference_number);
+
+CREATE INDEX idx_search_provider_postcode 
+    ON core.search_aggregate (postcode);
+
+CREATE INDEX idx_search_provider_county 
+    ON core.search_aggregate (county);
+
+CREATE INDEX idx_search_provider_town 
+    ON core.search_aggregate (town);
+
+CREATE INDEX idx_search_provider_local_authority_name 
+    ON core.search_aggregate (local_authority_name);
+
+CREATE INDEX idx_search_provider_group_uid 
+    ON core.search_aggregate (group_uid);
+
+CREATE INDEX idx_search_provider_name_trgm 
+    ON core.search_aggregate USING gin (provider_name gin_trgm_ops);
+
+-- ------------------------------------------------------------
+-- Establishment Indexes
 -- ------------------------------------------------------------
 
 CREATE INDEX idx_establishment_aggregate_urn
@@ -189,6 +219,10 @@ CREATE INDEX idx_establishment_aggregate_group_uid
 
 CREATE INDEX idx_establishment_governor_aggregate_urn
     ON core.establishment_governor_aggregate (establishment_urn);
+
+-- ------------------------------------------------------------
+-- Group Indexes
+-- ------------------------------------------------------------
 
 CREATE INDEX idx_group_aggregate_group_id
     ON core.group_aggregate (group_id);
@@ -201,31 +235,3 @@ CREATE INDEX idx_group_member_aggregate_group_id
 
 CREATE INDEX idx_group_member_aggregate_establishment_urn
     ON core.group_member_aggregate (establishment_urn);
-
-
-CREATE EXTENSION IF NOT EXISTS pg_trgm;
-
-CREATE INDEX idx_search_provider_id 
-    ON core.search_aggregate (provider_id);
-CREATE INDEX idx_search_provider_name 
-    ON core.search_aggregate (provider_name);
-CREATE INDEX idx_search_provider_laestab 
-    ON core.search_aggregate (la_estab);
-CREATE INDEX idx_search_provider_dfe_number 
-    ON core.search_aggregate (dfe_number);
-CREATE INDEX idx_search_provider_companies_house_number 
-    ON core.search_aggregate (companies_house_number);
-CREATE INDEX idx_search_provider_ukprn 
-    ON core.search_aggregate (uk_provider_reference_number);
-CREATE INDEX idx_search_provider_postcode 
-    ON core.search_aggregate (postcode);
-CREATE INDEX idx_search_provider_county 
-    ON core.search_aggregate (county);
-CREATE INDEX idx_search_provider_town 
-    ON core.search_aggregate (town);
-CREATE INDEX idx_search_provider_local_authority_name 
-    ON core.search_aggregate (local_authority_name);
-CREATE INDEX idx_search_provider_group_uid 
-    ON core.search_aggregate (group_uid);
-CREATE INDEX idx_search_provider_name_trgm 
-    ON core.search_aggregate USING gin (provider_name gin_trgm_ops);

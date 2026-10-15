@@ -65,8 +65,6 @@ public partial class EstablishmentAggregate
 
     public string? OfstedReportUrl { get; set; }
 
-    public string? HeadteacherIdentifier { get; set; }
-
     public string? HeadteacherName { get; set; }
 
     public string? SenProvision { get; set; }

@@ -19,16 +19,6 @@ public partial class GroupAggregate
 
     public string? GroupTypeName { get; set; }
 
-    public string? HeadteacherIdentifier { get; set; }
-
-    public string? HeadteacherName { get; set; }
-
-    public string? ReligiousCharacter { get; set; }
-
-    public string? Website { get; set; }
-
-    public string? TelephoneNumber { get; set; }
-
     public string? SiteName { get; set; }
 
     public string? AddressLine1 { get; set; }

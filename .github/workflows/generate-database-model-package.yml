@@ -32,9 +32,9 @@ jobs:
         run: |
           docker compose \
             -f docker/generator/compose.yml \
-            up \
-            --abort-on-container-exit \
-            --exit-code-from generator
+            run \
+            --rm \
+            generator
 
       - name: Verify generated models are up to date
         run: |
@@ -53,6 +53,9 @@ jobs:
             exit 1
           fi
 
+      - name: Fix ownership
+        run: sudo chown -R $(id -u):$(id -g) generator/src
+            
       - name: Set package version
         run: |
           VERSION=1.0.${{ github.run_number }}
