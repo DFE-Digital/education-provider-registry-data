@@ -34,7 +34,7 @@ jobs:
             -f docker/generator/compose.yml \
             run \
             --user "$(id -u):$(id -g)" \
-            --rm
+            --rm \
             generator
 
       - name: Verify generated models are up to date
