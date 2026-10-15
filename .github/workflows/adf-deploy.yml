@@ -21,19 +21,21 @@ jobs:
     - uses: actions/checkout@v7
       name: Checkout
 
-    # - name: Validate ADF
-    #   id: validate-adf
-    #   uses: DFE-Digital/github-actions/adf-validate@2841-adf-actions
-    #   with:
-    #     github-token: ${{ secrets.GITHUB_TOKEN }}
-    #     adf-path: ./adf
-    #     adf-resource-id: /subscriptions/20da9d12-7ee1-42bb-b969-3fe9112964a7/resourceGroups/s189t01-eprdat-dv-rg/providers/Microsoft.DataFactory/factories/s189t01-eprdat-development-rdg-adf
-        
+    - name: Validate Only ADF
+      id: validate-adf
+      uses: DFE-Digital/github-actions/adf-validate-and-export@2841-adf-actions
+      with:        
+        adf-path: ./adf
+        adf-resource-id: /subscriptions/20da9d12-7ee1-42bb-b969-3fe9112964a7/resourceGroups/s189t01-eprdat-dv-rg/providers/Microsoft.DataFactory/factories/s189t01-eprdat-development-rdg-adf        
+        adf-validate-only: true
+        azure-client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        azure-subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}      
+
     - name: Export ADF
       id: export-adf
       uses: DFE-Digital/github-actions/adf-validate-and-export@2841-adf-actions
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+      with:        
         adf-path: ./adf
         adf-resource-id: /subscriptions/20da9d12-7ee1-42bb-b969-3fe9112964a7/resourceGroups/s189t01-eprdat-dv-rg/providers/Microsoft.DataFactory/factories/s189t01-eprdat-development-rdg-adf        
         adf-export-path: ./adf-export
@@ -53,44 +55,21 @@ jobs:
     steps:
     - uses: actions/checkout@v7
       name: Checkout
-            
+
     - name: Download ADF Export
       uses: actions/download-artifact@v8
       with:
         name: adf-export
         path: ./
 
-    # - name: Extract ADF Export
-    #   run: |        
-    #     mkdir -p ./adf-export
-    #     archive=$(find ./adf-export-archive -type f -name '*.zip' -print -quit)
-    #     if [[ -n "$archive" ]]; then
-    #       unzip -o "$archive" -d ./adf-export
-    #     else
-    #       cp -a ./adf-export-archive/. ./adf-export/
-    #     fi
-        
-    # - name: Debug
-    #   run: |       
-    #     echo archive
-    #     echo $(ls -la ./adf-export-archive)
-    #     echo export
-    #     echo $(ls -la ./adf-export)
-    #     echo root
-    #     echo $(ls -la ./)
-    #     echo $(pwd)
-
-
     - name: Deploy ADF
       id: export-adf
       uses: DFE-Digital/github-actions/adf-deploy@2841-adf-actions
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
         resourceGroupName: s189t01-eprdat-dv-rg
         dataFactoryName: s189t01-eprdat-development-rdg-import-adf
-        armTemplateFile: ${{ github.workspace }}/adf-export/ARMTemplateForFactory.json
-        armTemplateParametersFile: ${{ github.workspace }}/adf-export/ARMTemplateParametersForFactory.json
-        skipAzModuleInstallation: false
+        armTemplateFile: ${{ github.workspace }}/ARMTemplateForFactory.json
+        armTemplateParametersFile: ${{ github.workspace }}/ARMTemplateParametersForFactory.json        
         azure-client-id: ${{ secrets.AZURE_CLIENT_ID }}
         azure-subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
