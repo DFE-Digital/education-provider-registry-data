@@ -173,26 +173,37 @@ CREATE EXTENSION IF NOT EXISTS pg_trgm;
 
 CREATE INDEX idx_search_provider_id 
     ON core.search_aggregate (provider_id);
+    
 CREATE INDEX idx_search_provider_name 
     ON core.search_aggregate (provider_name);
+
 CREATE INDEX idx_search_provider_laestab 
     ON core.search_aggregate (la_estab);
+
 CREATE INDEX idx_search_provider_dfe_number 
     ON core.search_aggregate (dfe_number);
+
 CREATE INDEX idx_search_provider_companies_house_number 
     ON core.search_aggregate (companies_house_number);
+
 CREATE INDEX idx_search_provider_ukprn 
     ON core.search_aggregate (uk_provider_reference_number);
+
 CREATE INDEX idx_search_provider_postcode 
     ON core.search_aggregate (postcode);
+
 CREATE INDEX idx_search_provider_county 
     ON core.search_aggregate (county);
+
 CREATE INDEX idx_search_provider_town 
     ON core.search_aggregate (town);
+
 CREATE INDEX idx_search_provider_local_authority_name 
     ON core.search_aggregate (local_authority_name);
+
 CREATE INDEX idx_search_provider_group_uid 
     ON core.search_aggregate (group_uid);
+
 CREATE INDEX idx_search_provider_name_trgm 
     ON core.search_aggregate USING gin (provider_name gin_trgm_ops);
 
