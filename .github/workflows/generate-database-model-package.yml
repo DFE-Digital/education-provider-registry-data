@@ -34,8 +34,8 @@ jobs:
             -f docker/generator/compose.yml \
             run \
             --user "$(id -u):$(id -g)" \
-            --abort-on-container-exit \
-            --exit-code-from generator
+            --rm
+            generator
 
       - name: Verify generated models are up to date
         run: |
