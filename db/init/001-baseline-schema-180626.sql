@@ -94,7 +94,6 @@ CREATE TABLE core.establishment_aggregate
     ofsted_report_url TEXT,
 
     -- leadership
-    headteacher_identifier TEXT,
     headteacher_name TEXT,
 
     -- SEND
@@ -136,17 +135,6 @@ CREATE TABLE core.group_aggregate
     -- details
     name TEXT NOT NULL,
     group_type_name TEXT,
-
-    -- leadership
-    headteacher_identifier TEXT,
-    headteacher_name TEXT,
-
-    -- characteristics
-    religious_character TEXT,
-
-    -- contact
-    website TEXT,
-    telephone_number TEXT,
 
     -- address
     site_name TEXT,
