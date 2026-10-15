@@ -4,6 +4,8 @@ The Education Provider Registry web application does not query source provider d
 
 Instead, an ETL process continuously projects provider data into a dedicated read replica, producing aggregate views including `establishment_aggregate`, `group_aggregate`, and `search_aggregate`. 
 
+See the [schema](https://github.com/DFE-Digital/education-provider-registry-data/blob/main/db/init/001-baseline-schema-180626.sql)
+
 These aggregates represent the web-facing view of the domain and are optimised for retrieval rather than transaction processing.
 
 Endpoints such as `/establishment/{id}` are served from these read aggregates. 
