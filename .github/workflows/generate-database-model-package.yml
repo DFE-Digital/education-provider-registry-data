@@ -52,19 +52,9 @@ jobs:
 
             exit 1
           fi
-      - name: Inspect permissions
-        run: |
-          id
 
-          ls -lad generator/src/DfE.EducationProviderRegistry.Data.DatabaseModels
-
-          ls -lad \
-            generator/src/DfE.EducationProviderRegistry.Data.DatabaseModels/obj || true
-
-          find \
-            generator/src/DfE.EducationProviderRegistry.Data.DatabaseModels \
-            -maxdepth 2 \
-            -printf "%M %u:%g %p\n" | head -100
+      - name: Fix ownership
+        run: sudo chown -R $(id -u):$(id -g) generator/src
             
       - name: Set package version
         run: |
