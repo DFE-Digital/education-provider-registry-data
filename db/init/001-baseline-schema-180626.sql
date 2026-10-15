@@ -166,30 +166,8 @@ CREATE TABLE core.group_member_aggregate
 );
 
 -- ------------------------------------------------------------
--- Indexes
+-- Search Indexes
 -- ------------------------------------------------------------
-
-CREATE INDEX idx_establishment_aggregate_urn
-    ON core.establishment_aggregate (urn);
-
-CREATE INDEX idx_establishment_aggregate_group_uid
-    ON core.establishment_aggregate (group_uid);
-
-CREATE INDEX idx_establishment_governor_aggregate_urn
-    ON core.establishment_governor_aggregate (establishment_urn);
-
-CREATE INDEX idx_group_aggregate_group_id
-    ON core.group_aggregate (group_id);
-
-CREATE INDEX idx_group_aggregate_group_uid
-    ON core.group_aggregate (group_uid);
-
-CREATE INDEX idx_group_member_aggregate_group_id
-    ON core.group_member_aggregate (group_id);
-
-CREATE INDEX idx_group_member_aggregate_establishment_urn
-    ON core.group_member_aggregate (establishment_urn);
-
 
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
 
@@ -217,3 +195,32 @@ CREATE INDEX idx_search_provider_group_uid
     ON core.search_aggregate (group_uid);
 CREATE INDEX idx_search_provider_name_trgm 
     ON core.search_aggregate USING gin (provider_name gin_trgm_ops);
+
+-- ------------------------------------------------------------
+-- Establishment Indexes
+-- ------------------------------------------------------------
+
+CREATE INDEX idx_establishment_aggregate_urn
+    ON core.establishment_aggregate (urn);
+
+CREATE INDEX idx_establishment_aggregate_group_uid
+    ON core.establishment_aggregate (group_uid);
+
+CREATE INDEX idx_establishment_governor_aggregate_urn
+    ON core.establishment_governor_aggregate (establishment_urn);
+
+-- ------------------------------------------------------------
+-- Group Indexes
+-- ------------------------------------------------------------
+
+CREATE INDEX idx_group_aggregate_group_id
+    ON core.group_aggregate (group_id);
+
+CREATE INDEX idx_group_aggregate_group_uid
+    ON core.group_aggregate (group_uid);
+
+CREATE INDEX idx_group_member_aggregate_group_id
+    ON core.group_member_aggregate (group_id);
+
+CREATE INDEX idx_group_member_aggregate_establishment_urn
+    ON core.group_member_aggregate (establishment_urn);
