@@ -32,8 +32,8 @@ jobs:
         run: |
           docker compose \
             -f docker/generator/compose.yml \
+            run \
             --user "$(id -u):$(id -g)" \
-            up \
             --abort-on-container-exit \
             --exit-code-from generator
 
