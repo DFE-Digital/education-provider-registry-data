@@ -1,5 +1,5 @@
 module "postgres" {
-  source = "./vendor/modules/aks//aks/postgres"  
+  source = "./vendor/modules/aks//aks/postgres"
 
   namespace                   = var.namespace
   environment                 = var.environment
@@ -14,7 +14,7 @@ module "postgres" {
   server_version              = var.postgres_server_version
   azure_extensions            = ["pg_trgm"]
 
-  use_logical_replication     = true
+  use_logical_replication = true
 
   replicas = {
     reporting = {
