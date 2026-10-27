@@ -18,7 +18,6 @@ CREATE TABLE core.search_aggregate (
     la_estab TEXT,
     dfe_number TEXT,
     provider_type_name TEXT,
-    provider_type_id BIGINT,
     provider_address TEXT,
     companies_house_number TEXT,
     uk_provider_reference_number TEXT,
@@ -32,6 +31,8 @@ CREATE TABLE core.search_aggregate (
     group_uid TEXT,
     group_status INTEGER,
     academy_counts INTEGER,
+    opened_date DATE,
+    closed_date DATE,
     provider_category TEXT
 );
 
