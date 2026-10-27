@@ -17,8 +17,6 @@ public partial class SearchAggregate
 
     public string? ProviderTypeName { get; set; }
 
-    public long? ProviderTypeId { get; set; }
-
     public string? ProviderAddress { get; set; }
 
     public string? CompaniesHouseNumber { get; set; }
@@ -44,6 +42,10 @@ public partial class SearchAggregate
     public int? GroupStatus { get; set; }
 
     public int? AcademyCounts { get; set; }
+
+    public DateOnly? OpenedDate { get; set; }
+
+    public DateOnly? ClosedDate { get; set; }
 
     public string? ProviderCategory { get; set; }
 }

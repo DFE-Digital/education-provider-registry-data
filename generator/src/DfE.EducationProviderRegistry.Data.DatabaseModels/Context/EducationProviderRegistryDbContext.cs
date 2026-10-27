@@ -52,6 +52,7 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.GroupOpenDate).HasColumnName("group_open_date");
             entity.Property(e => e.GroupTypeName).HasColumnName("group_type_name");
             entity.Property(e => e.GroupUid).HasColumnName("group_uid");
+            entity.Property(e => e.HeadteacherIdentifier).HasColumnName("headteacher_identifier");
             entity.Property(e => e.HeadteacherName).HasColumnName("headteacher_name");
             entity.Property(e => e.LocalAuthorityCode).HasColumnName("local_authority_code");
             entity.Property(e => e.LocalAuthorityName).HasColumnName("local_authority_name");
@@ -111,11 +112,16 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.GroupStatusLabel).HasColumnName("group_status_label");
             entity.Property(e => e.GroupTypeName).HasColumnName("group_type_name");
             entity.Property(e => e.GroupUid).HasColumnName("group_uid");
+            entity.Property(e => e.HeadteacherIdentifier).HasColumnName("headteacher_identifier");
+            entity.Property(e => e.HeadteacherName).HasColumnName("headteacher_name");
             entity.Property(e => e.Name).HasColumnName("name");
             entity.Property(e => e.Postcode).HasColumnName("postcode");
+            entity.Property(e => e.ReligiousCharacter).HasColumnName("religious_character");
             entity.Property(e => e.SiteName).HasColumnName("site_name");
+            entity.Property(e => e.TelephoneNumber).HasColumnName("telephone_number");
             entity.Property(e => e.Town).HasColumnName("town");
             entity.Property(e => e.Ukprn).HasColumnName("ukprn");
+            entity.Property(e => e.Website).HasColumnName("website");
         });
 
         modelBuilder.Entity<GroupMemberAggregate>(entity =>
@@ -172,6 +178,7 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
             entity.Property(e => e.SearchAggregateId).HasColumnName("search_aggregate_id");
             entity.Property(e => e.AcademyCounts).HasColumnName("academy_counts");
+            entity.Property(e => e.ClosedDate).HasColumnName("closed_date");
             entity.Property(e => e.CompaniesHouseNumber).HasColumnName("companies_house_number");
             entity.Property(e => e.County).HasColumnName("county");
             entity.Property(e => e.DfeNumber).HasColumnName("dfe_number");
@@ -182,12 +189,12 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.GroupUid).HasColumnName("group_uid");
             entity.Property(e => e.LaEstab).HasColumnName("la_estab");
             entity.Property(e => e.LocalAuthorityName).HasColumnName("local_authority_name");
+            entity.Property(e => e.OpenedDate).HasColumnName("opened_date");
             entity.Property(e => e.Postcode).HasColumnName("postcode");
             entity.Property(e => e.ProviderAddress).HasColumnName("provider_address");
             entity.Property(e => e.ProviderCategory).HasColumnName("provider_category");
             entity.Property(e => e.ProviderId).HasColumnName("provider_id");
             entity.Property(e => e.ProviderName).HasColumnName("provider_name");
-            entity.Property(e => e.ProviderTypeId).HasColumnName("provider_type_id");
             entity.Property(e => e.ProviderTypeName).HasColumnName("provider_type_name");
             entity.Property(e => e.Town).HasColumnName("town");
             entity.Property(e => e.UkProviderReferenceNumber).HasColumnName("uk_provider_reference_number");
