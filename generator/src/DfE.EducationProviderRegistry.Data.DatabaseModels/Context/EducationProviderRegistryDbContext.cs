@@ -196,6 +196,7 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.ProviderId).HasColumnName("provider_id");
             entity.Property(e => e.ProviderName).HasColumnName("provider_name");
             entity.Property(e => e.ProviderTypeName).HasColumnName("provider_type_name");
+            entity.Property(e => e.Sen).HasColumnName("sen");
             entity.Property(e => e.Town).HasColumnName("town");
             entity.Property(e => e.UkProviderReferenceNumber).HasColumnName("uk_provider_reference_number");
         });

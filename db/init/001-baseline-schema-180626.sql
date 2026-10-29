@@ -33,7 +33,8 @@ CREATE TABLE core.search_aggregate (
     academy_counts INTEGER,
     opened_date DATE,
     closed_date DATE,
-    provider_category TEXT
+    provider_category TEXT,
+    sen TEXT
 );
 
 -- ------------------------------------------------------------
