@@ -49,5 +49,5 @@ public partial class SearchAggregate
 
     public string? ProviderCategory { get; set; }
 
-    public string? Sen { get; set; }
+    public List<string>? Sen { get; set; }
 }
