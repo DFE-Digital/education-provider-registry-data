@@ -170,6 +170,8 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
             entity.HasIndex(e => e.Postcode, "idx_search_provider_postcode");
 
+            entity.HasIndex(e => e.Sen, "idx_search_provider_sen").HasMethod("gin");
+
             entity.HasIndex(e => e.Town, "idx_search_provider_town");
 
             entity.HasIndex(e => e.UkProviderReferenceNumber, "idx_search_provider_ukprn");
