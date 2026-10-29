@@ -48,4 +48,6 @@ public partial class SearchAggregate
     public DateOnly? ClosedDate { get; set; }
 
     public string? ProviderCategory { get; set; }
+
+    public string? Sen { get; set; }
 }
