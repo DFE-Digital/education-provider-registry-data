@@ -25,16 +25,30 @@ CREATE TABLE core.search_aggregate (
     county TEXT,
     town TEXT,
     local_authority_name TEXT,
-    establishment_status INTEGER,
+    status TEXT,
+    education_phase TEXT,
+    further_education_type TEXT,
+    admissions TEXT,
+    boarding TEXT,
+    nursery TEXT,
+    gender TEXT,
+    age_low INTEGER,
+    age_high INTEGER,
     group_name TEXT,
     group_id TEXT,
     group_uid TEXT,
     group_status INTEGER,
+    group_type TEXT,
     academy_counts INTEGER,
     opened_date DATE,
     closed_date DATE,
     provider_category TEXT,
-    sen TEXT[]
+    sen TEXT[],
+    diocese TEXT,
+    religious_character TEXT,
+    religious_ethos TEXT,
+    section_41 TEXT,
+    special_class TEXT
 );
 
 -- ------------------------------------------------------------
