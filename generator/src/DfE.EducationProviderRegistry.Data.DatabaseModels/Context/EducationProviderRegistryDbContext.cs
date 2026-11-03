@@ -148,11 +148,29 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
             entity.ToTable("search_aggregate", "core");
 
+            entity.HasIndex(e => e.Admissions, "idx_search_provider_admissions");
+
+            entity.HasIndex(e => e.AgeHigh, "idx_search_provider_age_high");
+
+            entity.HasIndex(e => e.AgeLow, "idx_search_provider_age_low");
+
+            entity.HasIndex(e => e.Boarding, "idx_search_provider_boarding");
+
             entity.HasIndex(e => e.CompaniesHouseNumber, "idx_search_provider_companies_house_number");
 
             entity.HasIndex(e => e.County, "idx_search_provider_county");
 
             entity.HasIndex(e => e.DfeNumber, "idx_search_provider_dfe_number");
+
+            entity.HasIndex(e => e.Diocese, "idx_search_provider_diocese");
+
+            entity.HasIndex(e => e.EducationPhase, "idx_search_provider_education_phase");
+
+            entity.HasIndex(e => e.FurtherEducationType, "idx_search_provider_further_education_type");
+
+            entity.HasIndex(e => e.Gender, "idx_search_provider_gender");
+
+            entity.HasIndex(e => e.GroupType, "idx_search_provider_group_type");
 
             entity.HasIndex(e => e.GroupUid, "idx_search_provider_group_uid");
 
@@ -168,9 +186,21 @@ public partial class EducationProviderRegistryDbContext : DbContext
                 .HasMethod("gin")
                 .HasOperators(new[] { "gin_trgm_ops" });
 
+            entity.HasIndex(e => e.Nursery, "idx_search_provider_nursery");
+
             entity.HasIndex(e => e.Postcode, "idx_search_provider_postcode");
 
+            entity.HasIndex(e => e.ReligiousCharacter, "idx_search_provider_religious_character");
+
+            entity.HasIndex(e => e.ReligiousEthos, "idx_search_provider_religious_ethos");
+
+            entity.HasIndex(e => e.Section41, "idx_search_provider_section_41");
+
             entity.HasIndex(e => e.Sen, "idx_search_provider_sen").HasMethod("gin");
+
+            entity.HasIndex(e => e.SpecialClass, "idx_search_provider_special_class");
+
+            entity.HasIndex(e => e.Status, "idx_search_provider_status");
 
             entity.HasIndex(e => e.Town, "idx_search_provider_town");
 
