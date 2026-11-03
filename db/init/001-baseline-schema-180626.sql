@@ -47,6 +47,7 @@ CREATE TABLE core.search_aggregate (
     diocese TEXT,
     religious_character TEXT,
     religious_ethos TEXT,
+    sixth_form TEXT,
     section_41 TEXT,
     special_class TEXT
 );
@@ -298,6 +299,9 @@ CREATE INDEX idx_search_provider_religious_character
 
 CREATE INDEX idx_search_provider_religious_ethos
     ON core.search_aggregate (religious_ethos);
+
+CREATE INDEX idx_search_provider_sixth_form
+    ON core.search_aggregate (sixth_form);
 
 CREATE INDEX idx_search_provider_section_41
     ON core.search_aggregate (section_41);

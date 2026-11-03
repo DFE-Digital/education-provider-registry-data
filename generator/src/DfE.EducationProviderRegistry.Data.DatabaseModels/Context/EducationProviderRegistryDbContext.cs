@@ -198,6 +198,8 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
             entity.HasIndex(e => e.Sen, "idx_search_provider_sen").HasMethod("gin");
 
+            entity.HasIndex(e => e.SixthForm, "idx_search_provider_sixth_form");
+
             entity.HasIndex(e => e.SpecialClass, "idx_search_provider_special_class");
 
             entity.HasIndex(e => e.Status, "idx_search_provider_status");
@@ -241,6 +243,7 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.ReligiousEthos).HasColumnName("religious_ethos");
             entity.Property(e => e.Section41).HasColumnName("section_41");
             entity.Property(e => e.Sen).HasColumnName("sen");
+            entity.Property(e => e.SixthForm).HasColumnName("sixth_form");
             entity.Property(e => e.SpecialClass).HasColumnName("special_class");
             entity.Property(e => e.Status).HasColumnName("status");
             entity.Property(e => e.Town).HasColumnName("town");

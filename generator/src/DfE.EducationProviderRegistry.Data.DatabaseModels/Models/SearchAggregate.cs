@@ -75,6 +75,8 @@ public partial class SearchAggregate
 
     public string? ReligiousEthos { get; set; }
 
+    public string? SixthForm { get; set; }
+
     public string? Section41 { get; set; }
 
     public string? SpecialClass { get; set; }
