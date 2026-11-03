@@ -25,7 +25,8 @@ CREATE TABLE core.search_aggregate (
     county TEXT,
     town TEXT,
     local_authority_name TEXT,
-    status TEXT,
+    status_code INTEGER,
+    status_name TEXT,
     education_phase TEXT,
     further_education_type TEXT,
     admissions TEXT,
@@ -261,8 +262,11 @@ CREATE INDEX idx_search_provider_name_trgm
 CREATE INDEX idx_search_provider_sen
     ON core.search_aggregate USING gin (sen);
 
-CREATE INDEX idx_search_provider_status
-    ON core.search_aggregate (status);
+CREATE INDEX idx_search_provider_status_code
+    ON core.search_aggregate (status_code);
+
+CREATE INDEX idx_search_provider_status_name
+    ON core.search_aggregate (status_name);
 
 CREATE INDEX idx_search_provider_education_phase
     ON core.search_aggregate (education_phase);
