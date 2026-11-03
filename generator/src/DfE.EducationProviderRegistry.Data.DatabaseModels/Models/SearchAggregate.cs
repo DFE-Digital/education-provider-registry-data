@@ -31,7 +31,23 @@ public partial class SearchAggregate
 
     public string? LocalAuthorityName { get; set; }
 
-    public int? EstablishmentStatus { get; set; }
+    public string? Status { get; set; }
+
+    public string? EducationPhase { get; set; }
+
+    public string? FurtherEducationType { get; set; }
+
+    public string? Admissions { get; set; }
+
+    public string? Boarding { get; set; }
+
+    public string? Nursery { get; set; }
+
+    public string? Gender { get; set; }
+
+    public int? AgeLow { get; set; }
+
+    public int? AgeHigh { get; set; }
 
     public string? GroupName { get; set; }
 
@@ -40,6 +56,8 @@ public partial class SearchAggregate
     public string? GroupUid { get; set; }
 
     public int? GroupStatus { get; set; }
+
+    public string? GroupType { get; set; }
 
     public int? AcademyCounts { get; set; }
 
@@ -50,4 +68,14 @@ public partial class SearchAggregate
     public string? ProviderCategory { get; set; }
 
     public List<string>? Sen { get; set; }
+
+    public string? Diocese { get; set; }
+
+    public string? ReligiousCharacter { get; set; }
+
+    public string? ReligiousEthos { get; set; }
+
+    public string? Section41 { get; set; }
+
+    public string? SpecialClass { get; set; }
 }

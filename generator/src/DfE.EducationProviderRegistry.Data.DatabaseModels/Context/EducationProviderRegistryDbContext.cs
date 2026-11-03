@@ -148,11 +148,29 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
             entity.ToTable("search_aggregate", "core");
 
+            entity.HasIndex(e => e.Admissions, "idx_search_provider_admissions");
+
+            entity.HasIndex(e => e.AgeHigh, "idx_search_provider_age_high");
+
+            entity.HasIndex(e => e.AgeLow, "idx_search_provider_age_low");
+
+            entity.HasIndex(e => e.Boarding, "idx_search_provider_boarding");
+
             entity.HasIndex(e => e.CompaniesHouseNumber, "idx_search_provider_companies_house_number");
 
             entity.HasIndex(e => e.County, "idx_search_provider_county");
 
             entity.HasIndex(e => e.DfeNumber, "idx_search_provider_dfe_number");
+
+            entity.HasIndex(e => e.Diocese, "idx_search_provider_diocese");
+
+            entity.HasIndex(e => e.EducationPhase, "idx_search_provider_education_phase");
+
+            entity.HasIndex(e => e.FurtherEducationType, "idx_search_provider_further_education_type");
+
+            entity.HasIndex(e => e.Gender, "idx_search_provider_gender");
+
+            entity.HasIndex(e => e.GroupType, "idx_search_provider_group_type");
 
             entity.HasIndex(e => e.GroupUid, "idx_search_provider_group_uid");
 
@@ -168,9 +186,21 @@ public partial class EducationProviderRegistryDbContext : DbContext
                 .HasMethod("gin")
                 .HasOperators(new[] { "gin_trgm_ops" });
 
+            entity.HasIndex(e => e.Nursery, "idx_search_provider_nursery");
+
             entity.HasIndex(e => e.Postcode, "idx_search_provider_postcode");
 
+            entity.HasIndex(e => e.ReligiousCharacter, "idx_search_provider_religious_character");
+
+            entity.HasIndex(e => e.ReligiousEthos, "idx_search_provider_religious_ethos");
+
+            entity.HasIndex(e => e.Section41, "idx_search_provider_section_41");
+
             entity.HasIndex(e => e.Sen, "idx_search_provider_sen").HasMethod("gin");
+
+            entity.HasIndex(e => e.SpecialClass, "idx_search_provider_special_class");
+
+            entity.HasIndex(e => e.Status, "idx_search_provider_status");
 
             entity.HasIndex(e => e.Town, "idx_search_provider_town");
 
@@ -180,17 +210,26 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
             entity.Property(e => e.SearchAggregateId).HasColumnName("search_aggregate_id");
             entity.Property(e => e.AcademyCounts).HasColumnName("academy_counts");
+            entity.Property(e => e.Admissions).HasColumnName("admissions");
+            entity.Property(e => e.AgeHigh).HasColumnName("age_high");
+            entity.Property(e => e.AgeLow).HasColumnName("age_low");
+            entity.Property(e => e.Boarding).HasColumnName("boarding");
             entity.Property(e => e.ClosedDate).HasColumnName("closed_date");
             entity.Property(e => e.CompaniesHouseNumber).HasColumnName("companies_house_number");
             entity.Property(e => e.County).HasColumnName("county");
             entity.Property(e => e.DfeNumber).HasColumnName("dfe_number");
-            entity.Property(e => e.EstablishmentStatus).HasColumnName("establishment_status");
+            entity.Property(e => e.Diocese).HasColumnName("diocese");
+            entity.Property(e => e.EducationPhase).HasColumnName("education_phase");
+            entity.Property(e => e.FurtherEducationType).HasColumnName("further_education_type");
+            entity.Property(e => e.Gender).HasColumnName("gender");
             entity.Property(e => e.GroupId).HasColumnName("group_id");
             entity.Property(e => e.GroupName).HasColumnName("group_name");
             entity.Property(e => e.GroupStatus).HasColumnName("group_status");
+            entity.Property(e => e.GroupType).HasColumnName("group_type");
             entity.Property(e => e.GroupUid).HasColumnName("group_uid");
             entity.Property(e => e.LaEstab).HasColumnName("la_estab");
             entity.Property(e => e.LocalAuthorityName).HasColumnName("local_authority_name");
+            entity.Property(e => e.Nursery).HasColumnName("nursery");
             entity.Property(e => e.OpenedDate).HasColumnName("opened_date");
             entity.Property(e => e.Postcode).HasColumnName("postcode");
             entity.Property(e => e.ProviderAddress).HasColumnName("provider_address");
@@ -198,7 +237,12 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.ProviderId).HasColumnName("provider_id");
             entity.Property(e => e.ProviderName).HasColumnName("provider_name");
             entity.Property(e => e.ProviderTypeName).HasColumnName("provider_type_name");
+            entity.Property(e => e.ReligiousCharacter).HasColumnName("religious_character");
+            entity.Property(e => e.ReligiousEthos).HasColumnName("religious_ethos");
+            entity.Property(e => e.Section41).HasColumnName("section_41");
             entity.Property(e => e.Sen).HasColumnName("sen");
+            entity.Property(e => e.SpecialClass).HasColumnName("special_class");
+            entity.Property(e => e.Status).HasColumnName("status");
             entity.Property(e => e.Town).HasColumnName("town");
             entity.Property(e => e.UkProviderReferenceNumber).HasColumnName("uk_provider_reference_number");
         });

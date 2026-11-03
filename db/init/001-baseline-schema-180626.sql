@@ -25,16 +25,30 @@ CREATE TABLE core.search_aggregate (
     county TEXT,
     town TEXT,
     local_authority_name TEXT,
-    establishment_status INTEGER,
+    status TEXT,
+    education_phase TEXT,
+    further_education_type TEXT,
+    admissions TEXT,
+    boarding TEXT,
+    nursery TEXT,
+    gender TEXT,
+    age_low INTEGER,
+    age_high INTEGER,
     group_name TEXT,
     group_id TEXT,
     group_uid TEXT,
     group_status INTEGER,
+    group_type TEXT,
     academy_counts INTEGER,
     opened_date DATE,
     closed_date DATE,
     provider_category TEXT,
-    sen TEXT[]
+    sen TEXT[],
+    diocese TEXT,
+    religious_character TEXT,
+    religious_ethos TEXT,
+    section_41 TEXT,
+    special_class TEXT
 );
 
 -- ------------------------------------------------------------
@@ -209,27 +223,85 @@ CREATE EXTENSION IF NOT EXISTS pg_trgm;
 
 CREATE INDEX idx_search_provider_id 
     ON core.search_aggregate (provider_id);
+
 CREATE INDEX idx_search_provider_name 
     ON core.search_aggregate (provider_name);
+
 CREATE INDEX idx_search_provider_laestab 
     ON core.search_aggregate (la_estab);
+
 CREATE INDEX idx_search_provider_dfe_number 
     ON core.search_aggregate (dfe_number);
+
 CREATE INDEX idx_search_provider_companies_house_number 
     ON core.search_aggregate (companies_house_number);
+
 CREATE INDEX idx_search_provider_ukprn 
     ON core.search_aggregate (uk_provider_reference_number);
+
 CREATE INDEX idx_search_provider_postcode 
     ON core.search_aggregate (postcode);
+
 CREATE INDEX idx_search_provider_county 
     ON core.search_aggregate (county);
+
 CREATE INDEX idx_search_provider_town 
     ON core.search_aggregate (town);
+
 CREATE INDEX idx_search_provider_local_authority_name 
     ON core.search_aggregate (local_authority_name);
+
 CREATE INDEX idx_search_provider_group_uid 
     ON core.search_aggregate (group_uid);
+
 CREATE INDEX idx_search_provider_name_trgm 
     ON core.search_aggregate USING gin (provider_name gin_trgm_ops);
+
 CREATE INDEX idx_search_provider_sen
     ON core.search_aggregate USING gin (sen);
+
+CREATE INDEX idx_search_provider_status
+    ON core.search_aggregate (status);
+
+CREATE INDEX idx_search_provider_education_phase
+    ON core.search_aggregate (education_phase);
+
+CREATE INDEX idx_search_provider_further_education_type
+    ON core.search_aggregate (further_education_type);
+
+CREATE INDEX idx_search_provider_admissions
+    ON core.search_aggregate (admissions);
+
+CREATE INDEX idx_search_provider_boarding
+    ON core.search_aggregate (boarding);
+
+CREATE INDEX idx_search_provider_nursery
+    ON core.search_aggregate (nursery);
+
+CREATE INDEX idx_search_provider_gender
+    ON core.search_aggregate (gender);
+
+CREATE INDEX idx_search_provider_age_low
+    ON core.search_aggregate (age_low);
+
+CREATE INDEX idx_search_provider_age_high
+    ON core.search_aggregate (age_high);
+
+CREATE INDEX idx_search_provider_group_type
+    ON core.search_aggregate (group_type);
+
+CREATE INDEX idx_search_provider_diocese
+    ON core.search_aggregate (diocese);
+
+CREATE INDEX idx_search_provider_religious_character
+    ON core.search_aggregate (religious_character);
+
+CREATE INDEX idx_search_provider_religious_ethos
+    ON core.search_aggregate (religious_ethos);
+
+CREATE INDEX idx_search_provider_section_41
+    ON core.search_aggregate (section_41);
+
+CREATE INDEX idx_search_provider_special_class
+    ON core.search_aggregate (special_class);
+
