@@ -1,0 +1,16 @@
+{
+  "name": "batchloadstagingarea",
+  "properties": {
+    "linkedServiceName": {
+      "referenceName": "GiasPostgresOdbc",
+      "type": "LinkedServiceReference"
+    },
+    "annotations": [],
+    "type": "OdbcTable",
+    "schema": [],
+    "typeProperties": {
+      "tableName": "\"etl\".\"establishment_batch_stage\""
+    }
+  },
+  "type": "Microsoft.DataFactory/factories/datasets"
+}
