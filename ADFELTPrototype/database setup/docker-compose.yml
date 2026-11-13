@@ -1,0 +1,28 @@
+services:
+  sqlserveredubase:
+    # Override MSSQL_IMAGE if the BAU backup requires a newer SQL Server version.
+    image: ${MSSQL_IMAGE:-mcr.microsoft.com/mssql/server:2022-latest}
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Developer
+      MSSQL_SA_PASSWORD: "Password123!"
+    ports:
+      - "127.0.0.1:${EDUBASE_SQLSERVER_PORT:-1433}:1433"
+    volumes:
+      - edubase_sqlserver_data:/var/opt/mssql
+
+  postgresgiastarget:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: gias2_development
+    ports:
+      - "5434:5432"
+    volumes:
+      - ./core-establishment-schema.sql:/docker-entrypoint-initdb.d/01-core-establishment-schema.sql
+      - ./02-seed-first-slice-reference.sql:/docker-entrypoint-initdb.d/02-seed-first-slice-reference.sql
+      - ./03-adf-establishment-batch.sql:/docker-entrypoint-initdb.d/03-adf-establishment-batch.sql
+
+volumes:
+  edubase_sqlserver_data:

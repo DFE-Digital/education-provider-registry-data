@@ -1,0 +1,12 @@
+.runtime/
+.work/
+.env
+.env.*
+*.log
+*.dump
+*.bak
+*.csv
+.vs/
+.idea/
+bin/
+obj/
