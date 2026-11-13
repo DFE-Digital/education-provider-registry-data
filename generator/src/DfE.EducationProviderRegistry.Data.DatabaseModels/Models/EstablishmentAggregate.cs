@@ -85,6 +85,8 @@ public partial class EstablishmentAggregate
 
     public string? HeadteacherName { get; set; }
 
+    public string? SenProvision { get; set; }
+
     public string? Website { get; set; }
 
     public string? TelephoneNumber { get; set; }

@@ -123,6 +123,9 @@ CREATE TABLE core.establishment_aggregate
     headteacher_identifier TEXT,
     headteacher_name TEXT,
 
+    -- SEND
+    sen_provision TEXT,
+
     -- contact
     website TEXT,
     telephone_number TEXT
