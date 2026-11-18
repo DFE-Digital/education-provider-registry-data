@@ -61,22 +61,6 @@ public partial class EstablishmentAggregate
 
     public string? ReligiousCharacter { get; set; }
 
-    public string? ReligiousEthos { get; set; }
-
-    public string? Diocese { get; set; }
-
-    public List<string>? Sen { get; set; }
-
-    public int? NumberOfPupils { get; set; }
-
-    public int? NumberOfBoys { get; set; }
-
-    public int? NumberOfGirls { get; set; }
-
-    public decimal? FsmPercentage { get; set; }
-
-    public int? FsmNumber { get; set; }
-
     public DateOnly? OfstedInspectionDate { get; set; }
 
     public string? OfstedReportUrl { get; set; }

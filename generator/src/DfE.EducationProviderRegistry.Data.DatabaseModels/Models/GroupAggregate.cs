@@ -19,9 +19,17 @@ public partial class GroupAggregate
 
     public string? GroupTypeName { get; set; }
 
+    public string? GroupTypeId { get; set; }
+
     public string? HeadteacherIdentifier { get; set; }
 
     public string? HeadteacherName { get; set; }
+
+    public string? HeadOfGroupTitle { get; set; }
+
+    public string? HeadOfGroupFirstname { get; set; }
+
+    public string? HeadOfGroupLastname { get; set; }
 
     public string? ReligiousCharacter { get; set; }
 
@@ -44,4 +52,6 @@ public partial class GroupAggregate
     public string? GroupStatusLabel { get; set; }
 
     public DateOnly? GroupStatusEffectiveDate { get; set; }
+
+    public DateOnly? ClosedDate { get; set; }
 }
