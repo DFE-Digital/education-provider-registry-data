@@ -505,3 +505,9 @@ CREATE INDEX idx_search_provider_section_41
 
 CREATE INDEX idx_search_provider_special_class
     ON core.search_aggregate (special_class);
+
+CREATE INDEX idx_establishment_download_aggregate_urn
+    ON core.establishment_download_aggregate (urn);
+
+CREATE INDEX idx_establishment_download_aggregate_ukprn
+    ON core.establishment_download_aggregate (uk_provider_reference_number);
