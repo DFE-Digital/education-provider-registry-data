@@ -14,9 +14,13 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
     public virtual DbSet<EstablishmentAggregate> EstablishmentAggregate { get; set; }
 
+    public virtual DbSet<EstablishmentDownloadAggregate> EstablishmentDownloadAggregate { get; set; }
+
     public virtual DbSet<EstablishmentGovernorAggregate> EstablishmentGovernorAggregate { get; set; }
 
     public virtual DbSet<GroupAggregate> GroupAggregate { get; set; }
+
+    public virtual DbSet<GroupDownloadAggregate> GroupDownloadAggregate { get; set; }
 
     public virtual DbSet<GroupMemberAggregate> GroupMemberAggregate { get; set; }
 
@@ -83,6 +87,157 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.Website).HasColumnName("website");
         });
 
+        modelBuilder.Entity<EstablishmentDownloadAggregate>(entity =>
+        {
+            entity.HasKey(e => e.EstablishmentDownloadAggregateId).HasName("establishment_download_aggregate_pkey");
+
+            entity.ToTable("establishment_download_aggregate", "core");
+
+            entity.HasIndex(e => e.Urn, "establishment_download_aggregate_urn_key").IsUnique();
+
+            entity.HasIndex(e => e.UkProviderReferenceNumber, "idx_establishment_download_aggregate_ukprn");
+
+            entity.HasIndex(e => e.Urn, "idx_establishment_download_aggregate_urn");
+
+            entity.Property(e => e.EstablishmentDownloadAggregateId).HasColumnName("establishment_download_aggregate_id");
+            entity.Property(e => e.AccreditationExpiryDate).HasColumnName("accreditation_expiry_date");
+            entity.Property(e => e.AddressLine1).HasColumnName("address_line_1");
+            entity.Property(e => e.AddressLine2).HasColumnName("address_line_2");
+            entity.Property(e => e.AddressLine3).HasColumnName("address_line_3");
+            entity.Property(e => e.AdministrativeWard).HasColumnName("administrative_ward");
+            entity.Property(e => e.AdministrativeWardId).HasColumnName("administrative_ward_id");
+            entity.Property(e => e.AdmissionsPolicy).HasColumnName("admissions_policy");
+            entity.Property(e => e.AdmissionsPolicyId).HasColumnName("admissions_policy_id");
+            entity.Property(e => e.ApprovedIndependentSendSchoolSection41).HasColumnName("approved_independent_send_school_section_41");
+            entity.Property(e => e.AutisticSpectrumDisorderSen4).HasColumnName("autistic_spectrum_disorder_sen_4");
+            entity.Property(e => e.BoardingEstablishment).HasColumnName("boarding_establishment");
+            entity.Property(e => e.BoardingProvision).HasColumnName("boarding_provision");
+            entity.Property(e => e.BoardingProvisionId).HasColumnName("boarding_provision_id");
+            entity.Property(e => e.BritishSchoolOverseasInspectorateName).HasColumnName("british_school_overseas_inspectorate_name");
+            entity.Property(e => e.CensusDate).HasColumnName("census_date");
+            entity.Property(e => e.ChildcareFacilitiesProvision).HasColumnName("childcare_facilities_provision");
+            entity.Property(e => e.ClosedDate).HasColumnName("closed_date");
+            entity.Property(e => e.CompaniesHouseNumber).HasColumnName("companies_house_number");
+            entity.Property(e => e.Country).HasColumnName("country");
+            entity.Property(e => e.County).HasColumnName("county");
+            entity.Property(e => e.DateLastChangedOrConfirmed).HasColumnName("date_last_changed_or_confirmed");
+            entity.Property(e => e.DateOfLastInspectionVisit).HasColumnName("date_of_last_inspection_visit");
+            entity.Property(e => e.DateOfNextInspectionVisit).HasColumnName("date_of_next_inspection_visit");
+            entity.Property(e => e.Diocese).HasColumnName("diocese");
+            entity.Property(e => e.DioceseId).HasColumnName("diocese_id");
+            entity.Property(e => e.DistrictAdministrative).HasColumnName("district_administrative");
+            entity.Property(e => e.DistrictAdministrativeId).HasColumnName("district_administrative_id");
+            entity.Property(e => e.Easting).HasColumnName("easting");
+            entity.Property(e => e.EducationPhase).HasColumnName("education_phase");
+            entity.Property(e => e.EducationPhaseId).HasColumnName("education_phase_id");
+            entity.Property(e => e.EmotionalBehaviouralDifficultiesProvision).HasColumnName("emotional_behavioural_difficulties_provision");
+            entity.Property(e => e.EstablishmentNumber).HasColumnName("establishment_number");
+            entity.Property(e => e.Federation).HasColumnName("federation");
+            entity.Property(e => e.FederationFlag).HasColumnName("federation_flag");
+            entity.Property(e => e.FederationId).HasColumnName("federation_id");
+            entity.Property(e => e.FullTimeProvision).HasColumnName("full_time_provision");
+            entity.Property(e => e.FurtherEducationHigherEducationIdentifier).HasColumnName("further_education_higher_education_identifier");
+            entity.Property(e => e.FurtherEducationType).HasColumnName("further_education_type");
+            entity.Property(e => e.GenderOfEntry).HasColumnName("gender_of_entry");
+            entity.Property(e => e.GenderOfEntryId).HasColumnName("gender_of_entry_id");
+            entity.Property(e => e.GovernmentOfficeRegion).HasColumnName("government_office_region");
+            entity.Property(e => e.GovernmentOfficeRegionId).HasColumnName("government_office_region_id");
+            entity.Property(e => e.GovernmentStatisticalServiceLocalAuthorityCode).HasColumnName("government_statistical_service_local_authority_code");
+            entity.Property(e => e.HeadFirstName).HasColumnName("head_first_name");
+            entity.Property(e => e.HeadLastName).HasColumnName("head_last_name");
+            entity.Property(e => e.HeadTitle).HasColumnName("head_title");
+            entity.Property(e => e.HearingImpairmentSen2).HasColumnName("hearing_impairment_sen_2");
+            entity.Property(e => e.InspectorateName).HasColumnName("inspectorate_name");
+            entity.Property(e => e.InspectorateReport).HasColumnName("inspectorate_report");
+            entity.Property(e => e.JobTitle).HasColumnName("job_title");
+            entity.Property(e => e.LocalAuthority).HasColumnName("local_authority");
+            entity.Property(e => e.LocalAuthorityId).HasColumnName("local_authority_id");
+            entity.Property(e => e.LowerSuperOutputArea).HasColumnName("lower_super_output_area");
+            entity.Property(e => e.LowerSuperOutputAreaId).HasColumnName("lower_super_output_area_id");
+            entity.Property(e => e.MiddleSuperOutputArea).HasColumnName("middle_super_output_area");
+            entity.Property(e => e.MiddleSuperOutputAreaId).HasColumnName("middle_super_output_area_id");
+            entity.Property(e => e.ModerateLearningDifficultySen8).HasColumnName("moderate_learning_difficulty_sen_8");
+            entity.Property(e => e.MultiSensoryImpairmentSen6).HasColumnName("multi_sensory_impairment_sen_6");
+            entity.Property(e => e.Northing).HasColumnName("northing");
+            entity.Property(e => e.NumberOfFemales).HasColumnName("number_of_females");
+            entity.Property(e => e.NumberOfMales).HasColumnName("number_of_males");
+            entity.Property(e => e.NumberOfPupilsStudents).HasColumnName("number_of_pupils_students");
+            entity.Property(e => e.NurseryProvision).HasColumnName("nursery_provision");
+            entity.Property(e => e.OpenDate).HasColumnName("open_date");
+            entity.Property(e => e.OtherDifficultyDisabilitySen12).HasColumnName("other_difficulty_disability_sen_12");
+            entity.Property(e => e.ParliamentaryConstituency).HasColumnName("parliamentary_constituency");
+            entity.Property(e => e.ParliamentaryConstituencyId).HasColumnName("parliamentary_constituency_id");
+            entity.Property(e => e.PercentagePupilsEligibleForFreeSchoolMeals).HasColumnName("percentage_pupils_eligible_for_free_school_meals");
+            entity.Property(e => e.PhoneNumber).HasColumnName("phone_number");
+            entity.Property(e => e.PhysicalDisabilitySen7).HasColumnName("physical_disability_sen_7");
+            entity.Property(e => e.Postcode).HasColumnName("postcode");
+            entity.Property(e => e.PreviousLocalAuthority).HasColumnName("previous_local_authority");
+            entity.Property(e => e.PreviousLocalAuthorityId).HasColumnName("previous_local_authority_id");
+            entity.Property(e => e.PreviousProviderNumber).HasColumnName("previous_provider_number");
+            entity.Property(e => e.ProfoundMultipleLearningDifficultySen10).HasColumnName("profound_multiple_learning_difficulty_sen_10");
+            entity.Property(e => e.Proprietor).HasColumnName("proprietor");
+            entity.Property(e => e.ProviderAccredited).HasColumnName("provider_accredited");
+            entity.Property(e => e.ProviderAccreditedId).HasColumnName("provider_accredited_id");
+            entity.Property(e => e.ProviderCapacity).HasColumnName("provider_capacity");
+            entity.Property(e => e.ProviderName).HasColumnName("provider_name");
+            entity.Property(e => e.ProviderNumber).HasColumnName("provider_number");
+            entity.Property(e => e.ProviderStatus).HasColumnName("provider_status");
+            entity.Property(e => e.ProviderStatusId).HasColumnName("provider_status_id");
+            entity.Property(e => e.ProviderType).HasColumnName("provider_type");
+            entity.Property(e => e.ProviderTypeGroup).HasColumnName("provider_type_group");
+            entity.Property(e => e.ProviderTypeGroupId).HasColumnName("provider_type_group_id");
+            entity.Property(e => e.ProviderTypeId).HasColumnName("provider_type_id");
+            entity.Property(e => e.PupilReferralUnitCapacity).HasColumnName("pupil_referral_unit_capacity");
+            entity.Property(e => e.PupilsEducatedByOtherProviders).HasColumnName("pupils_educated_by_other_providers");
+            entity.Property(e => e.PupilsEligibleForFreeSchoolMeals).HasColumnName("pupils_eligible_for_free_school_meals");
+            entity.Property(e => e.QualificationsAwardingBody).HasColumnName("qualifications_awarding_body");
+            entity.Property(e => e.QualificationsAwardingBodyId).HasColumnName("qualifications_awarding_body_id");
+            entity.Property(e => e.QualificationsAwardingBodyReport).HasColumnName("qualifications_awarding_body_report");
+            entity.Property(e => e.ReasonProviderClosed).HasColumnName("reason_provider_closed");
+            entity.Property(e => e.ReasonProviderClosedId).HasColumnName("reason_provider_closed_id");
+            entity.Property(e => e.ReasonProviderOpened).HasColumnName("reason_provider_opened");
+            entity.Property(e => e.ReasonProviderOpenedId).HasColumnName("reason_provider_opened_id");
+            entity.Property(e => e.ReligiousCharacter).HasColumnName("religious_character");
+            entity.Property(e => e.ReligiousCharacterId).HasColumnName("religious_character_id");
+            entity.Property(e => e.ReligiousEthos).HasColumnName("religious_ethos");
+            entity.Property(e => e.ResourcedProvisionCapacity).HasColumnName("resourced_provision_capacity");
+            entity.Property(e => e.ResourcedProvisionPupilCount).HasColumnName("resourced_provision_pupil_count");
+            entity.Property(e => e.SchoolSponsor).HasColumnName("school_sponsor");
+            entity.Property(e => e.SchoolSponsorFlag).HasColumnName("school_sponsor_flag");
+            entity.Property(e => e.SenPupilReferralUnit).HasColumnName("sen_pupil_referral_unit");
+            entity.Property(e => e.SenUnitCapacity).HasColumnName("sen_unit_capacity");
+            entity.Property(e => e.SenUnitPupilCount).HasColumnName("sen_unit_pupil_count");
+            entity.Property(e => e.SevereLearningDifficultySen9).HasColumnName("severe_learning_difficulty_sen_9");
+            entity.Property(e => e.Site).HasColumnName("site");
+            entity.Property(e => e.SixthFormProvision).HasColumnName("sixth_form_provision");
+            entity.Property(e => e.SixthFormProvisionId).HasColumnName("sixth_form_provision_id");
+            entity.Property(e => e.SocialEmotionalMentalHealthSen5).HasColumnName("social_emotional_mental_health_sen_5");
+            entity.Property(e => e.SpecialClassProvision).HasColumnName("special_class_provision");
+            entity.Property(e => e.SpecialClassProvisionId).HasColumnName("special_class_provision_id");
+            entity.Property(e => e.SpecialPupilsNotOnStatementOrEhcPlan).HasColumnName("special_pupils_not_on_statement_or_ehc_plan");
+            entity.Property(e => e.SpecialPupilsOnStatementOrEhcPlan).HasColumnName("special_pupils_on_statement_or_ehc_plan");
+            entity.Property(e => e.SpecificLearningDifficultySen11).HasColumnName("specific_learning_difficulty_sen_11");
+            entity.Property(e => e.SpeechLanguageCommunicationSen3).HasColumnName("speech_language_communication_sen_3");
+            entity.Property(e => e.StatutoryHighAge).HasColumnName("statutory_high_age");
+            entity.Property(e => e.StatutoryLowAge).HasColumnName("statutory_low_age");
+            entity.Property(e => e.TeenMothersCapacity).HasColumnName("teen_mothers_capacity");
+            entity.Property(e => e.TeenMothersProvision).HasColumnName("teen_mothers_provision");
+            entity.Property(e => e.TownOrCity).HasColumnName("town_or_city");
+            entity.Property(e => e.TrustSchoolFlag).HasColumnName("trust_school_flag");
+            entity.Property(e => e.TrustSchoolFlagId).HasColumnName("trust_school_flag_id");
+            entity.Property(e => e.Trusts).HasColumnName("trusts");
+            entity.Property(e => e.TrustsId).HasColumnName("trusts_id");
+            entity.Property(e => e.TypeOfResourcedProvision).HasColumnName("type_of_resourced_provision");
+            entity.Property(e => e.UkProviderReferenceNumber).HasColumnName("uk_provider_reference_number");
+            entity.Property(e => e.UniquePropertyReferenceNumber).HasColumnName("unique_property_reference_number");
+            entity.Property(e => e.UniqueReferenceNumber).HasColumnName("unique_reference_number");
+            entity.Property(e => e.UrbanRuralClassification).HasColumnName("urban_rural_classification");
+            entity.Property(e => e.UrbanRuralClassificationId).HasColumnName("urban_rural_classification_id");
+            entity.Property(e => e.Urn).HasColumnName("urn");
+            entity.Property(e => e.VisualImpairmentSen1).HasColumnName("visual_impairment_sen_1");
+            entity.Property(e => e.Website).HasColumnName("website");
+        });
+
         modelBuilder.Entity<EstablishmentGovernorAggregate>(entity =>
         {
             entity.HasKey(e => e.EstablishmentGovernorAggregateId).HasName("establishment_governor_aggregate_pkey");
@@ -130,6 +285,38 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.Town).HasColumnName("town");
             entity.Property(e => e.Ukprn).HasColumnName("ukprn");
             entity.Property(e => e.Website).HasColumnName("website");
+        });
+
+        modelBuilder.Entity<GroupDownloadAggregate>(entity =>
+        {
+            entity.HasKey(e => e.GroupDownloadAggregateId).HasName("group_download_aggregate_pkey");
+
+            entity.ToTable("group_download_aggregate", "core");
+
+            entity.HasIndex(e => e.GroupUid, "group_download_aggregate_group_uid_key").IsUnique();
+
+            entity.Property(e => e.GroupDownloadAggregateId).HasColumnName("group_download_aggregate_id");
+            entity.Property(e => e.ClosedDate).HasColumnName("closed_date");
+            entity.Property(e => e.CompaniesHouseNumber).HasColumnName("companies_house_number");
+            entity.Property(e => e.GroupAddressLine1).HasColumnName("group_address_line_1");
+            entity.Property(e => e.GroupAddressLine2).HasColumnName("group_address_line_2");
+            entity.Property(e => e.GroupAddressLine3).HasColumnName("group_address_line_3");
+            entity.Property(e => e.GroupCounty).HasColumnName("group_county");
+            entity.Property(e => e.GroupId).HasColumnName("group_id");
+            entity.Property(e => e.GroupName).HasColumnName("group_name");
+            entity.Property(e => e.GroupPostcode).HasColumnName("group_postcode");
+            entity.Property(e => e.GroupStatus).HasColumnName("group_status");
+            entity.Property(e => e.GroupStatusId).HasColumnName("group_status_id");
+            entity.Property(e => e.GroupTownOrCity).HasColumnName("group_town_or_city");
+            entity.Property(e => e.GroupType).HasColumnName("group_type");
+            entity.Property(e => e.GroupTypeId).HasColumnName("group_type_id");
+            entity.Property(e => e.GroupUid).HasColumnName("group_uid");
+            entity.Property(e => e.HeadOfGroupFirstName).HasColumnName("head_of_group_first_name");
+            entity.Property(e => e.HeadOfGroupLastName).HasColumnName("head_of_group_last_name");
+            entity.Property(e => e.HeadOfGroupTitle).HasColumnName("head_of_group_title");
+            entity.Property(e => e.IncorporatedOn).HasColumnName("incorporated_on");
+            entity.Property(e => e.OpenDate).HasColumnName("open_date");
+            entity.Property(e => e.UkProviderReferenceNumber).HasColumnName("uk_provider_reference_number");
         });
 
         modelBuilder.Entity<GroupMemberAggregate>(entity =>
