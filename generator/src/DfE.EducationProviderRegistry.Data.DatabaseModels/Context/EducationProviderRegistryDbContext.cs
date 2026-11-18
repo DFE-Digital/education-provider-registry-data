@@ -26,8 +26,6 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
     public virtual DbSet<SearchAggregate> SearchAggregate { get; set; }
 
-    public virtual DbSet<StagingTable> StagingTable { get; set; }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasPostgresExtension("pg_trgm");
