@@ -239,19 +239,19 @@ public partial class EducationProviderRegistryDbContext : DbContext
         });
 
         modelBuilder.Entity<EstablishmentGovernorAggregate>(entity =>
-        {
-            entity.HasKey(e => e.EstablishmentGovernorAggregateId).HasName("establishment_governor_aggregate_pkey");
+    {
+        entity.HasKey(e => e.EstablishmentGovernorAggregateId).HasName("establishment_governor_aggregate_pkey");
 
-            entity.ToTable("establishment_governor_aggregate", "core");
+        entity.ToTable("establishment_governor_aggregate", "core");
 
-            entity.HasIndex(e => e.EstablishmentUrn, "idx_establishment_governor_aggregate_urn");
+        entity.HasIndex(e => e.EstablishmentUrn, "idx_establishment_governor_aggregate_urn");
 
-            entity.Property(e => e.EstablishmentGovernorAggregateId).HasColumnName("establishment_governor_aggregate_id");
-            entity.Property(e => e.EstablishmentUrn).HasColumnName("establishment_urn");
-            entity.Property(e => e.GovernorId).HasColumnName("governor_id");
-            entity.Property(e => e.GovernorName).HasColumnName("governor_name");
-            entity.Property(e => e.StartDate).HasColumnName("start_date");
-        });
+        entity.Property(e => e.EstablishmentGovernorAggregateId).HasColumnName("establishment_governor_aggregate_id");
+        entity.Property(e => e.EstablishmentUrn).HasColumnName("establishment_urn");
+        entity.Property(e => e.GovernorId).HasColumnName("governor_id");
+        entity.Property(e => e.GovernorName).HasColumnName("governor_name");
+        entity.Property(e => e.StartDate).HasColumnName("start_date");
+    });
 
         modelBuilder.Entity<GroupAggregate>(entity =>
         {
@@ -268,6 +268,7 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.GroupAggregateId).HasColumnName("group_aggregate_id");
             entity.Property(e => e.AddressLine1).HasColumnName("address_line_1");
             entity.Property(e => e.AddressLine2).HasColumnName("address_line_2");
+            entity.Property(e => e.ClosedDate).HasColumnName("closed_date");
             entity.Property(e => e.CompaniesHouseNumber).HasColumnName("companies_house_number");
             entity.Property(e => e.County).HasColumnName("county");
             entity.Property(e => e.GroupId).HasColumnName("group_id");
@@ -278,6 +279,7 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.HeadteacherIdentifier).HasColumnName("headteacher_identifier");
             entity.Property(e => e.HeadteacherName).HasColumnName("headteacher_name");
             entity.Property(e => e.Name).HasColumnName("name");
+            entity.Property(e => e.OpenedDate).HasColumnName("opened_date");
             entity.Property(e => e.Postcode).HasColumnName("postcode");
             entity.Property(e => e.ReligiousCharacter).HasColumnName("religious_character");
             entity.Property(e => e.SiteName).HasColumnName("site_name");

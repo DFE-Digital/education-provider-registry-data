@@ -44,4 +44,8 @@ public partial class GroupAggregate
     public string? GroupStatusLabel { get; set; }
 
     public DateOnly? GroupStatusEffectiveDate { get; set; }
+
+    public DateOnly? OpenedDate { get; set; }
+
+    public DateOnly? ClosedDate { get; set; }
 }
