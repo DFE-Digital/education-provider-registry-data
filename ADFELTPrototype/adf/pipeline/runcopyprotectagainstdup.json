@@ -1,0 +1,218 @@
+{
+  "name": "runcopyprotectagainstdup",
+  "properties": {
+    "activities": [
+      {
+        "name": "Stage establishments",
+        "type": "Copy",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "userProperties": [],
+        "typeProperties": {
+          "source": {
+            "type": "SqlServerSource",
+            "additionalColumns": [
+              {
+                "name": "batch_id",
+                "value": {
+                  "value": "@pipeline().RunId",
+                  "type": "Expression"
+                }
+              }
+            ],
+            "sqlReaderQuery": "-- Four-establishment source query, generated from establishment-from-bau.sql.\n-- Upstream SHA-256: b7668399cb6b76755990a6a5da74871c51729f57242489272b13df8efab3c057\nWITH source_establishment AS (\n    SELECT e.URN, e.UKPRN, e.EstablishmentNumber, e.EstablishmentName,\n           et.name AS type_name, ep.name AS education_phase_name\n    FROM dbo.Establishment AS e\n    LEFT JOIN dbo.EstablishmentType AS et ON et.code = e.type_code\n    LEFT JOIN dbo.EducationPhase AS ep ON ep.code = e.educationPhase_code\n    WHERE e.URN IN (134314, 135905, 136102, 137603)\n)\nSELECT\n    s.URN AS urn,\n    s.UKPRN AS ukprn,\n    s.EstablishmentNumber AS establishment_number,\n    s.EstablishmentName AS name,\n    CASE\r\n        WHEN s.type_name = 'Community school' THEN 1\r\n        WHEN s.type_name = 'Foundation special school' THEN 3\r\n        WHEN s.type_name IN ('Academy sponsor led', 'Academy converter') THEN 4\r\n        WHEN s.type_name IN ('Academy special sponsor led', 'Academy special converter') THEN 5\r\n        WHEN s.type_name IN ('Academy alternative provision sponsor led', 'Academy alternative provision converter') THEN 6\r\n        WHEN s.type_name IN ('Academy 16-19 sponsor led', 'Academy 16 to 19 converter') THEN 7\r\n        WHEN s.type_name = 'Academy secure 16 to 19' THEN 8\r\n        WHEN s.type_name = 'Voluntary controlled school' THEN 10\r\n        WHEN s.type_name = 'Foundation school' THEN 11\r\n        WHEN s.type_name = 'Other independent special school' THEN 15\r\n        WHEN s.type_name = 'Other independent school' THEN 17\r\n        WHEN s.type_name = 'University technical college' THEN 21\r\n        WHEN s.type_name = 'Children''s centre' THEN 35\r\n        ELSE NULL\r\n    END AS establishment_type_id,\n    CASE s.education_phase_name\r\n        WHEN 'Nursery' THEN 1\r\n        WHEN 'Primary' THEN 2\r\n        WHEN 'Middle deemed primary' THEN 3\r\n        WHEN 'Middle deemed secondary' THEN 4\r\n        WHEN 'Secondary' THEN 5\r\n        WHEN 'All-through' THEN 6\r\n        WHEN '16 to 19' THEN 7\r\n        WHEN 'Not applicable' THEN 8\r\n        WHEN 'Not applicable (education phase)' THEN 8\r\n        ELSE NULL\r\n    END AS education_phase_id\nFROM source_establishment AS s\nORDER BY s.URN;\r\n",
+            "queryTimeout": "02:00:00",
+            "partitionOption": "None"
+          },
+          "sink": {
+            "type": "OdbcSink",
+            "writeBatchSize": 0
+          },
+          "enableStaging": false,
+          "translator": {
+            "type": "TabularTranslator",
+            "mappings": [
+              {
+                "source": {
+                  "name": "batch_id",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "batch_id",
+                  "type": "String"
+                }
+              },
+              {
+                "source": {
+                  "name": "urn",
+                  "type": "Decimal",
+                  "physicalType": "decimal",
+                  "scale": 0,
+                  "precision": 19
+                },
+                "sink": {
+                  "name": "urn",
+                  "type": "Int32"
+                }
+              },
+              {
+                "source": {
+                  "name": "ukprn",
+                  "type": "Int64",
+                  "physicalType": "bigint"
+                },
+                "sink": {
+                  "name": "ukprn",
+                  "type": "Decimal"
+                }
+              },
+              {
+                "source": {
+                  "name": "establishment_number",
+                  "type": "Int32",
+                  "physicalType": "int"
+                },
+                "sink": {
+                  "name": "establishment_number",
+                  "type": "Int32"
+                }
+              },
+              {
+                "source": {
+                  "name": "name",
+                  "type": "String",
+                  "physicalType": "nvarchar"
+                },
+                "sink": {
+                  "name": "name",
+                  "type": "String"
+                }
+              },
+              {
+                "source": {
+                  "name": "establishment_type_id",
+                  "type": "Int32",
+                  "physicalType": "int"
+                },
+                "sink": {
+                  "name": "establishment_type_id",
+                  "type": "Int32"
+                }
+              },
+              {
+                "source": {
+                  "name": "education_phase_id",
+                  "type": "Int32",
+                  "physicalType": "int"
+                },
+                "sink": {
+                  "name": "education_phase_id",
+                  "type": "Int32"
+                }
+              }
+            ],
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          }
+        },
+        "inputs": [
+          {
+            "referenceName": "SqlServerTable1",
+            "type": "DatasetReference"
+          }
+        ],
+        "outputs": [
+          {
+            "referenceName": "batchloadstagingarea",
+            "type": "DatasetReference"
+          }
+        ]
+      },
+      {
+        "name": "Apply Establishments Batch",
+        "type": "Lookup",
+        "dependsOn": [
+          {
+            "activity": "Stage establishments",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 2,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "userProperties": [],
+        "typeProperties": {
+          "source": {
+            "type": "OdbcSource",
+            "query": {
+              "value": "@concat('SELECT * FROM etl.apply_establishment_batch(''', pipeline().RunId, ''', ', string(pipeline().parameters.expectedRows), ');')",
+              "type": "Expression"
+            },
+            "queryTimeout": "02:00:00"
+          },
+          "dataset": {
+            "referenceName": "batchloadstagingarea",
+            "type": "DatasetReference"
+          },
+          "firstRowOnly": true
+        }
+      },
+      {
+        "name": "Validate applied batch",
+        "type": "IfCondition",
+        "dependsOn": [
+          {
+            "activity": "Apply Establishments Batch",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "userProperties": [],
+        "typeProperties": {
+          "expression": {
+            "value": "@and(equals(activity('Apply Establishments Batch').output.firstRow.batch_id, pipeline().RunId), and(or(equals(activity('Apply Establishments Batch').output.firstRow.status, 'applied'), equals(activity('Apply Establishments Batch').output.firstRow.status, 'already_applied')), and(equals(int(activity('Apply Establishments Batch').output.firstRow.staged_rows), pipeline().parameters.expectedRows), and(equals(int(activity('Apply Establishments Batch').output.firstRow.staged_rows), int(activity('Stage establishments').output.rowsCopied)), equals(int(activity('Apply Establishments Batch').output.firstRow.staged_rows), add(add(int(activity('Apply Establishments Batch').output.firstRow.inserted_rows), int(activity('Apply Establishments Batch').output.firstRow.updated_rows)), int(activity('Apply Establishments Batch').output.firstRow.unchanged_rows)))))))",
+            "type": "Expression"
+          },
+          "ifTrueActivities": [],
+          "ifFalseActivities": [
+            {
+              "name": "Fail unexpected batch result",
+              "type": "Fail",
+              "dependsOn": [],
+              "userProperties": [],
+              "typeProperties": {
+                "message": "Batch ID/status/counts did not match the pipeline run and expected four-row slice.",
+                "errorCode": "UnexpectedBatchResult"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "annotations": [],
+    "concurrency": 1,
+    "parameters": {
+      "expectedRows": {
+        "type": "Int",
+        "defaultValue": 4
+      }
+    }
+  },
+  "type": "Microsoft.DataFactory/factories/pipelines"
+}
