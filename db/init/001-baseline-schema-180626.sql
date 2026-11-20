@@ -185,6 +185,10 @@ CREATE TABLE core.group_aggregate
     -- status
     group_status_label TEXT,
     group_status_effective_date DATE
+
+    -- lifecycle
+    opened_date DATE,
+    closed_date DATE
 );
 
 -- ------------------------------------------------------------
