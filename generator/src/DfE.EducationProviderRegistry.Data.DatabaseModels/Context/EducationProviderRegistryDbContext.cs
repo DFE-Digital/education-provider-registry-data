@@ -22,6 +22,8 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
     public virtual DbSet<GroupDownloadAggregate> GroupDownloadAggregate { get; set; }
 
+    public virtual DbSet<GroupEstablishmentAggregate> GroupEstablishmentAggregate { get; set; }
+
     public virtual DbSet<GroupMemberAggregate> GroupMemberAggregate { get; set; }
 
     public virtual DbSet<SearchAggregate> SearchAggregate { get; set; }
@@ -239,19 +241,19 @@ public partial class EducationProviderRegistryDbContext : DbContext
         });
 
         modelBuilder.Entity<EstablishmentGovernorAggregate>(entity =>
-    {
-        entity.HasKey(e => e.EstablishmentGovernorAggregateId).HasName("establishment_governor_aggregate_pkey");
+        {
+            entity.HasKey(e => e.EstablishmentGovernorAggregateId).HasName("establishment_governor_aggregate_pkey");
 
-        entity.ToTable("establishment_governor_aggregate", "core");
+            entity.ToTable("establishment_governor_aggregate", "core");
 
-        entity.HasIndex(e => e.EstablishmentUrn, "idx_establishment_governor_aggregate_urn");
+            entity.HasIndex(e => e.EstablishmentUrn, "idx_establishment_governor_aggregate_urn");
 
-        entity.Property(e => e.EstablishmentGovernorAggregateId).HasColumnName("establishment_governor_aggregate_id");
-        entity.Property(e => e.EstablishmentUrn).HasColumnName("establishment_urn");
-        entity.Property(e => e.GovernorId).HasColumnName("governor_id");
-        entity.Property(e => e.GovernorName).HasColumnName("governor_name");
-        entity.Property(e => e.StartDate).HasColumnName("start_date");
-    });
+            entity.Property(e => e.EstablishmentGovernorAggregateId).HasColumnName("establishment_governor_aggregate_id");
+            entity.Property(e => e.EstablishmentUrn).HasColumnName("establishment_urn");
+            entity.Property(e => e.GovernorId).HasColumnName("governor_id");
+            entity.Property(e => e.GovernorName).HasColumnName("governor_name");
+            entity.Property(e => e.StartDate).HasColumnName("start_date");
+        });
 
         modelBuilder.Entity<GroupAggregate>(entity =>
         {
@@ -319,6 +321,22 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.IncorporatedOn).HasColumnName("incorporated_on");
             entity.Property(e => e.OpenDate).HasColumnName("open_date");
             entity.Property(e => e.UkProviderReferenceNumber).HasColumnName("uk_provider_reference_number");
+        });
+
+        modelBuilder.Entity<GroupEstablishmentAggregate>(entity =>
+        {
+            entity.HasKey(e => e.GroupEstablishmentAggregateId).HasName("group_establishment_aggregate_pkey");
+
+            entity.ToTable("group_establishment_aggregate", "core");
+
+            entity.HasIndex(e => e.EstablishmentUrn, "idx_group_establishment_aggregate_establishment_urn");
+
+            entity.HasIndex(e => e.GroupId, "idx_group_establishment_aggregate_group_id");
+
+            entity.Property(e => e.GroupEstablishmentAggregateId).HasColumnName("group_establishment_aggregate_id");
+            entity.Property(e => e.EstablishmentName).HasColumnName("establishment_name");
+            entity.Property(e => e.EstablishmentUrn).HasColumnName("establishment_urn");
+            entity.Property(e => e.GroupId).HasColumnName("group_id");
         });
 
         modelBuilder.Entity<GroupMemberAggregate>(entity =>
