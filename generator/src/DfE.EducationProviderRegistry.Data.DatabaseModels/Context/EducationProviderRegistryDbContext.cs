@@ -276,6 +276,7 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.GroupId).HasColumnName("group_id");
             entity.Property(e => e.GroupStatusEffectiveDate).HasColumnName("group_status_effective_date");
             entity.Property(e => e.GroupStatusLabel).HasColumnName("group_status_label");
+            entity.Property(e => e.GroupTypeCode).HasColumnName("group_type_code");
             entity.Property(e => e.GroupTypeName).HasColumnName("group_type_name");
             entity.Property(e => e.GroupUid).HasColumnName("group_uid");
             entity.Property(e => e.HeadteacherIdentifier).HasColumnName("headteacher_identifier");
