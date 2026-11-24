@@ -331,12 +331,12 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
             entity.HasIndex(e => e.EstablishmentUrn, "idx_group_establishment_aggregate_establishment_urn");
 
-            entity.HasIndex(e => e.GroupId, "idx_group_establishment_aggregate_group_id");
+            entity.HasIndex(e => e.GroupUid, "idx_group_establishment_aggregate_group_uid");
 
             entity.Property(e => e.GroupEstablishmentAggregateId).HasColumnName("group_establishment_aggregate_id");
             entity.Property(e => e.EstablishmentName).HasColumnName("establishment_name");
             entity.Property(e => e.EstablishmentUrn).HasColumnName("establishment_urn");
-            entity.Property(e => e.GroupId).HasColumnName("group_id");
+            entity.Property(e => e.GroupUid).HasColumnName("group_uid");
         });
 
         modelBuilder.Entity<GroupMemberAggregate>(entity =>
@@ -347,13 +347,13 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
             entity.HasIndex(e => e.EstablishmentUrn, "idx_group_member_aggregate_establishment_urn");
 
-            entity.HasIndex(e => e.GroupId, "idx_group_member_aggregate_group_id");
+            entity.HasIndex(e => e.GroupUid, "idx_group_member_aggregate_group_uid");
 
             entity.Property(e => e.GroupMemberAggregateId).HasColumnName("group_member_aggregate_id");
             entity.Property(e => e.EndDate).HasColumnName("end_date");
             entity.Property(e => e.EstablishmentName).HasColumnName("establishment_name");
             entity.Property(e => e.EstablishmentUrn).HasColumnName("establishment_urn");
-            entity.Property(e => e.GroupId).HasColumnName("group_id");
+            entity.Property(e => e.GroupUid).HasColumnName("group_uid");
             entity.Property(e => e.StartDate).HasColumnName("start_date");
         });
 
