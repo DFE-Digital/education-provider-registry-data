@@ -261,7 +261,7 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
             entity.ToTable("group_aggregate", "core");
 
-            entity.HasIndex(e => e.GroupId, "group_aggregate_group_id_key").IsUnique();
+            entity.HasIndex(e => e.GroupUid, "group_aggregate_group_uid_key").IsUnique();
 
             entity.HasIndex(e => e.GroupId, "idx_group_aggregate_group_id");
 
