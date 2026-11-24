@@ -7,7 +7,7 @@ public partial class GroupAggregate
 {
     public long GroupAggregateId { get; set; }
 
-    public string GroupId { get; set; } = null!;
+    public string? GroupId { get; set; }
 
     public long GroupUid { get; set; }
 
