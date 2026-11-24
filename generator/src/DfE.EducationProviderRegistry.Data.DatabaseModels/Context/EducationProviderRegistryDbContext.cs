@@ -18,6 +18,8 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
     public virtual DbSet<GroupAggregate> GroupAggregate { get; set; }
 
+    public virtual DbSet<GroupEstablishmentAggregate> GroupEstablishmentAggregate { get; set; }
+
     public virtual DbSet<GroupMemberAggregate> GroupMemberAggregate { get; set; }
 
     public virtual DbSet<SearchAggregate> SearchAggregate { get; set; }
@@ -122,6 +124,22 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.Town).HasColumnName("town");
             entity.Property(e => e.Ukprn).HasColumnName("ukprn");
             entity.Property(e => e.Website).HasColumnName("website");
+        });
+
+        modelBuilder.Entity<GroupEstablishmentAggregate>(entity =>
+        {
+            entity.HasKey(e => e.GroupEstablishmentAggregateId).HasName("group_establishment_aggregate_pkey");
+
+            entity.ToTable("group_establishment_aggregate", "core");
+
+            entity.HasIndex(e => e.EstablishmentUrn, "idx_group_establishment_aggregate_establishment_urn");
+
+            entity.HasIndex(e => e.GroupId, "idx_group_establishment_aggregate_group_id");
+
+            entity.Property(e => e.GroupEstablishmentAggregateId).HasColumnName("group_establishment_aggregate_id");
+            entity.Property(e => e.EstablishmentName).HasColumnName("establishment_name");
+            entity.Property(e => e.EstablishmentUrn).HasColumnName("establishment_urn");
+            entity.Property(e => e.GroupId).HasColumnName("group_id");
         });
 
         modelBuilder.Entity<GroupMemberAggregate>(entity =>
