@@ -31,7 +31,9 @@ public partial class SearchAggregate
 
     public string? LocalAuthorityName { get; set; }
 
-    public string? Status { get; set; }
+    public int? StatusCode { get; set; }
+
+    public string? StatusName { get; set; }
 
     public string? EducationPhase { get; set; }
 
