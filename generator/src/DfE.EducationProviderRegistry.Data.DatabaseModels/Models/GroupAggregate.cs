@@ -19,6 +19,8 @@ public partial class GroupAggregate
 
     public string? GroupTypeName { get; set; }
 
+    public string? GroupTypeCode { get; set; }
+
     public string? HeadteacherIdentifier { get; set; }
 
     public string? HeadteacherName { get; set; }

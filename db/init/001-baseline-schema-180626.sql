@@ -162,6 +162,7 @@ CREATE TABLE core.group_aggregate
     -- details
     name TEXT NOT NULL,
     group_type_name TEXT,
+    group_type_code TEXT,
 
     -- leadership
     headteacher_identifier TEXT,
