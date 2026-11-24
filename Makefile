@@ -1,4 +1,4 @@
-ARM_TEMPLATE_TAG=1.1.10
+ARM_TEMPLATE_TAG=1.1.17
 RG_TAGS={"Product" : "Find education provider information", "Service Offering" : "Find education provider information"}
 REGION=UK South
 SERVICE_NAME=education-provider-registry-data
