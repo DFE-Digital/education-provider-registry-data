@@ -24,6 +24,8 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
     public virtual DbSet<GroupEstablishmentAggregate> GroupEstablishmentAggregate { get; set; }
 
+    public virtual DbSet<GroupGovernorAggregate> GroupGovernorAggregate { get; set; }
+
     public virtual DbSet<GroupMemberAggregate> GroupMemberAggregate { get; set; }
 
     public virtual DbSet<SearchAggregate> SearchAggregate { get; set; }
@@ -338,6 +340,29 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.EstablishmentName).HasColumnName("establishment_name");
             entity.Property(e => e.EstablishmentUrn).HasColumnName("establishment_urn");
             entity.Property(e => e.GroupUid).HasColumnName("group_uid");
+        });
+
+        modelBuilder.Entity<GroupGovernorAggregate>(entity =>
+        {
+            entity.HasKey(e => e.GroupGovernorAggregateId).HasName("group_governor_aggregate_pkey");
+
+            entity.ToTable("group_governor_aggregate", "core");
+
+            entity.HasIndex(e => e.GovernorId, "idx_group_governor_aggregate_governor_id");
+
+            entity.HasIndex(e => e.GroupUid, "idx_group_governor_aggregate_group_uid");
+
+            entity.Property(e => e.GroupGovernorAggregateId).HasColumnName("group_governor_aggregate_id");
+            entity.Property(e => e.AppointingBody).HasColumnName("appointing_body");
+            entity.Property(e => e.AppointmentEndDate).HasColumnName("appointment_end_date");
+            entity.Property(e => e.AppointmentStartDate).HasColumnName("appointment_start_date");
+            entity.Property(e => e.FirstName).HasColumnName("first_name");
+            entity.Property(e => e.GovernorId).HasColumnName("governor_id");
+            entity.Property(e => e.GroupUid).HasColumnName("group_uid");
+            entity.Property(e => e.LastName).HasColumnName("last_name");
+            entity.Property(e => e.Role).HasColumnName("role");
+            entity.Property(e => e.RoleOrder).HasColumnName("role_order");
+            entity.Property(e => e.Title).HasColumnName("title");
         });
 
         modelBuilder.Entity<GroupMemberAggregate>(entity =>
