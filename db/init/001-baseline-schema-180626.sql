@@ -444,12 +444,6 @@ CREATE INDEX idx_group_aggregate_group_id
 CREATE INDEX idx_group_aggregate_group_uid
     ON core.group_aggregate (group_uid);
 
-CREATE INDEX idx_group_member_aggregate_group_uid
-    ON core.group_member_aggregate (group_uid);
-
-CREATE INDEX idx_group_member_aggregate_establishment_urn
-    ON core.group_member_aggregate (establishment_urn);
-
 CREATE INDEX idx_group_establishment_aggregate_group_uid
     ON core.group_establishment_aggregate (group_uid);
 

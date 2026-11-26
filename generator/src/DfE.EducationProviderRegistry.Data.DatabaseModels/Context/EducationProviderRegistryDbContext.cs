@@ -26,8 +26,6 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
     public virtual DbSet<GroupGovernorAggregate> GroupGovernorAggregate { get; set; }
 
-    public virtual DbSet<GroupMemberAggregate> GroupMemberAggregate { get; set; }
-
     public virtual DbSet<SearchAggregate> SearchAggregate { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -363,24 +361,6 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.Property(e => e.Role).HasColumnName("role");
             entity.Property(e => e.RoleOrder).HasColumnName("role_order");
             entity.Property(e => e.Title).HasColumnName("title");
-        });
-
-        modelBuilder.Entity<GroupMemberAggregate>(entity =>
-        {
-            entity.HasKey(e => e.GroupMemberAggregateId).HasName("group_member_aggregate_pkey");
-
-            entity.ToTable("group_member_aggregate", "core");
-
-            entity.HasIndex(e => e.EstablishmentUrn, "idx_group_member_aggregate_establishment_urn");
-
-            entity.HasIndex(e => e.GroupUid, "idx_group_member_aggregate_group_uid");
-
-            entity.Property(e => e.GroupMemberAggregateId).HasColumnName("group_member_aggregate_id");
-            entity.Property(e => e.EndDate).HasColumnName("end_date");
-            entity.Property(e => e.EstablishmentName).HasColumnName("establishment_name");
-            entity.Property(e => e.EstablishmentUrn).HasColumnName("establishment_urn");
-            entity.Property(e => e.GroupUid).HasColumnName("group_uid");
-            entity.Property(e => e.StartDate).HasColumnName("start_date");
         });
 
         modelBuilder.Entity<SearchAggregate>(entity =>
