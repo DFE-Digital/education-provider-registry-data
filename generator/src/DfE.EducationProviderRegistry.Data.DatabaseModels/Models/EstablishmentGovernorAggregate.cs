@@ -7,11 +7,23 @@ public partial class EstablishmentGovernorAggregate
 {
     public long EstablishmentGovernorAggregateId { get; set; }
 
-    public string EstablishmentUrn { get; set; } = null!;
+    public long EstablishmentUrn { get; set; }
 
     public string GovernorId { get; set; } = null!;
 
-    public string GovernorName { get; set; } = null!;
+    public string? Title { get; set; }
 
-    public DateOnly? StartDate { get; set; }
+    public string? FirstName { get; set; }
+
+    public string LastName { get; set; } = null!;
+
+    public string Role { get; set; } = null!;
+
+    public int RoleOrder { get; set; }
+
+    public string? AppointingBody { get; set; }
+
+    public DateOnly AppointmentStartDate { get; set; }
+
+    public DateOnly? AppointmentEndDate { get; set; }
 }

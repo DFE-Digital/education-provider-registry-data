@@ -28,6 +28,7 @@ public partial class EducationProviderRegistryDbContext : DbContext
 
     public virtual DbSet<SearchAggregate> SearchAggregate { get; set; }
 
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasPostgresExtension("pg_trgm");
@@ -249,10 +250,16 @@ public partial class EducationProviderRegistryDbContext : DbContext
             entity.HasIndex(e => e.EstablishmentUrn, "idx_establishment_governor_aggregate_urn");
 
             entity.Property(e => e.EstablishmentGovernorAggregateId).HasColumnName("establishment_governor_aggregate_id");
+            entity.Property(e => e.AppointingBody).HasColumnName("appointing_body");
+            entity.Property(e => e.AppointmentEndDate).HasColumnName("appointment_end_date");
+            entity.Property(e => e.AppointmentStartDate).HasColumnName("appointment_start_date");
             entity.Property(e => e.EstablishmentUrn).HasColumnName("establishment_urn");
+            entity.Property(e => e.FirstName).HasColumnName("first_name");
             entity.Property(e => e.GovernorId).HasColumnName("governor_id");
-            entity.Property(e => e.GovernorName).HasColumnName("governor_name");
-            entity.Property(e => e.StartDate).HasColumnName("start_date");
+            entity.Property(e => e.LastName).HasColumnName("last_name");
+            entity.Property(e => e.Role).HasColumnName("role");
+            entity.Property(e => e.RoleOrder).HasColumnName("role_order");
+            entity.Property(e => e.Title).HasColumnName("title");
         });
 
         modelBuilder.Entity<GroupAggregate>(entity =>
